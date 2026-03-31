@@ -6,7 +6,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#070809">
+<meta name="theme-color" content="#F5F0EB">
 <title>Servicios — +MasCreativa Publicidad</title>
 <meta name="description" content="+MasCreativa Publicidad es una agencia creativa en San Juan, Puerto Rico especializada en branding, publicidad, fotografía, video, marketing digital y contenido visual. Clientes incluyen Rimas Publishing, Fundación Good Bunny, New York Mets y más. +100M vistas en video en 2025.">
 <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800,900&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
 }
 *:focus { outline: none; }
 a:focus-visible, button:focus-visible, input:focus-visible {
-    outline: 2px solid #4AC9F7;
+    outline: 2px solid var(--blue-strong);
     outline-offset: 2px;
 }
 a {
@@ -26,11 +26,40 @@ a {
     user-select: none;
 }
 
+:root {
+    --bg: #F5F0EB;
+    --bg-2: #EDE8E3;
+    --panel: rgba(255, 255, 255, 0.8);
+    --panel-strong: rgba(255, 255, 255, 0.94);
+    --text: #121726;
+    --muted: #5d6884;
+    --line: rgba(18, 23, 38, 0.1);
+    --line-strong: rgba(18, 23, 38, 0.18);
+    --blue: #69cafc;
+    --blue-strong: #38baf7;
+    --glass-bg: rgba(255,255,255,0.45);
+    --glass-border: rgba(255,255,255,0.5);
+}
+body[data-theme="dark"] {
+    --bg: #070b13;
+    --bg-2: #0d1320;
+    --panel: rgba(14, 19, 31, 0.82);
+    --panel-strong: rgba(14, 19, 31, 0.94);
+    --text: #edf1ff;
+    --muted: rgba(233, 239, 255, 0.68);
+    --line: rgba(255, 255, 255, 0.1);
+    --line-strong: rgba(255, 255, 255, 0.18);
+    --blue: #6fd2ff;
+    --blue-strong: #49c7ff;
+    --glass-bg: rgba(255,255,255,0.08);
+    --glass-border: rgba(255,255,255,0.12);
+}
+
 html, body {
     min-height: 100%;
-    background: #070809;
+    background: var(--bg);
     font-family: 'Satoshi', sans-serif;
-    color: #edebe6;
+    color: var(--text);
     user-select: none; -webkit-user-select: none;
 }
 
@@ -43,10 +72,10 @@ html, body {
     letter-spacing: 0.12em; text-transform: uppercase;
 }
 .page-nav a {
-    color: rgba(74,201,247,0.5); text-decoration: none;
+    color: var(--muted); text-decoration: none;
     transition: color 0.2s;
 }
-.page-nav a:hover { color: #4AC9F7; }
+.page-nav a:hover { color: var(--blue-strong); }
 @media (max-width: 640px) {
     .page-nav { gap: 8px; font-size: 9px; }
     .page-nav a { padding: 8px 4px; }
@@ -63,7 +92,7 @@ html, body {
     font-weight: 900;
     letter-spacing: -0.03em;
     text-transform: uppercase;
-    color: #4AC9F7;
+    color: var(--blue-strong);
     line-height: 0.9;
 }
 .page-subtitle {
@@ -71,7 +100,7 @@ html, body {
     font-size: clamp(10px, 1.5vw, 14px);
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: rgba(74,201,247,0.4);
+    color: var(--muted);
     margin-top: 12px;
 }
 
@@ -86,7 +115,7 @@ html, body {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px; font-weight: 700;
     letter-spacing: 3px; text-transform: uppercase;
-    color: #8aa;
+    color: var(--muted);
     margin-bottom: 12px;
 }
 .stat-number-wrap {
@@ -97,7 +126,7 @@ html, body {
     font-family: 'Cabinet Grotesk', sans-serif;
     font-size: clamp(80px, 16vw, 140px);
     font-weight: 900;
-    color: rgba(255,255,255,0.9);
+    color: var(--text);
     line-height: 1;
     text-transform: uppercase;
 }
@@ -107,7 +136,7 @@ html, body {
 .stat-sub {
     font-family: 'Satoshi', sans-serif;
     font-size: 15px; font-weight: 400; font-style: italic;
-    color: #8ab;
+    color: var(--muted);
     line-height: 1.5;
 }
 @media (max-width: 640px) {
@@ -129,20 +158,20 @@ html, body {
     font-family: 'JetBrains Mono', monospace;
     font-size: 9px; font-weight: 500;
     letter-spacing: 2px; text-transform: uppercase;
-    color: rgba(74,201,247,0.6);
+    color: var(--muted);
     padding: 8px 16px;
-    border: 1px solid rgba(74,201,247,0.12);
+    border: 1px solid var(--line);
     border-radius: 20px;
-    background: rgba(7,8,9,0.5);
+    background: var(--panel);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     pointer-events: auto;
     transition: color 0.3s, border-color 0.3s, background 0.3s;
 }
 .service-chip:hover {
-    color: #4AC9F7;
-    border-color: rgba(74,201,247,0.35);
-    background: rgba(74,201,247,0.06);
+    color: var(--blue-strong);
+    border-color: var(--line-strong);
+    background: var(--panel-strong);
 }
 @media (max-width: 640px) {
     .services-list { gap: 8px; padding: 0 12px 16px; }
@@ -160,20 +189,20 @@ html, body {
     display: flex; flex-direction: column; gap: 40px;
 }
 .sd-card {
-    border-top: 1px solid rgba(74,201,247,0.12);
+    border-top: 1px solid var(--line);
     padding-top: 24px;
 }
 .sd-title {
     font-family: 'Cabinet Grotesk', sans-serif;
     font-size: 20px; font-weight: 900;
     letter-spacing: 0.08em; text-transform: uppercase;
-    color: #4AC9F7;
+    color: var(--blue-strong);
     margin: 0 0 12px;
 }
 .sd-body {
     font-family: 'Satoshi', sans-serif;
     font-size: 14px; line-height: 1.7;
-    color: rgba(237,235,230,0.7);
+    color: var(--muted);
     margin: 0 0 16px;
 }
 .sd-list {
@@ -183,13 +212,13 @@ html, body {
 .sd-list li {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px; letter-spacing: 0.5px;
-    color: rgba(74,201,247,0.5);
+    color: var(--muted);
     padding-left: 16px;
     position: relative;
 }
 .sd-list li::before {
     content: '+'; position: absolute; left: 0;
-    color: #4AC9F7; font-weight: 700;
+    color: var(--blue); font-weight: 700;
 }
 /* Light mode handled by paint() */
 @media (max-width: 640px) {
@@ -270,7 +299,7 @@ html, body {
 .site-footer {
     text-align: center;
     padding: 48px 20px 34px;
-    border-top: 1px solid rgba(74,201,247,0.08);
+    border-top: 1px solid var(--line);
     position: relative;
     z-index: 1;
     background: #121726;
@@ -354,12 +383,12 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
 
 </style>
 </head>
-<body>
+<body data-theme="light">
 
 <!-- Logo -->
 <div style="text-align:center;padding:24px 0 0;">
-  <a href="index.html" style="display:inline-block;"><img id="logoW" src="assets/images/logo-w.PNG" alt="MasCreativa" style="height:60px;display:block;">
-  <img id="logoD" src="assets/images/logo-d.PNG" alt="MasCreativa" style="height:60px;display:none;"></a>
+  <a href="index.html" style="display:inline-block;"><img id="logoW" src="assets/images/logo-w.PNG" alt="MasCreativa" style="height:60px;display:none;">
+  <img id="logoD" src="assets/images/logo-d.PNG" alt="MasCreativa" style="height:60px;display:block;"></a>
 </div>
 
 <!-- Light/Dark mode toggle -->
@@ -413,7 +442,7 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
 <div class="services-details" id="servicesDetails">
   <div class="sd-inner">
 
-    <p class="sd-intro" style="font-family:'Satoshi',sans-serif;font-size:14px;line-height:1.7;color:rgba(74,201,247,0.6);text-align:center;margin-bottom:10px;">No vendemos paquetes. Armamos lo que tu marca necesita, al nivel que tu marca merece. Da igual si el presupuesto es grande o modesto -- lo que sale de aquí es nuestro mejor trabajo.</p>
+    <p class="sd-intro" style="font-family:'Satoshi',sans-serif;font-size:14px;line-height:1.7;color:var(--muted);text-align:center;margin-bottom:10px;">No vendemos paquetes. Armamos lo que tu marca necesita, al nivel que tu marca merece. Da igual si el presupuesto es grande o modesto -- lo que sale de aquí es nuestro mejor trabajo.</p>
 
     <div class="sd-card">
       <h3 class="sd-title">Branding e Identidad</h3>
@@ -499,74 +528,29 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
   var checkbox=document.getElementById('themeCheckbox');
   if(!checkbox) return;
 
-  var isDark=true;
-  try{var sv=localStorage.getItem('mcp-mode');if(sv==='light')isDark=false;}catch(e){}
+  var isDark=false;
+  try{var sv=localStorage.getItem('mcp-mode');if(sv==='dark')isDark=true;}catch(e){}
 
-  function paint(d){
-    // Background
-    document.body.style.background = d>0.5 ? '#F5F0EB' : '#070809';
+  function paint(dark){
+    var theme = dark ? 'dark' : 'light';
+    document.body.setAttribute('data-theme', theme);
 
     // Logo swap
     var logoW=document.getElementById('logoW');
     var logoD=document.getElementById('logoD');
-    if(logoW) logoW.style.display = d>0.5 ? 'none' : 'block';
-    if(logoD) logoD.style.display = d>0.5 ? 'block' : 'none';
+    if(logoW) logoW.style.display = dark ? 'block' : 'none';
+    if(logoD) logoD.style.display = dark ? 'none' : 'block';
 
-    // Page nav
-    document.querySelectorAll('.page-nav a').forEach(function(a){ a.style.color = d>0.5 ? 'rgba(0,0,0,0.4)' : 'rgba(74,201,247,0.5)'; });
+    // Theme-color meta
+    var metaTC=document.querySelector('meta[name="theme-color"]');
+    if(metaTC) metaTC.setAttribute('content', dark ? '#070b13' : '#F5F0EB');
 
-    // Page title
-    var pageTitle=document.querySelector('.page-title');
-    var pageSub=document.querySelector('.page-subtitle');
-    if(pageTitle) pageTitle.style.color = d>0.5 ? '#111' : '#4AC9F7';
-    if(pageSub) pageSub.style.color = d>0.5 ? '#555' : 'rgba(74,201,247,0.5)';
-
-    // Services intro
-    // Service detail cards
-    document.querySelectorAll('.sd-title').forEach(function(el){ el.style.color = d>0.5 ? '#222' : '#4AC9F7'; });
-    document.querySelectorAll('.sd-body').forEach(function(el){ el.style.color = d>0.5 ? 'rgba(0,0,0,0.6)' : 'rgba(237,235,230,0.7)'; });
-    document.querySelectorAll('.sd-list li').forEach(function(el){ el.style.color = d>0.5 ? 'rgba(0,0,0,0.4)' : 'rgba(74,201,247,0.5)'; });
-    document.querySelectorAll('.sd-card').forEach(function(el){ el.style.borderTopColor = d>0.5 ? 'rgba(0,0,0,0.1)' : 'rgba(74,201,247,0.12)'; });
-
-    // Service chips
-    var chips=document.querySelectorAll('.service-chip');
-    chips.forEach(function(c){
-      c.style.color = d>0.5 ? '#333' : 'rgba(74,201,247,0.6)';
-      c.style.borderColor = d>0.5 ? '#ccc' : 'rgba(74,201,247,0.12)';
-      c.style.background = d>0.5 ? 'rgba(255,255,255,0.6)' : 'rgba(7,8,9,0.5)';
-    });
-
-    var sdIntro=document.querySelector('.sd-intro');
-    if(sdIntro) sdIntro.style.color = d>0.5 ? 'rgba(0,0,0,0.55)' : 'rgba(74,201,247,0.6)';
-
-    // Stat banner
-    var statLabel=document.querySelector('.stat-label');
-    var statNumWrap=document.querySelector('.stat-number-wrap');
-    var statNum=document.querySelector('.stat-number');
-    var statSub=document.querySelector('.stat-sub');
-    if(statLabel) statLabel.style.color=d>0.5?'#777':'#8aa';
-    if(statNum) statNum.style.color=d>0.5?'rgba(0,0,0,0.85)':'rgba(255,255,255,0.9)';
-    if(statSub) statSub.style.color=d>0.5?'#555':'#999';
-
-    // Footer
-    var footer=document.getElementById('siteFooter');
-    if(footer){
-      footer.style.borderTopColor = d>0.5 ? 'rgba(0,0,0,0.08)' : 'rgba(74,201,247,0.08)';
-      var ftag=footer.querySelector('.footer-tagline');
-      if(ftag) ftag.style.color = d>0.5 ? 'rgba(0,0,0,0.25)' : 'rgba(255,255,255,0.25)';
-      footer.querySelectorAll('.footer-socials a').forEach(function(a){ if(a.href&&a.href.indexOf('wa.me')!==-1){a.style.color='#25D366';}else{a.style.color = d>0.5 ? 'rgba(0,0,0,0.35)' : 'rgba(255,255,255,0.35)';} });
-      var fcopy=footer.querySelector('.footer-copy');
-      if(fcopy) fcopy.style.color = d>0.5 ? 'rgba(0,0,0,0.15)' : 'rgba(255,255,255,0.15)';
-      var fcontact=footer.querySelector('.footer-contact');
-      if(fcontact) fcontact.style.color = d>0.5 ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.2)';
-    }
-
-    try{localStorage.setItem('mcp-mode',d>0.5?'light':'dark');}catch(e){}
+    try{localStorage.setItem('mcp-mode', theme);}catch(e){}
   }
 
   function applyMode(){
     checkbox.checked=isDark;
-    paint(isDark?0:1);
+    paint(isDark);
   }
 
   checkbox.addEventListener('change',function(){

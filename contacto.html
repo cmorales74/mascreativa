@@ -6,12 +6,42 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#070809">
+<meta name="theme-color" content="#F5F0EB">
 <title>Contacto — +MasCreativa Publicidad</title>
 <meta name="description" content="+MasCreativa Publicidad es una agencia creativa en San Juan, Puerto Rico especializada en branding, publicidad, fotografía, video, marketing digital y contenido visual. Clientes incluyen Rimas Publishing, Fundación Good Bunny, New York Mets y más. +100M vistas en video en 2025.">
 <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800,900&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
+/* ===== CSS CUSTOM PROPERTIES ===== */
+:root {
+  --bg: #F5F0EB;
+  --bg-2: #EDE8E3;
+  --panel: rgba(255, 255, 255, 0.8);
+  --panel-strong: rgba(255, 255, 255, 0.94);
+  --text: #121726;
+  --muted: #5d6884;
+  --line: rgba(18, 23, 38, 0.1);
+  --line-strong: rgba(18, 23, 38, 0.18);
+  --blue: #69cafc;
+  --blue-strong: #38baf7;
+  --glass-bg: rgba(255,255,255,0.45);
+  --glass-border: rgba(255,255,255,0.5);
+}
+body[data-theme="dark"] {
+  --bg: #070b13;
+  --bg-2: #0d1320;
+  --panel: rgba(14, 19, 31, 0.82);
+  --panel-strong: rgba(14, 19, 31, 0.94);
+  --text: #edf1ff;
+  --muted: rgba(233, 239, 255, 0.68);
+  --line: rgba(255, 255, 255, 0.1);
+  --line-strong: rgba(255, 255, 255, 0.18);
+  --blue: #6fd2ff;
+  --blue-strong: #49c7ff;
+  --glass-bg: rgba(255,255,255,0.08);
+  --glass-border: rgba(255,255,255,0.12);
+}
+
 /* global */
 *, *::before, *::after {
     margin: 0; padding: 0; border: 0; box-sizing: border-box;
@@ -28,9 +58,9 @@ a {
 
 html, body {
     min-height: 100%;
-    background: #070809;
+    background: var(--bg);
     font-family: 'Satoshi', sans-serif;
-    color: #edebe6;
+    color: var(--text);
     user-select: none; -webkit-user-select: none;
 }
 
@@ -43,10 +73,10 @@ html, body {
     letter-spacing: 0.12em; text-transform: uppercase;
 }
 .page-nav a {
-    color: rgba(74,201,247,0.5); text-decoration: none;
+    color: var(--muted); text-decoration: none;
     transition: color 0.2s;
 }
-.page-nav a:hover { color: #4AC9F7; }
+.page-nav a:hover { color: var(--blue-strong); }
 @media (max-width: 640px) {
     .page-nav { gap: 8px; font-size: 9px; }
     .page-nav a { padding: 8px 4px; }
@@ -63,7 +93,7 @@ html, body {
     font-weight: 900;
     letter-spacing: -0.03em;
     text-transform: uppercase;
-    color: #4AC9F7;
+    color: var(--blue-strong);
     line-height: 0.9;
 }
 .page-subtitle {
@@ -71,7 +101,7 @@ html, body {
     font-size: clamp(10px, 1.5vw, 14px);
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: rgba(74,201,247,0.4);
+    color: var(--muted);
     margin-top: 12px;
 }
 
@@ -97,7 +127,7 @@ html, body {
     font-family: 'JetBrains Mono', monospace;
     font-size: 9px; font-weight: 500;
     letter-spacing: 4px; text-transform: uppercase;
-    color: rgba(74,201,247,0.45);
+    color: var(--muted);
     align-self: flex-start;
     margin-bottom: 16px;
 }
@@ -115,9 +145,9 @@ html, body {
     width: 100%;
     font-family: 'Satoshi', sans-serif;
     font-size: 13px; font-weight: 400;
-    color: rgba(237,235,230,0.85);
-    background: rgba(74,201,247,0.04);
-    border: 1px solid rgba(74,201,247,0.15);
+    color: var(--text);
+    background: var(--glass-bg);
+    border: 1px solid var(--line);
     border-radius: 6px;
     padding: 12px 14px;
     transition: border-color 0.25s, background 0.25s;
@@ -127,17 +157,13 @@ html, body {
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-    color: rgba(74,201,247,0.25);
-}
-.light-mode .contact-form input::placeholder,
-.light-mode .contact-form textarea::placeholder {
-    color: rgba(0,0,0,0.35);
+    color: var(--muted);
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-    border-color: rgba(74,201,247,0.4);
-    background: rgba(74,201,247,0.07);
+    border-color: var(--blue-strong);
+    background: var(--glass-bg);
 }
 
 .contact-form textarea {
@@ -149,9 +175,9 @@ html, body {
     font-family: 'JetBrains Mono', monospace;
     font-size: 9px; font-weight: 500;
     letter-spacing: 3px; text-transform: uppercase;
-    color: rgba(74,201,247,0.6);
+    color: var(--muted);
     background: transparent;
-    border: 1px solid rgba(74,201,247,0.2);
+    border: 1px solid var(--line-strong);
     border-radius: 20px;
     padding: 10px 28px;
     cursor: pointer;
@@ -160,9 +186,9 @@ html, body {
     user-select: none; -webkit-user-select: none;
 }
 .submit-btn:hover {
-    color: #4AC9F7;
-    border-color: rgba(74,201,247,0.45);
-    background: rgba(74,201,247,0.06);
+    color: var(--blue-strong);
+    border-color: var(--blue-strong);
+    background: var(--glass-bg);
 }
 
 /* ===== SOCIAL ICONS ===== */
@@ -177,21 +203,21 @@ html, body {
     align-items: center;
     justify-content: center;
     width: 48px; height: 48px;
-    border: 1px solid rgba(74,201,247,0.12);
+    border: 1px solid var(--line);
     border-radius: 50%;
     transition: border-color 0.3s, background 0.3s;
     text-decoration: none;
 }
 .social-link:hover {
-    border-color: rgba(74,201,247,0.35);
-    background: rgba(74,201,247,0.06);
+    border-color: var(--blue-strong);
+    background: var(--glass-bg);
 }
 .social-link svg {
-    color: rgba(74,201,247,0.5);
+    color: var(--muted);
     transition: color 0.3s;
 }
 .social-link:hover svg {
-    color: #4AC9F7;
+    color: var(--blue-strong);
 }
 .contact-cta:hover {
     opacity: 0.7;
@@ -354,12 +380,12 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
 }
 </style>
 </head>
-<body>
+<body data-theme="light">
 
 <!-- Logo -->
 <div style="text-align:center;padding:24px 0 0;">
-  <a href="index.html" style="display:inline-block;"><img id="logoW" src="assets/images/logo-w.PNG" alt="MasCreativa" style="height:60px;display:block;">
-  <img id="logoD" src="assets/images/logo-d.PNG" alt="MasCreativa" style="height:60px;display:none;"></a>
+  <a href="index.html" style="display:inline-block;"><img id="logoW" src="assets/images/logo-w.PNG" alt="MasCreativa" style="height:60px;display:none;">
+  <img id="logoD" src="assets/images/logo-d.PNG" alt="MasCreativa" style="height:60px;display:block;"></a>
 </div>
 
 <!-- Light/Dark mode toggle -->
@@ -402,7 +428,7 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
 <div class="contact-wrapper">
   <div class="contact-block">
 
-    <p class="contact-intro" style="font-family:'Satoshi',sans-serif;font-size:13px;line-height:1.7;color:rgba(74,201,247,0.6);text-align:center;max-width:450px;margin:0 auto 20px;">Si tienes un proyecto que necesita verse bien de verdad, escríbenos. Te decimos qué podemos hacer y cómo lo hacemos.</p>
+    <p class="contact-intro" style="font-family:'Satoshi',sans-serif;font-size:13px;line-height:1.7;color:var(--muted);text-align:center;max-width:450px;margin:0 auto 20px;">Si tienes un proyecto que necesita verse bien de verdad, escríbenos. Te decimos qué podemos hacer y cómo lo hacemos.</p>
 
     <div class="form-label">Escríbenos</div>
 
@@ -417,11 +443,11 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
       <button type="submit" class="submit-btn">Enviar</button>
     </form>
 
-    <p class="contact-note" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(74,201,247,0.3);text-align:center;margin-top:16px;">Te contestamos en menos de 24 horas. Si no puedes esperar, dale al WhatsApp.</p>
+    <p class="contact-note" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-align:center;margin-top:16px;">Te contestamos en menos de 24 horas. Si no puedes esperar, dale al WhatsApp.</p>
 
-    <a href="tel:+17876441276" class="contact-cta" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#4AC9F7;text-decoration:none;text-align:center;display:block;margin-top:12px;transition:opacity 0.3s;">Consulta gratis -- 787-644-1276</a>
+    <a href="tel:+17876441276" class="contact-cta" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--blue-strong);text-decoration:none;text-align:center;display:block;margin-top:12px;transition:opacity 0.3s;">Consulta gratis -- 787-644-1276</a>
 
-    <div class="contact-info" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:rgba(74,201,247,0.4);text-align:center;margin-top:24px;line-height:2;">
+    <div class="contact-info" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--muted);text-align:center;margin-top:24px;line-height:2;">
       787-644-1276<br>
       info@mascreativapublicidad.com<br>
       1105 Ave. FDR, Suite 5, San Juan, PR 00920<br>
@@ -469,85 +495,18 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
   var checkbox=document.getElementById('themeCheckbox');
   if(!checkbox) return;
 
-  var isDark=true;
-  try{var sv=localStorage.getItem('mcp-mode');if(sv==='light')isDark=false;}catch(e){}
+  var isDark=false;
+  try{var sv=localStorage.getItem('mcp-mode');if(sv==='dark')isDark=true;}catch(e){}
 
   function paint(d){
-    // Background
-    document.body.style.background = d>0.5 ? '#F5F0EB' : '#070809';
+    // Set data-theme attribute — CSS variables handle everything
+    document.body.setAttribute('data-theme', d>0.5 ? 'light' : 'dark');
 
-    // Light mode class for placeholder styling
-    if(d>0.5) document.body.classList.add('light-mode');
-    else document.body.classList.remove('light-mode');
-
-    // Logo swap
+    // Logo swap (light logo for dark bg, dark logo for light bg)
     var logoW=document.getElementById('logoW');
     var logoD=document.getElementById('logoD');
     if(logoW) logoW.style.display = d>0.5 ? 'none' : 'block';
     if(logoD) logoD.style.display = d>0.5 ? 'block' : 'none';
-
-    // Page nav
-    document.querySelectorAll('.page-nav a').forEach(function(a){ a.style.color = d>0.5 ? 'rgba(0,0,0,0.4)' : 'rgba(74,201,247,0.5)'; });
-
-    // Page title
-    var pageTitle=document.querySelector('.page-title');
-    var pageSub=document.querySelector('.page-subtitle');
-    if(pageTitle) pageTitle.style.color = d>0.5 ? '#111' : '#4AC9F7';
-    if(pageSub) pageSub.style.color = d>0.5 ? '#555' : 'rgba(74,201,247,0.5)';
-
-    // Form inputs
-    var inputs=document.querySelectorAll('.contact-form input, .contact-form textarea');
-    inputs.forEach(function(inp){
-      inp.style.background = d>0.5 ? 'rgba(0,0,0,0.04)' : 'rgba(74,201,247,0.04)';
-      inp.style.borderColor = d>0.5 ? '#ccc' : 'rgba(74,201,247,0.15)';
-      inp.style.color = d>0.5 ? '#222' : 'rgba(237,235,230,0.85)';
-    });
-
-    // Submit button
-    var subBtn=document.querySelector('.submit-btn');
-    if(subBtn){
-      subBtn.style.color = d>0.5 ? '#333' : 'rgba(74,201,247,0.6)';
-      subBtn.style.borderColor = d>0.5 ? '#bbb' : 'rgba(74,201,247,0.2)';
-    }
-
-    // Social icons
-    var socialLinks=document.querySelectorAll('.social-link');
-    socialLinks.forEach(function(lnk){
-      lnk.style.borderColor = d>0.5 ? '#ccc' : 'rgba(74,201,247,0.12)';
-    });
-    var socialSvgs=document.querySelectorAll('.social-link svg');
-    socialSvgs.forEach(function(s){
-      s.style.color = d>0.5 ? '#555' : 'rgba(74,201,247,0.5)';
-    });
-
-    // Contact intro
-    var cIntro=document.querySelector('.contact-intro');
-    if(cIntro) cIntro.style.color = d>0.5 ? 'rgba(0,0,0,0.55)' : 'rgba(74,201,247,0.6)';
-    var cNote=document.querySelector('.contact-note');
-    if(cNote) cNote.style.color = d>0.5 ? 'rgba(0,0,0,0.3)' : 'rgba(74,201,247,0.3)';
-
-    // Form label
-    var formLabel=document.querySelector('.form-label');
-    if(formLabel) formLabel.style.color = d>0.5 ? '#555' : 'rgba(74,201,247,0.45)';
-
-    // Footer
-    var footer=document.getElementById('siteFooter');
-    if(footer){
-      footer.style.borderTopColor = d>0.5 ? 'rgba(0,0,0,0.08)' : 'rgba(74,201,247,0.08)';
-      var ftag=footer.querySelector('.footer-tagline');
-      if(ftag) ftag.style.color = d>0.5 ? 'rgba(0,0,0,0.25)' : 'rgba(255,255,255,0.25)';
-      footer.querySelectorAll('.footer-socials a').forEach(function(a){ if(a.href&&a.href.indexOf('wa.me')!==-1){a.style.color='#25D366';}else{a.style.color = d>0.5 ? 'rgba(0,0,0,0.35)' : 'rgba(255,255,255,0.35)';} });
-      var fcopy=footer.querySelector('.footer-copy');
-      if(fcopy) fcopy.style.color = d>0.5 ? 'rgba(0,0,0,0.15)' : 'rgba(255,255,255,0.15)';
-      var fcontact=footer.querySelector('.footer-contact');
-      if(fcontact) fcontact.style.color = d>0.5 ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.2)';
-    }
-
-    // Contact info + CTA
-    var cInfo=document.querySelector('.contact-info');
-    if(cInfo) cInfo.style.color = d>0.5 ? 'rgba(0,0,0,0.4)' : 'rgba(74,201,247,0.4)';
-    var cCta=document.querySelector('.contact-cta');
-    if(cCta) cCta.style.color = d>0.5 ? '#222' : '#4AC9F7';
 
     try{localStorage.setItem('mcp-mode',d>0.5?'light':'dark');}catch(e){}
   }

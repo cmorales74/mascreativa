@@ -6,12 +6,42 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#070809">
+<meta name="theme-color" content="#F5F0EB">
 <title>Nosotros — +MasCreativa Publicidad</title>
 <meta name="description" content="+MasCreativa Publicidad es una agencia creativa en San Juan, Puerto Rico especializada en branding, publicidad, fotografía, video, marketing digital y contenido visual. Clientes incluyen Rimas Publishing, Fundación Good Bunny, New York Mets y más. +100M vistas en video en 2025.">
 <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800,900&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
+/* ===== CSS CUSTOM PROPERTIES ===== */
+:root {
+  --bg: #F5F0EB;
+  --bg-2: #EDE8E3;
+  --panel: rgba(255, 255, 255, 0.8);
+  --panel-strong: rgba(255, 255, 255, 0.94);
+  --text: #121726;
+  --muted: #5d6884;
+  --line: rgba(18, 23, 38, 0.1);
+  --line-strong: rgba(18, 23, 38, 0.18);
+  --blue: #69cafc;
+  --blue-strong: #38baf7;
+  --glass-bg: rgba(255,255,255,0.45);
+  --glass-border: rgba(255,255,255,0.5);
+}
+body[data-theme="dark"] {
+  --bg: #070b13;
+  --bg-2: #0d1320;
+  --panel: rgba(14, 19, 31, 0.82);
+  --panel-strong: rgba(14, 19, 31, 0.94);
+  --text: #edf1ff;
+  --muted: rgba(233, 239, 255, 0.68);
+  --line: rgba(255, 255, 255, 0.1);
+  --line-strong: rgba(255, 255, 255, 0.18);
+  --blue: #6fd2ff;
+  --blue-strong: #49c7ff;
+  --glass-bg: rgba(255,255,255,0.08);
+  --glass-border: rgba(255,255,255,0.12);
+}
+
 /* global */
 *, *::before, *::after {
     margin: 0; padding: 0; border: 0; box-sizing: border-box;
@@ -28,9 +58,9 @@ a {
 
 html, body {
     height: 100%; overflow: hidden;
-    background: #070809;
+    background: var(--bg);
     font-family: 'Satoshi', sans-serif;
-    color: rgba(237,235,230,0.85);
+    color: var(--text);
     user-select: none; -webkit-user-select: none;
 }
 
@@ -43,10 +73,10 @@ html, body {
     letter-spacing: 0.12em; text-transform: uppercase;
 }
 .page-nav a {
-    color: rgba(74,201,247,0.5); text-decoration: none;
+    color: var(--muted); text-decoration: none;
     transition: color 0.2s;
 }
-.page-nav a:hover { color: #4AC9F7; }
+.page-nav a:hover { color: var(--blue-strong); }
 @media (max-width: 640px) {
     .page-nav { gap: 8px; font-size: 9px; }
     .page-nav a { padding: 8px 4px; }
@@ -63,7 +93,7 @@ html, body {
     font-weight: 900;
     letter-spacing: -0.03em;
     text-transform: uppercase;
-    color: #4AC9F7;
+    color: var(--blue-strong);
     line-height: 0.9;
 }
 .page-subtitle {
@@ -71,7 +101,7 @@ html, body {
     font-size: clamp(10px, 1.5vw, 14px);
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: rgba(74,201,247,0.4);
+    color: var(--muted);
     margin-top: 12px;
 }
 
@@ -82,11 +112,11 @@ html, body {
     overflow-y: auto;
     padding: 160px 0 0;
     scrollbar-width: thin;
-    scrollbar-color: rgba(74,201,247,0.2) transparent;
+    scrollbar-color: color-mix(in srgb, var(--blue-strong) 30%, transparent) transparent;
 }
 .about-wrapper::-webkit-scrollbar { width: 4px; }
 .about-wrapper::-webkit-scrollbar-track { background: transparent; }
-.about-wrapper::-webkit-scrollbar-thumb { background: rgba(74,201,247,0.2); border-radius: 2px; }
+.about-wrapper::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--blue-strong) 30%, transparent); border-radius: 2px; }
 .about-text {
     user-select: text; -webkit-user-select: text;
     pointer-events: auto;
@@ -99,14 +129,14 @@ html, body {
 }
 .about-divider {
     width: 48px; height: 1px;
-    background: rgba(74,201,247,0.25);
+    background: var(--line-strong);
     margin: 30px auto 24px;
 }
 .about-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 9px; font-weight: 500;
     letter-spacing: 4px; text-transform: uppercase;
-    color: rgba(74,201,247,0.45);
+    color: var(--muted);
     margin-top: 30px;
     margin-bottom: 18px;
 }
@@ -115,13 +145,13 @@ html, body {
     font-size: clamp(14px, 1.8vw, 16px);
     font-weight: 400;
     line-height: 1.75;
-    color: rgba(237,235,230,0.85);
+    color: var(--text);
     letter-spacing: 0.01em;
     margin-bottom: 1.2em;
 }
 .about-divider-bottom {
     width: 48px; height: 1px;
-    background: rgba(74,201,247,0.25);
+    background: var(--line-strong);
     margin: 30px auto 24px;
 }
 .about-logos {
@@ -129,15 +159,23 @@ html, body {
 }
 .about-logo-icon {
     width: 44px; height: auto;
-    opacity: 0.75;
-    filter: brightness(0) invert(1);
-    transition: opacity 0.3s;
+    opacity: 0.6;
+    filter: brightness(0);
+    transition: opacity 0.3s, filter 0.3s;
 }
 .about-logo-text {
     height: 18px; width: auto;
+    opacity: 0.45;
+    filter: brightness(0);
+    transition: opacity 0.3s, filter 0.3s;
+}
+body[data-theme="dark"] .about-logo-icon {
+    opacity: 0.75;
+    filter: brightness(0) invert(1);
+}
+body[data-theme="dark"] .about-logo-text {
     opacity: 0.55;
     filter: brightness(0) invert(1);
-    transition: opacity 0.3s;
 }
 
 @media (max-width: 640px) {
@@ -301,12 +339,12 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
 }
 </style>
 </head>
-<body>
+<body data-theme="light">
 
 <!-- Logo -->
 <div style="text-align:center;padding:24px 0 0;">
-  <a href="index.html" style="display:inline-block;"><img id="logoW" src="assets/images/logo-w.PNG" alt="MasCreativa" style="height:60px;display:block;">
-  <img id="logoD" src="assets/images/logo-d.PNG" alt="MasCreativa" style="height:60px;display:none;"></a>
+  <a href="index.html" style="display:inline-block;"><img id="logoW" src="assets/images/logo-w.PNG" alt="MasCreativa" style="height:60px;display:none;">
+  <img id="logoD" src="assets/images/logo-d.PNG" alt="MasCreativa" style="height:60px;display:block;"></a>
 </div>
 
 <!-- Light/Dark mode toggle -->
@@ -362,19 +400,19 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
     </div>
 
     <!-- Lo que nos mueve -->
-    <div style="width:100%;height:1px;background:rgba(74,201,247,0.25);margin:36px auto 28px;" class="about-divider-move"></div>
+    <div style="width:100%;height:1px;background:var(--line-strong);margin:36px auto 28px;" class="about-divider-move"></div>
     <div class="about-label about-label-move">Lo que nos mueve</div>
     <p class="about-text about-text-move">Lo genérico nos da más miedo que el riesgo creativo. No bajamos el nivel porque el presupuesto es modesto ni inflamos el ego porque el cheque es alto. Cada marca tiene una historia. Nosotros la encontramos y la contamos de manera que la gente la recuerde.</p>
 
     <!-- Credentials -->
-    <div style="width:100%;height:1px;background:rgba(74,201,247,0.25);margin:36px auto 28px;" class="about-divider-cred"></div>
+    <div style="width:100%;height:1px;background:var(--line-strong);margin:36px auto 28px;" class="about-divider-cred"></div>
     <div class="about-label about-label-cred">Quienes han confiado en nosotros</div>
     <p class="about-text about-text-cred">Hemos trabajado con marcas que no se conforman con lo típico: Rimas Publishing, Fundación Good Bunny, los New York Mets, los Cangrejeros de Santurce, la Comisión de Seguridad en el Tránsito. Campañas, producción de video, contenido para redes -- cuando el resultado tiene que ser serio, nos llaman.</p>
 
     <!-- Agency Info -->
-    <div style="width:100%;height:1px;background:rgba(74,201,247,0.25);margin:36px auto 28px;" class="about-divider-agency"></div>
+    <div style="width:100%;height:1px;background:var(--line-strong);margin:36px auto 28px;" class="about-divider-agency"></div>
     <div class="about-label about-label-agency">La agencia</div>
-    <div class="about-agency-info" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.5px;color:rgba(74,201,247,0.5);line-height:2.2;text-align:left;width:100%;margin-bottom:28px;">
+    <div class="about-agency-info" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.5px;color:var(--muted);line-height:2.2;text-align:left;width:100%;margin-bottom:28px;">
       <div>Ubicación: San Juan, Puerto Rico</div>
       <div>Dirección: 1105 Ave. Franklin Delano Roosevelt, Suite 5, San Juan, P.R. 00920</div>
       <div>Horario: Lunes a Viernes, 8:00am - 6:00pm</div>
@@ -408,86 +446,18 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
   var checkbox=document.getElementById('themeCheckbox');
   if(!checkbox) return;
 
-  var isDark=true;
-  try{var sv=localStorage.getItem('mcp-mode');if(sv==='light')isDark=false;}catch(e){}
+  var isDark=false;
+  try{var sv=localStorage.getItem('mcp-mode');if(sv==='dark')isDark=true;}catch(e){}
 
   function paint(d){
-    // Background
-    document.body.style.background = d>0.5 ? '#F5F0EB' : '#070809';
+    // Set data-theme attribute — CSS variables handle everything
+    document.body.setAttribute('data-theme', d>0.5 ? 'light' : 'dark');
 
-    // Logo swap
+    // Logo swap (light logo for dark bg, dark logo for light bg)
     var logoW=document.getElementById('logoW');
     var logoD=document.getElementById('logoD');
     if(logoW) logoW.style.display = d>0.5 ? 'none' : 'block';
     if(logoD) logoD.style.display = d>0.5 ? 'block' : 'none';
-
-    // Page nav
-    document.querySelectorAll('.page-nav a').forEach(function(a){ a.style.color = d>0.5 ? 'rgba(0,0,0,0.4)' : 'rgba(74,201,247,0.5)'; });
-
-    // Page title
-    var pageTitle=document.querySelector('.page-title');
-    var pageSub=document.querySelector('.page-subtitle');
-    if(pageTitle) pageTitle.style.color = d>0.5 ? '#111' : '#4AC9F7';
-    if(pageSub) pageSub.style.color = d>0.5 ? '#555' : 'rgba(74,201,247,0.5)';
-
-    // Body text (all paragraphs)
-    var aboutTexts=document.querySelectorAll('.about-text');
-    aboutTexts.forEach(function(at){
-      at.style.color = d>0.5 ? 'rgba(20,20,20,0.85)' : 'rgba(237,235,230,0.85)';
-    });
-
-    // About labels (all)
-    var aboutLabels=document.querySelectorAll('.about-label');
-    aboutLabels.forEach(function(al){
-      al.style.color = d>0.5 ? '#555' : 'rgba(74,201,247,0.45)';
-    });
-
-    // Dividers
-    var dividers=document.querySelectorAll('.about-divider, .about-divider-bottom, .about-divider-move');
-    dividers.forEach(function(dv){
-      dv.style.background = d>0.5 ? '#ccc' : 'rgba(74,201,247,0.25)';
-    });
-
-    // Logo icon/text in about section
-    var logoIcon=document.getElementById('logoIcon');
-    var logoText=document.getElementById('logoText');
-    if(logoIcon){
-      logoIcon.style.filter = d>0.5 ? 'brightness(0)' : 'brightness(0) invert(1)';
-      logoIcon.style.opacity = d>0.5 ? '0.6' : '0.75';
-    }
-    if(logoText){
-      logoText.style.filter = d>0.5 ? 'brightness(0)' : 'brightness(0) invert(1)';
-      logoText.style.opacity = d>0.5 ? '0.45' : '0.55';
-    }
-
-    // Footer
-    var footer=document.getElementById('siteFooter');
-    if(footer){
-      footer.style.borderTopColor = d>0.5 ? 'rgba(0,0,0,0.08)' : 'rgba(74,201,247,0.08)';
-      var ftag=footer.querySelector('.footer-tagline');
-      if(ftag) ftag.style.color = d>0.5 ? 'rgba(0,0,0,0.25)' : 'rgba(255,255,255,0.25)';
-      footer.querySelectorAll('.footer-socials a').forEach(function(a){ if(a.href&&a.href.indexOf('wa.me')!==-1){a.style.color='#25D366';}else{a.style.color = d>0.5 ? 'rgba(0,0,0,0.35)' : 'rgba(255,255,255,0.35)';} });
-      var fcopy=footer.querySelector('.footer-copy');
-      if(fcopy) fcopy.style.color = d>0.5 ? 'rgba(0,0,0,0.15)' : 'rgba(255,255,255,0.15)';
-      var fcontact=footer.querySelector('.footer-contact');
-      if(fcontact) fcontact.style.color = d>0.5 ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.2)';
-    }
-
-    // New sections: credentials + agency info
-    var credDividers=document.querySelectorAll('.about-divider-cred, .about-divider-agency');
-    credDividers.forEach(function(dv){
-      dv.style.background = d>0.5 ? '#ccc' : 'rgba(74,201,247,0.25)';
-    });
-    var credLabels=document.querySelectorAll('.about-label-cred, .about-label-agency');
-    credLabels.forEach(function(al){
-      al.style.color = d>0.5 ? '#555' : 'rgba(74,201,247,0.45)';
-    });
-    var credTexts=document.querySelectorAll('.about-text-cred');
-    credTexts.forEach(function(at){
-      at.style.color = d>0.5 ? 'rgba(20,20,20,0.85)' : 'rgba(237,235,230,0.85)';
-    });
-    var agencyInfo=document.querySelector('.about-agency-info');
-    if(agencyInfo) agencyInfo.style.color = d>0.5 ? 'rgba(0,0,0,0.5)' : 'rgba(74,201,247,0.5)';
 
     try{localStorage.setItem('mcp-mode',d>0.5?'light':'dark');}catch(e){}
   }

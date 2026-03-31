@@ -6,12 +6,42 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#070809">
+<meta name="theme-color" content="#F5F0EB">
 <title>Términos de Uso — +MasCreativa Publicidad</title>
 <meta name="description" content="+MasCreativa Publicidad es una agencia creativa en Puerto Rico especializada en branding, publicidad digital, fotografía, video y contenido visual para marcas que quieren destacar.">
 <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800,900&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
+/* ===== CSS CUSTOM PROPERTIES ===== */
+:root {
+  --bg: #F5F0EB;
+  --bg-2: #EDE8E3;
+  --panel: rgba(255, 255, 255, 0.8);
+  --panel-strong: rgba(255, 255, 255, 0.94);
+  --text: #121726;
+  --muted: #5d6884;
+  --line: rgba(18, 23, 38, 0.1);
+  --line-strong: rgba(18, 23, 38, 0.18);
+  --blue: #69cafc;
+  --blue-strong: #38baf7;
+  --glass-bg: rgba(255,255,255,0.45);
+  --glass-border: rgba(255,255,255,0.5);
+}
+body[data-theme="dark"] {
+  --bg: #070b13;
+  --bg-2: #0d1320;
+  --panel: rgba(14, 19, 31, 0.82);
+  --panel-strong: rgba(14, 19, 31, 0.94);
+  --text: #edf1ff;
+  --muted: rgba(233, 239, 255, 0.68);
+  --line: rgba(255, 255, 255, 0.1);
+  --line-strong: rgba(255, 255, 255, 0.18);
+  --blue: #6fd2ff;
+  --blue-strong: #49c7ff;
+  --glass-bg: rgba(255,255,255,0.08);
+  --glass-border: rgba(255,255,255,0.12);
+}
+
 /* global */
 *, *::before, *::after {
     margin: 0; padding: 0; border: 0; box-sizing: border-box;
@@ -28,13 +58,13 @@ a {
 
 html {
     height: 100%;
-    background: #070809;
+    background: var(--bg);
 }
 body {
     min-height: 100%;
-    background: #070809;
+    background: var(--bg);
     font-family: 'Satoshi', sans-serif;
-    color: rgba(237,235,230,0.85);
+    color: var(--text);
     user-select: none; -webkit-user-select: none;
 }
 
@@ -47,10 +77,10 @@ body {
     letter-spacing: 0.12em; text-transform: uppercase;
 }
 .page-nav a {
-    color: rgba(74,201,247,0.5); text-decoration: none;
+    color: var(--muted); text-decoration: none;
     transition: color 0.2s;
 }
-.page-nav a:hover { color: #4AC9F7; }
+.page-nav a:hover { color: var(--blue-strong); }
 @media (max-width: 640px) {
     .page-nav { gap: 8px; font-size: 9px; }
     .page-nav a { padding: 8px 4px; }
@@ -67,14 +97,14 @@ body {
     font-weight: 900;
     letter-spacing: -0.03em;
     text-transform: uppercase;
-    color: #4AC9F7;
+    color: var(--blue-strong);
     line-height: 0.9;
 }
 .page-subtitle {
     font-family: 'JetBrains Mono', monospace;
     font-size: 9px; font-weight: 400;
     letter-spacing: 4px; text-transform: uppercase;
-    color: rgba(74,201,247,0.35);
+    color: var(--muted);
     margin-top: 12px;
 }
 
@@ -91,7 +121,7 @@ body {
     font-family: 'Cabinet Grotesk', sans-serif;
     font-size: clamp(16px, 2.5vw, 22px);
     font-weight: 900;
-    color: #4AC9F7;
+    color: var(--blue-strong);
     margin-bottom: 8px;
     text-transform: uppercase;
 }
@@ -99,19 +129,19 @@ body {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px; font-weight: 400;
     letter-spacing: 2px; text-transform: uppercase;
-    color: rgba(74,201,247,0.35);
+    color: var(--muted);
     margin-bottom: 32px;
 }
 .content-divider {
     width: 48px; height: 1px;
-    background: rgba(74,201,247,0.25);
+    background: var(--line);
     margin: 0 0 28px;
 }
 .section-number {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px; font-weight: 700;
     letter-spacing: 3px; text-transform: uppercase;
-    color: rgba(74,201,247,0.5);
+    color: var(--muted);
     margin-bottom: 8px;
 }
 .section-text {
@@ -120,7 +150,7 @@ body {
     font-size: 14px;
     font-weight: 400;
     line-height: 1.8;
-    color: rgba(237,235,230,0.7);
+    color: var(--text);
     letter-spacing: 0.01em;
     margin-bottom: 28px;
 }
@@ -279,7 +309,7 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
 }
 </style>
 </head>
-<body>
+<body data-theme="light">
 
 <!-- Logo -->
 <div style="text-align:center;padding:24px 0 0;">
@@ -382,73 +412,29 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
   var checkbox=document.getElementById('themeCheckbox');
   if(!checkbox) return;
 
-  var isDark=true;
-  try{var sv=localStorage.getItem('mcp-mode');if(sv==='light')isDark=false;}catch(e){}
+  var isDark=false;
+  try{var sv=localStorage.getItem('mcp-mode');if(sv==='dark')isDark=true;}catch(e){}
 
-  function paint(d){
-    // Background
-    document.body.style.background = d>0.5 ? '#F5F0EB' : '#070809';
+  function paint(isDarkMode){
+    // Set data-theme — CSS variables handle all colors
+    document.body.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
 
     // Logo swap
     var logoW=document.getElementById('logoW');
     var logoD=document.getElementById('logoD');
-    if(logoW) logoW.style.display = d>0.5 ? 'none' : 'block';
-    if(logoD) logoD.style.display = d>0.5 ? 'block' : 'none';
+    if(logoW) logoW.style.display = isDarkMode ? 'block' : 'none';
+    if(logoD) logoD.style.display = isDarkMode ? 'none' : 'block';
 
-    // Page nav
-    document.querySelectorAll('.page-nav a').forEach(function(a){ a.style.color = d>0.5 ? 'rgba(0,0,0,0.4)' : 'rgba(74,201,247,0.5)'; });
+    // Update meta theme-color
+    var metaTheme=document.querySelector('meta[name="theme-color"]');
+    if(metaTheme) metaTheme.content = isDarkMode ? '#070b13' : '#F5F0EB';
 
-    // Page title
-    var pageTitle=document.querySelector('.page-title');
-    var pageSub=document.querySelector('.page-subtitle');
-    if(pageTitle) pageTitle.style.color = d>0.5 ? '#111' : '#4AC9F7';
-    if(pageSub) pageSub.style.color = d>0.5 ? '#555' : 'rgba(74,201,247,0.5)';
-
-    // Content heading
-    var contentHeading=document.querySelector('.content-heading');
-    if(contentHeading) contentHeading.style.color = d>0.5 ? '#111' : '#4AC9F7';
-
-    // Content updated
-    var contentUpdated=document.querySelector('.content-updated');
-    if(contentUpdated) contentUpdated.style.color = d>0.5 ? '#888' : 'rgba(74,201,247,0.35)';
-
-    // Content divider
-    var dividers=document.querySelectorAll('.content-divider');
-    dividers.forEach(function(dv){
-      dv.style.background = d>0.5 ? '#ccc' : 'rgba(74,201,247,0.25)';
-    });
-
-    // Section numbers
-    var sectionNums=document.querySelectorAll('.section-number');
-    sectionNums.forEach(function(sn){
-      sn.style.color = d>0.5 ? '#555' : 'rgba(74,201,247,0.5)';
-    });
-
-    // Section text
-    var sectionTexts=document.querySelectorAll('.section-text');
-    sectionTexts.forEach(function(st){
-      st.style.color = d>0.5 ? 'rgba(20,20,20,0.7)' : 'rgba(237,235,230,0.7)';
-    });
-
-    // Footer
-    var footer=document.getElementById('siteFooter');
-    if(footer){
-      footer.style.borderTopColor = d>0.5 ? 'rgba(0,0,0,0.08)' : 'rgba(74,201,247,0.08)';
-      var ftag=footer.querySelector('.footer-tagline');
-      if(ftag) ftag.style.color = d>0.5 ? 'rgba(0,0,0,0.25)' : 'rgba(255,255,255,0.25)';
-      footer.querySelectorAll('.footer-socials a').forEach(function(a){ if(a.href&&a.href.indexOf('wa.me')!==-1){a.style.color='#25D366';}else{a.style.color = d>0.5 ? 'rgba(0,0,0,0.35)' : 'rgba(255,255,255,0.35)';} });
-      var fcopy=footer.querySelector('.footer-copy');
-      if(fcopy) fcopy.style.color = d>0.5 ? 'rgba(0,0,0,0.15)' : 'rgba(255,255,255,0.15)';
-      var fcontact=footer.querySelector('.footer-contact');
-      if(fcontact) fcontact.style.color = d>0.5 ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.2)';
-    }
-
-    try{localStorage.setItem('mcp-mode',d>0.5?'light':'dark');}catch(e){}
+    try{localStorage.setItem('mcp-mode', isDarkMode ? 'dark' : 'light');}catch(e){}
   }
 
   function applyMode(){
     checkbox.checked=isDark;
-    paint(isDark?0:1);
+    paint(isDark);
   }
 
   checkbox.addEventListener('change',function(){

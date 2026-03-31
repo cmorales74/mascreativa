@@ -6,7 +6,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#070809">
+<meta name="theme-color" content="#F5F0EB">
 <title>Portafolio — +MasCreativa Publicidad</title>
 <meta name="description" content="+MasCreativa Publicidad es una agencia creativa en San Juan, Puerto Rico especializada en branding, publicidad, fotografía, video, marketing digital y contenido visual. Clientes incluyen Rimas Publishing, Fundación Good Bunny, New York Mets y más. +300M vistas combinadas en videos de clientes en 2025.">
 <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800,900&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
@@ -14,10 +14,25 @@
 <style>
 /* vars */
 :root {
+    /* Core theme variables */
+    --bg: #F5F0EB;
+    --bg-2: #EDE8E3;
+    --panel: rgba(255, 255, 255, 0.8);
+    --panel-strong: rgba(255, 255, 255, 0.94);
+    --text: #121726;
+    --muted: #5d6884;
+    --line: rgba(18, 23, 38, 0.1);
+    --line-strong: rgba(18, 23, 38, 0.18);
+    --blue: #69cafc;
+    --blue-strong: #38baf7;
+    --glass-bg: rgba(255,255,255,0.45);
+    --glass-border: rgba(255,255,255,0.5);
+
+    /* Carousel variables */
     --carousel-transition-duration: 250ms;
     --carousel-transition-ease: ease-out;
-    --carousel-bg-color-rgb: 7, 8, 9;
-    --carousel-shadow-color-rgb: 74, 201, 247;
+    --carousel-bg-color-rgb: 240, 242, 245;
+    --carousel-shadow-color-rgb: 40, 120, 180;
     --carousel-item-width: 11.5rem;
     --carousel-item-height: 17.5rem;
     --carousel-item-hover-effect: 1.075;
@@ -35,6 +50,22 @@
     --carousel-animation-play-state: running;
     --carousel-direction-animation-play-state: paused;
 }
+body[data-theme="dark"] {
+    --bg: #070b13;
+    --bg-2: #0d1320;
+    --panel: rgba(14, 19, 31, 0.82);
+    --panel-strong: rgba(14, 19, 31, 0.94);
+    --text: #edf1ff;
+    --muted: rgba(233, 239, 255, 0.68);
+    --line: rgba(255, 255, 255, 0.1);
+    --line-strong: rgba(255, 255, 255, 0.18);
+    --blue: #6fd2ff;
+    --blue-strong: #49c7ff;
+    --glass-bg: rgba(255,255,255,0.08);
+    --glass-border: rgba(255,255,255,0.12);
+    --carousel-bg-color-rgb: 7, 8, 9;
+    --carousel-shadow-color-rgb: 74, 201, 247;
+}
 
 /* global */
 *, *::before, *::after {
@@ -42,7 +73,7 @@
 }
 *:focus { outline: none; }
 a:focus-visible, button:focus-visible, input:focus-visible {
-    outline: 2px solid #4AC9F7;
+    outline: 2px solid var(--blue-strong);
     outline-offset: 2px;
 }
 a {
@@ -52,9 +83,9 @@ a {
 
 html, body {
     min-height: 100%;
-    background: #070809;
+    background: var(--bg);
     font-family: 'Satoshi', sans-serif;
-    color: #edebe6;
+    color: var(--text);
     user-select: none; -webkit-user-select: none;
 }
 
@@ -67,10 +98,10 @@ html, body {
     letter-spacing: 0.12em; text-transform: uppercase;
 }
 .page-nav a {
-    color: rgba(74,201,247,0.5); text-decoration: none;
+    color: var(--muted); text-decoration: none;
     transition: color 0.2s;
 }
-.page-nav a:hover { color: #4AC9F7; }
+.page-nav a:hover { color: var(--blue-strong); }
 @media (max-width: 640px) {
     .page-nav { gap: 8px; font-size: 9px; }
     .page-nav a { padding: 8px 4px; }
@@ -87,7 +118,7 @@ html, body {
     font-weight: 900;
     letter-spacing: -0.03em;
     text-transform: uppercase;
-    color: #4AC9F7;
+    color: var(--blue-strong);
     line-height: 0.9;
 }
 .page-subtitle {
@@ -95,7 +126,7 @@ html, body {
     font-size: clamp(10px, 1.5vw, 14px);
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: rgba(74,201,247,0.4);
+    color: var(--muted);
     margin-top: 12px;
 }
 
@@ -110,7 +141,7 @@ html, body {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px; font-weight: 700;
     letter-spacing: 3px; text-transform: uppercase;
-    color: #8aa;
+    color: var(--muted);
     margin-bottom: 12px;
 }
 .stat-number-wrap { display: inline-block; margin-bottom: 12px; }
@@ -118,7 +149,7 @@ html, body {
     font-family: 'Cabinet Grotesk', sans-serif;
     font-size: clamp(80px, 16vw, 140px);
     font-weight: 900;
-    color: rgba(255,255,255,0.9);
+    color: var(--text);
     line-height: 1;
     text-transform: uppercase;
 }
@@ -126,7 +157,7 @@ html, body {
 .stat-sub {
     font-family: 'Satoshi', sans-serif;
     font-size: 15px; font-weight: 400; font-style: italic;
-    color: #999;
+    color: var(--muted);
     line-height: 1.5;
 }
 @media (max-width: 640px) {
@@ -301,6 +332,8 @@ html, body {
     position: absolute;
 }
 .carousel .carousel-item-wrapper:has(.carousel-item:hover) .carousel-ground { opacity: 0.75; }
+body:not([data-theme="dark"]) .carousel .carousel-ground { opacity: 0.15; }
+body:not([data-theme="dark"]) .carousel .carousel-item-wrapper:has(.carousel-item:hover) .carousel-ground { opacity: 0.3; }
 
 /* Active tap feedback on carousel items */
 .carousel .carousel-item:active a { transform: scale(0.97); }
@@ -310,16 +343,16 @@ html, body {
     display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
     gap: 8px;
     padding: 30px 20px;
-    border-top: 1px solid rgba(74,201,247,0.08);
+    border-top: 1px solid var(--line);
 }
 .client-name {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px; font-weight: 400;
     letter-spacing: 1px; text-transform: uppercase;
-    color: rgba(74,201,247,0.35);
+    color: var(--muted);
 }
 .client-sep {
-    color: rgba(74,201,247,0.2);
+    color: var(--line-strong);
     font-size: 14px;
 }
 
@@ -429,8 +462,8 @@ html, body {
 
 /* ===== PROJECT BOXES ===== */
 .project-box {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(74,201,247,0.08);
+    background: var(--glass-bg);
+    border: 1px solid var(--line);
     border-radius: 16px;
     overflow: hidden;
     margin-bottom: 40px;
@@ -442,7 +475,7 @@ html, body {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px; font-weight: 700;
     letter-spacing: 0.15em; text-transform: uppercase;
-    color: #4AC9F7;
+    color: var(--blue-strong);
     margin-bottom: 10px;
 }
 .project-title {
@@ -451,13 +484,13 @@ html, body {
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: -0.02em;
-    color: rgba(255,255,255,0.9);
+    color: var(--text);
     margin-bottom: 10px;
 }
 .project-desc {
     font-family: 'Satoshi', sans-serif;
     font-size: 14px; line-height: 1.7;
-    color: rgba(255,255,255,0.5);
+    color: var(--muted);
     max-width: 600px;
 }
 .project-hero-video {
@@ -527,13 +560,13 @@ html, body {
     display: flex;
     gap: 20px;
     padding: 16px 28px;
-    border-top: 1px solid rgba(74,201,247,0.06);
+    border-top: 1px solid var(--line);
 }
 .project-meta {
     font-family: 'JetBrains Mono', monospace;
     font-size: 9px; font-weight: 500;
     letter-spacing: 0.1em; text-transform: uppercase;
-    color: rgba(74,201,247,0.35);
+    color: var(--muted);
 }
 @media (max-width: 640px) {
     .project-header { padding: 24px 20px 16px; }
@@ -547,7 +580,7 @@ html, body {
 .site-footer {
     text-align: center;
     padding: 48px 20px 34px;
-    border-top: 1px solid rgba(74,201,247,0.08);
+    border-top: 1px solid var(--line);
     position: relative;
     z-index: 1;
     background: #121726;
@@ -616,7 +649,7 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
     color: rgba(255,255,255,0.35);
     transition: color 0.3s;
 }
-.footer-socials a:hover { color: #4AC9F7; }
+.footer-socials a:hover { color: var(--blue-strong); }
 .footer-socials a[href*="wa.me"]:hover { color: #25D366 !important; }
 .footer-socials svg { width: 14px; height: 14px; fill: currentColor; }
 .footer-copy {
@@ -630,7 +663,7 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
 }
 </style>
 </head>
-<body>
+<body data-theme="light">
 
 <!-- Logo -->
 <div style="text-align:center;padding:24px 0 0;">
@@ -676,7 +709,7 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
 </div>
 
 <div class="portfolio-intro" style="max-width:550px;text-align:center;padding:0 20px;margin:0 auto 10px;">
-  <p style="font-family:'Satoshi',sans-serif;font-size:13px;line-height:1.7;color:rgba(74,201,247,0.6);">Aquí no hablamos -- mostramos. Esto es lo que pasa cuando una marca se atreve a verse diferente.</p>
+  <p style="font-family:'Satoshi',sans-serif;font-size:13px;line-height:1.7;color:var(--muted);">Aquí no hablamos -- mostramos. Esto es lo que pasa cuando una marca se atreve a verse diferente.</p>
 </div>
 
 <div class="stat-banner">
@@ -973,94 +1006,33 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
   var checkbox=document.getElementById('themeCheckbox');
   if(!checkbox) return;
 
-  var isDark=true;
-  try{var sv=localStorage.getItem('mcp-mode');if(sv==='light')isDark=false;}catch(e){}
+  var isDark=false;
+  try{var sv=localStorage.getItem('mcp-mode');if(sv==='dark')isDark=true;}catch(e){}
 
-  function paint(d){
-    // Background
-    document.body.style.background = d>0.5 ? '#F5F0EB' : '#070809';
+  function paint(isDarkMode){
+    // Set data-theme attribute — CSS variables do all the heavy lifting
+    document.body.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
 
-    // Logo swap
+    // Logo swap (light logo for dark bg, dark logo for light bg)
     var logoW=document.getElementById('logoW');
     var logoD=document.getElementById('logoD');
-    if(logoW) logoW.style.display = d>0.5 ? 'none' : 'block';
-    if(logoD) logoD.style.display = d>0.5 ? 'block' : 'none';
+    if(logoW) logoW.style.display = isDarkMode ? 'block' : 'none';
+    if(logoD) logoD.style.display = isDarkMode ? 'none' : 'block';
 
-    // Page nav
-    document.querySelectorAll('.page-nav a').forEach(function(a){ a.style.color = d>0.5 ? 'rgba(0,0,0,0.4)' : 'rgba(74,201,247,0.5)'; });
-
-    // Page title
-    var pageTitle=document.querySelector('.page-title');
-    var pageSub=document.querySelector('.page-subtitle');
-    if(pageTitle) pageTitle.style.color = d>0.5 ? '#111' : '#4AC9F7';
-    if(pageSub) pageSub.style.color = d>0.5 ? '#555' : 'rgba(74,201,247,0.5)';
-
-    // Portfolio intro
+    // Portfolio intro text uses var(--muted) via inline style update
     var pIntro=document.querySelector('.portfolio-intro p');
-    if(pIntro) pIntro.style.color = d>0.5 ? 'rgba(0,0,0,0.55)' : 'rgba(74,201,247,0.6)';
+    if(pIntro) pIntro.style.color = 'var(--muted)';
 
-    // Carousel bg colors
-    var root=document.documentElement;
-    root.style.setProperty('--carousel-bg-color-rgb', d>0.5 ? '240,242,245' : '7,8,9');
-    root.style.setProperty('--carousel-shadow-color-rgb', d>0.5 ? '40,120,180' : '74,201,247');
+    // Update theme-color meta for mobile browsers
+    var themeMeta=document.querySelector('meta[name="theme-color"]');
+    if(themeMeta) themeMeta.content = isDarkMode ? '#070b13' : '#F5F0EB';
 
-    // Ground opacity
-    var ground=document.querySelector('.carousel-ground');
-    if(ground) ground.style.opacity = d>0.5 ? '0.15' : '0.5';
-
-    // Client names
-    document.querySelectorAll('.client-name').forEach(function(el){ el.style.color = d>0.5 ? 'rgba(0,0,0,0.3)' : 'rgba(74,201,247,0.35)'; });
-    document.querySelectorAll('.client-sep').forEach(function(el){ el.style.color = d>0.5 ? 'rgba(0,0,0,0.15)' : 'rgba(74,201,247,0.2)'; });
-
-    // Clients row border
-    var cr=document.getElementById('clientsRow');
-    if(cr) cr.style.borderTopColor = d>0.5 ? '#ddd' : 'rgba(74,201,247,0.08)';
-
-    // Footer
-    var footer=document.getElementById('siteFooter');
-    if(footer){
-      footer.style.borderTopColor = d>0.5 ? 'rgba(0,0,0,0.08)' : 'rgba(74,201,247,0.08)';
-      var ftag=footer.querySelector('.footer-tagline');
-      if(ftag) ftag.style.color = d>0.5 ? 'rgba(0,0,0,0.25)' : 'rgba(255,255,255,0.25)';
-      footer.querySelectorAll('.footer-socials a').forEach(function(a){ if(a.href&&a.href.indexOf('wa.me')!==-1){a.style.color='#25D366';}else{a.style.color = d>0.5 ? 'rgba(0,0,0,0.35)' : 'rgba(255,255,255,0.35)';} });
-      var fcopy=footer.querySelector('.footer-copy');
-      if(fcopy) fcopy.style.color = d>0.5 ? 'rgba(0,0,0,0.15)' : 'rgba(255,255,255,0.15)';
-      var fcontact=footer.querySelector('.footer-contact');
-      if(fcontact) fcontact.style.color = d>0.5 ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.2)';
-    }
-
-    // Stat banner
-    var statLabel=document.querySelector('.stat-label');
-    var statNum=document.querySelector('.stat-number');
-    var statSub=document.querySelector('.stat-sub');
-    if(statLabel) statLabel.style.color=d>0.5?'#777':'#8aa';
-    if(statNum) statNum.style.color=d>0.5?'rgba(0,0,0,0.85)':'rgba(255,255,255,0.9)';
-    if(statSub) statSub.style.color=d>0.5?'#555':'#999';
-
-    // Project boxes
-    document.querySelectorAll('.project-box').forEach(function(box){
-      box.style.background = d>0.5 ? 'rgba(0,0,0,0.03)' : 'rgba(255,255,255,0.04)';
-      box.style.borderColor = d>0.5 ? 'rgba(0,0,0,0.08)' : 'rgba(74,201,247,0.08)';
-    });
-    document.querySelectorAll('.project-title').forEach(function(t){
-      t.style.color = d>0.5 ? 'rgba(0,0,0,0.85)' : 'rgba(255,255,255,0.9)';
-    });
-    document.querySelectorAll('.project-desc').forEach(function(p){
-      p.style.color = d>0.5 ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.5)';
-    });
-    document.querySelectorAll('.project-meta').forEach(function(m){
-      m.style.color = d>0.5 ? 'rgba(0,0,0,0.3)' : 'rgba(74,201,247,0.35)';
-    });
-    document.querySelectorAll('.project-footer').forEach(function(f){
-      f.style.borderTopColor = d>0.5 ? 'rgba(0,0,0,0.06)' : 'rgba(74,201,247,0.06)';
-    });
-
-    try{localStorage.setItem('mcp-mode',d>0.5?'light':'dark');}catch(e){}
+    try{localStorage.setItem('mcp-mode', isDarkMode ? 'dark' : 'light');}catch(e){}
   }
 
   function applyMode(){
     checkbox.checked=isDark;
-    paint(isDark?0:1);
+    paint(isDark);
   }
 
   checkbox.addEventListener('change',function(){
