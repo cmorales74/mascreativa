@@ -426,6 +426,99 @@ html, body {
 }
 .video-lightbox .lb-download:hover { color: #fff; }
 
+/* ===== PROJECT BOXES ===== */
+.project-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(74,201,247,0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+.project-header {
+    padding: 32px 28px 20px;
+}
+.project-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: #4AC9F7;
+    margin-bottom: 10px;
+}
+.project-title {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: clamp(24px, 5vw, 36px);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 10px;
+}
+.project-desc {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 14px; line-height: 1.7;
+    color: rgba(255,255,255,0.5);
+    max-width: 600px;
+}
+.project-hero-img {
+    width: 100%;
+    overflow: hidden;
+}
+.project-hero-img img {
+    width: 100%; height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+.project-hero-img:hover img {
+    transform: scale(1.03);
+}
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+}
+.project-grid img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+    display: block;
+    filter: grayscale(30%);
+    transition: filter 0.3s;
+}
+.project-grid img:hover {
+    filter: grayscale(0%);
+}
+.project-videos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    padding: 4px 0 0;
+}
+.project-videos video {
+    width: 100%; height: auto;
+    display: block;
+    border-radius: 0;
+    background: #000;
+}
+.project-footer {
+    display: flex;
+    gap: 20px;
+    padding: 16px 28px;
+    border-top: 1px solid rgba(74,201,247,0.06);
+}
+.project-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(74,201,247,0.35);
+}
+@media (max-width: 640px) {
+    .project-header { padding: 24px 20px 16px; }
+    .project-grid { grid-template-columns: 1fr; }
+    .project-videos { grid-template-columns: 1fr; }
+    .project-footer { flex-wrap: wrap; gap: 10px; padding: 12px 20px; }
+    .project-desc { font-size: 13px; }
+}
+
 /* ===== FOOTER ===== */
 .site-footer {
     text-align: center;
@@ -549,6 +642,40 @@ html, body {
 </div>
 
 <div style="padding:20px 24px;">
+  <div class="gallery-grid" id="galleryGrid">
+    <div class="project-box">
+      <div class="project-header">
+        <div class="project-tag">Cobertura de Evento</div>
+        <h3 class="project-title">Boat Show PR 2025</h3>
+        <p class="project-desc">Cobertura fotográfica y de video del Puerto Rico Boat Show 2025. Tres días de producción capturando la energía, el ambiente y los mejores momentos del evento náutico más grande de la isla.</p>
+      </div>
+      <div class="project-media">
+        <div class="project-hero-img">
+          <img src="assets/images/boatshow-pr-2025/aerial-marina.jpg" alt="Vista aérea del Puerto Rico Boat Show 2025" loading="lazy">
+        </div>
+        <div class="project-grid">
+          <img src="assets/images/boatshow-pr-2025/sunset-fleet.jpg" alt="Atardecer sobre la flota en el Boat Show" loading="lazy">
+          <img src="assets/images/boatshow-pr-2025/family-marina.jpg" alt="Familia en el muelle del Boat Show" loading="lazy">
+          <img src="assets/images/boatshow-pr-2025/marine-art-detail.jpg" alt="Arte marino en el Boat Show" loading="lazy">
+          <img src="assets/images/boatshow-pr-2025/live-concert.jpg" alt="Concierto en vivo en el Boat Show" loading="lazy">
+        </div>
+        <div class="project-videos">
+          <video controls preload="metadata" poster="assets/images/boatshow-pr-2025/aerial-marina.jpg">
+            <source src="assets/videos/boatshow-pr-2025-dia2.mp4" type="video/mp4">
+          </video>
+          <video controls preload="metadata" poster="assets/images/boatshow-pr-2025/sunset-fleet.jpg">
+            <source src="assets/videos/boatshow-pr-2025-dia3.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="project-footer">
+        <span class="project-meta">Marzo 2025</span>
+        <span class="project-meta">Fotografía + Video</span>
+        <span class="project-meta">3 días de producción</span>
+      </div>
+    </div>
+  </div>
+
   <div class="clients-row" id="clientsRow">
     <span class="client-name">Rimas Publishing</span>
     <span class="client-sep">·</span>
@@ -649,6 +776,24 @@ html, body {
     if(statLabel) statLabel.style.color=d>0.5?'#777':'#8aa';
     if(statNum) statNum.style.color=d>0.5?'rgba(0,0,0,0.85)':'rgba(255,255,255,0.9)';
     if(statSub) statSub.style.color=d>0.5?'#555':'#999';
+
+    // Project boxes
+    document.querySelectorAll('.project-box').forEach(function(box){
+      box.style.background = d>0.5 ? 'rgba(0,0,0,0.03)' : 'rgba(255,255,255,0.04)';
+      box.style.borderColor = d>0.5 ? 'rgba(0,0,0,0.08)' : 'rgba(74,201,247,0.08)';
+    });
+    document.querySelectorAll('.project-title').forEach(function(t){
+      t.style.color = d>0.5 ? 'rgba(0,0,0,0.85)' : 'rgba(255,255,255,0.9)';
+    });
+    document.querySelectorAll('.project-desc').forEach(function(p){
+      p.style.color = d>0.5 ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.5)';
+    });
+    document.querySelectorAll('.project-meta').forEach(function(m){
+      m.style.color = d>0.5 ? 'rgba(0,0,0,0.3)' : 'rgba(74,201,247,0.35)';
+    });
+    document.querySelectorAll('.project-footer').forEach(function(f){
+      f.style.borderTopColor = d>0.5 ? 'rgba(0,0,0,0.06)' : 'rgba(74,201,247,0.06)';
+    });
 
     try{localStorage.setItem('mcp-mode',d>0.5?'light':'dark');}catch(e){}
   }
