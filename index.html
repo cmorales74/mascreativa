@@ -513,11 +513,65 @@
     z-index: 1;
   }
 
+  /* Sections after hero need solid bg so they don't show through to dark video */
+  .hero ~ .section,
+  .hero ~ .service-strip,
+  .hero ~ section.cta {
+    position: relative;
+    z-index: 2;
+    background: var(--bg);
+  }
+
   .hero {
+    position: relative;
     padding: calc(var(--header-h) + 50px) 0 54px;
+    margin-top: calc(var(--header-h) * -1 - 16px);
+    padding-top: calc(var(--header-h) * 2 + 50px);
+    overflow: hidden;
+  }
+
+  .hero-video-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .hero-video-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-video-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg,
+        rgba(0, 0, 0, 0.52) 0%,
+        rgba(0, 0, 0, 0.25) 30%,
+        rgba(0, 0, 0, 0.30) 60%,
+        rgba(0, 0, 0, 0.65) 88%,
+        var(--bg) 100%
+      );
+    z-index: 1;
+  }
+
+  body[data-theme="dark"] .hero-video-bg::after {
+    background:
+      linear-gradient(180deg,
+        rgba(0, 0, 0, 0.70) 0%,
+        rgba(0, 0, 0, 0.40) 35%,
+        rgba(0, 0, 0, 0.48) 65%,
+        rgba(0, 0, 0, 0.80) 88%,
+        var(--bg) 100%
+      );
   }
 
   .hero-grid {
+    position: relative;
+    z-index: 2;
     display: grid;
     grid-template-columns: minmax(0, 1.06fr) minmax(380px, 500px);
     align-items: center;
@@ -542,6 +596,18 @@
     width: 42px;
     height: 1px;
     background: linear-gradient(90deg, var(--blue-strong), transparent);
+  }
+
+  .hero .hero-copy,
+  .hero .hero-copy h1,
+  .hero .hero-copy p,
+  .hero .eyebrow {
+    color: #fff;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
+
+  .hero .eyebrow::before {
+    background: linear-gradient(90deg, #fff, transparent);
   }
 
   .hero-copy h1 {
@@ -625,6 +691,16 @@
     flex-wrap: wrap;
     gap: 14px;
     margin-top: 26px;
+  }
+
+  .hero-actions .button-secondary {
+    color: #fff;
+    border-color: rgba(255,255,255,0.5);
+  }
+
+  .hero-actions .button-secondary:hover {
+    border-color: #fff;
+    background: rgba(255,255,255,0.1);
   }
 
   .hero-visual {
@@ -1825,6 +1901,9 @@
 
 <main>
   <section class="hero">
+    <div class="hero-video-bg" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="auto" src="assets/videos/hero-reel.mp4?v=2"></video>
+    </div>
     <div class="hero-grid">
       <div class="hero-copy">
         <div class="eyebrow">Creatividad que no pide permiso</div>
