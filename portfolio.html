@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#070809">
 <title>Portafolio — +MasCreativa Publicidad</title>
-<meta name="description" content="+MasCreativa Publicidad es una agencia creativa en San Juan, Puerto Rico especializada en branding, publicidad, fotografía, video, marketing digital y contenido visual. Clientes incluyen Rimas Publishing, Fundación Good Bunny, New York Mets y más. +100M vistas en video en 2025.">
+<meta name="description" content="+MasCreativa Publicidad es una agencia creativa en San Juan, Puerto Rico especializada en branding, publicidad, fotografía, video, marketing digital y contenido visual. Clientes incluyen Rimas Publishing, Fundación Good Bunny, New York Mets y más. +300M vistas combinadas en videos de clientes en 2025.">
 <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800,900&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -497,6 +497,20 @@ html, body {
 .project-grid img:hover {
     filter: grayscale(0%);
 }
+.project-single-photo {
+    margin-top: 4px;
+}
+.project-single-photo img {
+    width: 100%; height: auto;
+    object-fit: cover;
+    aspect-ratio: 16/9;
+    display: block;
+    filter: grayscale(30%);
+    transition: filter 0.3s;
+}
+.project-single-photo img:hover {
+    filter: grayscale(0%);
+}
 .project-videos {
     display: grid;
     grid-template-columns: 1fr;
@@ -532,8 +546,57 @@ html, body {
 /* ===== FOOTER ===== */
 .site-footer {
     text-align: center;
-    padding: 40px 20px 24px;
+    padding: 48px 20px 34px;
     border-top: 1px solid rgba(74,201,247,0.08);
+    position: relative;
+    z-index: 1;
+    background: #121726;
+    color: #edf1ff;
+}
+
+.site-footer .footer-brandline,
+.site-footer .footer-meta,
+.site-footer .footer-socials a {
+    color: rgba(233, 239, 255, 0.6);
+}
+
+.site-footer .footer-inner {
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.site-footer .footer-socials a {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.site-footer .footer-socials a:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+}
+
+body[data-theme="dark"] .site-footer {
+    background: #F5F0EB;
+    color: #121726;
+}
+
+body[data-theme="dark"] .site-footer .footer-brandline,
+body[data-theme="dark"] .site-footer .footer-meta,
+body[data-theme="dark"] .site-footer .footer-socials a {
+    color: rgba(18, 23, 38, 0.6);
+}
+
+body[data-theme="dark"] .site-footer .footer-inner {
+    border-top-color: rgba(0, 0, 0, 0.1);
+}
+
+body[data-theme="dark"] .site-footer .footer-socials a {
+    border-color: rgba(0, 0, 0, 0.12);
+    background: rgba(0, 0, 0, 0.04);
+}
+
+body[data-theme="dark"] .site-footer .footer-socials a:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: #121726;
 }
 .footer-tagline {
     font-family: 'Satoshi', sans-serif;
@@ -617,9 +680,9 @@ html, body {
 </div>
 
 <div class="stat-banner">
-  <div class="stat-label">Contenido de video producido en 2025</div>
-  <div class="stat-number-wrap"><div class="stat-number"><span class="stat-plus">+</span>100M</div></div>
-  <div class="stat-sub">vistas combinadas en contenido producido por nosotros.</div>
+  <div class="stat-label">Videos producidos para nuestros clientes en 2025</div>
+  <div class="stat-number-wrap"><div class="stat-number"><span class="stat-plus">+</span>300M</div></div>
+  <div class="stat-sub">vistas combinadas en los videos que produjimos para nuestros clientes.</div>
 </div>
 
 <div class="carousel-wrapper">
@@ -657,6 +720,30 @@ html, body {
     <div class="project-box">
       <div class="project-header">
         <div class="project-tag">Cobertura de Evento</div>
+        <h3 class="project-title">Chocolate & Coffee Expo</h3>
+        <p class="project-desc">Cobertura audiovisual de la 15ta edicion del Chocolate & Coffee Expo en Puerto Rico. Artesanos, productos y la cultura del cacao y cafe boricua capturados en video y foto.</p>
+      </div>
+      <div class="project-media">
+        <div class="project-hero-video">
+          <video controls preload="metadata" poster="assets/images/chocolate-expo/expo-entrance.jpg">
+            <source src="assets/videos/chocolate-coffee-expo.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="project-grid">
+          <img src="assets/images/chocolate-expo/expo-entrance.jpg" alt="Entrada del Chocolate & Coffee Expo" loading="lazy">
+          <img src="assets/images/chocolate-expo/chocolatier-product.jpg" alt="Chocolatero presentando producto artesanal" loading="lazy">
+        </div>
+      </div>
+      <div class="project-footer">
+        <span class="project-meta">2025</span>
+        <span class="project-meta">Fotografía + Video</span>
+        <span class="project-meta">Gastronomía</span>
+      </div>
+    </div>
+
+    <div class="project-box">
+      <div class="project-header">
+        <div class="project-tag">Cobertura de Evento</div>
         <h3 class="project-title">Boat Show PR 2025</h3>
         <p class="project-desc">Cobertura fotográfica y de video del Puerto Rico Boat Show 2025. Tres días de producción capturando la energía, el ambiente y los mejores momentos del evento náutico más grande de la isla.</p>
       </div>
@@ -690,9 +777,8 @@ html, body {
             <source src="assets/videos/batalla-leyenda.mp4" type="video/mp4">
           </video>
         </div>
-        <div class="project-grid">
+        <div class="project-single-photo">
           <img src="assets/images/batalla-leyenda/alcaraz-tiafoe.jpg" alt="Alcaraz y Tiafoe saludando al público" loading="lazy">
-          <img src="assets/images/batalla-leyenda/alcaraz-closeup.jpg" alt="Carlos Alcaraz en clínica de tenis" loading="lazy">
         </div>
       </div>
       <div class="project-footer">
@@ -714,9 +800,8 @@ html, body {
             <source src="assets/videos/pr-open.mp4" type="video/mp4">
           </video>
         </div>
-        <div class="project-grid">
+        <div class="project-single-photo">
           <img src="assets/images/pr-open/hole18-tee-shot.jpg" alt="Golfista en el hoyo 18 del PR Open" loading="lazy">
-          <img src="assets/images/pr-open/venue-pavilion.jpg" alt="Entrada del PR Open" loading="lazy">
         </div>
       </div>
       <div class="project-footer">
@@ -778,9 +863,8 @@ html, body {
             <source src="assets/videos/clinica-futbol.mp4" type="video/mp4">
           </video>
         </div>
-        <div class="project-grid">
+        <div class="project-single-photo">
           <img src="assets/images/clinica-futbol/coach-huddle.jpg" alt="Entrenador con los jóvenes en la clínica de fútbol" loading="lazy">
-          <img src="assets/images/clinica-futbol/goal-net-action.jpg" alt="Vista desde la portería en la clínica de fútbol" loading="lazy">
         </div>
       </div>
       <div class="project-footer">
@@ -850,24 +934,6 @@ html, body {
       </div>
     </div>
 
-    <div class="project-box">
-      <div class="project-header">
-        <div class="project-tag">Cobertura de Evento</div>
-        <h3 class="project-title">Chocolate & Coffee Expo</h3>
-        <p class="project-desc">Cobertura fotográfica de la 15ta edición del Chocolate & Coffee Expo en Puerto Rico. Artesanos, productos y la cultura del cacao y café boricua.</p>
-      </div>
-      <div class="project-media">
-        <div class="project-grid">
-          <img src="assets/images/chocolate-expo/expo-entrance.jpg" alt="Entrada del Chocolate & Coffee Expo" loading="lazy">
-          <img src="assets/images/chocolate-expo/chocolatier-product.jpg" alt="Chocolatero presentando producto artesanal" loading="lazy">
-        </div>
-      </div>
-      <div class="project-footer">
-        <span class="project-meta">2025</span>
-        <span class="project-meta">Fotografía</span>
-        <span class="project-meta">Gastronomía</span>
-      </div>
-    </div>
   </div>
 
   <div class="clients-row" id="clientsRow">

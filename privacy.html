@@ -219,8 +219,57 @@ body {
 /* ===== FOOTER ===== */
 .site-footer {
     text-align: center;
-    padding: 40px 20px 24px;
+    padding: 48px 20px 34px;
     border-top: 1px solid rgba(74,201,247,0.08);
+    position: relative;
+    z-index: 1;
+    background: #121726;
+    color: #edf1ff;
+}
+
+.site-footer .footer-brandline,
+.site-footer .footer-meta,
+.site-footer .footer-socials a {
+    color: rgba(233, 239, 255, 0.6);
+}
+
+.site-footer .footer-inner {
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.site-footer .footer-socials a {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.site-footer .footer-socials a:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+}
+
+body[data-theme="dark"] .site-footer {
+    background: #F5F0EB;
+    color: #121726;
+}
+
+body[data-theme="dark"] .site-footer .footer-brandline,
+body[data-theme="dark"] .site-footer .footer-meta,
+body[data-theme="dark"] .site-footer .footer-socials a {
+    color: rgba(18, 23, 38, 0.6);
+}
+
+body[data-theme="dark"] .site-footer .footer-inner {
+    border-top-color: rgba(0, 0, 0, 0.1);
+}
+
+body[data-theme="dark"] .site-footer .footer-socials a {
+    border-color: rgba(0, 0, 0, 0.12);
+    background: rgba(0, 0, 0, 0.04);
+}
+
+body[data-theme="dark"] .site-footer .footer-socials a:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: #121726;
 }
 .footer-tagline {
     font-family: 'Satoshi', sans-serif;
