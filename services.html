@@ -5,10 +5,10 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#070809">
 <title>Services — +MasCreativa Publicidad</title>
-<meta name="description" content="+MasCreativa Publicidad es una agencia creativa en San Juan, Puerto Rico especializada en branding, publicidad, fotografia, video, marketing digital y contenido visual. Clientes incluyen Rimas Publishing, Fundacion Good Bunny, New York Mets y mas. +100M vistas en video en 2025.">
+<meta name="description" content="+MasCreativa Publicidad es una agencia creativa en San Juan, Puerto Rico especializada en branding, publicidad, fotografía, video, marketing digital y contenido visual. Clientes incluyen Rimas Publishing, Fundación Good Bunny, New York Mets y más. +100M vistas en video en 2025.">
 <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800,900&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -34,23 +34,21 @@ html, body {
     user-select: none; -webkit-user-select: none;
 }
 
-/* ===== BACK BUTTON ===== */
-.back-btn {
-    position: fixed; top: 24px; left: 24px; z-index: 100;
+/* ===== PAGE NAV ===== */
+.page-nav {
+    position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+    z-index: 200; display: flex; gap: 24px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px; font-weight: 500;
-    letter-spacing: 3px; text-transform: uppercase;
-    color: rgba(74,201,247,0.5);
-    text-decoration: none;
-    padding: 8px 16px;
-    border: 1px solid rgba(74,201,247,0.15);
-    border-radius: 4px;
-    transition: color 0.3s, border-color 0.3s, background 0.3s;
+    letter-spacing: 0.12em; text-transform: uppercase;
 }
-.back-btn:hover {
-    color: #4AC9F7;
-    border-color: rgba(74,201,247,0.4);
-    background: rgba(74,201,247,0.06);
+.page-nav a {
+    color: rgba(74,201,247,0.5); text-decoration: none;
+    transition: color 0.2s;
+}
+.page-nav a:hover { color: #4AC9F7; }
+@media (max-width: 640px) {
+    .page-nav { gap: 12px; font-size: 8px; top: 16px; }
 }
 
 /* ===== PAGE TITLE ===== */
@@ -316,7 +314,7 @@ html, body {
 
 <!-- Light/Dark mode toggle -->
 <div class="theme-switch-wrap">
-  <label class="theme-switch" id="modeToggle">
+  <label class="theme-switch" id="modeToggle" aria-label="Cambiar tema">
     <input type="checkbox" class="theme-switch__checkbox" id="themeCheckbox">
     <div class="theme-switch__container">
       <div class="theme-switch__clouds"></div>
@@ -338,84 +336,89 @@ html, body {
   </label>
 </div>
 
-<a href="index.html" class="back-btn">&#8592; Volver</a>
+<nav class="page-nav">
+  <a href="services.html">Servicios</a>
+  <a href="portfolio.html">Portafolio</a>
+  <a href="about.html">Nosotros</a>
+  <a href="contacto.html">Contacto</a>
+</nav>
 
 <div class="page-header">
     <div class="page-title">Servicios</div>
-    <div class="page-subtitle">Branding / Publicidad / Produccion / Digital</div>
+    <div class="page-subtitle">Branding / Publicidad / Producción / Digital</div>
 </div>
 
 
 <div class="services-list">
   <div class="service-chip">Branding e Identidad</div>
   <div class="service-chip">Publicidad y Medios</div>
-  <div class="service-chip">Fotografia y Video</div>
+  <div class="service-chip">Fotografía y Video</div>
   <div class="service-chip">Marketing Digital</div>
   <div class="service-chip">Contenido Visual</div>
-  <div class="service-chip">Diseno e Impresion</div>
+  <div class="service-chip">Diseño e Impresión</div>
 </div>
 
 <!-- Service Details -->
 <div class="services-details" id="servicesDetails">
   <div class="sd-inner">
 
-    <p class="sd-intro" style="font-family:'Satoshi',sans-serif;font-size:14px;line-height:1.7;color:rgba(74,201,247,0.6);text-align:center;margin-bottom:10px;">No vendemos paquetes. Armamos lo que tu marca necesita, al nivel que tu marca merece. Da igual si el presupuesto es grande o modesto -- lo que sale de aqui es nuestro mejor trabajo.</p>
+    <p class="sd-intro" style="font-family:'Satoshi',sans-serif;font-size:14px;line-height:1.7;color:rgba(74,201,247,0.6);text-align:center;margin-bottom:10px;">No vendemos paquetes. Armamos lo que tu marca necesita, al nivel que tu marca merece. Da igual si el presupuesto es grande o modesto -- lo que sale de aquí es nuestro mejor trabajo.</p>
 
     <div class="sd-card">
       <h3 class="sd-title">Branding e Identidad</h3>
       <p class="sd-body">Un logo solo no resuelve nada. Construimos identidades completas -- nombre, sistema visual, manual, aplicaciones -- para que tu marca se reconozca en cualquier superficie.</p>
       <ul class="sd-list">
-        <li>Diseno de logotipo y sistema visual</li>
+        <li>Diseño de logotipo y sistema visual</li>
         <li>Manuales de marca (brand books)</li>
         <li>Naming y estrategia de marca</li>
         <li>Desarrollo de branding completo</li>
-        <li>Diseno grafico y papeleria corporativa</li>
+        <li>Diseño gráfico y papelería corporativa</li>
       </ul>
     </div>
 
     <div class="sd-card">
       <h3 class="sd-title">Publicidad y Medios</h3>
-      <p class="sd-body">Hacemos campanas que la gente ve completas. Concepto creativo, pauta inteligente y ejecucion en medios digitales y tradicionales. Nada de quemar presupuesto en ads genericos.</p>
+      <p class="sd-body">Hacemos campañas que la gente ve completas. Concepto creativo, pauta inteligente y ejecución en medios digitales y tradicionales. Nada de quemar presupuesto en ads genéricos.</p>
       <ul class="sd-list">
-        <li>Campanas en Meta, Google y TikTok</li>
+        <li>Campañas en Meta, Google y TikTok</li>
         <li>Publicidad en medios tradicionales</li>
-        <li>Campanas de relaciones publicas</li>
-        <li>Conceptos creativos para campanas</li>
-        <li>Estrategia de pauta y segmentacion</li>
+        <li>Campañas de relaciones públicas</li>
+        <li>Conceptos creativos para campañas</li>
+        <li>Estrategia de pauta y segmentación</li>
         <li>Reportes de rendimiento</li>
       </ul>
     </div>
 
     <div class="sd-card">
-      <h3 class="sd-title">Fotografia y Video</h3>
-      <p class="sd-body">Aqui es donde mas nos lucimos. Foto comercial, video publicitario, videos musicales, reels, behind-the-scenes, sesiones de producto, animaciones -- lo que necesites, lo producimos completo. Direccion creativa, iluminacion profesional, edicion cinematica. En 2025 nuestro contenido de video paso las 100 millones de vistas. No porque tuvimos suerte, sino porque la gente quiso verlo.</p>
+      <h3 class="sd-title">Fotografía y Video</h3>
+      <p class="sd-body">Aquí es donde más nos lucimos. Foto comercial, video publicitario, videos musicales, reels, behind-the-scenes, sesiónes de producto, animaciones -- lo que necesites, lo producimos completo. Dirección creativa, iluminación profesional, edición cinematica. En 2025 nuestro contenido de video pasó las 100 millones de vistas. No porque tuvimos suerte, sino porque la gente quiso verlo.</p>
     </div>
 
     <div class="sd-card">
       <h3 class="sd-title">Marketing Digital</h3>
       <p class="sd-body">Publicar por publicar no es estrategia. Esto si:</p>
       <ul class="sd-list">
-        <li>Gestion de redes sociales con calendario real</li>
+        <li>Gestión de redes sociales con calendario real</li>
         <li>Community management que responde, no decora</li>
-        <li>Diseno de posts y stories</li>
-        <li>Desarrollo de paginas web y aplicaciones</li>
+        <li>Diseño de posts y stories</li>
+        <li>Desarrollo de páginas web y aplicaciones</li>
         <li>SEO y SEM que mueve el trafico de verdad</li>
       </ul>
     </div>
 
     <div class="sd-card">
       <h3 class="sd-title">Contenido Visual</h3>
-      <p class="sd-body">Para Fundacion Good Bunny produjimos contenido visual que conto la historia de la organizacion sin necesitar un parrafo de texto. Eso es lo que hacemos: direccion creativa, fotografia de producto y lifestyle, video promocional y contenido para web y redes que comunica la personalidad de tu marca al instante.</p>
+      <p class="sd-body">Para Fundación Good Bunny produjimos contenido visual que contó la historia de la organización sin necesitar un párrafo de texto. Eso es lo que hacemos: dirección creativa, fotografía de producto y lifestyle, video promocional y contenido para web y redes que comunica la personalidad de tu marca al instante.</p>
     </div>
 
     <div class="sd-card">
-      <h3 class="sd-title">Diseno e Impresion</h3>
-      <p class="sd-body">Un flyer bien hecho todavia mueve gente. Disenamos piezas impresas al mismo nivel que lo digital -- empaques, catalogos, senaletica, material POP.</p>
+      <h3 class="sd-title">Diseño e Impresión</h3>
+      <p class="sd-body">Un flyer bien hecho todavía mueve gente. Diseñamos piezas impresas al mismo nivel que lo digital -- empaques, catálogos, señalética, material POP.</p>
       <ul class="sd-list">
-        <li>Diseno grafico para impresion</li>
-        <li>Flyers, brochures y catalogos</li>
+        <li>Diseño gráfico para impresión</li>
+        <li>Flyers, brochures y catálogos</li>
         <li>Empaques y etiquetas</li>
-        <li>Senaletica y material POP</li>
+        <li>Señalética y material POP</li>
       </ul>
     </div>
 
@@ -436,7 +439,7 @@ html, body {
     </a>
   </div>
   <div class="footer-contact" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;color:rgba(255,255,255,0.2);margin-bottom:8px;"><a href="tel:+17876441276" style="color:inherit;text-decoration:none;">787-644-1276</a> · <a href="mailto:info@mascreativapublicidad.com" style="color:inherit;text-decoration:none;">info@mascreativapublicidad.com</a></div>
-  <div class="footer-copy">2026 +MasCreativa Publicidad. <a href="terms.html" style="color:inherit;text-decoration:underline;">Terminos</a> · <a href="privacy.html" style="color:inherit;text-decoration:underline;">Privacidad</a></div>
+  <div class="footer-copy">2026 +MasCreativa Publicidad. <a href="terms.html" style="color:inherit;text-decoration:underline;">Términos</a> · <a href="privacy.html" style="color:inherit;text-decoration:underline;">Privacidad</a></div>
 </footer>
 
 <script>
@@ -458,13 +461,8 @@ html, body {
     if(logoW) logoW.style.display = d>0.5 ? 'none' : 'block';
     if(logoD) logoD.style.display = d>0.5 ? 'block' : 'none';
 
-    // Back button
-    var backBtn=document.querySelector('.back-btn');
-    if(backBtn){
-      backBtn.style.color = d>0.5 ? '#222' : '#4AC9F7';
-      backBtn.style.borderColor = d>0.5 ? '#ccc' : 'rgba(74,201,247,0.3)';
-      backBtn.style.background = d>0.5 ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.05)';
-    }
+    // Page nav
+    document.querySelectorAll('.page-nav a').forEach(function(a){ a.style.color = d>0.5 ? 'rgba(0,0,0,0.4)' : 'rgba(74,201,247,0.5)'; });
 
     // Page title
     var pageTitle=document.querySelector('.page-title');

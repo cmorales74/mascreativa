@@ -5,10 +5,10 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#070809">
-<title>Terminos de Uso — +MasCreativa Publicidad</title>
-<meta name="description" content="+MasCreativa Publicidad es una agencia creativa en Puerto Rico especializada en branding, publicidad digital, fotografia, video y contenido visual para marcas que quieren destacar.">
+<title>Términos de Uso — +MasCreativa Publicidad</title>
+<meta name="description" content="+MasCreativa Publicidad es una agencia creativa en Puerto Rico especializada en branding, publicidad digital, fotografía, video y contenido visual para marcas que quieren destacar.">
 <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800,900&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -38,23 +38,21 @@ body {
     user-select: none; -webkit-user-select: none;
 }
 
-/* ===== BACK BUTTON ===== */
-.back-btn {
-    position: fixed; top: 24px; left: 24px; z-index: 100;
+/* ===== PAGE NAV ===== */
+.page-nav {
+    position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+    z-index: 200; display: flex; gap: 24px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px; font-weight: 500;
-    letter-spacing: 3px; text-transform: uppercase;
-    color: rgba(74,201,247,0.5);
-    text-decoration: none;
-    padding: 8px 16px;
-    border: 1px solid rgba(74,201,247,0.15);
-    border-radius: 4px;
-    transition: color 0.3s, border-color 0.3s, background 0.3s;
+    letter-spacing: 0.12em; text-transform: uppercase;
 }
-.back-btn:hover {
-    color: #4AC9F7;
-    border-color: rgba(74,201,247,0.4);
-    background: rgba(74,201,247,0.06);
+.page-nav a {
+    color: rgba(74,201,247,0.5); text-decoration: none;
+    transition: color 0.2s;
+}
+.page-nav a:hover { color: #4AC9F7; }
+@media (max-width: 640px) {
+    .page-nav { gap: 12px; font-size: 8px; top: 16px; }
 }
 
 /* ===== PAGE TITLE ===== */
@@ -241,7 +239,7 @@ body {
 
 <!-- Light/Dark mode toggle -->
 <div class="theme-switch-wrap">
-  <label class="theme-switch" id="modeToggle">
+  <label class="theme-switch" id="modeToggle" aria-label="Cambiar tema">
     <input type="checkbox" class="theme-switch__checkbox" id="themeCheckbox">
     <div class="theme-switch__container">
       <div class="theme-switch__clouds"></div>
@@ -263,45 +261,50 @@ body {
   </label>
 </div>
 
-<a href="index.html" class="back-btn">&#8592; Volver</a>
+<nav class="page-nav">
+  <a href="services.html">Servicios</a>
+  <a href="portfolio.html">Portafolio</a>
+  <a href="about.html">Nosotros</a>
+  <a href="contacto.html">Contacto</a>
+</nav>
 
 <div class="page-header">
-    <div class="page-title">Terminos de Uso</div>
+    <div class="page-title">Términos de Uso</div>
     <div class="page-subtitle">Legal</div>
 </div>
 
 <div class="content-wrapper">
   <div class="content-card">
-    <div class="content-heading">Terminos de Uso de +MasCreativa Publicidad</div>
-    <div class="content-updated">Ultima actualizacion: marzo 2026</div>
+    <div class="content-heading">Términos de Uso de +MasCreativa Publicidad</div>
+    <div class="content-updated">Última actualizacion: marzo 2026</div>
     <div class="content-divider"></div>
 
-    <div class="section-number">1. Aceptacion de Terminos</div>
-    <p class="section-text">Al acceder y utilizar este sitio web (mascreativapublicidad.com), aceptas cumplir con estos terminos de uso. Si no estas de acuerdo con alguno de estos terminos, te pedimos que no utilices el sitio.</p>
+    <div class="section-number">1. Aceptación de Términos</div>
+    <p class="section-text">Al acceder y utilizar este sitio web (mascreativapublicidad.com), aceptas cumplir con estos términos de uso. Si no estas de acuerdo con alguno de estos términos, te pedimos que no utilices el sitio.</p>
 
     <div class="section-number">2. Uso del Sitio</div>
-    <p class="section-text">Este sitio web es propiedad de +MasCreativa Publicidad. El contenido publicado -- incluyendo textos, imagenes, videos, disenos y logotipos -- esta protegido por derechos de autor y no puede ser reproducido, distribuido o utilizado sin autorizacion previa por escrito.</p>
+    <p class="section-text">Este sitio web es propiedad de +MasCreativa Publicidad. El contenido publicado -- incluyendo textos, imágenes, videos, diseños y logotipos -- esta protegido por derechos de autor y no puede ser reproducido, distribuido o utilizado sin autorización previa por escrito.</p>
 
     <div class="section-number">3. Propiedad Intelectual</div>
-    <p class="section-text">Todo el contenido visual, audiovisual y grafico presentado en este sitio es propiedad de +MasCreativa Publicidad o de sus respectivos clientes, y se muestra con fines de portafolio. Queda prohibida su reproduccion total o parcial sin consentimiento.</p>
+    <p class="section-text">Todo el contenido visual, audiovisual y gráfico presentado en este sitio es propiedad de +MasCreativa Publicidad o de sus respectivos clientes, y se muestra con fines de portafolio. Queda prohibida su reproducción total o parcial sin consentimiento.</p>
 
     <div class="section-number">4. Servicios</div>
     <p class="section-text">Los servicios descritos en este sitio son de caracter informativo. Las cotizaciones, alcances y entregables finales se definen mediante acuerdo directo entre +MasCreativa Publicidad y el cliente.</p>
 
     <div class="section-number">5. Formulario de Contacto</div>
-    <p class="section-text">La informacion enviada a traves del formulario de contacto se utiliza exclusivamente para responder a tu solicitud. No compartimos, vendemos ni distribuimos tus datos a terceros.</p>
+    <p class="section-text">La información enviada a traves del formulario de contacto se utiliza exclusivamente para responder a tu solicitud. No compartimos, vendemos ni distribuimos tus datos a terceros.</p>
 
     <div class="section-number">6. Enlaces Externos</div>
-    <p class="section-text">Este sitio puede contener enlaces a plataformas externas (Instagram, WhatsApp, YouTube). +MasCreativa Publicidad no se hace responsable del contenido o las politicas de privacidad de dichos sitios.</p>
+    <p class="section-text">Este sitio puede contener enlaces a plataformas externas (Instagram, WhatsApp, YouTube). +MasCreativa Publicidad no se hace responsable del contenido o las políticas de privacidad de dichos sitios.</p>
 
     <div class="section-number">7. Limitacion de Responsabilidad</div>
     <p class="section-text">+MasCreativa Publicidad no garantiza que el sitio web este disponible de manera ininterrumpida o libre de errores. No nos hacemos responsables por danos derivados del uso o la imposibilidad de uso del sitio.</p>
 
     <div class="section-number">8. Modificaciones</div>
-    <p class="section-text">Nos reservamos el derecho de modificar estos terminos en cualquier momento. Las actualizaciones seran publicadas en esta pagina con la fecha de ultima revision.</p>
+    <p class="section-text">Nos reservamos el derecho de modificar estos términos en cualquier momento. Las actualizaciones serán publicadas en esta página con la fecha de última revision.</p>
 
     <div class="section-number">9. Contacto</div>
-    <p class="section-text">Para cualquier consulta sobre estos terminos, puedes contactarnos a traves de nuestro formulario de contacto o por WhatsApp al 787-644-1276.</p>
+    <p class="section-text">Para cualquier consulta sobre estos términos, puedes contactarnos a traves de nuestro formulario de contacto o por WhatsApp al 787-644-1276.</p>
   </div>
 </div>
 
@@ -341,13 +344,8 @@ body {
     if(logoW) logoW.style.display = d>0.5 ? 'none' : 'block';
     if(logoD) logoD.style.display = d>0.5 ? 'block' : 'none';
 
-    // Back button
-    var backBtn=document.querySelector('.back-btn');
-    if(backBtn){
-      backBtn.style.color = d>0.5 ? '#222' : '#4AC9F7';
-      backBtn.style.borderColor = d>0.5 ? '#ccc' : 'rgba(74,201,247,0.3)';
-      backBtn.style.background = d>0.5 ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.05)';
-    }
+    // Page nav
+    document.querySelectorAll('.page-nav a').forEach(function(a){ a.style.color = d>0.5 ? 'rgba(0,0,0,0.4)' : 'rgba(74,201,247,0.5)'; });
 
     // Page title
     var pageTitle=document.querySelector('.page-title');

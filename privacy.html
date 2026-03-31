@@ -5,10 +5,10 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#070809">
-<title>Politica de Privacidad — +MasCreativa Publicidad</title>
-<meta name="description" content="+MasCreativa Publicidad es una agencia creativa en Puerto Rico especializada en branding, publicidad digital, fotografia, video y contenido visual para marcas que quieren destacar.">
+<title>Política de Privacidad — +MasCreativa Publicidad</title>
+<meta name="description" content="+MasCreativa Publicidad es una agencia creativa en Puerto Rico especializada en branding, publicidad digital, fotografía, video y contenido visual para marcas que quieren destacar.">
 <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800,900&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -38,23 +38,21 @@ body {
     user-select: none; -webkit-user-select: none;
 }
 
-/* ===== BACK BUTTON ===== */
-.back-btn {
-    position: fixed; top: 24px; left: 24px; z-index: 100;
+/* ===== PAGE NAV ===== */
+.page-nav {
+    position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+    z-index: 200; display: flex; gap: 24px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px; font-weight: 500;
-    letter-spacing: 3px; text-transform: uppercase;
-    color: rgba(74,201,247,0.5);
-    text-decoration: none;
-    padding: 8px 16px;
-    border: 1px solid rgba(74,201,247,0.15);
-    border-radius: 4px;
-    transition: color 0.3s, border-color 0.3s, background 0.3s;
+    letter-spacing: 0.12em; text-transform: uppercase;
 }
-.back-btn:hover {
-    color: #4AC9F7;
-    border-color: rgba(74,201,247,0.4);
-    background: rgba(74,201,247,0.06);
+.page-nav a {
+    color: rgba(74,201,247,0.5); text-decoration: none;
+    transition: color 0.2s;
+}
+.page-nav a:hover { color: #4AC9F7; }
+@media (max-width: 640px) {
+    .page-nav { gap: 12px; font-size: 8px; top: 16px; }
 }
 
 /* ===== PAGE TITLE ===== */
@@ -265,7 +263,7 @@ body {
 
 <!-- Light/Dark mode toggle -->
 <div class="theme-switch-wrap">
-  <label class="theme-switch" id="modeToggle">
+  <label class="theme-switch" id="modeToggle" aria-label="Cambiar tema">
     <input type="checkbox" class="theme-switch__checkbox" id="themeCheckbox">
     <div class="theme-switch__container">
       <div class="theme-switch__clouds"></div>
@@ -287,63 +285,68 @@ body {
   </label>
 </div>
 
-<a href="index.html" class="back-btn">&#8592; Volver</a>
+<nav class="page-nav">
+  <a href="services.html">Servicios</a>
+  <a href="portfolio.html">Portafolio</a>
+  <a href="about.html">Nosotros</a>
+  <a href="contacto.html">Contacto</a>
+</nav>
 
 <div class="page-header">
-    <div class="page-title">Politica de Privacidad</div>
+    <div class="page-title">Política de Privacidad</div>
     <div class="page-subtitle">Legal</div>
 </div>
 
 <div class="content-wrapper">
   <div class="content-card">
-    <div class="content-heading">Politica de Privacidad de +MasCreativa Publicidad</div>
-    <div class="content-updated">Ultima actualizacion: marzo 2026</div>
+    <div class="content-heading">Política de Privacidad de +MasCreativa Publicidad</div>
+    <div class="content-updated">Última actualizacion: marzo 2026</div>
     <div class="content-divider"></div>
 
-    <div class="section-number">1. Informacion que Recopilamos</div>
-    <p class="section-text">Cuando utilizas nuestro formulario de contacto, recopilamos la siguiente informacion:</p>
+    <div class="section-number">1. Información que Recopilamos</div>
+    <p class="section-text">Cuando utilizas nuestro formulario de contacto, recopilamos la siguiente información:</p>
     <ul class="section-list">
       <li>Nombre</li>
-      <li>Correo electronico</li>
+      <li>Correo electrónico</li>
       <li>Mensaje</li>
     </ul>
-    <p class="section-text">Esta informacion se recopila unicamente cuando tu decides enviarla voluntariamente.</p>
+    <p class="section-text">Esta información se recopila unicamente cuando tu decides enviarla voluntariamente.</p>
 
-    <div class="section-number">2. Uso de la Informacion</div>
-    <p class="section-text">Utilizamos la informacion proporcionada exclusivamente para:</p>
+    <div class="section-number">2. Uso de la Información</div>
+    <p class="section-text">Utilizamos la información proporcionada exclusivamente para:</p>
     <ul class="section-list">
       <li>Responder a tu consulta o solicitud</li>
       <li>Comunicarnos contigo sobre servicios solicitados</li>
-      <li>Mejorar nuestra atencion al cliente</li>
+      <li>Mejorar nuestra atención al cliente</li>
     </ul>
-    <p class="section-text">No utilizamos tu informacion para enviar correos no solicitados ni para fines de marketing sin tu consentimiento.</p>
+    <p class="section-text">No utilizamos tu información para enviar correos no solicitados ni para fines de marketing sin tu consentimiento.</p>
 
-    <div class="section-number">3. Compartir Informacion</div>
-    <p class="section-text">No vendemos, intercambiamos ni transferimos tu informacion personal a terceros. Tu informacion se mantiene confidencial dentro de +MasCreativa Publicidad.</p>
+    <div class="section-number">3. Compartir Información</div>
+    <p class="section-text">No vendemos, intercambiamos ni transferimos tu información personal a terceros. Tu información se mantiene confidencial dentro de +MasCreativa Publicidad.</p>
 
     <div class="section-number">4. Cookies y Tecnologias de Rastreo</div>
-    <p class="section-text">Actualmente, este sitio no utiliza cookies de rastreo ni herramientas de analitica. Si en el futuro implementamos alguna tecnologia de seguimiento, actualizaremos esta politica.</p>
+    <p class="section-text">Actualmente, este sitio no utiliza cookies de rastreo ni herramientas de analítica. Si en el futuro implementamos alguna tecnología de seguimiento, actualizaremos esta política.</p>
 
     <div class="section-number">5. Seguridad</div>
-    <p class="section-text">Tomamos medidas razonables para proteger la informacion que nos proporcionas. Sin embargo, ninguna transmision de datos por internet es 100% segura, por lo que no podemos garantizar la seguridad absoluta de la informacion transmitida.</p>
+    <p class="section-text">Tomamos medidas razonables para proteger la información que nos proporcionas. Sin embargo, ninguna transmision de datos por internet es 100% segura, por lo que no podemos garantizar la seguridad absoluta de la información transmitida.</p>
 
     <div class="section-number">6. Enlaces a Terceros</div>
-    <p class="section-text">Nuestro sitio contiene enlaces a plataformas externas como Instagram y WhatsApp. Estas plataformas tienen sus propias politicas de privacidad que te recomendamos revisar.</p>
+    <p class="section-text">Nuestro sitio contiene enlaces a plataformas externas como Instagram y WhatsApp. Estas plataformas tienen sus propias políticas de privacidad que te recomendamos revisar.</p>
 
     <div class="section-number">7. Derechos del Usuario</div>
     <p class="section-text">Tienes derecho a:</p>
     <ul class="section-list">
-      <li>Solicitar acceso a la informacion que tenemos sobre ti</li>
-      <li>Solicitar la eliminacion de tu informacion</li>
+      <li>Solicitar acceso a la información que tenemos sobre ti</li>
+      <li>Solicitar la eliminacion de tu información</li>
       <li>Retirar tu consentimiento en cualquier momento</li>
     </ul>
     <p class="section-text">Para ejercer estos derechos, contactanos por WhatsApp al 787-644-1276 o a traves del formulario de contacto.</p>
 
-    <div class="section-number">8. Cambios a esta Politica</div>
-    <p class="section-text">Nos reservamos el derecho de actualizar esta politica de privacidad. Cualquier cambio sera publicado en esta pagina con la fecha de ultima revision.</p>
+    <div class="section-number">8. Cambios a esta Política</div>
+    <p class="section-text">Nos reservamos el derecho de actualizar esta política de privacidad. Cualquier cambio sera publicado en esta página con la fecha de última revision.</p>
 
     <div class="section-number">9. Contacto</div>
-    <p class="section-text">Si tienes preguntas sobre esta politica de privacidad, puedes contactarnos a traves de nuestro formulario de contacto o por WhatsApp al 787-644-1276.</p>
+    <p class="section-text">Si tienes preguntas sobre esta política de privacidad, puedes contactarnos a traves de nuestro formulario de contacto o por WhatsApp al 787-644-1276.</p>
   </div>
 </div>
 
@@ -383,13 +386,8 @@ body {
     if(logoW) logoW.style.display = d>0.5 ? 'none' : 'block';
     if(logoD) logoD.style.display = d>0.5 ? 'block' : 'none';
 
-    // Back button
-    var backBtn=document.querySelector('.back-btn');
-    if(backBtn){
-      backBtn.style.color = d>0.5 ? '#222' : '#4AC9F7';
-      backBtn.style.borderColor = d>0.5 ? '#ccc' : 'rgba(74,201,247,0.3)';
-      backBtn.style.background = d>0.5 ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.05)';
-    }
+    // Page nav
+    document.querySelectorAll('.page-nav a').forEach(function(a){ a.style.color = d>0.5 ? 'rgba(0,0,0,0.4)' : 'rgba(74,201,247,0.5)'; });
 
     // Page title
     var pageTitle=document.querySelector('.page-title');
