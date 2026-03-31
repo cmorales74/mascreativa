@@ -100,6 +100,42 @@ html, body {
     margin-top: 12px;
 }
 
+/* ===== STAT BANNER ===== */
+.stat-banner {
+    text-align: center;
+    padding: 20px 20px 30px;
+    margin: 10px auto 20px;
+    display: flex; flex-direction: column; align-items: center;
+}
+.stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: #8aa;
+    margin-bottom: 12px;
+}
+.stat-number-wrap { display: inline-block; margin-bottom: 12px; }
+.stat-number {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: clamp(80px, 16vw, 140px);
+    font-weight: 900;
+    color: rgba(255,255,255,0.9);
+    line-height: 1;
+    text-transform: uppercase;
+}
+.stat-plus { color: #e84455; }
+.stat-sub {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 15px; font-weight: 400; font-style: italic;
+    color: #999;
+    line-height: 1.5;
+}
+@media (max-width: 640px) {
+    .stat-number { font-size: clamp(50px, 12vw, 80px); }
+    .stat-sub { font-size: 12px; }
+    .stat-label { font-size: 9px; }
+}
+
 /* ===== CAROUSEL WRAPPER ===== */
 .carousel-wrapper {
     position: relative; z-index: 10;
@@ -473,6 +509,12 @@ html, body {
   <p style="font-family:'Satoshi',sans-serif;font-size:13px;line-height:1.7;color:rgba(74,201,247,0.6);">Aqui no hablamos -- mostramos. Esto es lo que pasa cuando una marca se atreve a verse diferente.</p>
 </div>
 
+<div class="stat-banner">
+  <div class="stat-label">Contenido de video producido en 2025</div>
+  <div class="stat-number-wrap"><div class="stat-number"><span class="stat-plus">+</span>100M</div></div>
+  <div class="stat-sub">vistas combinadas en contenido producido por nosotros.</div>
+</div>
+
 <div class="carousel-wrapper">
 <div class="carousel">
     <div class="carousel-control-button left"><input type="radio" name="carousel-control-input"></div>
@@ -601,6 +643,14 @@ html, body {
       var fcontact=footer.querySelector('.footer-contact');
       if(fcontact) fcontact.style.color = d>0.5 ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.2)';
     }
+
+    // Stat banner
+    var statLabel=document.querySelector('.stat-label');
+    var statNum=document.querySelector('.stat-number');
+    var statSub=document.querySelector('.stat-sub');
+    if(statLabel) statLabel.style.color=d>0.5?'#777':'#8aa';
+    if(statNum) statNum.style.color=d>0.5?'rgba(0,0,0,0.85)':'rgba(255,255,255,0.9)';
+    if(statSub) statSub.style.color=d>0.5?'#555':'#999';
 
     try{localStorage.setItem('mcp-mode',d>0.5?'light':'dark');}catch(e){}
   }
