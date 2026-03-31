@@ -1322,17 +1322,22 @@
       --drawer-open: 42px;
     }
 
+    /* Mobile: hide nav, CTA, brand text — only logo + toggle */
+    .top-nav { display: none !important; }
+    .header-cta { display: none !important; }
+    .brand-copy { display: none !important; }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 18px;
+    }
+
     .brand-mark {
-      width: 40px;
-      height: 40px;
-    }
-
-    .brand-name {
-      font-size: 0.96rem;
-    }
-
-    .brand-sub {
-      font-size: 0.64rem;
+      width: 52px;
+      height: 52px;
+      padding: 6px;
     }
 
     .hero {
