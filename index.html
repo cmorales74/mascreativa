@@ -1439,51 +1439,35 @@
 <body data-theme="light">
 <div class="bg-grid" aria-hidden="true"></div>
 
-<header class="site-header">
-  <div class="header-inner">
-    <a href="index.html" class="brand" aria-label="MasCreativa Publicidad">
-      <img class="brand-mark brand-mark-light" src="assets/images/logo-d.PNG" alt="MasCreativa logo">
-      <img class="brand-mark brand-mark-dark" src="assets/images/logo-w.PNG" alt="MasCreativa logo">
-      <div class="brand-copy">
-        <div class="brand-name">+MasCreativa Publicidad</div>
-        <div class="brand-sub">San Juan, Puerto Rico</div>
+<!-- Logo centered -->
+<div style="position:fixed;top:28px;left:50%;transform:translateX(-50%);z-index:40;pointer-events:none;">
+  <img class="brand-mark brand-mark-light" src="assets/images/logo-d.PNG" alt="MasCreativa logo" style="height:80px;display:block;">
+  <img class="brand-mark brand-mark-dark" src="assets/images/logo-w.PNG" alt="MasCreativa logo" style="height:80px;display:none;">
+</div>
+
+<!-- Theme toggle -->
+<div style="position:fixed;top:28px;right:24px;z-index:40;">
+  <label class="theme-switch" for="themeCheckbox" aria-label="Cambiar tema">
+    <input type="checkbox" class="theme-switch__checkbox" id="themeCheckbox">
+    <div class="theme-switch__container">
+      <div class="theme-switch__clouds"></div>
+      <div class="theme-switch__stars-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688ZM31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 23.2903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545ZM0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545Z" fill="currentColor"></path>
+        </svg>
       </div>
-    </a>
-
-    <nav class="top-nav" aria-label="Principal">
-      <a href="services.html">Servicios</a>
-      <a href="portfolio.html">Portafolio</a>
-      <a href="about.html">Nosotros</a>
-      <a href="contacto.html">Contacto</a>
-    </nav>
-
-    <div class="header-actions">
-      <div class="theme-switch-wrap">
-        <label class="theme-switch" for="themeCheckbox" aria-label="Cambiar tema">
-          <input type="checkbox" class="theme-switch__checkbox" id="themeCheckbox">
-          <div class="theme-switch__container">
-            <div class="theme-switch__clouds"></div>
-            <div class="theme-switch__stars-container">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
-                <path fill="currentColor" d="M135.831 3.00688C135.055 3.85027 134.449 4.83541 134.047 5.90946C133.645 6.98351 133.454 8.12513 133.485 9.27151C133.515 10.4179 133.766 11.5474 134.224 12.5971C134.681 13.6469 135.336 14.5982 136.154 15.4015C136.971 16.2049 137.936 16.8434 138.994 17.2804C140.052 17.7174 141.186 17.9442 142.332 17.9477C143.477 17.9513 144.613 17.7315 145.674 17.3011C146.736 16.8707 147.705 16.2382 148.527 15.4399C148.864 15.1203 149.147 14.7496 149.364 14.3424C148.14 14.9816 146.775 15.3047 145.394 15.2811C144.012 15.2575 142.66 14.888 141.459 14.2073C140.259 13.5266 139.247 12.5564 138.516 11.3847C137.786 10.213 137.362 8.87763 137.285 7.50078C137.208 6.12393 137.48 4.74995 138.076 3.50317C138.671 2.25639 139.57 1.18314 140.689 0.376999C140.211 0.311331 139.729 0.29446 139.249 0.326414C138.368 0.38373 137.503 0.620717 136.712 1.02365C136.22 1.2801 135.774 1.61156 135.395 2.00426C135.242 2.1606 135.1 2.32688 134.971 2.50114L135.831 3.00688Z"/>
-              </svg>
-            </div>
-            <div class="theme-switch__circle-container">
-              <div class="theme-switch__sun-moon-container">
-                <div class="theme-switch__moon">
-                  <div class="theme-switch__spot"></div>
-                  <div class="theme-switch__spot"></div>
-                  <div class="theme-switch__spot"></div>
-                </div>
-              </div>
-            </div>
+      <div class="theme-switch__circle-container">
+        <div class="theme-switch__sun-moon-container">
+          <div class="theme-switch__moon">
+            <div class="theme-switch__spot"></div>
+            <div class="theme-switch__spot"></div>
+            <div class="theme-switch__spot"></div>
           </div>
-        </label>
+        </div>
       </div>
-      <a class="header-cta" href="contacto.html">Consulta gratis</a>
     </div>
-  </div>
-</header>
+  </label>
+</div>
 
 <main>
   <section class="hero">
@@ -1491,10 +1475,9 @@
       <div class="hero-copy">
         <div class="eyebrow">Creatividad que no pide permiso</div>
         <h1>
-          <span>Branding, publicidad</span>
-          <span>y contenido que</span>
-          <span>vuelve tu marca</span>
-          <span>imposible de ignorar.</span>
+          <span>Vuelve tu marca</span>
+          <span>imposible de</span>
+          <span>ignorar.</span>
         </h1>
         <p>Desde San Juan, creamos campañas, identidades y piezas visuales con criterio, presencia y una ejecución que se siente seria desde el primer segundo.</p>
 
