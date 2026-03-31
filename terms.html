@@ -40,8 +40,8 @@ body {
 
 /* ===== PAGE NAV ===== */
 .page-nav {
-    position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-    z-index: 200; display: flex; gap: 24px;
+    display: flex; justify-content: center; gap: 24px;
+    padding: 16px 0;
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px; font-weight: 500;
     letter-spacing: 0.12em; text-transform: uppercase;
@@ -52,13 +52,13 @@ body {
 }
 .page-nav a:hover { color: #4AC9F7; }
 @media (max-width: 640px) {
-    .page-nav { gap: 8px; font-size: 9px; top: 14px; }
+    .page-nav { gap: 8px; font-size: 9px; }
     .page-nav a { padding: 8px 4px; }
 }
 
 /* ===== PAGE TITLE ===== */
 .page-header {
-    text-align: center; padding-top: 110px; margin-bottom: 20px;
+    text-align: center; padding-top: 20px; margin-bottom: 20px;
     pointer-events: none;
 }
 .page-title {
@@ -233,8 +233,8 @@ body {
 <body>
 
 <!-- Logo -->
-<div style="position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:200;">
-  <a href="index.html"><img id="logoW" src="assets/images/logo-w.PNG" alt="MasCreativa" style="height:60px;display:block;">
+<div style="text-align:center;padding:24px 0 0;">
+  <a href="index.html" style="display:inline-block;"><img id="logoW" src="assets/images/logo-w.PNG" alt="MasCreativa" style="height:60px;display:block;">
   <img id="logoD" src="assets/images/logo-d.PNG" alt="MasCreativa" style="height:60px;display:none;"></a>
 </div>
 

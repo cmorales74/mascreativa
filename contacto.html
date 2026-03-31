@@ -27,7 +27,7 @@ a {
 }
 
 html, body {
-    height: 100%; overflow: hidden;
+    min-height: 100%;
     background: #070809;
     font-family: 'Satoshi', sans-serif;
     color: #edebe6;
@@ -36,8 +36,8 @@ html, body {
 
 /* ===== PAGE NAV ===== */
 .page-nav {
-    position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-    z-index: 200; display: flex; gap: 24px;
+    display: flex; justify-content: center; gap: 24px;
+    padding: 16px 0;
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px; font-weight: 500;
     letter-spacing: 0.12em; text-transform: uppercase;
@@ -48,14 +48,13 @@ html, body {
 }
 .page-nav a:hover { color: #4AC9F7; }
 @media (max-width: 640px) {
-    .page-nav { gap: 8px; font-size: 9px; top: 14px; }
+    .page-nav { gap: 8px; font-size: 9px; }
     .page-nav a { padding: 8px 4px; }
 }
 
 /* ===== PAGE TITLE ===== */
 .page-header {
-    position: fixed; top: 0; left: 0; right: 0;
-    text-align: center; padding-top: 110px; margin-bottom: 20px; z-index: 50;
+    text-align: center; padding-top: 20px; margin-bottom: 20px;
     pointer-events: none;
 }
 .page-title {
@@ -78,10 +77,9 @@ html, body {
 
 /* ===== CONTACT WRAPPER ===== */
 .contact-wrapper {
-    position: fixed; inset: 0; z-index: 10;
     display: flex; align-items: center; justify-content: center;
     flex-direction: column;
-    overflow-y: auto;
+    padding: 20px 0 60px;
 }
 
 .contact-block {
@@ -310,8 +308,8 @@ html, body {
 <body>
 
 <!-- Logo -->
-<div style="position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:200;">
-  <a href="index.html"><img id="logoW" src="assets/images/logo-w.PNG" alt="MasCreativa" style="height:60px;display:block;">
+<div style="text-align:center;padding:24px 0 0;">
+  <a href="index.html" style="display:inline-block;"><img id="logoW" src="assets/images/logo-w.PNG" alt="MasCreativa" style="height:60px;display:block;">
   <img id="logoD" src="assets/images/logo-d.PNG" alt="MasCreativa" style="height:60px;display:none;"></a>
 </div>
 
@@ -359,13 +357,15 @@ html, body {
 
     <div class="form-label">Escríbenos</div>
 
-    <form class="contact-form" action="mailto:info@mascreativapublicidad.com" method="POST" enctype="text/plain">
+    <form class="contact-form" action="https://formsubmit.co/info@mascreativapublicidad.com" method="POST">
       <input type="text" placeholder="Nombre" name="nombre" required autocomplete="off" spellcheck="false">
       <input type="email" placeholder="Email" name="email" required autocomplete="off" spellcheck="false">
       <input type="tel" name="telefono" placeholder="Teléfono (opcional)">
       <textarea placeholder="Mensaje" name="mensaje" required></textarea>
+      <input type="hidden" name="_subject" value="Nuevo mensaje — mascreativapublicidad.com">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://cmorales74.github.io/mascreativa/contacto.html">
       <button type="submit" class="submit-btn">Enviar</button>
-      <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;color:rgba(74,201,247,0.25);text-align:center;margin-top:4px;">Al enviar, se abrirá tu app de correo.</p>
     </form>
 
     <p class="contact-note" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(74,201,247,0.3);text-align:center;margin-top:16px;">Te contestamos en menos de 24 horas. Si no puedes esperar, dale al WhatsApp.</p>
