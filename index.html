@@ -1,0 +1,2015 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f5f7ff">
+<title>+MasCreativa Publicidad</title>
+<meta name="description" content="+MasCreativa Publicidad es una agencia creativa en San Juan, Puerto Rico especializada en branding, publicidad, fotografía, video, marketing digital y contenido visual. Clientes incluyen Rimas Publishing, Fundación Good Bunny, New York Mets y más. +100M vistas en video en 2025.">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --bg: #f4f8ff;
+    --bg-2: #edf2ff;
+    --panel: rgba(255, 255, 255, 0.8);
+    --panel-strong: rgba(255, 255, 255, 0.94);
+    --text: #121726;
+    --muted: #5d6884;
+    --line: rgba(18, 23, 38, 0.1);
+    --line-strong: rgba(18, 23, 38, 0.18);
+    --blue: #69cafc;
+    --blue-strong: #38baf7;
+    --purple: #7a70ff;
+    --purple-strong: #6358ff;
+    --blue-glow: rgba(56, 186, 247, 0.22);
+    --purple-glow: rgba(122, 112, 255, 0.18);
+    --shadow: 0 28px 80px rgba(35, 47, 84, 0.12);
+    --shadow-tight: 0 16px 36px rgba(35, 47, 84, 0.1);
+    --content: min(1200px, calc(100vw - 40px));
+    --header-h: 92px;
+    --drawer-idle: 12px;
+    --drawer-open: 54px;
+
+    --chest-w: 200px;
+    --chest-h: 348px;
+    --chest-d: 120px;
+    --drawer-gap: 4px;
+    --frame-t: 5px;
+    --handle-w: 56px;
+    --handle-h: 3px;
+    --logo-h: 0px;
+    --drawer-area: calc(var(--chest-h) - var(--frame-t) * 2 - var(--logo-h) - var(--drawer-gap) * 5);
+    --drawer-h: calc(var(--drawer-area) / 4);
+    --cab-side: linear-gradient(180deg, rgba(17, 20, 29, 0.95), rgba(27, 31, 43, 0.92));
+    --cab-top: linear-gradient(180deg, rgba(47, 51, 64, 0.95), rgba(23, 27, 39, 0.96));
+    --cab-bottom: linear-gradient(180deg, rgba(9, 12, 18, 0.96), rgba(16, 19, 28, 0.98));
+    --cab-frame: rgba(255, 255, 255, 0.05);
+    --cab-front-gloss: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    --drawer-front: linear-gradient(180deg, rgba(33, 35, 42, 0.96), rgba(11, 14, 20, 0.98));
+    --drawer-front-hover: linear-gradient(180deg, rgba(44, 48, 58, 0.98), rgba(13, 16, 23, 0.99));
+    --drawer-inside: rgba(9, 11, 17, 0.96);
+    --drawer-side: linear-gradient(180deg, rgba(20, 22, 30, 0.98), rgba(11, 12, 18, 0.98));
+    --drawer-bottom-clr: linear-gradient(180deg, rgba(15, 18, 26, 0.98), rgba(7, 8, 13, 1));
+  }
+
+  body[data-theme="dark"] {
+    --bg: #070b13;
+    --bg-2: #0d1320;
+    --panel: rgba(14, 19, 31, 0.82);
+    --panel-strong: rgba(14, 19, 31, 0.94);
+    --text: #edf1ff;
+    --muted: rgba(233, 239, 255, 0.68);
+    --line: rgba(255, 255, 255, 0.1);
+    --line-strong: rgba(255, 255, 255, 0.18);
+    --blue: #6fd2ff;
+    --blue-strong: #49c7ff;
+    --purple: #9787ff;
+    --purple-strong: #7d6aff;
+    --blue-glow: rgba(73, 199, 255, 0.16);
+    --purple-glow: rgba(151, 135, 255, 0.16);
+    --shadow: 0 30px 90px rgba(0, 0, 0, 0.34);
+    --shadow-tight: 0 14px 40px rgba(0, 0, 0, 0.26);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background:
+      radial-gradient(circle at 12% 12%, rgba(56, 186, 247, 0.12), transparent 28%),
+      radial-gradient(circle at 84% 18%, rgba(122, 112, 255, 0.12), transparent 30%),
+      linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+    color: var(--text);
+    font-family: "Satoshi", sans-serif;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    font: inherit;
+    color: inherit;
+    border: none;
+    background: none;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--blue-strong);
+    outline-offset: 3px;
+  }
+
+  .bg-grid {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(to right, rgba(110, 128, 168, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(110, 128, 168, 0.05) 1px, transparent 1px);
+    background-size: 88px 88px;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent 88%);
+  }
+
+  .site-header {
+    position: fixed;
+    top: 16px;
+    left: 0;
+    right: 0;
+    z-index: 35;
+  }
+
+  .header-inner,
+  .hero-grid,
+  .section,
+  .footer-inner {
+    width: var(--content);
+    margin: 0 auto;
+  }
+
+  .header-inner {
+    min-height: var(--header-h);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 24px;
+    padding: 14px 20px;
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    background: rgba(244, 248, 255, 0.82);
+    box-shadow: var(--shadow-tight);
+  }
+
+  body[data-theme="dark"] .header-inner {
+    background: rgba(10, 14, 23, 0.82);
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .brand-mark {
+    width: 44px;
+    height: 44px;
+    padding: 8px;
+    border-radius: 16px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.62));
+    box-shadow: var(--shadow-tight);
+  }
+
+  .brand-mark-dark { display: none; }
+  body[data-theme="dark"] .brand-mark-light { display: none; }
+  body[data-theme="dark"] .brand-mark-dark { display: block; }
+  body[data-theme="dark"] .brand-mark {
+    background: linear-gradient(145deg, rgba(31, 40, 61, 0.94), rgba(18, 24, 39, 0.92));
+  }
+
+  .brand-copy {
+    display: grid;
+    gap: 2px;
+  }
+
+  .brand-name {
+    font-family: "Satoshi", sans-serif;
+    font-size: 0.98rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+
+  .brand-sub {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.64rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .top-nav {
+    display: inline-flex;
+    justify-self: center;
+    flex-wrap: wrap;
+    gap: clamp(14px, 2vw, 30px);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .top-nav a {
+    position: relative;
+    padding-bottom: 5px;
+  }
+
+  .top-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--blue-strong), var(--purple-strong));
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+  }
+
+  .top-nav a:hover::after,
+  .top-nav a:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  .header-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .header-cta,
+  .button-primary,
+  .button-secondary {
+    min-height: 46px;
+    padding: 0 20px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .header-cta,
+  .button-primary {
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--blue-strong), var(--purple-strong));
+    box-shadow: 0 18px 32px rgba(56, 186, 247, 0.22);
+  }
+
+  .button-secondary {
+    border: 1px solid var(--line-strong);
+    background: var(--panel);
+  }
+
+  .theme-switch-wrap {
+    display: inline-flex;
+    align-items: center;
+    position: static;
+  }
+
+  .theme-switch {
+    --toggle-size: 15px;
+    --container-width: 5.625em;
+    --container-height: 2.5em;
+    --container-radius: 6.25em;
+    --container-light-bg: #3D7EAE;
+    --container-night-bg: #1D1F2C;
+    --circle-container-diameter: 3.375em;
+    --sun-moon-diameter: 2.125em;
+    --sun-bg: #ECCA2F;
+    --moon-bg: #C4C9D1;
+    --spot-color: #959DB1;
+    --circle-container-offset: calc((var(--circle-container-diameter) - var(--container-height)) / 2 * -1);
+    --stars-color: #fff;
+    --clouds-color: #F3FDFF;
+    --back-clouds-color: #AACADF;
+    --transition: .5s cubic-bezier(0, -0.02, 0.4, 1.25);
+    --circle-transition: .3s cubic-bezier(0, -0.02, 0.35, 1.17);
+  }
+
+  .theme-switch,
+  .theme-switch *,
+  .theme-switch *::before,
+  .theme-switch *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: var(--toggle-size);
+  }
+
+  .theme-switch__container {
+    position: relative;
+    width: var(--container-width);
+    height: var(--container-height);
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: var(--container-radius);
+    background-color: var(--container-light-bg);
+    box-shadow: 0 -0.062em 0.062em rgba(0, 0, 0, 0.25), 0 0.062em 0.125em rgba(255, 255, 255, 0.94);
+    transition: var(--transition);
+  }
+
+  .theme-switch__container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: var(--container-radius);
+    box-shadow: 0 0.05em 0.187em rgba(0, 0, 0, 0.25) inset;
+  }
+
+  .theme-switch__checkbox {
+    display: none;
+  }
+
+  .theme-switch__circle-container {
+    position: absolute;
+    top: var(--circle-container-offset);
+    left: var(--circle-container-offset);
+    width: var(--circle-container-diameter);
+    height: var(--circle-container-diameter);
+    display: flex;
+    border-radius: var(--container-radius);
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), 0 0 0 0.625em rgba(255, 255, 255, 0.1), 0 0 0 1.25em rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+    transition: var(--circle-transition);
+  }
+
+  .theme-switch__sun-moon-container {
+    position: relative;
+    z-index: 2;
+    width: var(--sun-moon-diameter);
+    height: var(--sun-moon-diameter);
+    margin: auto;
+    overflow: hidden;
+    border-radius: var(--container-radius);
+    background-color: var(--sun-bg);
+    box-shadow: 0.062em 0.062em 0.062em rgba(254, 255, 239, 0.61) inset, 0 -0.062em 0.062em #a1872a inset;
+    filter: drop-shadow(0.062em 0.125em 0.125em rgba(0, 0, 0, 0.25)) drop-shadow(0 0.062em 0.125em rgba(0, 0, 0, 0.25));
+    pointer-events: auto;
+    transition: var(--transition);
+  }
+
+  .theme-switch__moon {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background-color: var(--moon-bg);
+    box-shadow: 0.062em 0.062em 0.062em rgba(254, 255, 239, 0.61) inset, 0 -0.062em 0.062em #969696 inset;
+    transform: translateX(100%);
+    transition: var(--transition);
+  }
+
+  .theme-switch__spot {
+    position: absolute;
+    top: 0.75em;
+    left: 0.312em;
+    width: 0.75em;
+    height: 0.75em;
+    border-radius: var(--container-radius);
+    background-color: var(--spot-color);
+    box-shadow: 0 0.0312em 0.062em rgba(0, 0, 0, 0.25) inset;
+  }
+
+  .theme-switch__spot:nth-of-type(2) {
+    top: 0.937em;
+    left: 1.375em;
+    width: 0.375em;
+    height: 0.375em;
+  }
+
+  .theme-switch__spot:nth-last-of-type(3) {
+    top: 0.312em;
+    left: 0.812em;
+    width: 0.25em;
+    height: 0.25em;
+  }
+
+  .theme-switch__clouds {
+    position: absolute;
+    bottom: -0.625em;
+    left: 0.312em;
+    width: 1.25em;
+    height: 1.25em;
+    border-radius: var(--container-radius);
+    background-color: var(--clouds-color);
+    box-shadow:
+      0.937em 0.312em var(--clouds-color),
+      -0.312em -0.312em var(--back-clouds-color),
+      1.437em 0.375em var(--clouds-color),
+      0.5em -0.125em var(--back-clouds-color),
+      2.187em 0 var(--clouds-color),
+      1.25em -0.062em var(--back-clouds-color),
+      2.937em 0.312em var(--clouds-color),
+      2em -0.312em var(--back-clouds-color),
+      3.625em -0.062em var(--clouds-color),
+      2.625em 0 var(--back-clouds-color),
+      4.5em -0.312em var(--clouds-color),
+      3.375em -0.437em var(--back-clouds-color),
+      4.625em -1.75em 0 0.437em var(--clouds-color),
+      4em -0.625em var(--back-clouds-color),
+      4.125em -2.125em 0 0.437em var(--back-clouds-color);
+    transition: var(--transition);
+  }
+
+  .theme-switch__stars-container {
+    position: absolute;
+    top: -100%;
+    left: 0.312em;
+    width: 2.75em;
+    color: var(--stars-color);
+    transition: var(--transition);
+  }
+
+  .theme-switch__checkbox:checked + .theme-switch__container {
+    background-color: var(--container-night-bg);
+  }
+
+  .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container {
+    left: calc(100% - var(--circle-container-offset) - var(--circle-container-diameter));
+  }
+
+  .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container:hover {
+    left: calc(100% - var(--circle-container-offset) - var(--circle-container-diameter) - 0.187em);
+  }
+
+  .theme-switch__circle-container:hover {
+    left: calc(var(--circle-container-offset) + 0.187em);
+  }
+
+  .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__moon {
+    transform: translate(0);
+  }
+
+  .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__clouds {
+    bottom: -4.062em;
+  }
+
+  .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__stars-container {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  main {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero {
+    padding: calc(var(--header-h) + 50px) 0 54px;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.06fr) minmax(380px, 500px);
+    align-items: center;
+    gap: clamp(28px, 4vw, 68px);
+    min-height: calc(100svh - var(--header-h) - 40px);
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--blue-strong);
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 42px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--blue-strong), transparent);
+  }
+
+  .hero-copy h1 {
+    max-width: none;
+    margin-top: 18px;
+    font-family: "Clash Display", sans-serif;
+    font-size: clamp(3.1rem, 6.4vw, 6.05rem);
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+  }
+
+  .hero-copy h1 span {
+    display: block;
+  }
+
+  .hero-copy h1 span + span {
+    margin-top: -0.08em;
+  }
+
+  .hero-copy p {
+    max-width: 53ch;
+    margin-top: 22px;
+    font-size: 1rem;
+    line-height: 1.72;
+    color: var(--muted);
+  }
+
+  .hero-proof {
+    margin-top: 28px;
+    display: grid;
+    gap: 14px;
+    width: fit-content;
+    max-width: 100%;
+    padding: 22px 24px;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: var(--panel-strong);
+    box-shadow: var(--shadow-tight);
+  }
+
+  .hero-proof-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 14px;
+  }
+
+  .hero-proof-number {
+    font-family: "Clash Display", sans-serif;
+    font-size: clamp(2.6rem, 4vw, 3.6rem);
+    font-weight: 700;
+    letter-spacing: -0.06em;
+    line-height: 0.9;
+  }
+
+  .hero-proof-copy {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .hero-proof-clients {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 26px;
+  }
+
+  .hero-visual {
+    position: relative;
+    min-height: 610px;
+    display: grid;
+    place-items: center;
+    overflow: visible;
+  }
+
+  .hero-mark {
+    position: absolute;
+    inset: 18px 20px auto auto;
+    width: clamp(280px, 32vw, 440px);
+    opacity: 0.08;
+    pointer-events: none;
+  }
+
+  .hero-orb {
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    border-radius: 999px;
+    background: radial-gradient(circle, var(--blue-glow), var(--purple-glow) 55%, transparent 76%);
+    filter: blur(28px);
+    bottom: 72px;
+    right: 10px;
+    pointer-events: none;
+  }
+
+  .cabinet-wrap {
+    position: relative;
+    width: min(100%, 560px);
+    min-height: 580px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1400px;
+    touch-action: none;
+    cursor: grab;
+    user-select: none;
+  }
+
+  .cabinet-wrap.is-dragging {
+    cursor: grabbing;
+  }
+
+  .cabinet-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 20% 14% 10%;
+    border-radius: 42px;
+    background: radial-gradient(circle at 50% 36%, rgba(255, 255, 255, 0.42), transparent 62%);
+    pointer-events: none;
+  }
+
+  .chest-container {
+    width: var(--chest-w);
+    height: var(--chest-h);
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(-16deg) rotateY(24deg);
+    will-change: transform;
+  }
+
+  .cabinet {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+  }
+
+  .cab-face {
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .cab-back {
+    width: var(--chest-w);
+    height: var(--chest-h);
+    background: linear-gradient(180deg, rgba(15, 18, 26, 0.98), rgba(5, 7, 12, 1));
+    transform: translateZ(calc(var(--chest-d) / -2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+  }
+
+  .cab-back-text {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 6px;
+    line-height: 0.85;
+    text-align: left;
+    transform: scaleX(-1);
+    overflow: hidden;
+    font-family: "Clash Display", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.28);
+  }
+
+  .cab-back-text span {
+    display: block;
+    font-size: 32px;
+    letter-spacing: -0.05em;
+  }
+
+  .cab-front {
+    width: var(--chest-w);
+    height: var(--chest-h);
+    transform: translateZ(calc(var(--chest-d) / 2));
+    pointer-events: none;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .cab-left {
+    width: var(--chest-d);
+    height: var(--chest-h);
+    left: 0;
+    background: var(--cab-side);
+    transform-origin: left center;
+    transform: rotateY(-90deg) translateX(calc(var(--chest-d) / -2));
+  }
+
+  .cab-right {
+    width: var(--chest-d);
+    height: var(--chest-h);
+    right: 0;
+    background: var(--cab-side);
+    transform-origin: right center;
+    transform: rotateY(90deg) translateX(calc(var(--chest-d) / 2));
+  }
+
+  .cab-top {
+    width: var(--chest-w);
+    height: var(--chest-d);
+    top: 0;
+    background: var(--cab-top);
+    transform-origin: top center;
+    transform: rotateX(90deg) translateY(calc(var(--chest-d) / -2));
+  }
+
+  .cab-bottom {
+    width: var(--chest-w);
+    height: var(--chest-d);
+    bottom: 0;
+    background: var(--cab-bottom);
+    transform-origin: bottom center;
+    transform: rotateX(-90deg) translateY(calc(var(--chest-d) / 2));
+  }
+
+  .front-frame {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .front-frame-border {
+    position: absolute;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  }
+
+  .ff-top {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--frame-t);
+  }
+
+  .ff-bottom {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: var(--frame-t);
+  }
+
+  .ff-left {
+    top: 0;
+    left: 0;
+    width: var(--frame-t);
+    height: 100%;
+  }
+
+  .ff-right {
+    top: 0;
+    right: 0;
+    width: var(--frame-t);
+    height: 100%;
+  }
+
+  .front-divider {
+    position: absolute;
+    left: var(--frame-t);
+    right: var(--frame-t);
+    height: var(--drawer-gap);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .front-divider:nth-of-type(1) { top: calc(var(--frame-t) + var(--logo-h)); }
+  .front-divider:nth-of-type(2) { top: calc(var(--frame-t) + var(--logo-h) + var(--drawer-gap) + var(--drawer-h)); }
+  .front-divider:nth-of-type(3) { top: calc(var(--frame-t) + var(--logo-h) + var(--drawer-gap) * 2 + var(--drawer-h) * 2); }
+  .front-divider:nth-of-type(4) { top: calc(var(--frame-t) + var(--logo-h) + var(--drawer-gap) * 3 + var(--drawer-h) * 3); }
+  .front-divider:nth-of-type(5) { top: calc(var(--frame-t) + var(--logo-h) + var(--drawer-gap) * 4 + var(--drawer-h) * 4); }
+
+  .drawer-slot {
+    position: absolute;
+    left: var(--frame-t);
+    right: var(--frame-t);
+    height: var(--drawer-h);
+    transform-style: preserve-3d;
+  }
+
+  .drawer-slot:nth-child(2) { top: calc(var(--frame-t) + var(--logo-h) + var(--drawer-gap)); }
+  .drawer-slot:nth-child(3) { top: calc(var(--frame-t) + var(--logo-h) + var(--drawer-gap) * 2 + var(--drawer-h)); }
+  .drawer-slot:nth-child(4) { top: calc(var(--frame-t) + var(--logo-h) + var(--drawer-gap) * 3 + var(--drawer-h) * 2); }
+  .drawer-slot:nth-child(5) { top: calc(var(--frame-t) + var(--logo-h) + var(--drawer-gap) * 4 + var(--drawer-h) * 3); }
+
+  .drawer-link {
+    position: absolute;
+    inset: 0;
+    display: block;
+    text-decoration: none;
+    transform-style: preserve-3d;
+  }
+
+  .drawer-box {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    transform: translateZ(var(--drawer-idle));
+    transition: transform 0.32s ease;
+  }
+
+  .drawer-link:hover .drawer-box,
+  .drawer-link:focus-visible .drawer-box,
+  .drawer-link.is-open .drawer-box {
+    transform: translateZ(var(--drawer-open));
+  }
+
+  .drawer-front-panel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--drawer-front);
+    transform: translateZ(calc(var(--chest-d) / 2));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), inset 0 -18px 24px rgba(0, 0, 0, 0.22);
+    transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .drawer-link:hover .drawer-front-panel,
+  .drawer-link:focus-visible .drawer-front-panel,
+  .drawer-link.is-open .drawer-front-panel {
+    background: var(--drawer-front-hover);
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -18px 24px rgba(0, 0, 0, 0.24), 0 18px 24px rgba(0, 0, 0, 0.18);
+  }
+
+  .drawer-front-panel::after {
+    content: "";
+    width: var(--handle-w);
+    height: var(--handle-h);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.08);
+  }
+
+  .drawer-back-panel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--drawer-inside);
+    transform: translateZ(calc(var(--chest-d) / -2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 22px rgba(56, 186, 247, 0.06);
+  }
+
+  .drawer-label {
+    position: absolute;
+    top: -2em;
+    left: 50%;
+    transform: translateX(-50%) translateZ(calc(var(--chest-d) / 2 + 10px)) translateY(20px);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue-strong);
+    text-shadow: 0 0 18px rgba(56, 186, 247, 0.3);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .drawer-link:hover .drawer-label,
+  .drawer-link:focus-visible .drawer-label,
+  .drawer-link.is-open .drawer-label {
+    opacity: 1;
+    transform: translateX(-50%) translateZ(calc(var(--chest-d) / 2 + 10px)) translateY(0);
+  }
+
+  .drawer-left-panel,
+  .drawer-right-panel {
+    position: absolute;
+    width: var(--chest-d);
+    height: 100%;
+    background: var(--drawer-side);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .drawer-left-panel {
+    left: 0;
+    transform-origin: left;
+    transform: rotateY(-90deg) translateX(calc(var(--chest-d) / -2));
+  }
+
+  .drawer-right-panel {
+    right: 0;
+    transform-origin: right;
+    transform: rotateY(90deg) translateX(calc(var(--chest-d) / 2));
+  }
+
+  .drawer-bottom-panel {
+    position: absolute;
+    width: 100%;
+    height: var(--chest-d);
+    bottom: 0;
+    background: var(--drawer-bottom-clr);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transform-origin: bottom;
+    transform: rotateX(-90deg) translateY(calc(var(--chest-d) / 2));
+  }
+
+  .cabinet-note {
+    position: absolute;
+    bottom: 34px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .section {
+    padding: 52px 0 0;
+  }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 16px;
+    align-items: end;
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    margin-top: 12px;
+    font-family: "Clash Display", sans-serif;
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    line-height: 0.96;
+    letter-spacing: -0.05em;
+  }
+
+  .section-copy {
+    max-width: 54ch;
+    margin-top: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .section-link {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .section-link::after {
+    content: " \2192";
+  }
+
+  .info-band {
+    width: var(--content);
+    margin: 22px auto 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(260px, 0.95fr);
+    gap: 18px;
+  }
+
+  .info-card {
+    padding: 22px 24px;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: var(--panel);
+    box-shadow: var(--shadow-tight);
+  }
+
+  .info-card h2 {
+    margin-top: 10px;
+    font-family: "Clash Display", sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .info-card p,
+  .info-card li {
+    margin-top: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .info-card ul {
+    list-style: none;
+    display: grid;
+    gap: 4px;
+  }
+
+  .carousel-shell {
+    position: relative;
+  }
+
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    width: 46px;
+    height: 46px;
+    margin-top: -23px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--panel-strong);
+    box-shadow: var(--shadow-tight);
+    cursor: pointer;
+  }
+
+  .carousel-button[data-dir="-1"] { left: -8px; }
+  .carousel-button[data-dir="1"] { right: -8px; }
+
+  .carousel-track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(280px, 33vw);
+    gap: 18px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 6px 0 12px;
+    scrollbar-width: none;
+  }
+
+  .carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .work-card {
+    scroll-snap-align: start;
+    overflow: hidden;
+    border-radius: 26px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    box-shadow: var(--shadow);
+  }
+
+  .work-card img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+
+  .work-meta {
+    padding: 16px 18px 18px;
+  }
+
+  .work-tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue-strong);
+  }
+
+  .work-title {
+    margin-top: 10px;
+    font-family: "Clash Display", sans-serif;
+    font-size: 1.38rem;
+    line-height: 1.03;
+    letter-spacing: -0.04em;
+  }
+
+  .work-copy {
+    margin-top: 10px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .service-strip {
+    width: var(--content);
+    margin: 36px auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .service-chip {
+    min-height: 88px;
+    padding: 18px;
+    border-radius: 22px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    box-shadow: var(--shadow-tight);
+  }
+
+  .service-chip strong {
+    display: block;
+    font-family: "Clash Display", sans-serif;
+    font-size: 1.12rem;
+    letter-spacing: -0.03em;
+  }
+
+  .service-chip span {
+    display: block;
+    margin-top: 8px;
+    color: var(--muted);
+    line-height: 1.55;
+    font-size: 0.92rem;
+  }
+
+  .client-row {
+    width: var(--content);
+    margin: 52px auto 0;
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 26px;
+    justify-content: center;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .cta {
+    width: var(--content);
+    margin: 56px auto 0;
+    padding: clamp(26px, 4vw, 36px);
+    border: 1px solid var(--line);
+    border-radius: 30px;
+    background:
+      radial-gradient(circle at 16% 50%, var(--blue-glow), transparent 28%),
+      radial-gradient(circle at 88% 12%, var(--purple-glow), transparent 26%),
+      var(--panel);
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .cta h2 {
+    margin-top: 12px;
+    font-family: "Clash Display", sans-serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 0.96;
+    letter-spacing: -0.05em;
+  }
+
+  .cta p {
+    max-width: 52ch;
+    margin-top: 12px;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  .cta-meta {
+    margin-top: 14px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: flex-end;
+  }
+
+  .site-footer {
+    margin-top: 56px;
+    padding: 0 0 34px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-inner {
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .footer-brandline {
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .footer-meta {
+    margin-top: 12px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+
+  .footer-socials {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  .footer-socials a {
+    min-height: 40px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .footer-socials a[href*="wa.me"]:hover { color: #25D366 !important; }
+
+  @media (max-width: 1100px) {
+    .hero-grid,
+    .info-band,
+    .cta {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-grid {
+      min-height: auto;
+    }
+
+    .hero-visual {
+      min-height: 390px;
+      order: 2;
+    }
+
+    .hero-copy {
+      order: 1;
+    }
+
+    .cta-actions {
+      justify-content: flex-start;
+    }
+
+    .service-strip {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 900px) {
+    .header-inner {
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      padding: 16px 18px;
+    }
+
+    .top-nav {
+      grid-column: 1 / -1;
+      justify-self: start;
+    }
+
+    .header-cta {
+      display: none;
+    }
+
+    .carousel-track {
+      grid-auto-columns: 74vw;
+    }
+
+    .footer-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-socials {
+      justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: 640px) {
+    :root {
+      --content: min(calc(100vw - 24px), 100%);
+      --header-h: 82px;
+      --chest-w: 160px;
+      --chest-h: 286px;
+      --chest-d: 92px;
+      --handle-w: 44px;
+      --drawer-idle: 10px;
+      --drawer-open: 42px;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+    }
+
+    .brand-name {
+      font-size: 0.96rem;
+    }
+
+    .brand-sub {
+      font-size: 0.64rem;
+    }
+
+    .hero {
+      padding-top: calc(var(--header-h) + 38px);
+      padding-bottom: 42px;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2.65rem, 11vw, 4.05rem);
+      line-height: 0.95;
+    }
+
+    .hero-copy p,
+    .section-copy,
+    .cta p {
+      max-width: none;
+    }
+
+    .hero-visual {
+      min-height: 360px;
+    }
+
+    .hero-mark {
+      width: 220px;
+      inset: 8px 0 auto auto;
+    }
+
+    .hero-orb {
+      width: 240px;
+      height: 240px;
+      right: 10px;
+      bottom: 34px;
+    }
+
+    .cabinet-wrap {
+      min-height: 330px;
+    }
+
+    .cab-back-text span {
+      font-size: 24px;
+    }
+
+    .drawer-label {
+      font-size: 12px;
+    }
+
+    .cabinet-note {
+      bottom: 18px;
+      font-size: 0.56rem;
+    }
+
+    .carousel-button {
+      display: none;
+    }
+
+    .carousel-track {
+      grid-auto-columns: 84vw;
+    }
+
+    .service-strip {
+      grid-template-columns: 1fr;
+    }
+
+    .client-row {
+      justify-content: flex-start;
+    }
+
+    .cta {
+      margin-top: 34px;
+      padding: 24px 20px;
+    }
+
+    .theme-switch {
+      --toggle-size: 12px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *, *::before, *::after {
+      transition-duration: 0s !important;
+      animation: none !important;
+    }
+  }
+</style>
+</head>
+<body data-theme="light">
+<div class="bg-grid" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand" aria-label="MasCreativa Publicidad">
+      <img class="brand-mark brand-mark-light" src="assets/images/logo-d.PNG" alt="MasCreativa logo">
+      <img class="brand-mark brand-mark-dark" src="assets/images/logo-w.PNG" alt="MasCreativa logo">
+      <div class="brand-copy">
+        <div class="brand-name">+MasCreativa Publicidad</div>
+        <div class="brand-sub">San Juan, Puerto Rico</div>
+      </div>
+    </a>
+
+    <nav class="top-nav" aria-label="Principal">
+      <a href="services.html">Servicios</a>
+      <a href="portfolio.html">Portafolio</a>
+      <a href="about.html">Nosotros</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+
+    <div class="header-actions">
+      <div class="theme-switch-wrap">
+        <label class="theme-switch" for="themeCheckbox" aria-label="Cambiar tema">
+          <input type="checkbox" class="theme-switch__checkbox" id="themeCheckbox">
+          <div class="theme-switch__container">
+            <div class="theme-switch__clouds"></div>
+            <div class="theme-switch__stars-container">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
+                <path fill="currentColor" d="M135.831 3.00688C135.055 3.85027 134.449 4.83541 134.047 5.90946C133.645 6.98351 133.454 8.12513 133.485 9.27151C133.515 10.4179 133.766 11.5474 134.224 12.5971C134.681 13.6469 135.336 14.5982 136.154 15.4015C136.971 16.2049 137.936 16.8434 138.994 17.2804C140.052 17.7174 141.186 17.9442 142.332 17.9477C143.477 17.9513 144.613 17.7315 145.674 17.3011C146.736 16.8707 147.705 16.2382 148.527 15.4399C148.864 15.1203 149.147 14.7496 149.364 14.3424C148.14 14.9816 146.775 15.3047 145.394 15.2811C144.012 15.2575 142.66 14.888 141.459 14.2073C140.259 13.5266 139.247 12.5564 138.516 11.3847C137.786 10.213 137.362 8.87763 137.285 7.50078C137.208 6.12393 137.48 4.74995 138.076 3.50317C138.671 2.25639 139.57 1.18314 140.689 0.376999C140.211 0.311331 139.729 0.29446 139.249 0.326414C138.368 0.38373 137.503 0.620717 136.712 1.02365C136.22 1.2801 135.774 1.61156 135.395 2.00426C135.242 2.1606 135.1 2.32688 134.971 2.50114L135.831 3.00688Z"/>
+              </svg>
+            </div>
+            <div class="theme-switch__circle-container">
+              <div class="theme-switch__sun-moon-container">
+                <div class="theme-switch__moon">
+                  <div class="theme-switch__spot"></div>
+                  <div class="theme-switch__spot"></div>
+                  <div class="theme-switch__spot"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </label>
+      </div>
+      <a class="header-cta" href="contacto.html">Consulta gratis</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Creatividad que no pide permiso</div>
+        <h1>
+          <span>Branding, publicidad</span>
+          <span>y contenido que</span>
+          <span>vuelve tu marca</span>
+          <span>imposible de ignorar.</span>
+        </h1>
+        <p>Desde San Juan, creamos campañas, identidades y piezas visuales con criterio, presencia y una ejecución que se siente seria desde el primer segundo.</p>
+
+        <div class="hero-proof">
+          <div class="hero-proof-top">
+            <div class="hero-proof-number">+100M</div>
+            <div class="hero-proof-copy">vistas en video producidas en 2025</div>
+          </div>
+          <div class="hero-proof-clients">Rimas Publishing · Fundación Good Bunny · New York Mets · Cangrejeros de Santurce · Comisión de Seguridad en el Tránsito</div>
+        </div>
+
+        <div class="hero-actions">
+          <a class="button-primary" href="portfolio.html">Ver portafolio</a>
+          <a class="button-secondary" href="contacto.html">Hablemos</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <img class="hero-mark" src="assets/images/logo-icon.png" alt="" aria-hidden="true">
+        <div class="hero-orb" aria-hidden="true"></div>
+
+        <div class="cabinet-wrap">
+          <div class="chest-container">
+            <div class="cabinet">
+              <div class="cab-face cab-back">
+                <div class="cab-back-text">
+                  <span>Creatividad</span>
+                  <span>que no</span>
+                  <span>pide</span>
+                  <span>permiso</span>
+                </div>
+              </div>
+              <div class="cab-face cab-left"></div>
+              <div class="cab-face cab-right"></div>
+              <div class="cab-face cab-top"></div>
+              <div class="cab-face cab-bottom"></div>
+              <div class="cab-face cab-front">
+                <div class="front-frame">
+                  <div class="front-frame-border ff-top"></div>
+                  <div class="front-frame-border ff-bottom"></div>
+                  <div class="front-frame-border ff-left"></div>
+                  <div class="front-frame-border ff-right"></div>
+                </div>
+                <div class="front-divider"></div>
+                <div class="front-divider"></div>
+                <div class="front-divider"></div>
+                <div class="front-divider"></div>
+                <div class="front-divider"></div>
+              </div>
+            </div>
+
+            <div class="drawer-slot">
+              <a href="services.html" class="drawer-link">
+                <div class="drawer-box">
+                  <div class="drawer-front-panel"></div>
+                  <div class="drawer-back-panel"></div>
+                  <span class="drawer-label">Servicios</span>
+                  <div class="drawer-left-panel"></div>
+                  <div class="drawer-right-panel"></div>
+                  <div class="drawer-bottom-panel"></div>
+                </div>
+              </a>
+            </div>
+
+            <div class="drawer-slot">
+              <a href="portfolio.html" class="drawer-link">
+                <div class="drawer-box">
+                  <div class="drawer-front-panel"></div>
+                  <div class="drawer-back-panel"></div>
+                  <span class="drawer-label">Portafolio</span>
+                  <div class="drawer-left-panel"></div>
+                  <div class="drawer-right-panel"></div>
+                  <div class="drawer-bottom-panel"></div>
+                </div>
+              </a>
+            </div>
+
+            <div class="drawer-slot">
+              <a href="about.html" class="drawer-link">
+                <div class="drawer-box">
+                  <div class="drawer-front-panel"></div>
+                  <div class="drawer-back-panel"></div>
+                  <span class="drawer-label">Nosotros</span>
+                  <div class="drawer-left-panel"></div>
+                  <div class="drawer-right-panel"></div>
+                  <div class="drawer-bottom-panel"></div>
+                </div>
+              </a>
+            </div>
+
+            <div class="drawer-slot">
+              <a href="contacto.html" class="drawer-link">
+                <div class="drawer-box">
+                  <div class="drawer-front-panel"></div>
+                  <div class="drawer-back-panel"></div>
+                  <span class="drawer-label">Contacto</span>
+                  <div class="drawer-left-panel"></div>
+                  <div class="drawer-right-panel"></div>
+                  <div class="drawer-bottom-panel"></div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="cabinet-note">Arrastra 360° / abre los cajones</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="info-band">
+    <article class="info-card">
+      <div class="eyebrow">Origen</div>
+      <h2>"Necesito que sea más creativo."</h2>
+      <p>Esa exigencia se convirtió en la base de la agencia: dirección clara, criterio visual y ejecución con energía sin sacrificar seriedad.</p>
+    </article>
+
+    <article class="info-card">
+      <div class="eyebrow">Agencia</div>
+      <ul>
+        <li>Branding e identidad</li>
+        <li>Publicidad y medios</li>
+        <li>Fotografía y video</li>
+        <li>Marketing digital</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Campañas</div>
+        <h2 class="section-title">Trabajo con presencia, ritmo y lectura inmediata.</h2>
+        <p class="section-copy">Piezas que captan atención, sostienen la mirada y le dan presencia real a la marca en coberturas, campañas y contenido.</p>
+      </div>
+      <a class="section-link" href="portfolio.html">Abrir portafolio</a>
+    </div>
+
+    <div class="carousel-shell" data-carousel>
+      <button class="carousel-button" type="button" data-dir="-1" aria-label="Anterior">&#8592;</button>
+      <div class="carousel-track">
+        <article class="work-card">
+          <img src="assets/images/portfolio-21.jpg" alt="Trabajo seleccionado 1" loading="lazy">
+          <div class="work-meta">
+            <div class="work-tag">Campaña</div>
+            <div class="work-title">Cobertura con energia y ambiente real.</div>
+            <div class="work-copy">Imágenes con textura, movimiento y color para que la marca se sienta presente.</div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <img src="assets/images/portfolio-22.jpg" alt="Trabajo seleccionado 2" loading="lazy">
+          <div class="work-meta">
+            <div class="work-tag">Video</div>
+            <div class="work-title">Dirección visual con tensión y narrativa.</div>
+            <div class="work-copy">Frames pensados para captar atencion sin perder claridad ni intencion.</div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <img src="assets/images/portfolio-23.jpg" alt="Trabajo seleccionado 3" loading="lazy">
+          <div class="work-meta">
+            <div class="work-tag">Spot</div>
+            <div class="work-title">Piezas cinematográficas que siguen siendo comerciales.</div>
+            <div class="work-copy">No solo se ven bien. También cargan mensaje, ritmo y memorabilidad.</div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <img src="assets/images/portfolio-24.jpg" alt="Trabajo seleccionado 4" loading="lazy">
+          <div class="work-meta">
+            <div class="work-tag">Institucional</div>
+            <div class="work-title">Mensajes serios tratados con sensibilidad visual.</div>
+            <div class="work-copy">Dirección y fotografía con el peso correcto para proyectos de alto impacto.</div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <img src="assets/images/portfolio-25.jpg" alt="Trabajo seleccionado 5" loading="lazy">
+          <div class="work-meta">
+            <div class="work-tag">Narrativa</div>
+            <div class="work-title">Textura, atmosfera y una lectura que no se cae.</div>
+            <div class="work-copy">El contenido sostiene la mirada porque la composicion hace su trabajo.</div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <img src="assets/images/portfolio-26.jpg" alt="Trabajo seleccionado 6" loading="lazy">
+          <div class="work-meta">
+            <div class="work-tag">Campaña</div>
+            <div class="work-title">Producción ligera, dirección precisa.</div>
+            <div class="work-copy">La pieza se siente resuelta y profesional sin perder velocidad ni energia.</div>
+          </div>
+        </article>
+      </div>
+      <button class="carousel-button" type="button" data-dir="1" aria-label="Siguiente">&#8594;</button>
+    </div>
+  </section>
+
+  <section class="service-strip">
+    <div class="service-chip">
+      <strong>Branding</strong>
+      <span>Identidades con voz, no logos sueltos.</span>
+    </div>
+    <div class="service-chip">
+      <strong>Publicidad</strong>
+      <span>Campañas con criterio y lectura rápida.</span>
+    </div>
+    <div class="service-chip">
+      <strong>Producción</strong>
+      <span>Foto y video con dirección seria.</span>
+    </div>
+    <div class="service-chip">
+      <strong>Digital</strong>
+      <span>Contenido y presencia para pantallas reales.</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Sistema de marca</div>
+        <h2 class="section-title">Diseño y sistema visual para que la marca se sostenga completa.</h2>
+        <p class="section-copy">Identidad, gráfica y composición para que cada punto de contacto se sienta parte del mismo mundo visual.</p>
+      </div>
+      <a class="section-link" href="portfolio.html">Ver mas</a>
+    </div>
+
+    <div class="carousel-shell" data-carousel>
+      <button class="carousel-button" type="button" data-dir="-1" aria-label="Anterior">&#8592;</button>
+      <div class="carousel-track">
+        <article class="work-card">
+          <img src="assets/images/portfolio-01.png" alt="Diseño seleccionado 1" loading="lazy">
+          <div class="work-meta">
+            <div class="work-tag">Identidad</div>
+            <div class="work-title">Marcas que entran con claridad.</div>
+            <div class="work-copy">Jerarquia, composicion y presencia visual desde el primer vistazo.</div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <img src="assets/images/portfolio-04.png" alt="Diseño seleccionado 2" loading="lazy">
+          <div class="work-meta">
+            <div class="work-tag">Sistema</div>
+            <div class="work-title">Lenguajes visuales que no se improvisan.</div>
+            <div class="work-copy">Color, ritmo y estructura para que cada pieza hable el mismo idioma.</div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <img src="assets/images/portfolio-07.png" alt="Diseño seleccionado 3" loading="lazy">
+          <div class="work-meta">
+            <div class="work-tag">Composicion</div>
+            <div class="work-title">Composición con fuerza editorial.</div>
+            <div class="work-copy">Diseño que se ve pensado y resiste distintas superficies.</div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <img src="assets/images/portfolio-10.png" alt="Diseño seleccionado 4" loading="lazy">
+          <div class="work-meta">
+            <div class="work-tag">Campaña</div>
+            <div class="work-title">Piezas que trabajan como conjunto.</div>
+            <div class="work-copy">No decoran. Construyen la percepcion de la marca.</div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <img src="assets/images/portfolio-12.png" alt="Diseño seleccionado 5" loading="lazy">
+          <div class="work-meta">
+            <div class="work-tag">Grafica</div>
+            <div class="work-title">Imágenes con peso y dirección.</div>
+            <div class="work-copy">La gráfica acompaña la estrategia, no se queda aparte.</div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <img src="assets/images/portfolio-14.png" alt="Diseño seleccionado 6" loading="lazy">
+          <div class="work-meta">
+            <div class="work-tag">Sistema</div>
+            <div class="work-title">Consistencia sin sentirse fria.</div>
+            <div class="work-copy">Una marca puede ser clara, viva y recordable a la vez.</div>
+          </div>
+        </article>
+      </div>
+      <button class="carousel-button" type="button" data-dir="1" aria-label="Siguiente">&#8594;</button>
+    </div>
+  </section>
+
+  <div class="client-row">
+    <span>Rimas Publishing</span>
+    <span>Fundación Good Bunny</span>
+    <span>New York Mets</span>
+    <span>Cangrejeros de Santurce</span>
+    <span>San Juan, Puerto Rico</span>
+  </div>
+
+  <section class="cta">
+    <div>
+      <div class="eyebrow">Contacto</div>
+      <h2>Si el proyecto importa, ya es momento de hablar.</h2>
+      <p>Tienes una idea, una marca o una campaña que necesita verse como se siente. Escríbenos y la aterrizamos con criterio visual y ejecución seria.</p>
+      <div class="cta-meta">787-644-1276 / info@mascreativapublicidad.com / 1105 Ave. Franklin Delano Roosevelt, Suite 5, San Juan, PR 00920</div>
+    </div>
+
+    <div class="cta-actions">
+      <a class="button-primary" href="contacto.html">Agendar consulta</a>
+      <a class="button-secondary" href="https://wa.me/17876441276" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brandline">+MasCreativa Publicidad — Branding, publicidad y contenido visual para marcas que se rehúsan a ser olvidables.</div>
+      <div class="footer-meta">2026 / Creatividad que no pide permiso / <a href="terms.html">Términos</a> / <a href="privacy.html">Privacidad</a></div>
+    </div>
+    <div class="footer-socials">
+      <a href="https://instagram.com/mas_creativa_pr" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/17876441276" target="_blank" rel="noopener" style="color:#25D366;">WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var body = document.body;
+    var checkbox = document.getElementById("themeCheckbox");
+    var themeColor = document.querySelector('meta[name="theme-color"]');
+    var theme = "light";
+
+    try {
+      var stored = localStorage.getItem("mcp-mode");
+      if (stored === "light" || stored === "dark") {
+        theme = stored;
+      }
+    } catch (error) {}
+
+    function applyTheme(nextTheme) {
+      body.setAttribute("data-theme", nextTheme);
+      if (checkbox) {
+        checkbox.checked = nextTheme === "dark";
+      }
+      if (themeColor) {
+        themeColor.setAttribute("content", nextTheme === "dark" ? "#070b13" : "#f4f8ff");
+      }
+      try {
+        localStorage.setItem("mcp-mode", nextTheme);
+      } catch (error) {}
+    }
+
+    if (checkbox) {
+      checkbox.addEventListener("change", function () {
+        applyTheme(checkbox.checked ? "dark" : "light");
+      });
+    }
+
+    applyTheme(theme);
+  })();
+
+  (function () {
+    var wrap = document.querySelector(".cabinet-wrap");
+    var chest = document.querySelector(".chest-container");
+    if (!wrap || !chest) return;
+
+    var drawerLinks = Array.prototype.slice.call(document.querySelectorAll(".drawer-link"));
+    var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+    var rotX = -16;
+    var rotY = 24;
+    var velX = 0;
+    var velY = 0;
+    var lastX = 0;
+    var lastY = 0;
+    var dragging = false;
+    var dragMoved = false;
+    var rafId = 0;
+
+    function applyTransform() {
+      chest.style.transform = "rotateX(" + rotX + "deg) rotateY(" + rotY + "deg)";
+    }
+
+    function startMomentum() {
+      if (reducedMotion || rafId) return;
+
+      function tick() {
+        velX *= 0.95;
+        velY *= 0.95;
+
+        if (Math.abs(velX) < 0.01 && Math.abs(velY) < 0.01) {
+          rafId = 0;
+          return;
+        }
+
+        rotY += velX;
+        rotX -= velY;
+        applyTransform();
+        rafId = requestAnimationFrame(tick);
+      }
+
+      rafId = requestAnimationFrame(tick);
+    }
+
+    function stopMomentum() {
+      if (!rafId) return;
+      cancelAnimationFrame(rafId);
+      rafId = 0;
+    }
+
+    function release(pointerId) {
+      if (!dragging) return;
+      dragging = false;
+      wrap.classList.remove("is-dragging");
+
+      if (pointerId !== undefined && wrap.releasePointerCapture) {
+        try {
+          wrap.releasePointerCapture(pointerId);
+        } catch (error) {}
+      }
+
+      startMomentum();
+
+      window.setTimeout(function () {
+        dragMoved = false;
+      }, 0);
+    }
+
+    wrap.addEventListener("pointerdown", function (event) {
+      if (event.button !== undefined && event.button !== 0) return;
+      stopMomentum();
+      dragging = true;
+      dragMoved = false;
+      velX = 0;
+      velY = 0;
+      lastX = event.clientX;
+      lastY = event.clientY;
+      wrap.classList.add("is-dragging");
+
+      if (wrap.setPointerCapture) {
+        try {
+          wrap.setPointerCapture(event.pointerId);
+        } catch (error) {}
+      }
+    });
+
+    wrap.addEventListener("pointermove", function (event) {
+      if (!dragging) return;
+
+      var dx = event.clientX - lastX;
+      var dy = event.clientY - lastY;
+
+      if (Math.abs(dx) + Math.abs(dy) > 2) {
+        dragMoved = true;
+      }
+
+      rotY += dx * 0.42;
+      rotX -= dy * 0.34;
+      velX = dx * 0.12;
+      velY = dy * 0.1;
+      lastX = event.clientX;
+      lastY = event.clientY;
+      applyTransform();
+    });
+
+    wrap.addEventListener("pointerup", function (event) {
+      release(event.pointerId);
+    });
+
+    wrap.addEventListener("pointercancel", function (event) {
+      release(event.pointerId);
+    });
+
+    wrap.addEventListener("pointerleave", function (event) {
+      if (dragging && event.pointerType === "mouse") {
+        release(event.pointerId);
+      }
+    });
+
+    function closeDrawers(exceptLink) {
+      drawerLinks.forEach(function (link) {
+        if (link !== exceptLink) {
+          link.classList.remove("is-open");
+        }
+      });
+    }
+
+    drawerLinks.forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        if (dragMoved) {
+          event.preventDefault();
+          return;
+        }
+
+        if (!coarsePointer) return;
+
+        if (!link.classList.contains("is-open")) {
+          event.preventDefault();
+          closeDrawers(link);
+          link.classList.add("is-open");
+          return;
+        }
+
+        closeDrawers(link);
+      });
+    });
+
+    document.addEventListener("pointerdown", function (event) {
+      if (!coarsePointer) return;
+      if (wrap.contains(event.target)) return;
+      closeDrawers();
+    });
+
+    applyTransform();
+  })();
+
+  (function () {
+    document.querySelectorAll("[data-carousel]").forEach(function (carousel) {
+      var track = carousel.querySelector(".carousel-track");
+      if (!track) return;
+
+      carousel.querySelectorAll(".carousel-button").forEach(function (button) {
+        button.addEventListener("click", function () {
+          var direction = Number(button.getAttribute("data-dir")) || 1;
+          track.scrollBy({ left: Math.max(track.clientWidth * 0.84, 280) * direction, behavior: "smooth" });
+        });
+      });
+    });
+  })();
+</script>
+</body>
+</html>

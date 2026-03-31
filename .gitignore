@@ -1,0 +1,29 @@
+# Raw source videos (4GB+, not for web)
+*.mp4
+!assets/videos/*.mp4
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Dev config
+.claude/
+
+# Unused JS libraries
+three.r134.min.js
+vanta.dots.min.js
+vanta.clouds.min.js
+vanta.clouds2.min.js
+
+# Source content docs
+site-content.md
+
+# Random root files (not site assets)
+*.MOV
+*.mov
+ChatGPT*.png
+Raphy.jpg
+New-York-Mets-Logo.png
+IMG_*.MOV
+raphy-floating.png
+
