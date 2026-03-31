@@ -204,6 +204,9 @@
   .brand-mark-dark { display: none; }
   body[data-theme="dark"] .brand-mark-light { display: none; }
   body[data-theme="dark"] .brand-mark-dark { display: block; }
+  .hero-logo-dark { display: none; }
+  body[data-theme="dark"] .hero-logo-light { display: none; }
+  body[data-theme="dark"] .hero-logo-dark { display: block; }
   body[data-theme="dark"] .brand-mark {
     background: linear-gradient(145deg, rgba(31, 40, 61, 0.94), rgba(18, 24, 39, 0.92));
   }
@@ -954,7 +957,7 @@
 
   .cabinet-note {
     position: absolute;
-    bottom: 34px;
+    bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
     font-family: "JetBrains Mono", monospace;
@@ -1262,11 +1265,12 @@
     overflow: hidden;
   }
 
-  .stack-card:nth-child(1) .stack-card-visual { background: linear-gradient(145deg, #b0bec5 0%, #8e9eab 100%); }
-  .stack-card:nth-child(2) .stack-card-visual { background: linear-gradient(145deg, #c8b8a4 0%, #a89880 100%); }
-  .stack-card:nth-child(3) .stack-card-visual { background: linear-gradient(145deg, #a4b8a0 0%, #84987c 100%); }
-  .stack-card:nth-child(4) .stack-card-visual { background: linear-gradient(145deg, #c4b4b4 0%, #a49494 100%); }
-  .stack-card:nth-child(5) .stack-card-visual { background: linear-gradient(145deg, #b4b8c4 0%, #949cac 100%); }
+  .stack-card-visual video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .stack-card-visual { background: #111; }
 
   .stack-card-badge {
     position: absolute;
@@ -1721,8 +1725,8 @@
 
 <!-- Logo centered -->
 <div style="position:fixed;top:28px;left:50%;transform:translateX(-50%);z-index:40;pointer-events:none;">
-  <img class="brand-mark brand-mark-light" src="assets/images/logo-d.PNG" alt="MasCreativa logo" style="height:80px;display:block;">
-  <img class="brand-mark brand-mark-dark" src="assets/images/logo-w.PNG" alt="MasCreativa logo" style="height:80px;display:none;">
+  <img class="hero-logo hero-logo-light" src="assets/images/logo-d.PNG" alt="MasCreativa logo" style="height:100px;display:block;">
+  <img class="hero-logo hero-logo-dark" src="assets/images/logo-w.PNG" alt="MasCreativa logo" style="height:100px;display:none;">
 </div>
 
 <!-- Theme toggle -->
@@ -1761,13 +1765,6 @@
         </h1>
         <p>Somos una agencia creativa en San Juan que produce campanas, identidades y contenido visual que la gente no puede ignorar. Llevamos anos haciendolo y los numeros lo confirman.</p>
 
-        <div class="hero-proof">
-          <div class="hero-proof-top">
-            <div class="hero-proof-number">+100M</div>
-            <div class="hero-proof-copy">vistas en video producidas en 2025</div>
-          </div>
-          <div class="hero-proof-clients">Rimas Publishing · Fundación Good Bunny · New York Mets · Cangrejeros de Santurce · Comisión de Seguridad en el Tránsito</div>
-        </div>
 
         <div class="hero-actions">
           <a class="button-primary" href="portfolio.html">Ver portafolio</a>
@@ -1957,23 +1954,23 @@
     <div class="stack-wrapper">
       <div class="stack-stage" id="stackStage">
         <div class="stack-card" data-pos="0">
-          <div class="stack-card-visual"><div class="stack-card-badge">Branding</div><div class="stack-card-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div></div>
+          <div class="stack-card-visual"><video autoplay muted loop playsinline preload="none" src="assets/videos/carousel-01.mp4"></video><div class="stack-card-badge">Branding</div></div>
           <div class="stack-card-content"><div class="stack-card-title">Rimas Publishing</div><div class="stack-card-sub">Identidad visual completa para el sello discografico detras de los artistas mas grandes del genero urbano.</div></div>
         </div>
         <div class="stack-card" data-pos="1">
-          <div class="stack-card-visual"><div class="stack-card-badge">Video</div><div class="stack-card-icon"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+          <div class="stack-card-visual"><video autoplay muted loop playsinline preload="none" src="assets/videos/carousel-03.mp4"></video><div class="stack-card-badge">Video</div></div>
           <div class="stack-card-content"><div class="stack-card-title">RYO -- Making of Delito</div><div class="stack-card-sub">Direccion, produccion y edicion del behind-the-scenes. Contenido que conecta al artista con su audiencia.</div></div>
         </div>
         <div class="stack-card" data-pos="2">
-          <div class="stack-card-visual"><div class="stack-card-badge">Corporativo</div><div class="stack-card-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div></div>
+          <div class="stack-card-visual"><video autoplay muted loop playsinline preload="none" src="assets/videos/carousel-05.mp4"></video><div class="stack-card-badge">Corporativo</div></div>
           <div class="stack-card-content"><div class="stack-card-title">Cangrejeros de Santurce</div><div class="stack-card-sub">Video promocional para la temporada BSN. Energia, identidad y orgullo de Santurce en cada frame.</div></div>
         </div>
         <div class="stack-card" data-pos="3">
-          <div class="stack-card-visual"><div class="stack-card-badge">TV 4K</div><div class="stack-card-icon"><svg viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 00-2 2v9a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></div></div>
+          <div class="stack-card-visual"><video autoplay muted loop playsinline preload="none" src="assets/videos/carousel-07.mp4"></video><div class="stack-card-badge">TV 4K</div></div>
           <div class="stack-card-content"><div class="stack-card-title">CST -- Ponte en sus Zapatos</div><div class="stack-card-sub">Campana de seguridad vial en television 4K. Mensaje que salva vidas, produccion que no se olvida.</div></div>
         </div>
         <div class="stack-card" data-pos="4">
-          <div class="stack-card-visual"><div class="stack-card-badge">Musica</div><div class="stack-card-icon"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div></div>
+          <div class="stack-card-visual"><video autoplay muted loop playsinline preload="none" src="assets/videos/carousel-09.mp4"></video><div class="stack-card-badge">Musica</div></div>
           <div class="stack-card-content"><div class="stack-card-title">Janaimar -- Para Mi</div><div class="stack-card-sub">Video musical completo: direccion, fotografia y edicion. Cada toma cuenta la historia de la cancion.</div></div>
         </div>
       </div>
