@@ -524,9 +524,7 @@
 
   .hero {
     position: relative;
-    padding: calc(var(--header-h) + 50px) 0 54px;
-    margin-top: calc(var(--header-h) * -1 - 16px);
-    padding-top: calc(var(--header-h) * 2 + 50px);
+    padding: calc(var(--header-h) + 40px) 0 54px;
     overflow: hidden;
   }
 
@@ -1861,10 +1859,10 @@
 <body data-theme="light">
 <div class="bg-grid" aria-hidden="true"></div>
 
-<!-- Logo centered -->
-<div style="text-align:center;padding:28px 0 0;position:relative;z-index:40;">
-  <img class="hero-logo hero-logo-light" src="assets/images/logo-d.PNG" alt="MasCreativa logo" style="height:100px;display:block;margin:0 auto;">
-  <img class="hero-logo hero-logo-dark" src="assets/images/logo-w.PNG" alt="MasCreativa logo" style="height:100px;display:none;margin:0 auto;">
+<!-- Logo centered (fixed over hero) -->
+<div style="position:fixed;top:16px;left:0;right:0;z-index:40;text-align:center;pointer-events:none;">
+  <img class="hero-logo hero-logo-light" src="assets/images/logo-d.PNG" alt="MasCreativa logo" style="height:80px;display:block;margin:0 auto;">
+  <img class="hero-logo hero-logo-dark" src="assets/images/logo-w.PNG" alt="MasCreativa logo" style="height:80px;display:none;margin:0 auto;">
 </div>
 
 <!-- Theme toggle -->
