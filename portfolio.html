@@ -459,6 +459,15 @@ html, body {
     color: rgba(255,255,255,0.5);
     max-width: 600px;
 }
+.project-hero-video {
+    width: 100%;
+    overflow: hidden;
+}
+.project-hero-video video {
+    width: 100%; height: auto;
+    display: block;
+    background: #000;
+}
 .project-hero-img {
     width: 100%;
     overflow: hidden;
@@ -489,7 +498,7 @@ html, body {
 }
 .project-videos {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 4px;
     padding: 4px 0 0;
 }
@@ -650,22 +659,22 @@ html, body {
         <p class="project-desc">Cobertura fotográfica y de video del Puerto Rico Boat Show 2025. Tres días de producción capturando la energía, el ambiente y los mejores momentos del evento náutico más grande de la isla.</p>
       </div>
       <div class="project-media">
-        <div class="project-hero-img">
-          <img src="assets/images/boatshow-pr-2025/aerial-marina.jpg" alt="Vista aérea del Puerto Rico Boat Show 2025" loading="lazy">
+        <div class="project-hero-video">
+          <video controls preload="metadata" poster="assets/images/boatshow-pr-2025/aerial-marina.jpg">
+            <source src="assets/videos/boatshow-pr-2025-dia2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="project-videos">
+          <video controls preload="metadata" poster="assets/images/boatshow-pr-2025/sunset-fleet.jpg">
+            <source src="assets/videos/boatshow-pr-2025-dia3.mp4" type="video/mp4">
+          </video>
         </div>
         <div class="project-grid">
+          <img src="assets/images/boatshow-pr-2025/aerial-marina.jpg" alt="Vista aérea del Puerto Rico Boat Show 2025" loading="lazy">
           <img src="assets/images/boatshow-pr-2025/sunset-fleet.jpg" alt="Atardecer sobre la flota en el Boat Show" loading="lazy">
           <img src="assets/images/boatshow-pr-2025/family-marina.jpg" alt="Familia en el muelle del Boat Show" loading="lazy">
           <img src="assets/images/boatshow-pr-2025/marine-art-detail.jpg" alt="Arte marino en el Boat Show" loading="lazy">
           <img src="assets/images/boatshow-pr-2025/live-concert.jpg" alt="Concierto en vivo en el Boat Show" loading="lazy">
-        </div>
-        <div class="project-videos">
-          <video controls preload="metadata" poster="assets/images/boatshow-pr-2025/aerial-marina.jpg">
-            <source src="assets/videos/boatshow-pr-2025-dia2.mp4" type="video/mp4">
-          </video>
-          <video controls preload="metadata" poster="assets/images/boatshow-pr-2025/sunset-fleet.jpg">
-            <source src="assets/videos/boatshow-pr-2025-dia3.mp4" type="video/mp4">
-          </video>
         </div>
       </div>
       <div class="project-footer">
