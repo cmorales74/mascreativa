@@ -399,12 +399,11 @@
     z-index: 1;
   }
 
-  /* Sections after hero need solid bg so they don't show through to dark video */
+  /* Sections after hero need proper z-index layering */
   .hero ~ .section,
   .hero ~ section.cta {
     position: relative;
     z-index: 2;
-    background: var(--bg);
   }
 
   .hero {
@@ -1264,17 +1263,6 @@
     width: var(--content);
     margin: 56px auto 0;
     padding: clamp(26px, 4vw, 36px);
-    border: 1px solid var(--line);
-    border-radius: 30px;
-    background:
-      radial-gradient(circle at 16% 50%, var(--blue-glow), transparent 28%),
-      radial-gradient(circle at 88% 12%, var(--purple-glow), transparent 26%),
-      var(--panel);
-    box-shadow: var(--shadow);
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 24px;
-    align-items: center;
   }
 
   .cta h2 {
@@ -1992,15 +1980,15 @@
     <div class="stack-wrapper">
       <div class="stack-stage" id="stackStage">
         <div class="stack-card" data-pos="0">
-          <div class="stack-card-visual"><video muted loop playsinline preload="none" src="assets/videos/turismo-interno.mp4?v=1"></video><div class="stack-card-badge">Turismo</div></div>
+          <div class="stack-card-visual"><video autoplay muted loop playsinline preload="metadata" src="assets/videos/turismo-interno.mp4?v=1"></video><div class="stack-card-badge">Turismo</div></div>
           <div class="stack-card-content"><div class="stack-card-title">Turismo Interno</div><div class="stack-card-sub">Producción audiovisual para la campaña de turismo interno de Puerto Rico. Isla, cultura y experiencia en cada toma.</div></div>
         </div>
         <div class="stack-card" data-pos="1">
-          <div class="stack-card-visual"><video muted loop playsinline preload="none" src="assets/videos/sounds-of-puerto-rico.mp4?v=1"></video><div class="stack-card-badge">Documental</div></div>
+          <div class="stack-card-visual"><video autoplay muted loop playsinline preload="metadata" src="assets/videos/sounds-of-puerto-rico.mp4?v=1"></video><div class="stack-card-badge">Documental</div></div>
           <div class="stack-card-content"><div class="stack-card-title">Sounds of Puerto Rico</div><div class="stack-card-sub">La música, los sonidos y la identidad sonora de Puerto Rico capturados en video.</div></div>
         </div>
         <div class="stack-card" data-pos="2">
-          <div class="stack-card-visual"><video muted loop playsinline preload="none" src="assets/videos/rum-of-taste.mp4?v=1"></video><div class="stack-card-badge">Gastronomía</div></div>
+          <div class="stack-card-visual"><video autoplay muted loop playsinline preload="metadata" src="assets/videos/rum-of-taste.mp4?v=1"></video><div class="stack-card-badge">Gastronomía</div></div>
           <div class="stack-card-content"><div class="stack-card-title">Taste of Rum</div><div class="stack-card-sub">Producción para Rums of Puerto Rico. La campaña Taste of Rum, celebrando ron, sabor y tradición boricua.</div></div>
         </div>
       </div>
@@ -2028,19 +2016,20 @@
   </div>
 
   <section class="cta reveal-section" style="text-align:center;padding:60px 20px;">
+    <div style="font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(32px,7vw,64px);font-weight:900;letter-spacing:-0.03em;text-transform:uppercase;color:var(--text);line-height:0.95;margin-bottom:28px;">MÁS CREATIVA<br>PUBLICIDAD</div>
     <a class="cta-mega-btn" href="portfolio.html">Ver portafolio</a>
   </section>
 </main>
 
 <footer class="site-footer">
   <div class="footer-inner">
+    <div class="footer-socials" style="margin-bottom:16px;">
+      <a href="https://instagram.com/mas_creativa_pr" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/17876441276" target="_blank" rel="noopener" style="color:#25D366;">WhatsApp</a>
+    </div>
     <div>
       <div class="footer-brandline">+MasCreativa Publicidad. Agencia creativa en San Juan, Puerto Rico.</div>
       <div class="footer-meta">2026 / Creatividad que no pide permiso / <a href="terms.html">Términos</a> / <a href="privacy.html">Privacidad</a></div>
-    </div>
-    <div class="footer-socials">
-      <a href="https://instagram.com/mas_creativa_pr" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://wa.me/17876441276" target="_blank" rel="noopener" style="color:#25D366;">WhatsApp</a>
     </div>
   </div>
 </footer>
