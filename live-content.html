@@ -7,8 +7,21 @@
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#F5F0EB">
-<title>Live Content | +MasCreativa Publicidad</title>
-<meta name="description" content="Live Content de +MasCreativa Publicidad: servicio de producción de contenido viral en tiempo real para eventos deportivos, conciertos, conferencias y activaciones de marca en Puerto Rico.">
+<title>Live Content | MasCreativa Publicidad</title>
+<meta name="description" content="Produccion de contenido en vivo para eventos, deportes y marcas en Puerto Rico.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mascreativapublicidad.com/live-content.html">
+<meta property="og:title" content="Live Content | MasCreativa Publicidad">
+<meta property="og:description" content="Produccion de contenido en vivo para eventos, deportes y marcas en Puerto Rico.">
+<meta property="og:image" content="https://mascreativapublicidad.com/assets/images/logo-d.PNG">
+<meta property="og:locale" content="es_PR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Live Content | MasCreativa Publicidad">
+<meta name="twitter:description" content="Produccion de contenido en vivo para eventos, deportes y marcas en Puerto Rico.">
+<meta name="twitter:image" content="https://mascreativapublicidad.com/assets/images/logo-d.PNG">
+<link rel="icon" type="image/png" href="logo-icon.png">
+<link rel="apple-touch-icon" href="logo-icon.png">
+<link rel="canonical" href="https://mascreativapublicidad.com/live-content.html">
 <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800,900&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -39,7 +52,6 @@ a {
     --blue-strong: #38baf7;
     --purple: #7a70ff;
     --purple-strong: #6358ff;
-    --blue-glow: rgba(56, 186, 247, 0.22);
     --glass-bg: rgba(255,255,255,0.45);
     --glass-border: rgba(255,255,255,0.5);
     --glass-shadow: 0 8px 32px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
@@ -57,7 +69,6 @@ body[data-theme="dark"] {
     --blue-strong: #49c7ff;
     --purple: #9787ff;
     --purple-strong: #7d6aff;
-    --blue-glow: rgba(73, 199, 255, 0.16);
     --glass-bg: rgba(255,255,255,0.08);
     --glass-border: rgba(255,255,255,0.12);
     --glass-shadow: 0 8px 32px rgba(0,0,0,0.2), 0 2px 8px rgba(0,0,0,0.15);
@@ -75,27 +86,10 @@ html, body {
     user-select: none; -webkit-user-select: none;
 }
 
-/* ===== PAGE NAV ===== */
-.page-nav {
-    display: flex; justify-content: center; gap: 24px;
-    padding: 16px 0;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; font-weight: 500;
-    letter-spacing: 0.12em; text-transform: uppercase;
-}
-.page-nav a {
-    color: var(--muted); text-decoration: none;
-    transition: color 0.2s;
-}
-.page-nav a:hover { color: var(--blue-strong); }
-.page-nav a.active-link { color: var(--blue-strong); }
-
 /* Hamburger menu - hidden on desktop */
 .mobile-menu-btn { display: none; }
 .mobile-overlay { display: none; }
 @media (max-width: 640px) {
-    .page-nav { display: none; }
-    .page-nav a { padding: 8px 4px; }
     .mobile-menu-btn {
       display: flex;
       position: fixed; top: 28px; left: 20px; z-index: 1000;
@@ -201,6 +195,19 @@ html, body {
 @media (max-width: 640px) {
     .theme-switch-wrap { right: 12px; top: 12px; }
     .theme-switch { --toggle-size: 13px; }
+    .page-header {
+      padding-inline: 16px;
+    }
+    .page-title {
+      max-width: 320px;
+      margin-inline: auto;
+      font-size: clamp(28px, 8.8vw, 40px);
+      text-wrap: balance;
+      white-space: normal;
+    }
+    .page-subtitle {
+      letter-spacing: 0.12em;
+    }
 }
 
 /* ===== LAYOUT ===== */
@@ -239,24 +246,6 @@ html, body {
     padding: 40px 24px 60px;
     max-width: 720px;
     margin: 0 auto;
-}
-.lc-hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--blue-strong);
-    margin-bottom: 8px;
-}
-.lc-hero-eyebrow::before {
-    content: '';
-    width: 42px;
-    height: 1px;
-    background: linear-gradient(90deg, var(--blue-strong), transparent);
 }
 .lc-hero-subtitle {
     font-family: 'JetBrains Mono', monospace;
@@ -365,6 +354,17 @@ html, body {
 .lc-section p strong {
     color: var(--text);
     font-weight: 700;
+}
+
+/* ===== SHOWCASE HEADING ===== */
+.lc-showcase-heading {
+    text-align: center;
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: clamp(20px, 4vw, 32px);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--text);
 }
 
 /* ===== VERTICAL VIDEO SHOWCASE (scrapbook) ===== */
@@ -570,6 +570,11 @@ html, body {
     color: var(--blue-strong);
     line-height: 1;
     margin-bottom: 12px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.dato-number.dato-visible {
+    opacity: 1;
 }
 .dato-number .plus { color: #e84455; }
 .dato-label {
@@ -669,7 +674,7 @@ html, body {
     padding: 0 0;
 }
 .faq-item.open .faq-answer {
-    max-height: 300px;
+    max-height: 600px;
     padding: 0 0 20px;
 }
 .faq-answer p {
@@ -768,75 +773,148 @@ html, body {
 
 /* ===== FOOTER ===== */
 .site-footer {
-    text-align: center;
+    margin-top: 56px;
     padding: 48px 20px 34px;
-    border-top: 1px solid var(--line);
     position: relative;
     z-index: 1;
     background: #121726;
     color: #edf1ff;
 }
-.site-footer .footer-socials a {
-    color: rgba(233, 239, 255, 0.6);
+
+.site-footer .footer-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 24px;
+    align-items: start;
 }
+
+.site-footer .footer-brandline,
+.site-footer .footer-contact,
+.site-footer .footer-meta,
 .site-footer .footer-socials a {
-    border-color: rgba(255, 255, 255, 0.12);
+    color: rgba(233, 239, 255, 0.62);
+}
+
+.footer-brandline {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 11px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.42);
+}
+
+.footer-contact {
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.32);
+}
+
+.footer-meta {
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.24);
+}
+
+.footer-contact a,
+.footer-meta a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer-socials {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.footer-socials a {
+    min-height: 40px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
     background: rgba(255, 255, 255, 0.06);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
-.site-footer .footer-socials a:hover {
+
+.footer-socials a:hover {
     background: rgba(255, 255, 255, 0.12);
     color: #fff;
+    transform: translateY(-1px);
 }
+
+.footer-socials a[href*="wa.me"] { color: #25D366; }
+.footer-socials a[href*="wa.me"]:hover { color: #25D366 !important; }
+
 body[data-theme="dark"] .site-footer {
     background: #F5F0EB;
     color: #121726;
 }
-body[data-theme="dark"] .site-footer .footer-socials a {
-    color: rgba(18, 23, 38, 0.6);
-}
+
 body[data-theme="dark"] .site-footer .footer-inner {
     border-top-color: rgba(0, 0, 0, 0.1);
 }
+
+body[data-theme="dark"] .site-footer .footer-brandline,
+body[data-theme="dark"] .site-footer .footer-contact,
+body[data-theme="dark"] .site-footer .footer-meta,
+body[data-theme="dark"] .site-footer .footer-socials a {
+    color: rgba(18, 23, 38, 0.62);
+}
+
 body[data-theme="dark"] .site-footer .footer-socials a {
     border-color: rgba(0, 0, 0, 0.12);
     background: rgba(0, 0, 0, 0.04);
 }
+
 body[data-theme="dark"] .site-footer .footer-socials a:hover {
     background: rgba(0, 0, 0, 0.1);
     color: #121726;
 }
-body[data-theme="dark"] .site-footer .footer-tagline { color: rgba(18, 23, 38, 0.4); }
-body[data-theme="dark"] .site-footer .footer-copy { color: rgba(18, 23, 38, 0.25); }
-body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0.3); }
-.footer-tagline {
-    font-family: 'Satoshi', sans-serif;
-    font-size: 11px; font-weight: 400;
-    color: rgba(255,255,255,0.25);
-    margin-bottom: 14px;
+
+body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #25D366; }
+
+@media (max-width: 900px) {
+    .footer-inner {
+        grid-template-columns: 1fr;
+    }
+    .footer-socials {
+        justify-content: flex-start;
+    }
 }
-.footer-socials {
-    display: flex; justify-content: center; gap: 20px;
-    margin-bottom: 12px;
-}
-.footer-socials a {
-    display: flex; align-items: center; gap: 6px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; letter-spacing: 1px;
-    text-transform: uppercase; text-decoration: none;
-    color: rgba(255,255,255,0.35);
-    transition: color 0.3s;
-}
-.footer-socials a:hover { color: #4AC9F7; }
-.footer-socials a[href*="wa.me"]:hover { color: #25D366 !important; }
-.footer-socials svg { width: 14px; height: 14px; fill: currentColor; }
-.footer-copy {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px; letter-spacing: 1px;
-    color: rgba(255,255,255,0.15);
-}
+
 @media (max-width: 640px) {
-    .footer-socials { gap: 14px; }
-    .footer-socials a { font-size: 9px; }
+    .site-footer {
+        padding-inline: 16px;
+    }
+    .footer-socials {
+        gap: 10px;
+    }
+    .footer-socials a {
+        min-height: 38px;
+        padding: 0 14px;
+        font-size: 0.62rem;
+    }
 }
 
 /* ===== SCROLL REVEAL ===== */
@@ -859,7 +937,6 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
-    video { autoplay: false; }
     .reveal-section {
         opacity: 1 !important;
         filter: none !important;
@@ -910,15 +987,6 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
   </label>
 </div>
 
-<nav class="page-nav">
-  <a href="index.html">Inicio</a>
-  <a href="services.html">Servicios</a>
-  <a href="portfolio.html">Portafolio</a>
-  <a href="about.html">Nosotros</a>
-  <a href="live-content.html" class="active-link">Live Content</a>
-  <a href="contacto.html">Contacto</a>
-</nav>
-
 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú">
   <span></span><span></span><span></span>
 </button>
@@ -935,7 +1003,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
 
 <div class="page-header reveal-section">
     <h1 class="page-title">Live Content</h1>
-    <p class="page-subtitle">Contenido en tiempo real</p>
+    <p class="page-subtitle">Contenido en Tiempo Real</p>
 </div>
 
 <!-- ===== HERO ===== -->
@@ -954,18 +1022,18 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
   <div class="lc-section-label">La realidad</div>
   <h2>Tu evento dura horas. La atención de tu audiencia dura segundos.</h2>
   <p>Organizas un evento brutal. La gente la pasa bien, las fotos se ven increíbles, todo fluyó perfecto. Pero el contenido se publica tres días después, cuando nadie se acuerda de lo que sintió. El algoritmo ya se movió. La conversación ya cambió.</p>
-  <p>La mayoría de las marcas tratan el contenido de eventos como una tarea de posproducción. Graban todo, lo guardan y, semanas después, publican un video resumen que ya nadie quiere ver. Eso no es estrategia. Eso es archivo.</p>
+  <p>La mayoría de las marcas tratan el contenido de eventos como una tarea de post-producción. Graban todo, lo guardan, y semanas después publican un recap que ya nadie quiere ver. Eso no es estrategia. Eso es archivo.</p>
   <p>El problema no es la calidad del evento. El problema es que el contenido llega tarde. Y en redes sociales, llegar tarde es lo mismo que no llegar.</p>
 </section>
 
 
 <!-- ===== LA SOLUCIÓN ===== -->
 <section class="lc-section reveal-section" id="la-solucion">
-  <div class="lc-section-label">Live Content de +MasCreativa</div>
+  <div class="lc-section-label">Live Content by +MasCreativa</div>
   <h2>Contenido viral, producido en vivo.</h2>
   <p>Live Content no es grabar y después editar. Es tener un equipo de producción en tu evento que está capturando, editando y publicando clips optimizados para redes mientras el evento sigue ocurriendo.</p>
   <p>Cada pieza sale con dirección creativa, cortes precisos, texto superpuesto, música licenciada y formato nativo para cada plataforma. No es contenido de celular con un filtro. Es producción profesional a velocidad de redes sociales.</p>
-  <p>Mientras tu audiencia comparte lo que está viviendo, tu marca ya tiene contenido profesional compitiendo por la misma atención. El resultado: alcance orgánico masivo, interacción real y un banco de contenido que sigue trabajando semanas después.</p>
+  <p>Mientras tu audiencia comparte lo que está viviendo, tu marca ya tiene contenido profesional compitiendo por la misma atención. El resultado: alcance orgánico masivo, engagement real y un banco de contenido que sigue trabajando semanas después.</p>
   <p><strong>Eso es Live Content. Es la diferencia entre documentar un evento y detonarlo.</strong></p>
 </section>
 
@@ -973,7 +1041,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
 <!-- ===== VERTICAL VIDEO SHOWCASE ===== -->
 <div class="lc-showcase reveal-section">
   <div class="lc-section-label" style="text-align:center;">Producido en vivo</div>
-  <h2 style="text-align:center;font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(20px,4vw,32px);font-weight:900;letter-spacing:-0.02em;text-transform:uppercase;color:var(--text);">Clips reales. Editados en minutos. Publicados al instante.</h2>
+  <h2 class="lc-showcase-heading">Clips reales. Editados en minutos. Publicados al instante.</h2>
   <div class="lc-showcase-scatter">
     <div class="lc-showcase-item reveal-section">
       <div class="lc-showcase-badge">WBC 2026</div>
@@ -1011,15 +1079,15 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
     <div class="step-card reveal-section">
       <div class="step-number">01</div>
       <div class="step-content">
-        <h3>Preproducción estratégica</h3>
-        <p>Antes del evento nos reunimos contigo para entender los objetivos, la audiencia y los momentos clave. Definimos un plan de contenido con formatos, plataformas y un mensaje alineado a tu marca.</p>
+        <h3>Pre-producción estratégica</h3>
+        <p>Antes del evento nos reunimos contigo para entender los objetivos, la audiencia y los momentos clave. Definimos un plan de contenido con formatos, plataformas y messaging alineado a tu marca.</p>
       </div>
     </div>
 
     <div class="step-card reveal-section">
       <div class="step-number">02</div>
       <div class="step-content">
-        <h3>Captura desde múltiples ángulos en vivo</h3>
+        <h3>Captura multi-ángulo en vivo</h3>
         <p>Nuestro equipo llega con cámaras profesionales, audio dedicado y operadores entrenados para capturar los momentos que importan. No grabamos todo. Grabamos lo que va a funcionar.</p>
       </div>
     </div>
@@ -1036,15 +1104,15 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       <div class="step-number">04</div>
       <div class="step-content">
         <h3>Publicación inmediata</h3>
-        <p>Los clips salen directo a las plataformas de tu marca mientras la audiencia todavía está en el evento. Historias, Reels, TikToks y publicaciones. Todo optimizado para cada formato nativo.</p>
+        <p>Los clips salen directo a las plataformas de tu marca mientras la audiencia todavía está en el evento. Stories, Reels, TikToks, posts. Todo optimizado para cada formato nativo.</p>
       </div>
     </div>
 
     <div class="step-card reveal-section">
       <div class="step-number">05</div>
       <div class="step-content">
-        <h3>Después del evento y banco de contenido</h3>
-        <p>Después del evento entregamos un paquete completo: video resumen editado, clips individuales, fotos procesadas y un banco de contenido listo para reutilizar en campañas futuras.</p>
+        <h3>Post-evento y banco de contenido</h3>
+        <p>Después del evento entregamos un paquete completo: recap editado, clips individuales, fotos procesadas y un banco de contenido listo para reutilizar en campañas futuras.</p>
       </div>
     </div>
 
@@ -1060,17 +1128,17 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
 
     <div class="case-card reveal-section">
       <h3>Deportes</h3>
-      <p>Ligas, torneos, carreras, peleas. Los momentos deportivos tienen una ventana de viralidad de minutos. Si el clip destacado no sale antes de que el fanático salga del recinto, perdiste la oportunidad. Producimos clips de jugadas, reacciones y ambiente mientras el juego sigue.</p>
+      <p>Ligas, torneos, carreras, peleas. Los momentos deportivos tienen una ventana de viralidad de minutos. Si el highlight no sale antes de que el fanático salga del venue, perdiste la oportunidad. Producimos clips de jugadas, reacciones y ambiente mientras el juego sigue.</p>
     </div>
 
     <div class="case-card reveal-section">
       <h3>Música y Conciertos</h3>
-      <p>El público ya está grabando con su celular. Tu marca debería estar publicando contenido profesional al mismo tiempo. Capturamos presentaciones, tomas del público, detrás de cámaras y momentos espontáneos que definen la experiencia del show.</p>
+      <p>El público ya está grabando con su celular. Tu marca debería estar publicando contenido profesional al mismo tiempo. Capturamos performances, crowd shots, behind-the-scenes y momentos espontáneos que definen la experiencia del show.</p>
     </div>
 
     <div class="case-card reveal-section">
       <h3>Corporativos y Conferencias</h3>
-      <p>Ponencias, paneles y espacios de networking. El contenido de conferencias tiene alcance más allá de los asistentes. Producimos frases clave, citas visuales y resúmenes cortos que extienden el impacto del evento a LinkedIn, X y más.</p>
+      <p>Keynotes, paneles, networking. El contenido de conferencias tiene alcance más allá de los asistentes. Producimos soundbites, citas visuales y resúmenes cortos que extienden el impacto del evento a LinkedIn, X y más.</p>
     </div>
 
     <div class="case-card reveal-section">
@@ -1103,23 +1171,23 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
     <div class="includes-col">
       <h3>Incluido</h3>
       <ul class="includes-list">
-        <li>Preproducción y plan de contenido</li>
+        <li>Pre-producción y plan de contenido</li>
         <li>Equipo de captura en sitio (cámara + audio)</li>
         <li>Editor en tiempo real durante el evento</li>
         <li>Clips editados y publicados en vivo</li>
         <li>Formatos nativos por plataforma (Reels, TikTok, Stories)</li>
         <li>Música licenciada y textos superpuestos</li>
-        <li>Banco de contenido para después del evento</li>
-        <li>Video resumen editado del evento completo</li>
+        <li>Banco de contenido post-evento</li>
+        <li>Recap editado del evento completo</li>
       </ul>
     </div>
     <div class="includes-col">
-      <h3>Opcionales</h3>
+      <h3>Opcional / Add-ons</h3>
       <ul class="includes-list">
         <li>Drone aéreo para tomas cinematográficas</li>
         <li>Segundo editor para mayor volumen</li>
         <li>Fotografía profesional del evento</li>
-        <li>Transmisión en vivo</li>
+        <li>Transmisión en vivo (livestream)</li>
         <li>Pauta digital para amplificar clips en tiempo real</li>
       </ul>
     </div>
@@ -1148,7 +1216,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
         <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
       </button>
       <div class="faq-answer">
-        <p>Depende de la duración y el tipo de evento. En promedio, un evento de 3 a 4 horas produce entre 8 y 15 clips editados listos para publicar, más el video resumen final. Eventos más largos o con múltiples escenarios pueden generar más.</p>
+        <p>Depende de la duración y el tipo de evento. En promedio, un evento de 3 a 4 horas produce entre 8 y 15 clips editados listos para publicar, más el recap final. Eventos más largos o con múltiples escenarios pueden generar más.</p>
       </div>
     </div>
 
@@ -1188,7 +1256,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
         <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
       </button>
       <div class="faq-answer">
-        <p>Cada evento es diferente, y el precio depende de la duración, el equipo necesario y los entregables. Escríbenos con los detalles de tu evento y te enviamos una cotización en menos de 24 horas.</p>
+        <p>Cada evento es diferente, y el precio depende de la duración, el equipo necesario y los deliverables. Escríbenos con los detalles de tu evento y te enviamos una cotización en menos de 24 horas.</p>
       </div>
     </div>
 
@@ -1208,7 +1276,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
         <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
       </button>
       <div class="faq-answer">
-        <p>Absolutamente. Live Content funciona todavía mejor cuando se integra con una estrategia de marketing digital, identidad de marca o pauta publicitaria. Lo armamos como un paquete completo según lo que necesites.</p>
+        <p>Absolutamente. Live Content funciona todavía mejor cuando se integra con una estrategia de marketing digital, branding o pauta publicitaria. Lo armamos como un paquete completo según lo que necesites.</p>
       </div>
     </div>
 
@@ -1218,7 +1286,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
 
 <!-- ===== CTA FINAL ===== -->
 <section class="cta-final reveal-section">
-  <h2>Tu próximo evento merece más que un video resumen.</h2>
+  <h2>Tu próximo evento merece más que un recap.</h2>
   <p class="cta-subtitle">Merece contenido que la gente vea, comparta y recuerde.</p>
   <a class="cta-mega-btn" href="contacto.html">Hablemos de tu evento</a>
   <a class="cta-phone" href="tel:+17876441276">Llámanos 787-644-1276</a>
@@ -1228,19 +1296,17 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
 
 <!-- ===== FOOTER ===== -->
 <footer class="site-footer" id="siteFooter">
-  <div class="footer-tagline">+MasCreativa Publicidad. Creatividad que no pide permiso.</div>
-  <div class="footer-socials">
-    <a href="https://instagram.com/mas_creativa_pr" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-      Instagram
-    </a>
-    <a href="https://wa.me/17876441276" target="_blank" rel="noopener" style="color:#25D366;">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      WhatsApp
-    </a>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brandline">+MasCreativa Publicidad. Creatividad que no pide permiso.</div>
+      <div class="footer-contact"><a href="tel:+17876441276">787-644-1276</a> · <a href="mailto:info@mascreativapublicidad.com">info@mascreativapublicidad.com</a></div>
+      <div class="footer-meta">San Juan, Puerto Rico / 2026 / <a href="terms.html">Términos</a> / <a href="privacy.html">Privacidad</a></div>
+    </div>
+    <div class="footer-socials">
+      <a href="https://instagram.com/mas_creativa_pr" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/17876441276" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
   </div>
-  <div class="footer-contact" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;color:rgba(255,255,255,0.2);margin-bottom:8px;"><a href="tel:+17876441276" style="color:inherit;text-decoration:none;">787-644-1276</a> · <a href="mailto:info@mascreativapublicidad.com" style="color:inherit;text-decoration:none;">info@mascreativapublicidad.com</a></div>
-  <div class="footer-copy">2026 +MasCreativa Publicidad. <a href="terms.html" style="color:inherit;text-decoration:underline;">Términos</a> · <a href="privacy.html" style="color:inherit;text-decoration:underline;">Privacidad</a></div>
 </footer>
 
 
@@ -1306,6 +1372,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
   var obs = new IntersectionObserver(function(entries){
     if(entries[0].isIntersecting && !fired){
       fired = true;
+      counter.parentElement.classList.add('dato-visible');
       var duration = 2200;
       var start = performance.now();
       function formatNum(n){

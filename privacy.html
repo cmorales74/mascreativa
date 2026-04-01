@@ -7,8 +7,21 @@
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#F5F0EB">
-<title>Política de Privacidad | +MasCreativa Publicidad</title>
-<meta name="description" content="+MasCreativa Publicidad es una agencia creativa en Puerto Rico especializada en branding, publicidad digital, fotografía, video y contenido visual para marcas que quieren destacar.">
+<title>Politica de Privacidad | MasCreativa Publicidad</title>
+<meta name="description" content="Politica de privacidad y manejo de datos de MasCreativa Publicidad.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mascreativapublicidad.com/privacy.html">
+<meta property="og:title" content="Politica de Privacidad | MasCreativa Publicidad">
+<meta property="og:description" content="Politica de privacidad y manejo de datos de MasCreativa Publicidad.">
+<meta property="og:image" content="https://mascreativapublicidad.com/assets/images/logo-d.PNG">
+<meta property="og:locale" content="es_PR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Politica de Privacidad | MasCreativa Publicidad">
+<meta name="twitter:description" content="Politica de privacidad y manejo de datos de MasCreativa Publicidad.">
+<meta name="twitter:image" content="https://mascreativapublicidad.com/assets/images/logo-d.PNG">
+<link rel="icon" type="image/png" href="logo-icon.png">
+<link rel="apple-touch-icon" href="logo-icon.png">
+<link rel="canonical" href="https://mascreativapublicidad.com/privacy.html">
 <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800,900&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -65,28 +78,12 @@ body {
     background: var(--bg);
     font-family: 'Satoshi', sans-serif;
     color: var(--text);
-    user-select: none; -webkit-user-select: none;
 }
 
-/* ===== PAGE NAV ===== */
-.page-nav {
-    display: flex; justify-content: center; gap: 24px;
-    padding: 16px 0;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; font-weight: 500;
-    letter-spacing: 0.12em; text-transform: uppercase;
-}
-.page-nav a {
-    color: var(--muted); text-decoration: none;
-    transition: color 0.2s;
-}
-.page-nav a:hover { color: var(--blue-strong); }
 /* Hamburger menu - hidden on desktop */
 .mobile-menu-btn { display: none; }
 .mobile-overlay { display: none; }
 @media (max-width: 640px) {
-    .page-nav { gap: 8px; font-size: 9px; }
-    .page-nav a { padding: 8px 4px; }
     .mobile-menu-btn {
       display: flex;
       position: fixed; top: 28px; left: 20px; z-index: 1000;
@@ -285,52 +282,136 @@ body {
 @media (max-width: 640px) {
     .theme-switch-wrap { right: 12px; top: 12px; }
     .theme-switch { --toggle-size: 13px; }
+    .page-header {
+      padding-inline: 16px;
+    }
+    .page-title {
+      max-width: 320px;
+      margin-inline: auto;
+      font-size: clamp(28px, 8.8vw, 40px);
+      text-wrap: balance;
+      white-space: normal;
+    }
+    .content-heading {
+      font-size: 14px;
+      line-height: 1.15;
+      text-wrap: balance;
+    }
+    .content-updated {
+      font-size: 9px;
+      letter-spacing: 1.5px;
+    }
 }
 
 /* ===== FOOTER ===== */
 .site-footer {
-    text-align: center;
+    margin-top: 56px;
     padding: 48px 20px 34px;
-    border-top: 1px solid var(--line);
     position: relative;
     z-index: 1;
     background: #121726;
     color: #edf1ff;
 }
 
+.site-footer .footer-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 24px;
+    align-items: start;
+}
+
 .site-footer .footer-brandline,
+.site-footer .footer-contact,
 .site-footer .footer-meta,
 .site-footer .footer-socials a {
-    color: rgba(233, 239, 255, 0.6);
+    color: rgba(233, 239, 255, 0.62);
 }
 
-.site-footer .footer-inner {
-    border-top-color: rgba(255, 255, 255, 0.1);
+.footer-brandline {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 11px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.42);
 }
 
-.site-footer .footer-socials a {
-    border-color: rgba(255, 255, 255, 0.12);
+.footer-contact {
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.32);
+}
+
+.footer-meta {
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.24);
+}
+
+.footer-contact a,
+.footer-meta a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer-socials {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.footer-socials a {
+    min-height: 40px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
     background: rgba(255, 255, 255, 0.06);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
-.site-footer .footer-socials a:hover {
+.footer-socials a:hover {
     background: rgba(255, 255, 255, 0.12);
     color: #fff;
+    transform: translateY(-1px);
 }
+
+.footer-socials a[href*="wa.me"] { color: #25D366; }
+.footer-socials a[href*="wa.me"]:hover { color: #25D366 !important; }
 
 body[data-theme="dark"] .site-footer {
     background: #F5F0EB;
     color: #121726;
 }
 
-body[data-theme="dark"] .site-footer .footer-brandline,
-body[data-theme="dark"] .site-footer .footer-meta,
-body[data-theme="dark"] .site-footer .footer-socials a {
-    color: rgba(18, 23, 38, 0.6);
-}
-
 body[data-theme="dark"] .site-footer .footer-inner {
     border-top-color: rgba(0, 0, 0, 0.1);
+}
+
+body[data-theme="dark"] .site-footer .footer-brandline,
+body[data-theme="dark"] .site-footer .footer-contact,
+body[data-theme="dark"] .site-footer .footer-meta,
+body[data-theme="dark"] .site-footer .footer-socials a {
+    color: rgba(18, 23, 38, 0.62);
 }
 
 body[data-theme="dark"] .site-footer .footer-socials a {
@@ -342,38 +423,30 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
     background: rgba(0, 0, 0, 0.1);
     color: #121726;
 }
-body[data-theme="dark"] .site-footer .footer-tagline { color: rgba(18, 23, 38, 0.4); }
-body[data-theme="dark"] .site-footer .footer-copy { color: rgba(18, 23, 38, 0.25); }
-body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0.3); }
-.footer-tagline {
-    font-family: 'Satoshi', sans-serif;
-    font-size: 11px; font-weight: 400;
-    color: rgba(255,255,255,0.25);
-    margin-bottom: 14px;
+
+body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #25D366; }
+
+@media (max-width: 900px) {
+    .footer-inner {
+        grid-template-columns: 1fr;
+    }
+    .footer-socials {
+        justify-content: flex-start;
+    }
 }
-.footer-socials {
-    display: flex; justify-content: center; gap: 20px;
-    margin-bottom: 12px;
-}
-.footer-socials a {
-    display: flex; align-items: center; gap: 6px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; letter-spacing: 1px;
-    text-transform: uppercase; text-decoration: none;
-    color: rgba(255,255,255,0.35);
-    transition: color 0.3s;
-}
-.footer-socials a:hover { color: #4AC9F7; }
-.footer-socials a[href*="wa.me"]:hover { color: #25D366 !important; }
-.footer-socials svg { width: 14px; height: 14px; fill: currentColor; }
-.footer-copy {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px; letter-spacing: 1px;
-    color: rgba(255,255,255,0.15);
-}
+
 @media (max-width: 640px) {
-    .footer-socials { gap: 14px; }
-    .footer-socials a { font-size: 9px; }
+    .site-footer {
+        padding-inline: 16px;
+    }
+    .footer-socials {
+        gap: 10px;
+    }
+    .footer-socials a {
+        min-height: 38px;
+        padding: 0 14px;
+        font-size: 0.62rem;
+    }
 }
 
 /* Scroll reveal: fade in from blur */
@@ -436,15 +509,6 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
   </label>
 </div>
 
-<nav class="page-nav">
-  <a href="index.html">Inicio</a>
-  <a href="services.html">Servicios</a>
-  <a href="portfolio.html">Portafolio</a>
-  <a href="about.html">Nosotros</a>
-  <a href="live-content.html">Live Content</a>
-  <a href="contacto.html">Contacto</a>
-</nav>
-
 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú">
   <span></span><span></span><span></span>
 </button>
@@ -465,11 +529,11 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
 
 <div class="content-wrapper reveal-section">
   <div class="content-card">
-    <div class="content-heading">Política de Privacidad de +MasCreativa Publicidad</div>
+    <h2 class="content-heading">Política de Privacidad de +MasCreativa Publicidad</h2>
     <div class="content-updated">Última actualización: marzo 2026</div>
     <div class="content-divider"></div>
 
-    <div class="section-number">1. Información que Recopilamos</div>
+    <h3 class="section-number">1. Información que Recopilamos</h3>
     <p class="section-text">Cuando utilizas nuestro formulario de contacto, recopilamos la siguiente información:</p>
     <ul class="section-list">
       <li>Nombre</li>
@@ -479,7 +543,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
     </ul>
     <p class="section-text">Esta información se recopila únicamente cuando tú decides enviarla voluntariamente.</p>
 
-    <div class="section-number">2. Uso de la Información</div>
+    <h3 class="section-number">2. Uso de la Información</h3>
     <p class="section-text">Utilizamos la información proporcionada exclusivamente para:</p>
     <ul class="section-list">
       <li>Responder a tu consulta o solicitud</li>
@@ -488,19 +552,19 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
     </ul>
     <p class="section-text">No utilizamos tu información para enviar correos no solicitados ni para fines de marketing sin tu consentimiento.</p>
 
-    <div class="section-number">3. Compartir Información</div>
+    <h3 class="section-number">3. Compartir Información</h3>
     <p class="section-text">No vendemos, intercambiamos ni transferimos tu información personal a terceros. Tu información se mantiene confidencial dentro de +MasCreativa Publicidad.</p>
 
-    <div class="section-number">4. Cookies y Tecnologías de Rastreo</div>
+    <h3 class="section-number">4. Cookies y Tecnologías de Rastreo</h3>
     <p class="section-text">Actualmente, este sitio no utiliza cookies de rastreo ni herramientas de analítica. Si en el futuro implementamos alguna tecnología de seguimiento, actualizaremos esta política.</p>
 
-    <div class="section-number">5. Seguridad</div>
+    <h3 class="section-number">5. Seguridad</h3>
     <p class="section-text">Tomamos medidas razonables para proteger la información que nos proporcionas. Sin embargo, ninguna transmisión de datos por internet es 100% segura, por lo que no podemos garantizar la seguridad absoluta de la información transmitida.</p>
 
-    <div class="section-number">6. Enlaces a Terceros</div>
+    <h3 class="section-number">6. Enlaces a Terceros</h3>
     <p class="section-text">Nuestro sitio contiene enlaces a plataformas externas como Instagram y WhatsApp. Estas plataformas tienen sus propias políticas de privacidad que te recomendamos revisar.</p>
 
-    <div class="section-number">7. Derechos del Usuario</div>
+    <h3 class="section-number">7. Derechos del Usuario</h3>
     <p class="section-text">Tienes derecho a:</p>
     <ul class="section-list">
       <li>Solicitar acceso a la información que tenemos sobre ti</li>
@@ -509,29 +573,27 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
     </ul>
     <p class="section-text">Para ejercer estos derechos, contáctanos por WhatsApp al 787-644-1276 o a través del formulario de contacto.</p>
 
-    <div class="section-number">8. Cambios a esta Política</div>
+    <h3 class="section-number">8. Cambios a esta Política</h3>
     <p class="section-text">Nos reservamos el derecho de actualizar esta política de privacidad. Cualquier cambio será publicado en esta página con la fecha de última revisión.</p>
 
-    <div class="section-number">9. Contacto</div>
+    <h3 class="section-number">9. Contacto</h3>
     <p class="section-text">Si tienes preguntas sobre esta política de privacidad, puedes contactarnos a través de nuestro formulario de contacto o por WhatsApp al 787-644-1276.</p>
   </div>
 </div>
 
 <!-- Footer -->
 <footer class="site-footer" id="siteFooter">
-  <div class="footer-tagline">+MasCreativa Publicidad. Creatividad que no pide permiso.</div>
-  <div class="footer-socials">
-    <a href="https://instagram.com/mas_creativa_pr" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-      Instagram
-    </a>
-    <a href="https://wa.me/17876441276" target="_blank" rel="noopener" style="color:#25D366;">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      WhatsApp
-    </a>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brandline">+MasCreativa Publicidad. Creatividad que no pide permiso.</div>
+      <div class="footer-contact"><a href="tel:+17876441276">787-644-1276</a> · <a href="mailto:info@mascreativapublicidad.com">info@mascreativapublicidad.com</a></div>
+      <div class="footer-meta">San Juan, Puerto Rico / 2026 / <a href="terms.html">Términos</a> / <a href="privacy.html">Privacidad</a></div>
+    </div>
+    <div class="footer-socials">
+      <a href="https://instagram.com/mas_creativa_pr" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/17876441276" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
   </div>
-  <div class="footer-contact" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;color:rgba(255,255,255,0.2);margin-bottom:8px;"><a href="tel:+17876441276" style="color:inherit;text-decoration:none;">787-644-1276</a> · <a href="mailto:info@mascreativapublicidad.com" style="color:inherit;text-decoration:none;">info@mascreativapublicidad.com</a></div>
-  <div class="footer-copy">2026 +MasCreativa Publicidad. Todos los derechos reservados.</div>
 </footer>
 
 <script>
@@ -544,7 +606,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
   try{var sv=localStorage.getItem('mcp-mode');if(sv==='dark')isDark=true;}catch(e){}
 
   function paint(isDarkMode){
-    // Set data-theme — CSS variables handle all colors
+    // Set data-theme -- CSS variables handle all colors
     document.body.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
 
     // Logo swap
@@ -579,6 +641,11 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
   if(menuBtn&&overlay){
     menuBtn.addEventListener('click',function(){
       overlay.classList.toggle('open');
+    });
+    overlay.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click',function(){
+        overlay.classList.remove('open');
+      });
     });
   }
 
