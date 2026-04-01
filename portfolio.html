@@ -702,6 +702,11 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
     .footer-socials a { font-size: 9px; }
 }
 
+/* Lazy video: show poster until loaded */
+video.lazy-video {
+    background: #000;
+}
+
 /* Scroll reveal: fade in from blur */
 .reveal-section {
     opacity: 0;
@@ -825,17 +830,17 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       </div>
       <div class="project-media">
         <div class="project-hero-video">
-          <video controls preload="metadata">
+          <video muted playsinline loop preload="none" class="lazy-video">
             <source src="assets/videos/hiram-bithorn-tv-redes.mp4" type="video/mp4">
           </video>
         </div>
         <div class="project-hero-video" style="margin-top:4px;">
-          <video controls preload="metadata">
+          <video muted playsinline loop preload="none" class="lazy-video">
             <source src="assets/videos/entrega-de-casas.mp4" type="video/mp4">
           </video>
         </div>
         <div class="project-hero-video" style="margin-top:4px;">
-          <video controls preload="metadata">
+          <video muted playsinline loop preload="none" class="lazy-video">
             <source src="assets/videos/unites-school-san-juan.mp4" type="video/mp4">
           </video>
         </div>
@@ -855,12 +860,12 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       </div>
       <div class="project-media">
         <div class="project-hero-video">
-          <video controls preload="metadata">
+          <video muted playsinline loop preload="none" class="lazy-video">
             <source src="assets/videos/jaylen-brown-pr.mp4" type="video/mp4">
           </video>
         </div>
         <div class="project-hero-video" style="margin-top:4px;">
-          <video controls preload="metadata">
+          <video muted playsinline loop preload="none" class="lazy-video">
             <source src="assets/videos/jaylen-brown-pr-2.mp4" type="video/mp4">
           </video>
         </div>
@@ -880,12 +885,12 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       </div>
       <div class="project-media">
         <div class="project-hero-video">
-          <video controls preload="metadata">
+          <video muted playsinline loop preload="none" class="lazy-video">
             <source src="assets/videos/messi.mp4" type="video/mp4">
           </video>
         </div>
         <div class="project-hero-video" style="margin-top:4px;">
-          <video controls preload="metadata">
+          <video muted playsinline loop preload="none" class="lazy-video">
             <source src="assets/videos/inter-miami-pr.mp4" type="video/mp4">
           </video>
         </div>
@@ -908,7 +913,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       </div>
       <div class="project-media">
         <div class="project-hero-video">
-          <video controls preload="metadata" poster="assets/images/chocolate-expo/expo-entrance.jpg">
+          <video muted playsinline loop preload="none" class="lazy-video" poster="assets/images/chocolate-expo/expo-entrance.jpg">
             <source src="assets/videos/chocolate-coffee-expo.mp4" type="video/mp4">
           </video>
         </div>
@@ -932,7 +937,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       </div>
       <div class="project-media">
         <div class="project-hero-video">
-          <video controls preload="metadata" poster="assets/images/boatshow-pr-2025/aerial-marina.jpg">
+          <video muted playsinline loop preload="none" class="lazy-video" poster="assets/images/boatshow-pr-2025/aerial-marina.jpg">
             <source src="assets/videos/boatshow-pr-2025-dia2.mp4" type="video/mp4">
           </video>
         </div>
@@ -959,17 +964,17 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       </div>
       <div class="project-media">
         <div class="project-hero-video">
-          <video controls preload="metadata" poster="assets/images/batalla-leyenda/promo-oficial.jpg">
+          <video muted playsinline loop preload="none" class="lazy-video" poster="assets/images/batalla-leyenda/promo-oficial.jpg">
             <source src="assets/videos/batalla-leyenda.mp4" type="video/mp4">
           </video>
         </div>
         <div class="project-hero-video" style="margin-top:4px;">
-          <video controls preload="metadata" poster="assets/images/batalla-leyenda/clinica-01.jpg">
+          <video muted playsinline loop preload="none" class="lazy-video" poster="assets/images/batalla-leyenda/clinica-01.jpg">
             <source src="assets/videos/batalla-leyenda-highlights.mp4" type="video/mp4">
           </video>
         </div>
         <div class="project-hero-video" style="margin-top:4px;">
-          <video controls preload="metadata" poster="assets/images/batalla-leyenda/clinica-02.jpg">
+          <video muted playsinline loop preload="none" class="lazy-video" poster="assets/images/batalla-leyenda/clinica-02.jpg">
             <source src="assets/videos/batalla-leyenda-clinica.mp4" type="video/mp4">
           </video>
         </div>
@@ -1001,7 +1006,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       </div>
       <div class="project-media">
         <div class="project-hero-video">
-          <video controls preload="metadata" poster="assets/images/pr-open/venue-pavilion.jpg">
+          <video muted playsinline loop preload="none" class="lazy-video" poster="assets/images/pr-open/venue-pavilion.jpg">
             <source src="assets/videos/pr-open.mp4" type="video/mp4">
           </video>
         </div>
@@ -1025,7 +1030,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       </div>
       <div class="project-media">
         <div class="project-hero-video">
-          <video controls preload="metadata" poster="assets/images/clinica-futbol/goal-net-action.jpg">
+          <video muted playsinline loop preload="none" class="lazy-video" poster="assets/images/clinica-futbol/goal-net-action.jpg">
             <source src="assets/videos/clinica-futbol.mp4" type="video/mp4">
           </video>
         </div>
@@ -1049,7 +1054,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       </div>
       <div class="project-media">
         <div class="project-hero-video">
-          <video controls preload="metadata">
+          <video muted playsinline loop preload="none" class="lazy-video">
             <source src="assets/videos/winter-clash.mp4" type="video/mp4">
           </video>
         </div>
@@ -1069,7 +1074,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       </div>
       <div class="project-media">
         <div class="project-hero-video">
-          <video controls preload="metadata">
+          <video muted playsinline loop preload="none" class="lazy-video">
             <source src="assets/videos/levant-la-concha.mp4" type="video/mp4">
           </video>
         </div>
@@ -1251,6 +1256,31 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       });
     }, { threshold: 0.1 });
     els.forEach(function(el){ obs.observe(el); });
+  })();
+
+  // ===== LAZY AUTOPLAY: play videos when visible, pause when not =====
+  (function(){
+    var videos = document.querySelectorAll('.project-hero-video video');
+    if(!videos.length) return;
+
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var video = entry.target;
+        if(entry.isIntersecting){
+          video.play().catch(function(){});
+        } else {
+          video.pause();
+        }
+      });
+    }, {
+      rootMargin: '200px 0px',
+      threshold: 0.15
+    });
+
+    videos.forEach(function(v){
+      v.removeAttribute('autoplay');
+      observer.observe(v);
+    });
   })();
 
 </script>

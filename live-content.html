@@ -94,7 +94,7 @@ html, body {
 .mobile-menu-btn { display: none; }
 .mobile-overlay { display: none; }
 @media (max-width: 640px) {
-    .page-nav { gap: 8px; font-size: 9px; }
+    .page-nav { display: none; }
     .page-nav a { padding: 8px 4px; }
     .mobile-menu-btn {
       display: flex;
@@ -646,8 +646,6 @@ html, body {
     background: #121726;
     color: #edf1ff;
 }
-.site-footer .footer-brandline,
-.site-footer .footer-meta,
 .site-footer .footer-socials a {
     color: rgba(233, 239, 255, 0.6);
 }
@@ -663,8 +661,6 @@ body[data-theme="dark"] .site-footer {
     background: #F5F0EB;
     color: #121726;
 }
-body[data-theme="dark"] .site-footer .footer-brandline,
-body[data-theme="dark"] .site-footer .footer-meta,
 body[data-theme="dark"] .site-footer .footer-socials a {
     color: rgba(18, 23, 38, 0.6);
 }
@@ -788,7 +784,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
   <a href="about.html">Nosotros</a>
   <a href="live-content.html">Live Content</a>
   <a href="contacto.html">Contacto</a>
-  <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true">
+  <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true" loading="lazy">
 </div>
 
 
@@ -827,7 +823,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
 
 
 <!-- ===== CÓMO FUNCIONA ===== -->
-<section class="lc-section" id="como-funciona">
+<section class="lc-section reveal-section" id="como-funciona">
   <div class="lc-section-label reveal-section">El proceso</div>
   <h2 class="reveal-section">De momento a viral en minutos. No en días.</h2>
   <div class="step-cards">
@@ -868,7 +864,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       <div class="step-number">05</div>
       <div class="step-content">
         <h3>Post-evento y banco de contenido</h3>
-        <p>Después del evento entregas un paquete completo: recap editado, clips individuales, fotos procesadas y un banco de contenido listo para reutilizar en campañas futuras.</p>
+        <p>Después del evento entregamos un paquete completo: recap editado, clips individuales, fotos procesadas y un banco de contenido listo para reutilizar en campañas futuras.</p>
       </div>
     </div>
 
@@ -877,7 +873,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
 
 
 <!-- ===== PARA QUIÉN ES ===== -->
-<section class="lc-section" id="para-quien">
+<section class="lc-section reveal-section" id="para-quien">
   <div class="lc-section-label reveal-section">Casos de uso</div>
   <h2 class="reveal-section">Si tu evento tiene audiencia, necesita Live Content.</h2>
   <div class="case-cards">
@@ -962,7 +958,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
 
 
 <!-- ===== FAQ ===== -->
-<section class="lc-section" id="faq">
+<section class="lc-section reveal-section" id="faq">
   <div class="lc-section-label reveal-section">Preguntas frecuentes</div>
   <div class="faq-list">
 
@@ -1045,14 +1041,14 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
   <h2>Tu próximo evento merece más que un recap.</h2>
   <p class="cta-subtitle">Merece contenido que la gente vea, comparta y recuerde.</p>
   <a class="cta-mega-btn" href="contacto.html">Hablemos de tu evento</a>
-  <a class="cta-phone" href="tel:+17876441276">Llámanos -- 787-644-1276</a>
+  <a class="cta-phone" href="tel:+17876441276">Llámanos 787-644-1276</a>
   <p class="cta-small">Respondemos en menos de 24 horas. Si tu evento es pronto, escríbenos directo por <a href="https://wa.me/17876441276" target="_blank" rel="noopener" style="color:var(--blue-strong);text-decoration:underline;">WhatsApp</a>.</p>
 </section>
 
 
 <!-- ===== FOOTER ===== -->
 <footer class="site-footer" id="siteFooter">
-  <div class="footer-tagline">+MasCreativa Publicidad -- Creatividad que no pide permiso.</div>
+  <div class="footer-tagline">+MasCreativa Publicidad. Creatividad que no pide permiso.</div>
   <div class="footer-socials">
     <a href="https://instagram.com/mas_creativa_pr" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
@@ -1114,6 +1110,9 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
   if(menuBtn&&overlay){
     menuBtn.addEventListener('click',function(){
       overlay.classList.toggle('open');
+    });
+    overlay.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){ overlay.classList.remove('open'); });
     });
   }
 })();
