@@ -338,6 +338,56 @@ html, body {
     font-weight: 700;
 }
 
+/* ===== VERTICAL VIDEO SHOWCASE ===== */
+.lc-showcase {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+}
+.lc-showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 28px;
+}
+.lc-showcase-item {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 9/16;
+    background: #000;
+    box-shadow: var(--glass-shadow, 0 8px 32px rgba(0,0,0,0.1));
+}
+.lc-showcase-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.lc-showcase-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+@media (max-width: 640px) {
+    .lc-showcase-grid {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+        margin: 28px auto 0;
+        gap: 20px;
+    }
+}
+
 /* ===== STEP CARDS ===== */
 .step-cards {
     display: flex;
@@ -822,6 +872,38 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
 </section>
 
 
+<!-- ===== VERTICAL VIDEO SHOWCASE ===== -->
+<div class="lc-showcase reveal-section">
+  <div class="lc-section-label" style="text-align:center;">Producido en vivo</div>
+  <h2 style="text-align:center;font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(20px,4vw,32px);font-weight:900;letter-spacing:-0.02em;text-transform:uppercase;color:var(--text);">Clips reales. Editados en minutos. Publicados al instante.</h2>
+  <div class="lc-showcase-grid">
+    <div class="lc-showcase-item reveal-section">
+      <div class="lc-showcase-badge">WBC 2026</div>
+      <video muted playsinline loop preload="none" class="lazy-video">
+        <source src="assets/videos/lc-wbc-jugada-pr.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="lc-showcase-item reveal-section">
+      <div class="lc-showcase-badge">WBC 2026</div>
+      <video muted playsinline loop preload="none" class="lazy-video">
+        <source src="assets/videos/lc-wbc-hernaiz-hr.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="lc-showcase-item reveal-section">
+      <div class="lc-showcase-badge">WBC 2026</div>
+      <video muted playsinline loop preload="none" class="lazy-video">
+        <source src="assets/videos/lc-wbc-rosario-hit.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="lc-showcase-item reveal-section">
+      <div class="lc-showcase-badge">WBC 2026</div>
+      <video muted playsinline loop preload="none" class="lazy-video">
+        <source src="assets/videos/lc-wbc-primera-carrera.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</div>
+
 <!-- ===== CÓMO FUNCIONA ===== -->
 <section class="lc-section reveal-section" id="como-funciona">
   <div class="lc-section-label reveal-section">El proceso</div>
@@ -1176,6 +1258,19 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
     });
   }, { threshold: 0.1 });
   els.forEach(function(el){ obs.observe(el); });
+})();
+
+// Lazy autoplay: play showcase videos when visible
+(function(){
+  var videos = document.querySelectorAll('.lc-showcase-item video');
+  if(!videos.length) return;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting) e.target.play().catch(function(){});
+      else e.target.pause();
+    });
+  }, { rootMargin: '200px 0px', threshold: 0.15 });
+  videos.forEach(function(v){ obs.observe(v); });
 })();
 </script>
 </body>
