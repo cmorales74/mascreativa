@@ -175,13 +175,6 @@ html, body {
     padding: 20px 20px 30px;
     margin: 10px auto 20px;
     display: flex; flex-direction: column; align-items: center;
-    opacity: 0;
-    transform: translateY(30px) scale(0.92);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.stat-banner.visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
 }
 .stat-label {
     font-family: 'JetBrains Mono', monospace;
@@ -477,10 +470,9 @@ body:not([data-theme="dark"]) .carousel .carousel-item-wrapper:has(.carousel-ite
     background: rgba(0,0,0,0.92);
     display: flex; align-items: center; justify-content: center;
     opacity: 0; pointer-events: none;
-    transition: opacity 0.3s;
     cursor: pointer;
 }
-.video-lightbox.active { opacity: 1; pointer-events: auto; }
+.video-lightbox.active { pointer-events: auto; }
 .video-lightbox video {
     max-width: 92vw; max-height: 88vh;
     border-radius: 8px;
@@ -764,19 +756,6 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
     }
 }
 
-/* Scroll reveal: fade in from blur */
-.reveal-section {
-    opacity: 0;
-    filter: blur(8px);
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, filter 0.8s ease, transform 0.8s ease;
-}
-.reveal-section.revealed {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateY(0);
-}
-
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -784,13 +763,10 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
-    .reveal-section {
-        opacity: 1 !important;
-        filter: none !important;
-        transform: none !important;
-    }
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
 </head>
 <body data-theme="light">
 
@@ -1240,7 +1216,7 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
   applyMode();
 })();
 
-// ===== VIDEO LIGHTBOX =====
+// ===== VIDEO LIGHTBOX (GSAP-enhanced) =====
 (function(){
   var lb=document.getElementById('videoLightbox');
   var lbVid=document.getElementById('lbVideo');
@@ -1258,15 +1234,19 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
       lbVid.play();
       if(lbDl) lbDl.href=vid.src;
       lb.classList.add('active');
+      gsap.fromTo(lb, { opacity: 0 }, { opacity: 1, duration: 0.3 });
+      gsap.from(lbVid, { scale: 0.9, duration: 0.4, ease: 'back.out(1.4)' });
       document.documentElement.style.setProperty('--carousel-animation-play-state','paused');
     });
   });
 
   function closeLB(){
-    lb.classList.remove('active');
-    lbVid.pause();
-    lbVid.src='';
-    document.documentElement.style.setProperty('--carousel-animation-play-state','running');
+    gsap.to(lb, { opacity: 0, duration: 0.25, onComplete: function() {
+      lb.classList.remove('active');
+      lbVid.pause();
+      lbVid.src='';
+      document.documentElement.style.setProperty('--carousel-animation-play-state','running');
+    }});
   }
   lb.addEventListener('click',function(e){
     if(e.target===lb||e.target.classList.contains('lb-close')) closeLB();
@@ -1291,79 +1271,64 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
     });
   }
 
-  // Stat banner: fade in + count up on scroll
-  (function(){
-    var banner = document.querySelector('.stat-banner');
-    var counter = document.getElementById('statCount');
-    if(!banner || !counter) return;
-    var fired = false;
-    var obs = new IntersectionObserver(function(entries){
-      if(entries[0].isIntersecting && !fired){
-        fired = true;
-        banner.classList.add('visible');
-        // Count from 0 to 500
-        var target = 500;
-        var duration = 1800;
-        var start = performance.now();
-        function tick(now){
-          var elapsed = now - start;
-          var progress = Math.min(elapsed / duration, 1);
-          // Ease out cubic
-          var ease = 1 - Math.pow(1 - progress, 3);
-          counter.textContent = Math.round(target * ease);
-          if(progress < 1) requestAnimationFrame(tick);
-        }
-        // Small delay so the fade-in starts first
-        setTimeout(function(){ requestAnimationFrame(tick); }, 200);
+  // ===== GSAP Animations (waits for defer scripts) =====
+  document.addEventListener('DOMContentLoaded', function(){
+    gsap.registerPlugin(ScrollTrigger);
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // 1. Scroll reveals
+    document.querySelectorAll('.reveal-section').forEach(function(el) {
+      if (reducedMotion) {
+        gsap.set(el, { opacity: 1, y: 0, filter: 'blur(0px)' });
+        return;
       }
-    }, { threshold: 0.3 });
-    obs.observe(banner);
-  })();
-
-  // Scroll reveal: fade in from blur
-  (function(){
-    var els = document.querySelectorAll('.reveal-section');
-    if(!els.length) return;
-    var obs = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){
-          e.target.classList.add('revealed');
-          obs.unobserve(e.target);
-        }
+      gsap.from(el, {
+        opacity: 0, y: 20, filter: 'blur(8px)',
+        duration: 0.8, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 90%', once: true }
       });
-    }, { threshold: 0.1 });
-    els.forEach(function(el){ obs.observe(el); });
-  })();
-
-  // ===== LAZY AUTOPLAY: play videos when visible, pause when not =====
-  (function(){
-    var videos = document.querySelectorAll('.project-hero-video video');
-    if(!videos.length) return;
-
-    var observer = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        var video = entry.target;
-        if(entry.isIntersecting){
-          video.play().catch(function(){});
-        } else {
-          video.pause();
-        }
-      });
-    }, {
-      rootMargin: '200px 0px',
-      threshold: 0.15
     });
 
-    videos.forEach(function(v){
+    // 2. Stat counter
+    var counterEl = document.getElementById('statCount');
+    if (counterEl) {
+      var statBanner = counterEl.closest('.stat-banner');
+      if (statBanner) gsap.set(statBanner, { opacity: 0, y: 30, scale: 0.92 });
+      var proxy = { val: 0 };
+      ScrollTrigger.create({
+        trigger: statBanner || counterEl,
+        start: 'top 80%',
+        once: true,
+        onEnter: function() {
+          if (reducedMotion) {
+            counterEl.textContent = '500';
+            if (statBanner) gsap.set(statBanner, { opacity: 1, y: 0, scale: 1 });
+            return;
+          }
+          if (statBanner) gsap.to(statBanner, { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'power2.out' });
+          gsap.to(proxy, {
+            val: 500, duration: 1.8, ease: 'power3.out', delay: 0.2,
+            onUpdate: function() { counterEl.textContent = Math.round(proxy.val); }
+          });
+        }
+      });
+    }
+
+    // 3. Lazy video autoplay
+    document.querySelectorAll('.project-hero-video video').forEach(function(v) {
       v.removeAttribute('autoplay');
-      observer.observe(v);
+      if (reducedMotion) { v.pause(); return; }
+      ScrollTrigger.create({
+        trigger: v,
+        start: 'top bottom+=200',
+        end: 'bottom top-=200',
+        onEnter: function() { v.play().catch(function(){}); },
+        onLeave: function() { v.pause(); },
+        onEnterBack: function() { v.play().catch(function(){}); },
+        onLeaveBack: function() { v.pause(); }
+      });
     });
-  })();
-
-  // Respect prefers-reduced-motion: pause all autoplay videos
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    document.querySelectorAll('video[autoplay]').forEach(function(v){ v.pause(); v.removeAttribute('autoplay'); });
-  }
+  });
 
 </script>
 </body>

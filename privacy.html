@@ -449,19 +449,6 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
     }
 }
 
-/* Scroll reveal: fade in from blur */
-.reveal-section {
-    opacity: 0;
-    filter: blur(8px);
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, filter 0.8s ease, transform 0.8s ease;
-}
-.reveal-section.revealed {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateY(0);
-}
-
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -469,13 +456,10 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
-    .reveal-section {
-        opacity: 1 !important;
-        filter: none !important;
-        transform: none !important;
-    }
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
 </head>
 <body data-theme="light">
 
@@ -649,19 +633,29 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
     });
   }
 
-  // Scroll reveal: fade in from blur
+  // GSAP Scroll Reveals
   (function(){
-    var els = document.querySelectorAll('.reveal-section');
-    if(!els.length) return;
-    var obs = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){
-          e.target.classList.add('revealed');
-          obs.unobserve(e.target);
+    gsap.registerPlugin(ScrollTrigger);
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    document.querySelectorAll('.reveal-section').forEach(function(el) {
+      if (reducedMotion) {
+        gsap.set(el, { opacity: 1, y: 0, filter: 'blur(0px)' });
+        return;
+      }
+      gsap.from(el, {
+        opacity: 0,
+        y: 20,
+        filter: 'blur(8px)',
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 90%',
+          once: true
         }
       });
-    }, { threshold: 0.1 });
-    els.forEach(function(el){ obs.observe(el); });
+    });
   })();
 </script>
 </body>

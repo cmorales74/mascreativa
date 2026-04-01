@@ -570,11 +570,6 @@ html, body {
     color: var(--blue-strong);
     line-height: 1;
     margin-bottom: 12px;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-.dato-number.dato-visible {
-    opacity: 1;
 }
 .dato-number .plus { color: #e84455; }
 .dato-label {
@@ -663,19 +658,10 @@ html, body {
     width: 20px;
     height: 20px;
     margin-left: 12px;
-    transition: transform 0.3s;
     color: var(--muted);
 }
-.faq-item.open .faq-icon { transform: rotate(45deg); }
 .faq-answer {
-    max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease, padding 0.3s ease;
-    padding: 0 0;
-}
-.faq-item.open .faq-answer {
-    max-height: 600px;
-    padding: 0 0 20px;
 }
 .faq-answer p {
     font-family: 'Satoshi', sans-serif;
@@ -917,30 +903,12 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
     }
 }
 
-/* ===== SCROLL REVEAL ===== */
-.reveal-section {
-    opacity: 0;
-    filter: blur(8px);
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, filter 0.8s ease, transform 0.8s ease;
-}
-.reveal-section.revealed {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateY(0);
-}
-
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
-    }
-    .reveal-section {
-        opacity: 1 !important;
-        filter: none !important;
-        transform: none !important;
     }
 }
 
@@ -954,6 +922,8 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
     .cta-mega-btn { padding: 18px 40px; }
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
 </head>
 <body data-theme="light">
 
@@ -1363,85 +1333,104 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
   }
 })();
 
-// Count-up animation for El Dato stat
+// ===== GSAP Animations =====
 (function(){
-  var counter = document.getElementById('datoCount');
-  if(!counter) return;
-  var fired = false;
-  var target = 500000000;
-  var obs = new IntersectionObserver(function(entries){
-    if(entries[0].isIntersecting && !fired){
-      fired = true;
-      counter.parentElement.classList.add('dato-visible');
-      var duration = 2200;
-      var start = performance.now();
-      function formatNum(n){
-        return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-      }
-      function tick(now){
-        var elapsed = now - start;
-        var progress = Math.min(elapsed / duration, 1);
-        var ease = 1 - Math.pow(1 - progress, 3);
-        counter.textContent = formatNum(Math.round(target * ease));
-        if(progress < 1) requestAnimationFrame(tick);
-      }
-      setTimeout(function(){ requestAnimationFrame(tick); }, 200);
-    }
-  }, { threshold: 0.3 });
-  obs.observe(counter.parentElement.parentElement);
-})();
+  gsap.registerPlugin(ScrollTrigger);
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// FAQ accordion toggle
-(function(){
-  var items = document.querySelectorAll('.faq-item');
-  items.forEach(function(item){
-    var btn = item.querySelector('.faq-question');
-    if(!btn) return;
-    btn.addEventListener('click', function(){
+  // 1. Scroll reveals
+  document.querySelectorAll('.reveal-section').forEach(function(el) {
+    if (reducedMotion) {
+      gsap.set(el, { opacity: 1, y: 0, filter: 'blur(0px)' });
+      return;
+    }
+    gsap.from(el, {
+      opacity: 0, y: 20, filter: 'blur(8px)',
+      duration: 0.8, ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 90%', once: true }
+    });
+  });
+
+  // 2. Stat counter (counts to 500,000,000 with comma formatting)
+  var counterEl = document.getElementById('datoCount');
+  if (counterEl) {
+    var datoSection = counterEl.closest('.dato-section');
+    if (datoSection) gsap.set(datoSection, { opacity: 0, y: 30 });
+    var proxy = { val: 0 };
+    ScrollTrigger.create({
+      trigger: datoSection || counterEl,
+      start: 'top 70%',
+      once: true,
+      onEnter: function() {
+        if (reducedMotion) {
+          counterEl.textContent = '500,000,000';
+          if (datoSection) gsap.set(datoSection, { opacity: 1, y: 0 });
+          return;
+        }
+        if (datoSection) gsap.to(datoSection, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' });
+        gsap.to(proxy, {
+          val: 500000000, duration: 2.2, ease: 'power3.out', delay: 0.2,
+          onUpdate: function() {
+            counterEl.textContent = Math.round(proxy.val).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+          }
+        });
+      }
+    });
+  }
+
+  // 3. Lazy video autoplay
+  document.querySelectorAll('.lc-showcase-item video').forEach(function(v) {
+    v.removeAttribute('autoplay');
+    if (reducedMotion) { v.pause(); return; }
+    ScrollTrigger.create({
+      trigger: v,
+      start: 'top bottom+=200',
+      end: 'bottom top-=200',
+      onEnter: function() { v.play().catch(function(){}); },
+      onLeave: function() { v.pause(); },
+      onEnterBack: function() { v.play().catch(function(){}); },
+      onLeaveBack: function() { v.pause(); }
+    });
+  });
+
+  // 4. FAQ accordion with GSAP height animation
+  document.querySelectorAll('.faq-item').forEach(function(item) {
+    var question = item.querySelector('.faq-question');
+    var answer = item.querySelector('.faq-answer');
+    var icon = item.querySelector('.faq-icon');
+    if (!question || !answer) return;
+
+    // Set initial state
+    gsap.set(answer, { height: 0, overflow: 'hidden' });
+
+    question.addEventListener('click', function() {
       var isOpen = item.classList.contains('open');
-      // Close all first
-      items.forEach(function(i){ i.classList.remove('open'); i.querySelector('.faq-question').setAttribute('aria-expanded','false'); });
-      // Toggle current
-      if(!isOpen){
+
+      // Close all other open items
+      document.querySelectorAll('.faq-item.open').forEach(function(openItem) {
+        if (openItem !== item) {
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          gsap.to(openItem.querySelector('.faq-answer'), { height: 0, duration: 0.35, ease: 'power2.in' });
+          gsap.to(openItem.querySelector('.faq-icon'), { rotation: 0, duration: 0.3 });
+        }
+      });
+
+      if (isOpen) {
+        item.classList.remove('open');
+        question.setAttribute('aria-expanded', 'false');
+        gsap.to(answer, { height: 0, duration: 0.35, ease: 'power2.in' });
+        gsap.to(icon, { rotation: 0, duration: 0.3 });
+      } else {
         item.classList.add('open');
-        btn.setAttribute('aria-expanded','true');
+        question.setAttribute('aria-expanded', 'true');
+        gsap.set(answer, { height: 'auto' });
+        gsap.from(answer, { height: 0, duration: 0.4, ease: 'power2.out' });
+        gsap.to(icon, { rotation: 45, duration: 0.3 });
       }
     });
   });
 })();
-
-// Scroll reveal: fade in from blur
-(function(){
-  var els = document.querySelectorAll('.reveal-section');
-  if(!els.length) return;
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        e.target.classList.add('revealed');
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  els.forEach(function(el){ obs.observe(el); });
-})();
-
-// Lazy autoplay: play showcase videos when visible
-(function(){
-  var videos = document.querySelectorAll('.lc-showcase-item video');
-  if(!videos.length) return;
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting) e.target.play().catch(function(){});
-      else e.target.pause();
-    });
-  }, { rootMargin: '200px 0px', threshold: 0.15 });
-  videos.forEach(function(v){ obs.observe(v); });
-})();
-
-// Respect prefers-reduced-motion: pause all autoplay videos
-if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-  document.querySelectorAll('video[autoplay]').forEach(function(v){ v.pause(); v.removeAttribute('autoplay'); });
-}
 </script>
 </body>
 </html>

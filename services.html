@@ -349,13 +349,6 @@ html, body {
     margin: 8px 0 16px;
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
-    opacity: 0;
-    transform: translateY(20px) scale(0.9);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.sd-inline-stat.visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
 }
 .sd-inline-stat-number {
     font-family: 'Cabinet Grotesk', sans-serif;
@@ -637,19 +630,6 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
     filter: brightness(1.15);
 }
 
-/* Scroll reveal: fade in from blur */
-.reveal-section {
-    opacity: 0;
-    filter: blur(8px);
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, filter 0.8s ease, transform 0.8s ease;
-}
-.reveal-section.revealed {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateY(0);
-}
-
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -657,14 +637,11 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
-    .reveal-section {
-        opacity: 1 !important;
-        filter: none !important;
-        transform: none !important;
-    }
 }
 
 </style>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
 </head>
 <body data-theme="light">
 
@@ -934,68 +911,68 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
     });
   });
 
-  // IntersectionObserver: highlight active chip on scroll
-  (function(){
-    var chips = document.querySelectorAll('.service-chip[href^="#"]');
-    var sections = [];
-    chips.forEach(function(c){
-      var s = document.querySelector(c.getAttribute('href'));
-      if(s) sections.push({el:s, chip:c});
-    });
-    if(!sections.length) return;
-    var obs = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        sections.forEach(function(s){
-          if(s.el === entry.target){
-            if(entry.isIntersecting) s.chip.classList.add('active');
-            else s.chip.classList.remove('active');
-          }
-        });
-      });
-    }, {rootMargin:'-20% 0px -60% 0px'});
-    sections.forEach(function(s){ obs.observe(s.el); });
-  })();
+  // ===== GSAP Animations =====
+  window.addEventListener('DOMContentLoaded', function(){
+    gsap.registerPlugin(ScrollTrigger);
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Inline stat: fade in + count up on scroll
-  (function(){
-    var stat = document.getElementById('sdStat');
-    var counter = document.getElementById('sdStatCount');
-    if(!stat || !counter) return;
-    var fired = false;
-    var obs = new IntersectionObserver(function(entries){
-      if(entries[0].isIntersecting && !fired){
-        fired = true;
-        stat.classList.add('visible');
-        var target = 500;
-        var duration = 1800;
-        var start = performance.now();
-        function tick(now){
-          var elapsed = now - start;
-          var progress = Math.min(elapsed / duration, 1);
-          var ease = 1 - Math.pow(1 - progress, 3);
-          counter.textContent = Math.round(target * ease);
-          if(progress < 1) requestAnimationFrame(tick);
-        }
-        setTimeout(function(){ requestAnimationFrame(tick); }, 200);
+    // 1. Scroll reveals
+    document.querySelectorAll('.reveal-section').forEach(function(el) {
+      if (reducedMotion) {
+        gsap.set(el, { opacity: 1, y: 0, filter: 'blur(0px)' });
+        return;
       }
-    }, { threshold: 0.3 });
-    obs.observe(stat);
-  })();
+      gsap.from(el, {
+        opacity: 0, y: 20, filter: 'blur(8px)',
+        duration: 0.8, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 90%', once: true }
+      });
+    });
 
-  // Scroll reveal: fade in from blur
-  (function(){
-    var els = document.querySelectorAll('.reveal-section');
-    if(!els.length) return;
-    var obs = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){
-          e.target.classList.add('revealed');
-          obs.unobserve(e.target);
+    // 2. Stat counter
+    var counterEl = document.getElementById('sdStatCount');
+    if (counterEl) {
+      var statParent = document.getElementById('sdStat');
+      if (statParent) gsap.set(statParent, { opacity: 0, y: 30, scale: 0.92 });
+      var proxy = { val: 0 };
+      ScrollTrigger.create({
+        trigger: statParent || counterEl,
+        start: 'top 80%',
+        once: true,
+        onEnter: function() {
+          if (reducedMotion) {
+            counterEl.textContent = '500';
+            if (statParent) gsap.set(statParent, { opacity: 1, y: 0, scale: 1 });
+            return;
+          }
+          if (statParent) gsap.to(statParent, { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'power2.out' });
+          gsap.to(proxy, {
+            val: 500, duration: 1.8, ease: 'power3.out', delay: 0.2,
+            onUpdate: function() { counterEl.textContent = Math.round(proxy.val); }
+          });
         }
       });
-    }, { threshold: 0.1 });
-    els.forEach(function(el){ obs.observe(el); });
-  })();
+    }
+
+    // 3. Chip nav scroll highlight
+    var chips = document.querySelectorAll('.service-chip[href^="#"]');
+    chips.forEach(function(chip) {
+      var targetId = chip.getAttribute('href').substring(1);
+      var section = document.getElementById(targetId);
+      if (!section) return;
+      ScrollTrigger.create({
+        trigger: section,
+        start: 'top 20%',
+        end: 'bottom 40%',
+        onToggle: function(self) {
+          if (self.isActive) {
+            chips.forEach(function(c) { c.classList.remove('active'); });
+            chip.classList.add('active');
+          }
+        }
+      });
+    });
+  });
 
 </script>
 </body>
