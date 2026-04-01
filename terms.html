@@ -364,6 +364,20 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
     filter: blur(0);
     transform: translateY(0);
 }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .reveal-section {
+        opacity: 1 !important;
+        filter: none !important;
+        transform: none !important;
+    }
+}
 </style>
 </head>
 <body data-theme="light">

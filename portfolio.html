@@ -725,6 +725,21 @@ video.lazy-video {
     filter: blur(0);
     transform: translateY(0);
 }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    video { autoplay: false; }
+    .reveal-section {
+        opacity: 1 !important;
+        filter: none !important;
+        transform: none !important;
+    }
+}
 </style>
 </head>
 <body data-theme="light">
@@ -1305,6 +1320,11 @@ video.lazy-video {
       observer.observe(v);
     });
   })();
+
+  // Respect prefers-reduced-motion: pause all autoplay videos
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('video[autoplay]').forEach(function(v){ v.pause(); v.removeAttribute('autoplay'); });
+  }
 
 </script>
 </body>

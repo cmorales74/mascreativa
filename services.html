@@ -184,6 +184,13 @@ html, body {
 @media (max-width: 640px) {
     .services-list { gap: 8px; padding: 8px 12px 12px; }
     .service-chip { font-size: 7px; letter-spacing: 1.5px; padding: 6px 10px; }
+
+    /* Performance: disable GPU-heavy backdrop-filter on mobile */
+    .service-chip,
+    .sd-card--featured {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
 }
 
 /* ===== SERVICE DETAILS ===== */
@@ -464,6 +471,20 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
     opacity: 1;
     filter: blur(0);
     transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .reveal-section {
+        opacity: 1 !important;
+        filter: none !important;
+        transform: none !important;
+    }
 }
 
 </style>
