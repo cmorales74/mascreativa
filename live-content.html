@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F5F0EB">
+<title>Live Content | +MasCreativa Publicidad</title>
+<meta name="description" content="Live Content by +MasCreativa Publicidad: servicio de producción de contenido viral en tiempo real para eventos deportivos, conciertos, conferencias y activaciones de marca en Puerto Rico.">
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800,900&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* global */
+*, *::before, *::after {
+    margin: 0; padding: 0; border: 0; box-sizing: border-box;
+}
+*:focus { outline: none; }
+a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid var(--blue-strong);
+    outline-offset: 2px;
+}
+a {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+:root {
+    --bg: #F5F0EB;
+    --bg-2: #EDE8E3;
+    --panel: rgba(255, 255, 255, 0.8);
+    --panel-strong: rgba(255, 255, 255, 0.94);
+    --text: #121726;
+    --muted: #5d6884;
+    --line: rgba(18, 23, 38, 0.1);
+    --line-strong: rgba(18, 23, 38, 0.18);
+    --blue: #69cafc;
+    --blue-strong: #38baf7;
+    --purple: #7a70ff;
+    --purple-strong: #6358ff;
+    --blue-glow: rgba(56, 186, 247, 0.22);
+    --glass-bg: rgba(255,255,255,0.45);
+    --glass-border: rgba(255,255,255,0.5);
+    --glass-shadow: 0 8px 32px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
+}
+body[data-theme="dark"] {
+    --bg: #070b13;
+    --bg-2: #0d1320;
+    --panel: rgba(14, 19, 31, 0.82);
+    --panel-strong: rgba(14, 19, 31, 0.94);
+    --text: #edf1ff;
+    --muted: rgba(233, 239, 255, 0.68);
+    --line: rgba(255, 255, 255, 0.1);
+    --line-strong: rgba(255, 255, 255, 0.18);
+    --blue: #6fd2ff;
+    --blue-strong: #49c7ff;
+    --purple: #9787ff;
+    --purple-strong: #7d6aff;
+    --blue-glow: rgba(73, 199, 255, 0.16);
+    --glass-bg: rgba(255,255,255,0.08);
+    --glass-border: rgba(255,255,255,0.12);
+    --glass-shadow: 0 8px 32px rgba(0,0,0,0.2), 0 2px 8px rgba(0,0,0,0.15);
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 20px;
+}
+html, body {
+    min-height: 100%;
+    background: var(--bg);
+    font-family: 'Satoshi', sans-serif;
+    color: var(--text);
+    user-select: none; -webkit-user-select: none;
+}
+
+/* ===== PAGE NAV ===== */
+.page-nav {
+    display: flex; justify-content: center; gap: 24px;
+    padding: 16px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+}
+.page-nav a {
+    color: var(--muted); text-decoration: none;
+    transition: color 0.2s;
+}
+.page-nav a:hover { color: var(--blue-strong); }
+.page-nav a.active-link { color: var(--blue-strong); }
+
+/* Hamburger menu - hidden on desktop */
+.mobile-menu-btn { display: none; }
+.mobile-overlay { display: none; }
+@media (max-width: 640px) {
+    .page-nav { gap: 8px; font-size: 9px; }
+    .page-nav a { padding: 8px 4px; }
+    .mobile-menu-btn {
+      display: flex;
+      position: fixed; top: 28px; left: 20px; z-index: 50;
+      width: 32px; height: 32px;
+      background: none; border: none; cursor: pointer;
+      flex-direction: column; justify-content: center; gap: 5px;
+    }
+    .mobile-menu-btn span {
+      display: block; width: 20px; height: 2px;
+      background: var(--text); transition: all 0.3s;
+    }
+    .mobile-overlay {
+      position: fixed; inset: 0; z-index: 45;
+      background: var(--bg);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 28px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .mobile-overlay.open { opacity: 1; pointer-events: auto; }
+    .mobile-overlay a {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 28px; font-weight: 700;
+      text-transform: uppercase; text-decoration: none;
+      color: var(--text); letter-spacing: -0.02em;
+    }
+    .mobile-overlay-mascot {
+      width: 140px;
+      margin-top: 12px;
+      opacity: 0.85;
+      pointer-events: none;
+    }
+}
+
+/* ===== THEME SWITCH ===== */
+.theme-switch-wrap { position: fixed; right: 20px; top: 20px; z-index: 200; }
+.theme-switch {
+    --toggle-size: 16px;
+    --container-width: 5.625em; --container-height: 2.5em; --container-radius: 6.25em;
+    --container-light-bg: #3D7EAE; --container-night-bg: #1D1F2C;
+    --circle-container-diameter: 3.375em; --sun-moon-diameter: 2.125em;
+    --sun-bg: #ECCA2F; --moon-bg: #C4C9D1; --spot-color: #959DB1;
+    --circle-container-offset: calc((var(--circle-container-diameter) - var(--container-height)) / 2 * -1);
+    --stars-color: #fff; --clouds-color: #F3FDFF; --back-clouds-color: #AACADF;
+    --transition: .5s cubic-bezier(0, -0.02, 0.4, 1.25);
+    --circle-transition: .3s cubic-bezier(0, -0.02, 0.35, 1.17);
+}
+.theme-switch, .theme-switch *, .theme-switch *::before, .theme-switch *::after { box-sizing: border-box; margin: 0; padding: 0; font-size: var(--toggle-size); }
+.theme-switch__container {
+    width: var(--container-width); height: var(--container-height);
+    background-color: var(--container-light-bg); border-radius: var(--container-radius);
+    overflow: hidden; cursor: pointer;
+    box-shadow: 0em -0.062em 0.062em rgba(0,0,0,0.25), 0em 0.062em 0.125em rgba(255,255,255,0.94);
+    transition: var(--transition); position: relative;
+}
+.theme-switch__container::before { content: ""; position: absolute; z-index: 1; inset: 0; box-shadow: 0em 0.05em 0.187em rgba(0,0,0,0.25) inset; border-radius: var(--container-radius); }
+.theme-switch__checkbox { display: none; }
+.theme-switch__circle-container {
+    width: var(--circle-container-diameter); height: var(--circle-container-diameter);
+    background-color: rgba(255,255,255,0.1); position: absolute;
+    left: var(--circle-container-offset); top: var(--circle-container-offset);
+    border-radius: var(--container-radius);
+    box-shadow: inset 0 0 0 3.375em rgba(255,255,255,0.1), 0 0 0 0.625em rgba(255,255,255,0.1), 0 0 0 1.25em rgba(255,255,255,0.1);
+    display: flex; transition: var(--circle-transition); pointer-events: none;
+}
+.theme-switch__sun-moon-container {
+    pointer-events: auto; position: relative; z-index: 2;
+    width: var(--sun-moon-diameter); height: var(--sun-moon-diameter);
+    margin: auto; border-radius: var(--container-radius); background-color: var(--sun-bg);
+    box-shadow: 0.062em 0.062em 0.062em 0em rgba(254,255,239,0.61) inset, 0em -0.062em 0.062em 0em #a1872a inset;
+    filter: drop-shadow(0.062em 0.125em 0.125em rgba(0,0,0,0.25)) drop-shadow(0em 0.062em 0.125em rgba(0,0,0,0.25));
+    overflow: hidden; transition: var(--transition);
+}
+.theme-switch__moon {
+    transform: translateX(100%); width: 100%; height: 100%;
+    background-color: var(--moon-bg); border-radius: inherit;
+    box-shadow: 0.062em 0.062em 0.062em 0em rgba(254,255,239,0.61) inset, 0em -0.062em 0.062em 0em #969696 inset;
+    transition: var(--transition); position: relative;
+}
+.theme-switch__spot { position: absolute; top: 0.75em; left: 0.312em; width: 0.75em; height: 0.75em; border-radius: var(--container-radius); background-color: var(--spot-color); box-shadow: 0em 0.0312em 0.062em rgba(0,0,0,0.25) inset; }
+.theme-switch__spot:nth-of-type(2) { width: 0.375em; height: 0.375em; top: 0.937em; left: 1.375em; }
+.theme-switch__spot:nth-last-of-type(3) { width: 0.25em; height: 0.25em; top: 0.312em; left: 0.812em; }
+.theme-switch__clouds {
+    width: 1.25em; height: 1.25em; background-color: var(--clouds-color);
+    border-radius: var(--container-radius); position: absolute; bottom: -0.625em; left: 0.312em;
+    box-shadow: 0.937em 0.312em var(--clouds-color), -0.312em -0.312em var(--back-clouds-color), 1.437em 0.375em var(--clouds-color), 0.5em -0.125em var(--back-clouds-color), 2.187em 0 var(--clouds-color), 1.25em -0.062em var(--back-clouds-color), 2.937em 0.312em var(--clouds-color), 2em -0.312em var(--back-clouds-color), 3.625em -0.062em var(--clouds-color), 2.625em 0em var(--back-clouds-color), 4.5em -0.312em var(--clouds-color), 3.375em -0.437em var(--back-clouds-color), 4.625em -1.75em 0 0.437em var(--clouds-color), 4em -0.625em var(--back-clouds-color), 4.125em -2.125em 0 0.437em var(--back-clouds-color);
+    transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
+}
+.theme-switch__stars-container { position: absolute; color: var(--stars-color); top: -100%; left: 0.312em; width: 2.75em; height: auto; transition: var(--transition); }
+.theme-switch__checkbox:checked + .theme-switch__container { background-color: var(--container-night-bg); }
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container { left: calc(100% - var(--circle-container-offset) - var(--circle-container-diameter)); }
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container:hover { left: calc(100% - var(--circle-container-offset) - var(--circle-container-diameter) - 0.187em); }
+.theme-switch__circle-container:hover { left: calc(var(--circle-container-offset) + 0.187em); }
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__moon { transform: translate(0); }
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__clouds { bottom: -4.062em; }
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__stars-container { top: 50%; transform: translateY(-50%); }
+@media (max-width: 640px) {
+    .theme-switch-wrap { right: 12px; top: 12px; }
+    .theme-switch { --toggle-size: 13px; }
+}
+
+/* ===== LAYOUT ===== */
+.content-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ===== HERO ===== */
+.lc-hero {
+    text-align: center;
+    padding: 40px 24px 60px;
+    max-width: 720px;
+    margin: 0 auto;
+}
+.lc-hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--blue-strong);
+    margin-bottom: 8px;
+}
+.lc-hero-eyebrow::before {
+    content: '';
+    width: 42px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--blue-strong), transparent);
+}
+.lc-hero-subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(10px, 1.5vw, 13px);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+}
+.lc-hero h1 {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: clamp(36px, 9vw, 72px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    line-height: 0.92;
+    color: var(--text);
+    margin-bottom: 24px;
+}
+.lc-hero h1 .highlight {
+    color: var(--blue-strong);
+}
+.lc-hero-body {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--muted);
+    max-width: 540px;
+    margin: 0 auto 32px;
+}
+.lc-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+}
+.btn-primary {
+    min-height: 46px;
+    padding: 0 24px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--blue-strong), var(--purple-strong));
+    box-shadow: 0 18px 32px rgba(56, 186, 247, 0.22);
+    transition: transform 0.2s, filter 0.2s;
+}
+.btn-primary:hover { transform: scale(1.04); filter: brightness(1.1); }
+.btn-secondary {
+    min-height: 46px;
+    padding: 0 24px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text);
+    border: 1px solid var(--line-strong);
+    background: var(--panel);
+    transition: border-color 0.2s, color 0.2s;
+}
+.btn-secondary:hover { border-color: var(--blue-strong); color: var(--blue-strong); }
+
+/* ===== SECTION SHARED ===== */
+.lc-section {
+    padding: 60px 24px;
+    max-width: 720px;
+    margin: 0 auto;
+}
+.lc-section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--blue-strong);
+    margin-bottom: 12px;
+}
+.lc-section h2 {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: clamp(24px, 5vw, 40px);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 24px;
+}
+.lc-section p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--muted);
+    margin-bottom: 16px;
+}
+.lc-section p:last-child { margin-bottom: 0; }
+.lc-section p strong {
+    color: var(--text);
+    font-weight: 700;
+}
+
+/* ===== STEP CARDS ===== */
+.step-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 32px;
+}
+.step-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: var(--glass-shadow);
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+.step-number {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--blue-strong);
+    line-height: 1;
+    flex-shrink: 0;
+    opacity: 0.7;
+    min-width: 48px;
+    text-align: center;
+}
+.step-content h3 {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+.step-content p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--muted);
+    margin: 0;
+}
+@media (max-width: 640px) {
+    .step-card { padding: 20px 16px; gap: 14px; }
+    .step-number { font-size: 36px; min-width: 36px; }
+    .step-content h3 { font-size: 14px; }
+}
+
+/* ===== CASE CARDS ===== */
+.case-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 32px;
+}
+.case-card {
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+}
+.case-card:nth-child(even) {
+    border-top: none;
+    border-left: 3px solid var(--blue-strong);
+    padding-left: 20px;
+}
+.case-card h3 {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--blue-strong);
+    margin-bottom: 10px;
+}
+.case-card p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--muted);
+    margin: 0;
+}
+@media (max-width: 640px) {
+    .case-card h3 { font-size: 15px; }
+}
+
+/* ===== EL DATO (big stat) ===== */
+.dato-section {
+    text-align: center;
+    padding: 80px 24px;
+    max-width: 720px;
+    margin: 0 auto;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+.dato-number {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: clamp(40px, 12vw, 80px);
+    font-weight: 900;
+    color: var(--blue-strong);
+    line-height: 1;
+    margin-bottom: 12px;
+}
+.dato-number .plus { color: #e84455; }
+.dato-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--blue-strong);
+    margin-bottom: 16px;
+}
+.dato-body {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--muted);
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+/* ===== QUE INCLUYE ===== */
+.includes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 32px;
+}
+@media (max-width: 640px) {
+    .includes-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+.includes-col h3 {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 16px;
+}
+.includes-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 8px;
+}
+.includes-list li {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.5px;
+    color: var(--muted);
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.6;
+}
+.includes-list li::before {
+    content: '+'; position: absolute; left: 0;
+    color: var(--blue-strong); font-weight: 700;
+}
+
+/* ===== FAQ ===== */
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 32px;
+}
+.faq-item {
+    border-bottom: 1px solid var(--line);
+}
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    transition: color 0.2s;
+}
+.faq-question:hover { color: var(--blue-strong); }
+.faq-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin-left: 12px;
+    transition: transform 0.3s;
+    color: var(--muted);
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    padding: 0 0;
+}
+.faq-item.open .faq-answer {
+    max-height: 300px;
+    padding: 0 0 20px;
+}
+.faq-answer p {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--muted);
+    margin: 0;
+}
+
+/* ===== CTA FINAL ===== */
+.cta-final {
+    text-align: center;
+    padding: 80px 24px;
+    max-width: 720px;
+    margin: 0 auto;
+}
+.cta-final h2 {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: clamp(24px, 5vw, 40px);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+.cta-final .cta-subtitle {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-bottom: 36px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+}
+@keyframes cta-glow-pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(56,186,247,0.3), 0 0 60px rgba(122,112,255,0.15), 0 8px 32px rgba(0,0,0,0.15); }
+    50% { box-shadow: 0 0 30px rgba(56,186,247,0.5), 0 0 80px rgba(122,112,255,0.25), 0 12px 40px rgba(0,0,0,0.2); }
+}
+@keyframes cta-shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+.cta-mega-btn {
+    display: inline-block;
+    padding: 22px 64px;
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, var(--blue-strong), var(--purple-strong), var(--blue-strong));
+    background-size: 200% 100%;
+    border-radius: 60px;
+    animation: cta-glow-pulse 3s ease-in-out infinite, cta-shimmer 4s linear infinite;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.cta-mega-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background-size: 200% 100%;
+    animation: cta-shimmer 3s linear infinite;
+    pointer-events: none;
+}
+.cta-mega-btn:hover { transform: scale(1.06); filter: brightness(1.15); }
+.cta-mega-btn:active { transform: scale(0.98); }
+.cta-phone {
+    display: block;
+    margin-top: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--blue-strong);
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+.cta-phone:hover { opacity: 0.7; }
+.cta-small {
+    margin-top: 16px;
+    font-family: 'Satoshi', sans-serif;
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ===== FOOTER ===== */
+.site-footer {
+    text-align: center;
+    padding: 48px 20px 34px;
+    border-top: 1px solid var(--line);
+    position: relative;
+    z-index: 1;
+    background: #121726;
+    color: #edf1ff;
+}
+.site-footer .footer-brandline,
+.site-footer .footer-meta,
+.site-footer .footer-socials a {
+    color: rgba(233, 239, 255, 0.6);
+}
+.site-footer .footer-socials a {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+}
+.site-footer .footer-socials a:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+}
+body[data-theme="dark"] .site-footer {
+    background: #F5F0EB;
+    color: #121726;
+}
+body[data-theme="dark"] .site-footer .footer-brandline,
+body[data-theme="dark"] .site-footer .footer-meta,
+body[data-theme="dark"] .site-footer .footer-socials a {
+    color: rgba(18, 23, 38, 0.6);
+}
+body[data-theme="dark"] .site-footer .footer-inner {
+    border-top-color: rgba(0, 0, 0, 0.1);
+}
+body[data-theme="dark"] .site-footer .footer-socials a {
+    border-color: rgba(0, 0, 0, 0.12);
+    background: rgba(0, 0, 0, 0.04);
+}
+body[data-theme="dark"] .site-footer .footer-socials a:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: #121726;
+}
+body[data-theme="dark"] .site-footer .footer-tagline { color: rgba(18, 23, 38, 0.4); }
+body[data-theme="dark"] .site-footer .footer-copy { color: rgba(18, 23, 38, 0.25); }
+body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0.3); }
+.footer-tagline {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 11px; font-weight: 400;
+    color: rgba(255,255,255,0.25);
+    margin-bottom: 14px;
+}
+.footer-socials {
+    display: flex; justify-content: center; gap: 20px;
+    margin-bottom: 12px;
+}
+.footer-socials a {
+    display: flex; align-items: center; gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 1px;
+    text-transform: uppercase; text-decoration: none;
+    color: rgba(255,255,255,0.35);
+    transition: color 0.3s;
+}
+.footer-socials a:hover { color: #4AC9F7; }
+.footer-socials a[href*="wa.me"]:hover { color: #25D366 !important; }
+.footer-socials svg { width: 14px; height: 14px; fill: currentColor; }
+.footer-copy {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 1px;
+    color: rgba(255,255,255,0.15);
+}
+@media (max-width: 640px) {
+    .footer-socials { gap: 14px; }
+    .footer-socials a { font-size: 9px; }
+}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal-section {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, filter 0.8s ease, transform 0.8s ease;
+}
+.reveal-section.revealed {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
+    .lc-hero { padding: 24px 16px 40px; }
+    .lc-hero h1 { font-size: clamp(28px, 10vw, 48px); }
+    .lc-section { padding: 40px 16px; }
+    .cta-final { padding: 50px 16px; }
+    .dato-section { padding: 50px 16px; }
+    .cta-mega-btn { padding: 18px 40px; }
+}
+</style>
+</head>
+<body data-theme="light">
+
+<!-- Logo -->
+<div style="text-align:center;padding:24px 0 0;">
+  <a href="index.html" style="display:inline-block;"><img id="logoW" src="assets/images/logo-w.PNG" alt="MasCreativa" style="height:60px;display:none;">
+  <img id="logoD" src="assets/images/logo-d.PNG" alt="MasCreativa" style="height:60px;display:block;"></a>
+</div>
+
+<!-- Light/Dark mode toggle -->
+<div class="theme-switch-wrap">
+  <label class="theme-switch" id="modeToggle" aria-label="Cambiar tema">
+    <input type="checkbox" class="theme-switch__checkbox" id="themeCheckbox">
+    <div class="theme-switch__container">
+      <div class="theme-switch__clouds"></div>
+      <div class="theme-switch__stars-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688ZM31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 23.2903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545ZM0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545ZM56.8313 24.0069C56.0551 24.8503 55.1114 25.2995 54 25.3545C55.1114 25.4095 56.0551 25.8587 56.8313 26.7112C57.6075 27.5546 57.9956 28.563 57.9956 29.7273C57.9956 28.9572 58.172 28.2513 58.5248 27.5913C58.8864 26.9312 59.3716 26.3995 59.9802 26.0053C60.5976 25.602 61.2679 25.3911 62 25.3545C60.8798 25.2903 59.9361 24.8503 59.1599 24.0069C58.3837 23.1635 57.9956 22.1642 57.9956 21C57.9956 22.1642 57.6075 23.1635 56.8313 24.0069ZM81 25.3545C82.1114 25.2995 83.0551 24.8503 83.8313 24.0069C84.6075 23.1635 84.9956 22.1642 84.9956 21C84.9956 22.1642 85.3837 23.1635 86.1599 24.0069C86.9361 24.8503 87.8798 25.2903 89 25.3545C88.2679 25.3911 87.5976 25.602 86.9802 26.0053C86.3716 26.3995 85.8864 26.9312 85.5248 27.5913C85.172 28.2513 84.9956 28.9572 84.9956 29.7273C84.9956 28.563 84.6075 27.5546 83.8313 26.7112C83.0551 25.8587 82.1114 25.4095 81 25.3545ZM136 36.3545C137.111 36.2995 138.055 35.8503 138.831 35.0069C139.607 34.1635 139.996 33.1642 139.996 32C139.996 33.1642 140.384 34.1635 141.16 35.0069C141.936 35.8503 142.88 36.2903 144 36.3545C143.268 36.3911 142.598 36.602 141.98 37.0053C141.372 37.3995 140.886 37.9312 140.525 38.5913C140.172 39.2513 139.996 39.9572 139.996 40.7273C139.996 39.563 139.607 38.5546 138.831 37.7112C138.055 36.8587 137.111 36.4095 136 36.3545ZM101.831 49.0069C101.055 49.8503 100.111 50.2995 99 50.3545C100.111 50.4095 101.055 50.8587 101.831 51.7112C102.607 52.5546 102.996 53.563 102.996 54.7273C102.996 53.9572 103.172 53.2513 103.525 52.5913C103.886 51.9312 104.372 51.3995 104.98 51.0053C105.598 50.602 106.268 50.3911 107 50.3545C105.88 50.2903 104.936 49.8503 104.16 49.0069C103.384 48.1635 102.996 47.1642 102.996 46C102.996 47.1642 102.607 48.1635 101.831 49.0069Z" fill="currentColor"></path>
+        </svg>
+      </div>
+      <div class="theme-switch__circle-container">
+        <div class="theme-switch__sun-moon-container">
+          <div class="theme-switch__moon">
+            <div class="theme-switch__spot"></div>
+            <div class="theme-switch__spot"></div>
+            <div class="theme-switch__spot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </label>
+</div>
+
+<nav class="page-nav">
+  <a href="index.html">Inicio</a>
+  <a href="services.html">Servicios</a>
+  <a href="portfolio.html">Portafolio</a>
+  <a href="about.html">Nosotros</a>
+  <a href="live-content.html" class="active-link">Live Content</a>
+  <a href="contacto.html">Contacto</a>
+</nav>
+
+<button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+<div class="mobile-overlay" id="mobileOverlay">
+  <a href="index.html">Inicio</a>
+  <a href="services.html">Servicios</a>
+  <a href="portfolio.html">Portafolio</a>
+  <a href="about.html">Nosotros</a>
+  <a href="live-content.html">Live Content</a>
+  <a href="contacto.html">Contacto</a>
+  <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true">
+</div>
+
+
+<!-- ===== HERO ===== -->
+<section class="lc-hero reveal-section">
+  <div class="lc-hero-eyebrow">Live Content</div>
+  <p class="lc-hero-subtitle">Contenido en Tiempo Real</p>
+  <h1>El momento pasa.<br><span class="highlight">El clip se queda.</span></h1>
+  <p class="lc-hero-body">Mientras tu evento sucede, nosotros estamos editando, publicando y viralizando. No al otro día. No la semana que viene. Ahora mismo, cuando la audiencia todavía tiene el celular en la mano y la emoción fresca.</p>
+  <div class="lc-hero-actions">
+    <a href="contacto.html" class="btn-primary">Agenda una consulta</a>
+    <a href="#como-funciona" class="btn-secondary">Ver cómo funciona</a>
+  </div>
+</section>
+
+
+<!-- ===== EL PROBLEMA ===== -->
+<section class="lc-section reveal-section" id="el-problema">
+  <div class="lc-section-label">La realidad</div>
+  <h2>Tu evento dura horas. La atención de tu audiencia dura segundos.</h2>
+  <p>Organizas un evento brutal. La gente la pasa bien, las fotos se ven increíbles, todo fluyó perfecto. Pero el contenido se publica tres días después, cuando nadie se acuerda de lo que sintió. El algoritmo ya se movió. La conversación ya cambió.</p>
+  <p>La mayoría de las marcas tratan el contenido de eventos como una tarea de post-producción. Graban todo, lo guardan, y semanas después publican un recap que ya nadie quiere ver. Eso no es estrategia. Eso es archivo.</p>
+  <p>El problema no es la calidad del evento. El problema es que el contenido llega tarde. Y en redes sociales, llegar tarde es lo mismo que no llegar.</p>
+</section>
+
+
+<!-- ===== LA SOLUCIÓN ===== -->
+<section class="lc-section reveal-section" id="la-solucion">
+  <div class="lc-section-label">Live Content by +MasCreativa</div>
+  <h2>Contenido viral, producido en vivo.</h2>
+  <p>Live Content no es grabar y después editar. Es tener un equipo de producción en tu evento que está capturando, editando y publicando clips optimizados para redes mientras el evento sigue ocurriendo.</p>
+  <p>Cada pieza sale con dirección creativa, cortes precisos, texto superpuesto, música licenciada y formato nativo para cada plataforma. No es contenido de celular con un filtro. Es producción profesional a velocidad de redes sociales.</p>
+  <p>Mientras tu audiencia comparte lo que está viviendo, tu marca ya tiene contenido profesional compitiendo por la misma atención. El resultado: alcance orgánico masivo, engagement real y un banco de contenido que sigue trabajando semanas después.</p>
+  <p><strong>Eso es Live Content. Es la diferencia entre documentar un evento y detonarlo.</strong></p>
+</section>
+
+
+<!-- ===== CÓMO FUNCIONA ===== -->
+<section class="lc-section" id="como-funciona">
+  <div class="lc-section-label reveal-section">El proceso</div>
+  <h2 class="reveal-section">De momento a viral en minutos. No en días.</h2>
+  <div class="step-cards">
+
+    <div class="step-card reveal-section">
+      <div class="step-number">01</div>
+      <div class="step-content">
+        <h3>Pre-producción estratégica</h3>
+        <p>Antes del evento nos reunimos contigo para entender los objetivos, la audiencia y los momentos clave. Definimos un plan de contenido con formatos, plataformas y messaging alineado a tu marca.</p>
+      </div>
+    </div>
+
+    <div class="step-card reveal-section">
+      <div class="step-number">02</div>
+      <div class="step-content">
+        <h3>Captura multi-ángulo en vivo</h3>
+        <p>Nuestro equipo llega con cámaras profesionales, audio dedicado y operadores entrenados para capturar los momentos que importan. No grabamos todo. Grabamos lo que va a funcionar.</p>
+      </div>
+    </div>
+
+    <div class="step-card reveal-section">
+      <div class="step-number">03</div>
+      <div class="step-content">
+        <h3>Edición en tiempo real</h3>
+        <p>Un editor en sitio recibe el material en vivo y empieza a cortar clips mientras el evento sigue. Textos, transiciones, música, color. Todo listo para publicar en minutos, no en días.</p>
+      </div>
+    </div>
+
+    <div class="step-card reveal-section">
+      <div class="step-number">04</div>
+      <div class="step-content">
+        <h3>Publicación inmediata</h3>
+        <p>Los clips salen directo a las plataformas de tu marca mientras la audiencia todavía está en el evento. Stories, Reels, TikToks, posts. Todo optimizado para cada formato nativo.</p>
+      </div>
+    </div>
+
+    <div class="step-card reveal-section">
+      <div class="step-number">05</div>
+      <div class="step-content">
+        <h3>Post-evento y banco de contenido</h3>
+        <p>Después del evento entregas un paquete completo: recap editado, clips individuales, fotos procesadas y un banco de contenido listo para reutilizar en campañas futuras.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ===== PARA QUIÉN ES ===== -->
+<section class="lc-section" id="para-quien">
+  <div class="lc-section-label reveal-section">Casos de uso</div>
+  <h2 class="reveal-section">Si tu evento tiene audiencia, necesita Live Content.</h2>
+  <div class="case-cards">
+
+    <div class="case-card reveal-section">
+      <h3>Deportes</h3>
+      <p>Ligas, torneos, carreras, peleas. Los momentos deportivos tienen una ventana de viralidad de minutos. Si el highlight no sale antes de que el fanático salga del venue, perdiste la oportunidad. Producimos clips de jugadas, reacciones y ambiente mientras el juego sigue.</p>
+    </div>
+
+    <div class="case-card reveal-section">
+      <h3>Música y Conciertos</h3>
+      <p>El público ya está grabando con su celular. Tu marca debería estar publicando contenido profesional al mismo tiempo. Capturamos performances, crowd shots, behind-the-scenes y momentos espontáneos que definen la experiencia del show.</p>
+    </div>
+
+    <div class="case-card reveal-section">
+      <h3>Corporativos y Conferencias</h3>
+      <p>Keynotes, paneles, networking. El contenido de conferencias tiene alcance más allá de los asistentes. Producimos soundbites, citas visuales y resúmenes cortos que extienden el impacto del evento a LinkedIn, X y más.</p>
+    </div>
+
+    <div class="case-card reveal-section">
+      <h3>Eventos Municipales y Comunitarios</h3>
+      <p>Fiestas patronales, ferias, actividades culturales. Estos eventos mueven comunidades enteras. Documentamos la energía en tiempo real para que el municipio, los auspiciadores y el público amplifiquen el momento mientras está pasando.</p>
+    </div>
+
+    <div class="case-card reveal-section">
+      <h3>Activaciones de Marca</h3>
+      <p>Pop-ups, lanzamientos, experiencias. Si tu marca invirtió en crear un momento, ese momento necesita alcance digital inmediato. Producimos contenido que convierte una activación física en una campaña digital completa.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ===== EL DATO ===== -->
+<section class="dato-section reveal-section" id="el-dato">
+  <div class="dato-number"><span class="plus">+</span><span id="datoCount">0</span></div>
+  <div class="dato-label">Esto no es teoría</div>
+  <p class="dato-body">Vistas combinadas en video producidas por +MasCreativa en 2025. Contenido que la gente eligió ver, compartir y comentar. No alcance pagado. Alcance ganado.</p>
+</section>
+
+
+<!-- ===== QUÉ INCLUYE ===== -->
+<section class="lc-section reveal-section" id="que-incluye">
+  <div class="lc-section-label">El paquete</div>
+  <h2>Todo lo que necesitas. Nada que no.</h2>
+  <div class="includes-grid">
+    <div class="includes-col">
+      <h3>Incluido</h3>
+      <ul class="includes-list">
+        <li>Pre-producción y plan de contenido</li>
+        <li>Equipo de captura en sitio (cámara + audio)</li>
+        <li>Editor en tiempo real durante el evento</li>
+        <li>Clips editados y publicados en vivo</li>
+        <li>Formatos nativos por plataforma (Reels, TikTok, Stories)</li>
+        <li>Música licenciada y textos superpuestos</li>
+        <li>Banco de contenido post-evento</li>
+        <li>Recap editado del evento completo</li>
+      </ul>
+    </div>
+    <div class="includes-col">
+      <h3>Opcional / Add-ons</h3>
+      <ul class="includes-list">
+        <li>Drone aéreo para tomas cinematográficas</li>
+        <li>Segundo editor para mayor volumen</li>
+        <li>Fotografía profesional del evento</li>
+        <li>Transmisión en vivo (livestream)</li>
+        <li>Pauta digital para amplificar clips en tiempo real</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== POR QUÉ NOSOTROS ===== -->
+<section class="lc-section reveal-section" id="por-que-nosotros">
+  <div class="lc-section-label">La diferencia +MasCreativa</div>
+  <h2>Cualquiera puede grabar. Nosotros creamos.</h2>
+  <p>La diferencia entre un videógrafo con cámara y un equipo de Live Content es la misma que entre tomar una foto y hacer una campaña. No estamos ahí para documentar. Estamos ahí para producir contenido con dirección creativa, estrategia de distribución y calidad de producción profesional.</p>
+  <p>Nuestro equipo ha producido contenido para marcas como Rimas Publishing, Fundación Good Bunny, New York Mets y decenas de eventos en Puerto Rico. Sabemos lo que funciona en redes porque lo hacemos todos los días, no porque leímos un artículo sobre tendencias.</p>
+  <p>Cuando trabajas con +MasCreativa, no contratas un servicio. Integras un equipo que entiende tu marca, tu audiencia y cómo convertir un momento en alcance real.</p>
+</section>
+
+
+<!-- ===== FAQ ===== -->
+<section class="lc-section" id="faq">
+  <div class="lc-section-label reveal-section">Preguntas frecuentes</div>
+  <div class="faq-list">
+
+    <div class="faq-item reveal-section">
+      <button class="faq-question" aria-expanded="false">
+        ¿Cuántas piezas de contenido se producen por evento?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-answer">
+        <p>Depende de la duración y el tipo de evento. En promedio, un evento de 3 a 4 horas produce entre 8 y 15 clips editados listos para publicar, más el recap final. Eventos más largos o con múltiples escenarios pueden generar más.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal-section">
+      <button class="faq-question" aria-expanded="false">
+        ¿Qué tan rápido se publica el contenido?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-answer">
+        <p>Los primeros clips pueden estar listos en 15 a 30 minutos desde el momento capturado. El flujo de producción es continuo, así que mientras el evento sigue, el contenido sigue saliendo.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal-section">
+      <button class="faq-question" aria-expanded="false">
+        ¿Necesito darles acceso a mis redes sociales?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-answer">
+        <p>Podemos publicar directamente en tus cuentas si nos das acceso temporal, o enviarte los clips listos para que tu equipo los suba. Lo que funcione mejor para ti.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal-section">
+      <button class="faq-question" aria-expanded="false">
+        ¿Funciona para eventos pequeños?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-answer">
+        <p>Sí. Live Content se adapta al tamaño del evento. Un lanzamiento íntimo de 50 personas puede generar contenido tan viral como un festival de 5,000. Lo que importa es el momento, no la escala.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal-section">
+      <button class="faq-question" aria-expanded="false">
+        ¿Cuánto cuesta?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-answer">
+        <p>Cada evento es diferente, y el precio depende de la duración, el equipo necesario y los deliverables. Escríbenos con los detalles de tu evento y te enviamos una cotización en menos de 24 horas.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal-section">
+      <button class="faq-question" aria-expanded="false">
+        ¿Trabajan fuera de Puerto Rico?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-answer">
+        <p>Nuestro equipo base está en Puerto Rico, pero hemos cubierto eventos en Estados Unidos y el Caribe. Si tu evento es fuera de la isla, contáctanos para coordinar logística.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal-section">
+      <button class="faq-question" aria-expanded="false">
+        ¿Puedo combinar Live Content con otros servicios de +MasCreativa?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-answer">
+        <p>Absolutamente. Live Content funciona todavía mejor cuando se integra con una estrategia de marketing digital, branding o pauta publicitaria. Lo armamos como un paquete completo según lo que necesites.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ===== CTA FINAL ===== -->
+<section class="cta-final reveal-section">
+  <h2>Tu próximo evento merece más que un recap.</h2>
+  <p class="cta-subtitle">Merece contenido que la gente vea, comparta y recuerde.</p>
+  <a class="cta-mega-btn" href="contacto.html">Hablemos de tu evento</a>
+  <a class="cta-phone" href="tel:+17876441276">Llámanos -- 787-644-1276</a>
+  <p class="cta-small">Respondemos en menos de 24 horas. Si tu evento es pronto, escríbenos directo por <a href="https://wa.me/17876441276" target="_blank" rel="noopener" style="color:var(--blue-strong);text-decoration:underline;">WhatsApp</a>.</p>
+</section>
+
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer" id="siteFooter">
+  <div class="footer-tagline">+MasCreativa Publicidad -- Creatividad que no pide permiso.</div>
+  <div class="footer-socials">
+    <a href="https://instagram.com/mas_creativa_pr" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      Instagram
+    </a>
+    <a href="https://wa.me/17876441276" target="_blank" rel="noopener" style="color:#25D366;">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+  <div class="footer-contact" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;color:rgba(255,255,255,0.2);margin-bottom:8px;"><a href="tel:+17876441276" style="color:inherit;text-decoration:none;">787-644-1276</a> · <a href="mailto:info@mascreativapublicidad.com" style="color:inherit;text-decoration:none;">info@mascreativapublicidad.com</a></div>
+  <div class="footer-copy">2026 +MasCreativa Publicidad. <a href="terms.html" style="color:inherit;text-decoration:underline;">Términos</a> · <a href="privacy.html" style="color:inherit;text-decoration:underline;">Privacidad</a></div>
+</footer>
+
+
+<script>
+// ===== LIGHT/DARK MODE TOGGLE =====
+(function(){
+  var checkbox=document.getElementById('themeCheckbox');
+  if(!checkbox) return;
+
+  var isDark=false;
+  try{var sv=localStorage.getItem('mcp-mode');if(sv==='dark')isDark=true;}catch(e){}
+
+  function paint(dark){
+    var theme = dark ? 'dark' : 'light';
+    document.body.setAttribute('data-theme', theme);
+
+    // Logo swap
+    var logoW=document.getElementById('logoW');
+    var logoD=document.getElementById('logoD');
+    if(logoW) logoW.style.display = dark ? 'block' : 'none';
+    if(logoD) logoD.style.display = dark ? 'none' : 'block';
+
+    // Theme-color meta
+    var metaTC=document.querySelector('meta[name="theme-color"]');
+    if(metaTC) metaTC.setAttribute('content', dark ? '#070b13' : '#F5F0EB');
+
+    try{localStorage.setItem('mcp-mode', theme);}catch(e){}
+  }
+
+  function applyMode(){
+    checkbox.checked=isDark;
+    paint(isDark);
+  }
+
+  checkbox.addEventListener('change',function(){
+    isDark=checkbox.checked;
+    applyMode();
+  });
+
+  applyMode();
+})();
+
+// Mobile hamburger menu
+(function(){
+  var menuBtn=document.getElementById('mobileMenuBtn');
+  var overlay=document.getElementById('mobileOverlay');
+  if(menuBtn&&overlay){
+    menuBtn.addEventListener('click',function(){
+      overlay.classList.toggle('open');
+    });
+  }
+})();
+
+// Count-up animation for El Dato stat
+(function(){
+  var counter = document.getElementById('datoCount');
+  if(!counter) return;
+  var fired = false;
+  var target = 100000000;
+  var obs = new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting && !fired){
+      fired = true;
+      var duration = 2200;
+      var start = performance.now();
+      function formatNum(n){
+        return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      }
+      function tick(now){
+        var elapsed = now - start;
+        var progress = Math.min(elapsed / duration, 1);
+        var ease = 1 - Math.pow(1 - progress, 3);
+        counter.textContent = formatNum(Math.round(target * ease));
+        if(progress < 1) requestAnimationFrame(tick);
+      }
+      setTimeout(function(){ requestAnimationFrame(tick); }, 200);
+    }
+  }, { threshold: 0.3 });
+  obs.observe(counter.parentElement.parentElement);
+})();
+
+// FAQ accordion toggle
+(function(){
+  var items = document.querySelectorAll('.faq-item');
+  items.forEach(function(item){
+    var btn = item.querySelector('.faq-question');
+    if(!btn) return;
+    btn.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      // Close all first
+      items.forEach(function(i){ i.classList.remove('open'); i.querySelector('.faq-question').setAttribute('aria-expanded','false'); });
+      // Toggle current
+      if(!isOpen){
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded','true');
+      }
+    });
+  });
+})();
+
+// Scroll reveal: fade in from blur
+(function(){
+  var els = document.querySelectorAll('.reveal-section');
+  if(!els.length) return;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('revealed');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(function(el){ obs.observe(el); });
+})();
+</script>
+</body>
+</html>
