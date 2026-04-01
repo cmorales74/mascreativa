@@ -1749,8 +1749,8 @@
   }
 
 </style>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
 </head>
 <body data-theme="light">
 
@@ -2352,7 +2352,7 @@
       gsap.set('.impact-bar', { clearProps: 'width' });
     }
 
-    // 4. Nav collapse on scroll (replicates original: collapse at 60px, hide hamburger+toggle on scroll UP past 100px, show on scroll DOWN)
+    // 4. Nav collapse on scroll (collapse at 60px, hide hamburger+toggle on scroll DOWN past 100px, show on scroll UP)
     var navBar = document.getElementById('navBar');
     var menuBtn2 = document.getElementById('mobileMenuBtn');
     var themeWrap = document.getElementById('themeToggleWrap');
@@ -2370,15 +2370,15 @@
             navBar.classList.remove('collapsed');
           }
 
-          // Hide hamburger + toggle on scroll up, show on scroll down (matches original behavior)
+          // Hide hamburger + toggle on scroll down, show on scroll up (standard Apple-style UX)
           if (scrollY > 100) {
-            if (direction < 0 && !navHidden) {
-              // Scrolling up - hide
+            if (direction > 0 && !navHidden) {
+              // Scrolling down - hide (user is reading)
               if (menuBtn2) { menuBtn2.style.transform = 'translateY(-80px)'; menuBtn2.style.opacity = '0'; }
               if (themeWrap) { themeWrap.style.transform = 'translateY(-80px)'; themeWrap.style.opacity = '0'; }
               navHidden = true;
-            } else if (direction > 0 && navHidden) {
-              // Scrolling down - show
+            } else if (direction < 0 && navHidden) {
+              // Scrolling up - show (user wants to navigate)
               if (menuBtn2) { menuBtn2.style.transform = ''; menuBtn2.style.opacity = ''; }
               if (themeWrap) { themeWrap.style.transform = ''; themeWrap.style.opacity = ''; }
               navHidden = false;
