@@ -1584,7 +1584,7 @@
   @media (max-width: 640px) {
     .mobile-menu-btn {
       display: flex;
-      position: fixed; top: 28px; left: 20px; z-index: 50;
+      position: fixed; top: 28px; left: 20px; z-index: 1000;
       width: 32px; height: 32px;
       background: none; border: none; cursor: pointer;
       flex-direction: column; justify-content: center; gap: 5px;
@@ -1595,12 +1595,18 @@
       background: var(--text); transition: all 0.3s;
     }
     .mobile-overlay {
-      position: fixed; inset: 0; z-index: 45;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      z-index: 999;
       background: var(--bg);
       display: flex; flex-direction: column;
       align-items: center; justify-content: center; gap: 28px;
       opacity: 0; pointer-events: none;
       transition: opacity 0.3s;
+      overflow-y: auto;
     }
     .mobile-overlay.open { opacity: 1; pointer-events: auto; }
     .mobile-overlay a {
@@ -1695,7 +1701,7 @@
 
   /* Mobile hamburger + toggle need to clear the nav bar */
   .mobile-menu-btn {
-    z-index: 50;
+    z-index: 1000;
   }
 
   /* ===== BOOTUP SPLASH ===== */
@@ -1802,6 +1808,7 @@
         </h1>
         <div class="hero-video-box">
           <video autoplay muted loop playsinline preload="metadata" src="assets/videos/hero-reel.mp4?v=2"></video>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1px;color:var(--muted);opacity:0.6;text-align:center;margin-top:6px;">Compilación de eventos y clientes recientes</div>
         </div>
         <p>Somos una agencia creativa en San Juan que produce campañas, identidades y contenido visual que la gente no puede ignorar. Llevamos años haciéndolo y los números lo confirman.</p>
 
