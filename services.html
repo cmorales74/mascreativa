@@ -173,13 +173,24 @@ html, body {
     pointer-events: auto;
     text-decoration: none;
     cursor: pointer;
-    transition: color 0.3s, border-color 0.3s, background 0.3s;
+    transition: color 0.3s, border-color 0.3s, background 0.3s, box-shadow 0.3s;
+}
+.service-chip--spotlight {
+    color: var(--text);
+    border-color: color-mix(in srgb, var(--blue-strong) 34%, var(--line));
+    background: linear-gradient(135deg, rgba(56, 186, 247, 0.16), rgba(99, 88, 255, 0.08)), var(--panel-strong);
+    box-shadow: 0 10px 28px rgba(56, 186, 247, 0.14);
 }
 .service-chip:hover,
 .service-chip.active {
     color: var(--blue-strong);
     border-color: var(--blue-strong);
     background: var(--panel-strong);
+}
+.service-chip--spotlight:hover,
+.service-chip--spotlight.active {
+    background: linear-gradient(135deg, rgba(56, 186, 247, 0.22), rgba(99, 88, 255, 0.12)), var(--panel-strong);
+    box-shadow: 0 16px 32px rgba(56, 186, 247, 0.18);
 }
 @media (max-width: 640px) {
     .services-list { gap: 8px; padding: 8px 12px 12px; }
@@ -207,7 +218,7 @@ html, body {
     border-top: 1px solid var(--line);
     padding-top: 24px;
 }
-.sd-card:nth-child(even) {
+.sd-card:nth-child(even):not(.sd-card--featured) {
     border-top: none;
     border-left: 3px solid var(--blue-strong);
     padding-left: 20px;
@@ -221,6 +232,14 @@ html, body {
     -webkit-backdrop-filter: blur(12px);
     position: relative;
 }
+.sd-card--live {
+    padding-top: 44px !important;
+    background:
+        radial-gradient(circle at top right, rgba(56, 186, 247, 0.16), transparent 34%),
+        linear-gradient(180deg, rgba(56, 186, 247, 0.08), transparent 52%),
+        var(--glass-bg);
+    box-shadow: 0 24px 60px rgba(56, 186, 247, 0.14);
+}
 .sd-card--featured::before {
     content: 'SERVICIO DESTACADO';
     position: absolute;
@@ -231,12 +250,24 @@ html, body {
     color: var(--blue-strong);
     opacity: 0.7;
 }
+.sd-card--live::after {
+    content: '';
+    position: absolute;
+    right: -46px;
+    bottom: -82px;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, rgba(56, 186, 247, 0.18), transparent 70%);
+    pointer-events: none;
+}
 .sd-icon {
     display: block;
     width: 28px; height: 28px;
     margin-bottom: 12px;
     opacity: 0.6;
     color: var(--blue-strong);
+    position: relative;
+    z-index: 1;
 }
 .sd-title {
     font-family: 'Cabinet Grotesk', sans-serif;
@@ -244,12 +275,75 @@ html, body {
     letter-spacing: 0.08em; text-transform: uppercase;
     color: var(--blue-strong);
     margin: 0 0 12px;
+    position: relative;
+    z-index: 1;
 }
 .sd-body {
     font-family: 'Satoshi', sans-serif;
     font-size: 14px; line-height: 1.7;
     color: var(--muted);
     margin: 0 0 16px;
+    position: relative;
+    z-index: 1;
+}
+.sd-body--lead {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text);
+    max-width: 48ch;
+}
+.sd-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--blue-strong);
+    margin: 0 0 14px;
+    position: relative;
+    z-index: 1;
+}
+.sd-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin: 6px 0 18px;
+    position: relative;
+    z-index: 1;
+}
+.sd-panel {
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+}
+.sd-panel-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+.sd-list--compact li {
+    font-size: 10px;
+    line-height: 1.7;
+}
+.sd-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue-strong);
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+}
+.sd-link:hover {
+    color: var(--text);
 }
 .sd-inline-stat {
     text-align: center;
@@ -299,9 +393,11 @@ html, body {
     .sd-inner { padding: 20px 16px 40px; gap: 30px; }
     .sd-title { font-size: 16px; }
     .sd-body { font-size: 13px; }
+    .sd-body--lead { font-size: 14px; }
     .sd-list li { font-size: 10px; }
     .sd-card--featured { padding: 20px 16px !important; }
     .sd-card--featured::before { font-size: 6px; top: 8px; right: 10px; }
+    .sd-grid { grid-template-columns: 1fr; gap: 14px; }
 }
 
 /* ===== THEME SWITCH ===== */
@@ -493,8 +589,8 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
 
 <!-- Logo -->
 <div style="text-align:center;padding:24px 0 0;">
-  <a href="index.html" style="display:inline-block;"><img id="logoW" src="assets/images/logo-w.PNG" alt="MasCreativa" style="height:60px;display:none;">
-  <img id="logoD" src="assets/images/logo-d.PNG" alt="MasCreativa" style="height:60px;display:block;"></a>
+  <a href="index.html" style="display:inline-block;"><img id="logoW" src="assets/images/logo-w.PNG" alt="Logo de MasCreativa" style="height:60px;display:none;">
+  <img id="logoD" src="assets/images/logo-d.PNG" alt="Logo de MasCreativa" style="height:60px;display:block;"></a>
 </div>
 
 <!-- Light/Dark mode toggle -->
@@ -530,7 +626,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
   <a href="contacto.html">Contacto</a>
 </nav>
 
-<button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+<button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú">
   <span></span><span></span><span></span>
 </button>
 <div class="mobile-overlay" id="mobileOverlay">
@@ -550,29 +646,64 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
 
 
 <div class="services-list reveal-section" id="serviceChips">
+  <a href="#live-content" class="service-chip service-chip--spotlight">Live Content</a>
   <a href="#branding" class="service-chip">Branding</a>
   <a href="#publicidad" class="service-chip">Publicidad</a>
   <a href="#foto-video" class="service-chip">Foto + Video</a>
   <a href="#marketing" class="service-chip">Marketing</a>
   <a href="#contenido" class="service-chip">Contenido</a>
   <a href="#diseno" class="service-chip">Impresión</a>
-  <a href="live-content.html" class="service-chip">Live Content</a>
 </div>
 
 <!-- Service Details -->
 <div class="services-details" id="servicesDetails">
-  <p class="sd-intro" style="font-family:'Satoshi',sans-serif;font-size:14px;line-height:1.7;color:var(--muted);text-align:center;max-width:600px;margin:0 auto 10px;padding:0 24px;">No vendemos paquetes. Armamos lo que tu marca necesita, al nivel que tu marca merece. Da igual si el presupuesto es grande o modesto -- lo que sale de aquí es nuestro mejor trabajo.</p>
   <div class="sd-inner">
+
+    <div class="sd-card sd-card--featured sd-card--live reveal-section" id="live-content">
+      <svg class="sd-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 10l4.553-2.276A1 1 0 0 1 21 8.618v6.764a1 1 0 0 1-1.447.894L15 14"/><rect x="3" y="6" width="12" height="12" rx="2" ry="2"/></svg>
+      <div class="sd-kicker">Contenido en tiempo real</div>
+      <h3 class="sd-title">Live Content</h3>
+      <p class="sd-body sd-body--lead">El momento pasa. El clip se queda. Mientras tu evento sucede, nosotros estamos editando, publicando y viralizando. No al otro día. No la semana que viene. Ahora mismo, cuando la audiencia todavía tiene el celular en la mano.</p>
+      <p class="sd-body">Live Content no es grabar y después editar. Es entrar con un equipo de producción que captura, corta y saca clips optimizados para redes mientras el evento sigue ocurriendo. Cada pieza sale con dirección creativa, textos, música y formato nativo para la plataforma donde va a competir por atención.</p>
+      <div class="sd-grid">
+        <div class="sd-panel">
+          <div class="sd-panel-title">Cómo funciona</div>
+          <ul class="sd-list sd-list--compact">
+            <li>Preproducción estratégica con objetivos, momentos clave y plataformas claras</li>
+            <li>Captura en vivo con cámaras, audio y operadores enfocados en lo que sí va a funcionar</li>
+            <li>Edición y publicación inmediata mientras el evento todavía está caliente</li>
+          </ul>
+        </div>
+        <div class="sd-panel">
+          <div class="sd-panel-title">Ideal para</div>
+          <ul class="sd-list sd-list--compact">
+            <li>Deportes, conciertos y shows donde la ventana de viralidad dura minutos</li>
+            <li>Conferencias y eventos corporativos que necesitan extender su alcance</li>
+            <li>Activaciones de marca, pop-ups, eventos municipales y comunitarios</li>
+          </ul>
+        </div>
+        <div class="sd-panel">
+          <div class="sd-panel-title">Qué recibes</div>
+          <ul class="sd-list sd-list--compact">
+            <li>Clips en vivo para Reels, TikTok, Stories y publicaciones</li>
+            <li>Banco de contenido listo para seguir explotando el evento después</li>
+            <li>Video resumen y entregables listos para campañas futuras</li>
+          </ul>
+        </div>
+      </div>
+      <p class="sd-body">Es la diferencia entre documentar un evento y detonarlo. Si tu evento tiene audiencia, necesita contenido saliendo mientras está pasando.</p>
+      <a href="contacto.html" class="sd-link">Agenda Live Content</a>
+    </div>
 
     <div class="sd-card reveal-section" id="branding">
       <svg class="sd-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
       <h3 class="sd-title">Branding e Identidad</h3>
-      <p class="sd-body">Un logo solo no resuelve nada. Construimos identidades completas -- nombre, sistema visual, manual, aplicaciones -- para que tu marca se reconozca en cualquier superficie.</p>
+      <p class="sd-body">Un logo solo no resuelve nada. Construimos identidades completas: nombre, sistema visual, manual y aplicaciones, para que tu marca se reconozca en cualquier superficie.</p>
       <ul class="sd-list">
         <li>Diseño de logotipo y sistema visual</li>
-        <li>Manuales de marca (brand books)</li>
+        <li>Manuales de marca</li>
         <li>Naming y estrategia de marca</li>
-        <li>Desarrollo de branding completo</li>
+        <li>Desarrollo integral de marca</li>
         <li>Diseño gráfico y papelería corporativa</li>
       </ul>
     </div>
@@ -580,7 +711,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
     <div class="sd-card reveal-section" id="publicidad">
       <svg class="sd-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><path d="M2 8c0-2.2.7-4.3 2-6"/><path d="M22 8a10 10 0 0 0-2-6"/></svg>
       <h3 class="sd-title">Publicidad y Medios</h3>
-      <p class="sd-body">Hacemos campañas que la gente ve de principio a fin. Concepto creativo, pauta inteligente y ejecución en medios digitales y tradicionales. Nada de quemar presupuesto en ads genéricos.</p>
+      <p class="sd-body">Hacemos campañas que la gente ve de principio a fin. Concepto creativo, pauta inteligente y ejecución en medios digitales y tradicionales. Nada de quemar presupuesto en anuncios genéricos.</p>
       <ul class="sd-list">
         <li>Campañas en Meta, Google y TikTok</li>
         <li>Publicidad en medios tradicionales</li>
@@ -591,7 +722,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       </ul>
     </div>
 
-    <div class="sd-card sd-card--featured reveal-section" id="foto-video">
+    <div class="sd-card reveal-section" id="foto-video">
       <svg class="sd-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
       <h3 class="sd-title">Fotografía y Video</h3>
       <p class="sd-body">Aquí es donde más nos lucimos. Lo que necesites, lo producimos completo. Dirección creativa, iluminación profesional, edición cinemática.</p>
@@ -605,7 +736,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
         <li>Video publicitario y corporativo</li>
         <li>Videos musicales</li>
         <li>Reels y contenido para redes</li>
-        <li>Behind-the-scenes</li>
+        <li>Detrás de cámaras</li>
         <li>Animaciones</li>
       </ul>
     </div>
@@ -616,8 +747,8 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       <p class="sd-body">Publicar por publicar no es estrategia. Esto sí:</p>
       <ul class="sd-list">
         <li>Gestión de redes sociales con calendario real</li>
-        <li>Community management que responde, no decora</li>
-        <li>Diseño de posts y stories</li>
+        <li>Gestión de comunidad que responde, no decora</li>
+        <li>Diseño de publicaciones e historias</li>
         <li>Desarrollo de páginas web y aplicaciones</li>
         <li>SEO y SEM que mueve el tráfico de verdad</li>
       </ul>
@@ -629,7 +760,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       <p class="sd-body">Para Fundación Good Bunny produjimos contenido visual que contó la historia de la organización sin necesitar un párrafo de texto. Eso es lo que hacemos.</p>
       <ul class="sd-list">
         <li>Dirección creativa</li>
-        <li>Fotografía de producto y lifestyle</li>
+        <li>Fotografía de producto y de estilo de vida</li>
         <li>Video promocional</li>
         <li>Contenido para web y redes</li>
       </ul>
@@ -638,10 +769,10 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
     <div class="sd-card reveal-section" id="diseno">
       <svg class="sd-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
       <h3 class="sd-title">Diseño e Impresión</h3>
-      <p class="sd-body">Un flyer bien hecho todavía mueve gente. Diseñamos piezas impresas al mismo nivel que lo digital -- empaques, catálogos, señalética, material POP.</p>
+      <p class="sd-body">Un flyer bien hecho todavía mueve gente. Diseñamos piezas impresas al mismo nivel que lo digital: empaques, catálogos, señalética y material POP.</p>
       <ul class="sd-list">
         <li>Diseño gráfico para impresión</li>
-        <li>Flyers, brochures y catálogos</li>
+        <li>Volantes, folletos y catálogos</li>
         <li>Empaques y etiquetas</li>
         <li>Señalética y material POP</li>
       </ul>
@@ -656,7 +787,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
 
 <!-- Footer -->
 <footer class="site-footer" id="siteFooter">
-  <div class="footer-tagline">+MasCreativa Publicidad -- Creatividad que no pide permiso.</div>
+  <div class="footer-tagline">+MasCreativa Publicidad. Creatividad que no pide permiso.</div>
   <div class="footer-socials">
     <a href="https://instagram.com/mas_creativa_pr" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>

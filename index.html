@@ -1089,190 +1089,117 @@
     color: var(--ink-muted);
   }
 
-  /* ===== GLASS STACKED CARDS ===== */
-  .stack-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
+  /* ===== HOME ABOUT ===== */
+  .home-about {
+    padding-top: 8px;
+    padding-bottom: 24px;
   }
 
-  .stack-stage {
+  .home-about-grid {
+    width: min(1080px, calc(100vw - 40px));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(28px, 4vw, 48px);
+    align-items: start;
+  }
+
+  .home-about-intro {
     position: relative;
-    width: 100%;
-    height: clamp(400px, 55vw, 520px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    perspective: 1200px;
+    padding-top: 24px;
   }
 
-  .stack-card {
+  .home-about-intro::before {
+    content: "";
     position: absolute;
-    width: clamp(280px, 38vw, 400px);
-    border-radius: var(--radius);
-    overflow: hidden;
-    background: var(--glass-bg-strong);
-    backdrop-filter: var(--blur);
-    -webkit-backdrop-filter: var(--blur);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
-    transition: all 0.6s var(--ease-out);
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
+    top: 0;
+    left: 0;
+    width: 58px;
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--blue-strong), var(--purple-strong));
   }
 
-  .stack-card[data-pos="0"] {
-    z-index: 5;
-    transform: translateY(0) scale(1) rotateX(0);
-    opacity: 1;
-  }
-  .stack-card[data-pos="0"]:hover {
-    box-shadow: var(--glass-shadow-hover);
-    transform: translateY(-6px) scale(1.01);
-  }
-
-  .stack-card[data-pos="1"] {
-    z-index: 4;
-    transform: translateY(28px) scale(0.955);
-    opacity: 0.75;
-  }
-  .stack-card[data-pos="2"] {
-    z-index: 3;
-    transform: translateY(52px) scale(0.91);
-    opacity: 0.5;
-  }
-  .stack-card[data-pos="3"] {
-    z-index: 2;
-    transform: translateY(72px) scale(0.87);
-    opacity: 0.25;
-  }
-  .stack-card[data-pos="4"],
-  .stack-card[data-pos="5"] {
-    z-index: 1;
-    transform: translateY(84px) scale(0.84);
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .stack-card.dismissing {
-    transform: translateX(140%) translateY(-20px) rotate(12deg) !important;
-    opacity: 0 !important;
-    transition: all 0.55s var(--ease-out) !important;
-  }
-
-  .stack-card-visual {
-    flex: 1;
-    min-height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .stack-card-visual video {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-  }
-  .stack-card-visual { background: #111; }
-
-  .stack-card-badge {
-    position: absolute;
-    top: 14px;
-    left: 14px;
+  .home-about-label {
     font-family: "JetBrains Mono", monospace;
-    font-size: 9px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: #fff;
-    background: rgba(0,0,0,0.25);
-    backdrop-filter: blur(10px);
-    padding: 5px 12px;
-    border-radius: 100px;
-    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--blue-strong);
+    margin-bottom: 16px;
   }
 
-  .stack-card-content {
-    padding: 22px 24px;
-    background: var(--glass-bg);
-    border-top: 1px solid var(--glass-border);
-  }
-
-  .stack-card-title {
+  .home-about-title {
     font-family: "Cabinet Grotesk", sans-serif;
-    font-size: 19px;
-    font-weight: 600;
-    letter-spacing: -0.015em;
-    margin-bottom: 5px;
+    font-size: clamp(2.1rem, 4.4vw, 4rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+    max-width: 10ch;
+    margin-bottom: 18px;
   }
 
-  .stack-card-sub {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.55;
+  .home-about-quote {
+    font-family: "Cabinet Grotesk", sans-serif;
+    font-size: clamp(1.15rem, 2.3vw, 1.8rem);
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    max-width: 24ch;
   }
 
-  .stack-controls {
+  .home-about-copy {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 16px;
+    padding-top: 40px;
   }
 
-  .stack-btn {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: var(--glass-bg-strong);
-    backdrop-filter: var(--blur);
-    -webkit-backdrop-filter: var(--blur);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
+  .home-about-copy p,
+  .home-about-block p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+
+  .home-about-copy strong {
+    color: var(--text);
+  }
+
+  .home-about-rail {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line);
+  }
+
+  .home-about-block {
+    min-width: 0;
+  }
+
+  .home-about-chips {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: var(--ink-muted);
-    transition: all 0.3s ease;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
   }
 
-  .stack-btn:hover {
-    background: var(--text);
-    color: var(--bg);
-    border-color: var(--text);
-    box-shadow: var(--glass-shadow-hover);
-  }
-
-  .stack-btn svg {
-    width: 18px;
-    height: 18px;
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 2;
-  }
-
-  .stack-dots {
-    display: flex;
-    gap: 6px;
-  }
-
-  .stack-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--ink-muted);
-    opacity: 0.2;
-    transition: all 0.3s ease;
-  }
-
-  .stack-dot.active {
-    opacity: 1;
-    background: var(--accent);
-    width: 18px;
-    border-radius: 3px;
+  .home-about-chip {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text);
+    padding: 9px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: color-mix(in srgb, var(--panel-strong) 84%, transparent);
   }
 
 
@@ -1502,8 +1429,9 @@
       align-items: flex-start;
     }
 
-    .stack-stage {
-      height: 420px;
+    .home-about-grid,
+    .home-about-rail {
+      grid-template-columns: 1fr;
     }
 
     .footer-inner {
@@ -1583,12 +1511,37 @@
     }
 
     /* Performance: disable GPU-heavy backdrop-filter on mobile */
-    .marquee-glass,
-    .stack-card,
-    .stack-card-badge,
-    .stack-btn {
+    .marquee-glass {
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
+    }
+
+    .home-about {
+      padding-bottom: 12px;
+    }
+
+    .home-about-grid {
+      width: min(calc(100vw - 24px), 100%);
+      gap: 24px;
+    }
+
+    .home-about-title {
+      max-width: 12ch;
+    }
+
+    .home-about-copy {
+      padding-top: 0;
+    }
+
+    .home-about-copy p,
+    .home-about-block p {
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .home-about-chip {
+      font-size: 0.5rem;
+      letter-spacing: 0.14em;
     }
 
     .nav-bar.collapsed .nav-bar-inner {
@@ -1790,8 +1743,8 @@
 <nav class="nav-bar" id="navBar">
   <div class="nav-bar-inner">
     <div class="nav-logo">
-      <img class="hero-logo hero-logo-light" src="assets/images/logo-d.PNG" alt="MasCreativa logo">
-      <img class="hero-logo hero-logo-dark" src="assets/images/logo-w.PNG" alt="MasCreativa logo">
+      <img class="hero-logo hero-logo-light" src="assets/images/logo-d.PNG" alt="Logo de MasCreativa">
+      <img class="hero-logo hero-logo-dark" src="assets/images/logo-w.PNG" alt="Logo de MasCreativa">
     </div>
   </div>
 </nav>
@@ -1820,7 +1773,7 @@
   </label>
 </div>
 
-<button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+<button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú">
   <span></span><span></span><span></span>
 </button>
 <div class="mobile-overlay" id="mobileOverlay">
@@ -2002,7 +1955,7 @@
         </div>
       </div>
       <div class="marquee-label">
-        <span class="marquee-label-text">Hover para pausar</span>
+        <span class="marquee-label-text">Pasa el cursor para pausar</span>
         <span class="marquee-label-text">8 clientes destacados</span>
       </div>
     </div>
@@ -2017,48 +1970,47 @@
     <div class="impact-bar"></div>
   </div>
 
-  <div class="section reveal-section" id="carousel-stack">
-    <div class="section-header">
-      <div class="section-header-text">
-        <h2 class="section-title">Proyectos Destacados</h2>
-        <p class="section-desc">Click para explorar. Cada tarjeta es un proyecto que hicimos con la misma obsesión.</p>
-      </div>
-    </div>
-
-    <div class="stack-wrapper">
-      <div class="stack-stage" id="stackStage">
-        <div class="stack-card" data-pos="0">
-          <div class="stack-card-visual"><video autoplay muted loop playsinline preload="metadata" src="assets/videos/turismo-interno.mp4?v=1"></video><div class="stack-card-badge">Turismo</div></div>
-          <div class="stack-card-content"><div class="stack-card-title">Turismo Interno</div><div class="stack-card-sub">Producción audiovisual para la campaña de turismo interno de Puerto Rico. Isla, cultura y experiencia en cada toma.</div></div>
-        </div>
-        <div class="stack-card" data-pos="1">
-          <div class="stack-card-visual"><video autoplay muted loop playsinline preload="metadata" src="assets/videos/sounds-of-puerto-rico.mp4?v=1"></video><div class="stack-card-badge">Documental</div></div>
-          <div class="stack-card-content"><div class="stack-card-title">Sounds of Puerto Rico</div><div class="stack-card-sub">La música, los sonidos y la identidad sonora de Puerto Rico capturados en video.</div></div>
-        </div>
-        <div class="stack-card" data-pos="2">
-          <div class="stack-card-visual"><video autoplay muted loop playsinline preload="metadata" src="assets/videos/rum-of-taste.mp4?v=1"></video><div class="stack-card-badge">Gastronomía</div></div>
-          <div class="stack-card-content"><div class="stack-card-title">Taste of Rum</div><div class="stack-card-sub">Producción para Rums of Puerto Rico. La campaña Taste of Rum, celebrando ron, sabor y tradición boricua.</div></div>
-        </div>
+  <section class="section home-about" id="home-about">
+    <div class="home-about-grid">
+      <div class="home-about-intro reveal-section">
+        <div class="home-about-label">Nosotros</div>
+        <h2 class="home-about-title">Creatividad que no sale en automático.</h2>
+        <p class="home-about-quote">"Necesito que esto sea más creativo." Con esa frase llegaban a nosotros. Ya tenían el video, la marca o la campaña. Lo que faltaba era alguien que lo llevara al siguiente nivel.</p>
       </div>
 
-      <div class="stack-controls">
-        <button class="stack-btn" id="stackPrev" aria-label="Proyecto anterior"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
-        <div class="stack-dots" id="stackDots">
-          <div class="stack-dot active"></div>
-          <div class="stack-dot"></div>
-          <div class="stack-dot"></div>
+      <div class="home-about-copy reveal-section">
+        <p>Así nació +MasCreativa Publicidad en San Juan. De gente que ya tenía algo bueno pero sabía que podía ser mejor. Nos buscaban para eso. Y nosotros no parábamos hasta entregarlo.</p>
+        <p>Identidades visuales que no se confunden con nadie. Campañas que provocan reacción. Contenido que la gente ve completo y comparte. <strong>Aquí no se trabaja por llenar espacios. Se trabaja para que la marca se quede en la cabeza.</strong></p>
+        <p>El nivel no se negocia. Presupuesto grande o modesto, lo que sale de aquí lleva nuestro nombre y nuestro mejor esfuerzo. No hay trabajos de segunda.</p>
+      </div>
+
+      <div class="home-about-rail reveal-section">
+        <div class="home-about-block">
+          <div class="home-about-label">Lo que nos mueve</div>
+          <p>Lo genérico nos da más miedo que el riesgo creativo. No bajamos el nivel porque el presupuesto es modesto ni inflamos el ego porque el cheque es alto. Cada marca tiene una historia. Nosotros la encontramos y la contamos de manera que la gente la recuerde.</p>
         </div>
-        <button class="stack-btn" id="stackNext" aria-label="Proyecto siguiente"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+
+        <div class="home-about-block">
+          <div class="home-about-label">Quiénes han confiado en nosotros</div>
+          <p>Hemos trabajado con marcas que no se conforman con lo típico. Campañas, producción de video y contenido para redes: cuando el resultado tiene que ser serio, nos llaman.</p>
+          <div class="home-about-chips">
+            <span class="home-about-chip">Rimas Publishing</span>
+            <span class="home-about-chip">Fundación Good Bunny</span>
+            <span class="home-about-chip">New York Mets</span>
+            <span class="home-about-chip">Cangrejeros de Santurce</span>
+            <span class="home-about-chip">CST</span>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
 
   <div class="section reveal-section" style="padding:40px 20px;">
     <div style="max-width:700px;margin:0 auto;text-align:center;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:20px;padding:40px 32px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);">
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#e84455;margin-bottom:12px;">Nuevo</div>
       <h2 style="font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(24px,4vw,36px);font-weight:900;letter-spacing:-0.02em;text-transform:uppercase;color:var(--text);margin-bottom:12px;">Live Content</h2>
-      <p style="font-family:'Satoshi',sans-serif;font-size:14px;line-height:1.7;color:var(--muted);margin-bottom:20px;">Contenido viral producido en tiempo real. Mientras tu evento pasa, tus clips ya están en el feed.</p>
+      <p style="font-family:'Satoshi',sans-serif;font-size:14px;line-height:1.7;color:var(--muted);margin-bottom:20px;">Contenido viral producido en tiempo real. Mientras tu evento ocurre, tus clips ya están circulando en redes.</p>
       <a href="live-content.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue-strong);text-decoration:none;">Conoce más →</a>
     </div>
   </div>
@@ -2322,67 +2274,6 @@
     });
 
     applyTransform();
-  })();
-
-  /* Stacked Cards Carousel */
-  (function(){
-    var cards = document.querySelectorAll('.stack-card');
-    var dots = document.querySelectorAll('.stack-dot');
-    var nextBtn = document.getElementById('stackNext');
-    var prevBtn = document.getElementById('stackPrev');
-    if(!cards.length) return;
-
-    var total = cards.length;
-    var positions = [];
-    for(var i = 0; i < total; i++) positions.push(i);
-    var activeIndex = 0;
-    var animating = false;
-
-    function updatePositions(){
-      for(var i = 0; i < cards.length; i++){
-        cards[i].setAttribute('data-pos', positions[i]);
-        cards[i].classList.remove('dismissing');
-      }
-      for(var j = 0; j < dots.length; j++){
-        if(j === activeIndex) dots[j].classList.add('active');
-        else dots[j].classList.remove('active');
-      }
-    }
-
-    function next(){
-      if(animating) return;
-      animating = true;
-      var topIdx = positions.indexOf(0);
-      cards[topIdx].classList.add('dismissing');
-      setTimeout(function(){
-        positions = positions.map(function(p){ return (p - 1 + total) % total; });
-        activeIndex = (activeIndex + 1) % total;
-        updatePositions();
-        animating = false;
-      }, 350);
-    }
-
-    function prev(){
-      if(animating) return;
-      animating = true;
-      positions = positions.map(function(p){ return (p + 1) % total; });
-      activeIndex = (activeIndex - 1 + total) % total;
-      updatePositions();
-      setTimeout(function(){ animating = false; }, 400);
-    }
-
-    if(nextBtn) nextBtn.addEventListener('click', next);
-    if(prevBtn) prevBtn.addEventListener('click', prev);
-
-    for(var k = 0; k < cards.length; k++){
-      (function(idx){
-        cards[idx].addEventListener('click', function(){
-          if(positions[idx] === 0) next();
-        });
-      })(k);
-    }
-
-    updatePositions();
   })();
 
   // Impact statement reveal on scroll
