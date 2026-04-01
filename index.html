@@ -515,7 +515,6 @@
 
   /* Sections after hero need solid bg so they don't show through to dark video */
   .hero ~ .section,
-  .hero ~ .service-strip,
   .hero ~ section.cta {
     position: relative;
     z-index: 2;
@@ -528,46 +527,6 @@
     overflow: hidden;
   }
 
-  .hero-video-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-  }
-
-  .hero-video-bg video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: blur(3px) brightness(0.95);
-    transform: scale(1.02); /* prevent blur edge bleed */
-  }
-
-  .hero-video-bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(180deg,
-        rgba(0, 0, 0, 0.52) 0%,
-        rgba(0, 0, 0, 0.25) 30%,
-        rgba(0, 0, 0, 0.30) 60%,
-        rgba(0, 0, 0, 0.65) 88%,
-        var(--bg) 100%
-      );
-    z-index: 1;
-  }
-
-  body[data-theme="dark"] .hero-video-bg::after {
-    background:
-      linear-gradient(180deg,
-        rgba(0, 0, 0, 0.70) 0%,
-        rgba(0, 0, 0, 0.40) 35%,
-        rgba(0, 0, 0, 0.48) 65%,
-        rgba(0, 0, 0, 0.80) 88%,
-        var(--bg) 100%
-      );
-  }
 
   .hero-grid {
     position: relative;
@@ -598,17 +557,6 @@
     background: linear-gradient(90deg, var(--blue-strong), transparent);
   }
 
-  .hero .hero-copy,
-  .hero .hero-copy h1,
-  .hero .hero-copy p,
-  .hero .eyebrow {
-    color: #fff;
-    text-shadow: 0 2px 20px rgba(0,0,0,0.3);
-  }
-
-  .hero .eyebrow::before {
-    background: linear-gradient(90deg, #fff, transparent);
-  }
 
   .hero-copy h1 {
     max-width: none;
@@ -686,6 +634,23 @@
     padding-top: 14px;
   }
 
+  .hero-video-box {
+    margin-top: 32px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    aspect-ratio: 16 / 9;
+    max-width: 680px;
+  }
+
+  .hero-video-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
   .hero-actions {
     display: flex;
     flex-wrap: wrap;
@@ -693,15 +658,6 @@
     margin-top: 26px;
   }
 
-  .hero-actions .button-secondary {
-    color: #fff;
-    border-color: rgba(255,255,255,0.5);
-  }
-
-  .hero-actions .button-secondary:hover {
-    border-color: #fff;
-    background: rgba(255,255,255,0.1);
-  }
 
   .hero-visual {
     position: relative;
@@ -1492,38 +1448,6 @@
     border-radius: 3px;
   }
 
-  .service-strip {
-    width: var(--content);
-    margin: 36px auto 0;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .service-chip {
-    min-height: 88px;
-    padding: 18px;
-    border-radius: 22px;
-    border: 1px solid var(--line);
-    background: var(--panel);
-    box-shadow: var(--shadow-tight);
-  }
-
-  .service-chip strong {
-    display: block;
-    font-family: "Cabinet Grotesk", sans-serif;
-    font-size: 1.12rem;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-  }
-
-  .service-chip span {
-    display: block;
-    margin-top: 8px;
-    color: var(--muted);
-    line-height: 1.55;
-    font-size: 0.92rem;
-  }
 
   .client-row {
     width: var(--content);
@@ -1723,9 +1647,6 @@
       justify-content: flex-start;
     }
 
-    .service-strip {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
   }
 
   @media (max-width: 900px) {
@@ -1841,10 +1762,6 @@
       font-size: 0.56rem;
     }
 
-    .service-strip {
-      grid-template-columns: 1fr;
-    }
-
     .client-row {
       justify-content: flex-start;
     }
@@ -1888,6 +1805,12 @@
       font-size: 28px; font-weight: 700;
       text-transform: uppercase; text-decoration: none;
       color: var(--text); letter-spacing: -0.02em;
+    }
+    .mobile-overlay-mascot {
+      width: 140px;
+      margin-top: 12px;
+      opacity: 0.85;
+      pointer-events: none;
     }
   }
 
@@ -2018,13 +1941,11 @@
   <a href="portfolio.html">Portafolio</a>
   <a href="about.html">Nosotros</a>
   <a href="contacto.html">Contacto</a>
+  <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true">
 </div>
 
 <main>
   <section class="hero">
-    <div class="hero-video-bg" aria-hidden="true">
-      <video autoplay muted loop playsinline preload="auto" src="assets/videos/hero-reel.mp4?v=2"></video>
-    </div>
     <div class="hero-grid">
       <div class="hero-copy">
         <div class="eyebrow">Creatividad que no pide permiso</div>
@@ -2033,6 +1954,9 @@
           <span>imposible de</span>
           <span>ignorar.</span>
         </h1>
+        <div class="hero-video-box">
+          <video autoplay muted loop playsinline preload="auto" src="assets/videos/hero-reel.mp4?v=2"></video>
+        </div>
         <p>Somos una agencia creativa en San Juan que produce campañas, identidades y contenido visual que la gente no puede ignorar. Llevamos años haciéndolo y los números lo confirman.</p>
 
 
@@ -2195,24 +2119,6 @@
     </div>
   </div>
 
-  <section class="service-strip">
-    <div class="service-chip">
-      <strong>Branding</strong>
-      <span>Tu marca entera, no solo un logo.</span>
-    </div>
-    <div class="service-chip">
-      <strong>Publicidad</strong>
-      <span>Campañas que convierten atención en acción.</span>
-    </div>
-    <div class="service-chip">
-      <strong>Producción</strong>
-      <span>Foto, video, post. Todo sale de aquí.</span>
-    </div>
-    <div class="service-chip">
-      <strong>Digital</strong>
-      <span>Redes, web, SEO. Presencia real.</span>
-    </div>
-  </section>
 
   <div class="section" id="carousel-stack">
     <div class="section-header">

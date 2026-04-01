@@ -77,9 +77,44 @@ html, body {
     transition: color 0.2s;
 }
 .page-nav a:hover { color: var(--blue-strong); }
+/* Hamburger menu - hidden on desktop */
+.mobile-menu-btn { display: none; }
+.mobile-overlay { display: none; }
 @media (max-width: 640px) {
     .page-nav { gap: 8px; font-size: 9px; }
     .page-nav a { padding: 8px 4px; }
+    .mobile-menu-btn {
+      display: flex;
+      position: fixed; top: 28px; left: 20px; z-index: 50;
+      width: 32px; height: 32px;
+      background: none; border: none; cursor: pointer;
+      flex-direction: column; justify-content: center; gap: 5px;
+    }
+    .mobile-menu-btn span {
+      display: block; width: 20px; height: 2px;
+      background: var(--text); transition: all 0.3s;
+    }
+    .mobile-overlay {
+      position: fixed; inset: 0; z-index: 45;
+      background: var(--bg);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 28px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .mobile-overlay.open { opacity: 1; pointer-events: auto; }
+    .mobile-overlay a {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 28px; font-weight: 700;
+      text-transform: uppercase; text-decoration: none;
+      color: var(--text); letter-spacing: -0.02em;
+    }
+    .mobile-overlay-mascot {
+      width: 140px;
+      margin-top: 12px;
+      opacity: 0.85;
+      pointer-events: none;
+    }
 }
 
 /* ===== PAGE TITLE ===== */
@@ -110,7 +145,7 @@ html, body {
     position: fixed; inset: 0; z-index: 10;
     display: flex; flex-direction: column; align-items: center;
     overflow-y: auto;
-    padding: 160px 0 0;
+    padding: 220px 0 0;
     scrollbar-width: thin;
     scrollbar-color: color-mix(in srgb, var(--blue-strong) 30%, transparent) transparent;
 }
@@ -122,21 +157,42 @@ html, body {
     pointer-events: auto;
 }
 .about-card {
-    display: flex; flex-direction: column; align-items: center;
-    text-align: center;
-    max-width: 520px;
+    display: flex; flex-direction: column; align-items: flex-start;
+    text-align: left;
+    max-width: 580px;
     padding: 0 32px;
 }
 .about-divider {
-    width: 48px; height: 1px;
-    background: var(--line-strong);
-    margin: 30px auto 24px;
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
+    margin: 36px auto 24px;
+}
+.about-hero-quote {
+    position: relative;
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: clamp(20px, 4vw, 28px);
+    font-weight: 800;
+    line-height: 1.35;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.4em;
+    padding-top: 24px;
+    user-select: text; -webkit-user-select: text;
+    pointer-events: auto;
+}
+.about-hero-quote::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 40px; height: 3px;
+    background: var(--blue-strong);
+    border-radius: 2px;
 }
 .about-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 9px; font-weight: 500;
+    font-size: 9px; font-weight: 700;
     letter-spacing: 4px; text-transform: uppercase;
-    color: var(--muted);
+    color: var(--blue-strong);
     margin-top: 30px;
     margin-bottom: 18px;
 }
@@ -145,13 +201,65 @@ html, body {
     font-size: clamp(14px, 1.8vw, 16px);
     font-weight: 400;
     line-height: 1.75;
-    color: var(--text);
+    color: var(--muted);
     letter-spacing: 0.01em;
     margin-bottom: 1.2em;
 }
+.about-emphasis {
+    color: var(--text);
+    font-weight: 700;
+}
+.about-stat {
+    width: 100%;
+    text-align: center;
+    padding: 28px 0;
+    margin: 8px 0 20px;
+}
+.about-stat-number {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: clamp(48px, 10vw, 72px);
+    font-weight: 900;
+    color: var(--blue-strong);
+    line-height: 1;
+}
+.about-stat-number span { color: #e84455; }
+.about-stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 8px;
+}
+.about-mission-card {
+    width: 100%;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    margin: 12px 0 0;
+}
+.about-mission-card .about-label { margin-top: 0; }
+.about-mission-card .about-text { margin-bottom: 0; }
+.about-client-chips {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 14px;
+    width: 100%;
+}
+.about-client-chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; font-weight: 500;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--muted);
+    padding: 8px 14px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: var(--glass-bg);
+}
 .about-divider-bottom {
-    width: 48px; height: 1px;
-    background: var(--line-strong);
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
     margin: 30px auto 24px;
 }
 .about-logos {
@@ -179,8 +287,12 @@ body[data-theme="dark"] .about-logo-text {
 }
 
 @media (max-width: 640px) {
-    .about-card { padding: 0 24px; max-width: 380px; }
+    .about-card { padding: 0 20px; max-width: 100%; }
     .about-text { font-size: 13px; }
+    .about-hero-quote { font-size: 20px; }
+    .about-mission-card { padding: 20px 16px; }
+    .about-client-chips { gap: 6px; }
+    .about-client-chip { font-size: 8px; padding: 6px 10px; }
     .about-logo-icon { width: 36px; }
     .about-logo-text { height: 14px; }
 }
@@ -379,6 +491,18 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
   <a href="contacto.html">Contacto</a>
 </nav>
 
+<button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+<div class="mobile-overlay" id="mobileOverlay">
+  <a href="index.html">Inicio</a>
+  <a href="services.html">Servicios</a>
+  <a href="portfolio.html">Portafolio</a>
+  <a href="about.html">Nosotros</a>
+  <a href="contacto.html">Contacto</a>
+  <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true">
+</div>
+
 <div class="page-header">
     <div class="page-title">Nosotros</div>
     <div class="page-subtitle">Agencia Creativa</div>
@@ -386,13 +510,19 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
 
 <div class="about-wrapper">
   <div class="about-card">
-    <div class="about-label">Sobre la agencia</div>
     <div class="about-divider"></div>
-    <p class="about-text" style="margin-bottom:1em;">"Necesito que sea más creativo." Esa frase la hemos escuchado cientos de veces. En vez de quejarnos, la hicimos nuestro nombre.</p>
-    <p class="about-text" style="margin-bottom:1em;">+MasCreativa Publicidad nació en San Juan de esa exigencia. Alguien pedía más y nosotros no parábamos hasta entregarlo. Así empezamos. Así seguimos.</p>
-    <p class="about-text" style="margin-bottom:1em;">Hacemos identidades visuales que no se confunden con nadie. Campañas que provocan reacción. Contenido que la gente ve completo y comparte. No somos la agencia más grande de Puerto Rico. Pero somos la más necia con la calidad.</p>
-    <p class="about-text" style="margin-bottom:1em;">El nivel no se negocia. Presupuesto grande o modesto, lo que sale de aquí lleva nuestro nombre y nuestro mejor esfuerzo. No hay trabajos de segunda.</p>
-    <p class="about-text">En 2025, el contenido de video que produjimos pasó las 100 millones de vistas combinadas. No es para presumir -- es para que sepas que lo que hacemos funciona.</p>
+    <p class="about-hero-quote">"Necesito que sea más creativo." Esa frase la hemos escuchado cientos de veces. En vez de quejarnos, la hicimos nuestro nombre.</p>
+    <p class="about-text">+MasCreativa Publicidad nació en San Juan de esa exigencia. Alguien pedía más y nosotros no parábamos hasta entregarlo. Así empezamos. Así seguimos.</p>
+    <p class="about-text">Hacemos identidades visuales que no se confunden con nadie. Campañas que provocan reacción. Contenido que la gente ve completo y comparte. <span class="about-emphasis">No somos la agencia más grande de Puerto Rico. Pero somos la más necia con la calidad.</span></p>
+    <p class="about-text">El nivel no se negocia. Presupuesto grande o modesto, lo que sale de aquí lleva nuestro nombre y nuestro mejor esfuerzo. No hay trabajos de segunda.</p>
+
+    <div class="about-stat">
+      <div class="about-stat-number"><span>+</span>100M</div>
+      <div class="about-stat-label">vistas en video en 2025</div>
+    </div>
+
+    <p class="about-text">No es para presumir -- es para que sepas que lo que hacemos funciona.</p>
+
     <div class="about-divider-bottom"></div>
     <div class="about-logos">
       <img class="about-logo-icon" id="logoIcon" src="assets/images/logo-icon.png" alt="MasCreativa logo mark">
@@ -400,18 +530,26 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
     </div>
 
     <!-- Lo que nos mueve -->
-    <div style="width:100%;height:1px;background:var(--line-strong);margin:36px auto 28px;" class="about-divider-move"></div>
-    <div class="about-label about-label-move">Lo que nos mueve</div>
-    <p class="about-text about-text-move">Lo genérico nos da más miedo que el riesgo creativo. No bajamos el nivel porque el presupuesto es modesto ni inflamos el ego porque el cheque es alto. Cada marca tiene una historia. Nosotros la encontramos y la contamos de manera que la gente la recuerde.</p>
+    <div class="about-mission-card">
+      <div class="about-label">Lo que nos mueve</div>
+      <p class="about-text">Lo genérico nos da más miedo que el riesgo creativo. No bajamos el nivel porque el presupuesto es modesto ni inflamos el ego porque el cheque es alto. Cada marca tiene una historia. Nosotros la encontramos y la contamos de manera que la gente la recuerde.</p>
+    </div>
 
     <!-- Credentials -->
-    <div style="width:100%;height:1px;background:var(--line-strong);margin:36px auto 28px;" class="about-divider-cred"></div>
-    <div class="about-label about-label-cred">Quienes han confiado en nosotros</div>
-    <p class="about-text about-text-cred">Hemos trabajado con marcas que no se conforman con lo típico: Rimas Publishing, Fundación Good Bunny, los New York Mets, los Cangrejeros de Santurce, la Comisión de Seguridad en el Tránsito. Campañas, producción de video, contenido para redes -- cuando el resultado tiene que ser serio, nos llaman.</p>
+    <div class="about-divider"></div>
+    <div class="about-label">Quienes han confiado en nosotros</div>
+    <p class="about-text">Hemos trabajado con marcas que no se conforman con lo típico. Campañas, producción de video, contenido para redes -- cuando el resultado tiene que ser serio, nos llaman.</p>
+    <div class="about-client-chips">
+      <span class="about-client-chip">Rimas Publishing</span>
+      <span class="about-client-chip">Fundación Good Bunny</span>
+      <span class="about-client-chip">New York Mets</span>
+      <span class="about-client-chip">Cangrejeros de Santurce</span>
+      <span class="about-client-chip">CST</span>
+    </div>
 
     <!-- Agency Info -->
-    <div style="width:100%;height:1px;background:var(--line-strong);margin:36px auto 28px;" class="about-divider-agency"></div>
-    <div class="about-label about-label-agency">La agencia</div>
+    <div class="about-divider"></div>
+    <div class="about-label">La agencia</div>
     <div class="about-agency-info" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.5px;color:var(--muted);line-height:2.2;text-align:left;width:100%;margin-bottom:28px;">
       <div>Ubicación: San Juan, Puerto Rico</div>
       <div>Dirección: 1105 Ave. Franklin Delano Roosevelt, Suite 5, San Juan, P.R. 00920</div>
@@ -474,6 +612,15 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
 
   applyMode();
 })();
+
+  // Mobile hamburger menu
+  var menuBtn=document.getElementById('mobileMenuBtn');
+  var overlay=document.getElementById('mobileOverlay');
+  if(menuBtn&&overlay){
+    menuBtn.addEventListener('click',function(){
+      overlay.classList.toggle('open');
+    });
+  }
 </script>
 </body>
 </html>

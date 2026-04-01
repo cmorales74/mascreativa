@@ -55,6 +55,10 @@ body[data-theme="dark"] {
     --glass-border: rgba(255,255,255,0.12);
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 60px;
+}
 html, body {
     min-height: 100%;
     background: var(--bg);
@@ -76,9 +80,44 @@ html, body {
     transition: color 0.2s;
 }
 .page-nav a:hover { color: var(--blue-strong); }
+/* Hamburger menu - hidden on desktop */
+.mobile-menu-btn { display: none; }
+.mobile-overlay { display: none; }
 @media (max-width: 640px) {
     .page-nav { gap: 8px; font-size: 9px; }
     .page-nav a { padding: 8px 4px; }
+    .mobile-menu-btn {
+      display: flex;
+      position: fixed; top: 28px; left: 20px; z-index: 50;
+      width: 32px; height: 32px;
+      background: none; border: none; cursor: pointer;
+      flex-direction: column; justify-content: center; gap: 5px;
+    }
+    .mobile-menu-btn span {
+      display: block; width: 20px; height: 2px;
+      background: var(--text); transition: all 0.3s;
+    }
+    .mobile-overlay {
+      position: fixed; inset: 0; z-index: 45;
+      background: var(--bg);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 28px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .mobile-overlay.open { opacity: 1; pointer-events: auto; }
+    .mobile-overlay a {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 28px; font-weight: 700;
+      text-transform: uppercase; text-decoration: none;
+      color: var(--text); letter-spacing: -0.02em;
+    }
+    .mobile-overlay-mascot {
+      width: 140px;
+      margin-top: 12px;
+      opacity: 0.85;
+      pointer-events: none;
+    }
 }
 
 /* ===== PAGE TITLE ===== */
@@ -153,6 +192,8 @@ html, body {
     margin-top: 10px;
     display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
     z-index: 20;
+    position: sticky; top: 0;
+    background: var(--bg);
 }
 .service-chip {
     font-family: 'JetBrains Mono', monospace;
@@ -166,15 +207,18 @@ html, body {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     pointer-events: auto;
+    text-decoration: none;
+    cursor: pointer;
     transition: color 0.3s, border-color 0.3s, background 0.3s;
 }
-.service-chip:hover {
+.service-chip:hover,
+.service-chip.active {
     color: var(--blue-strong);
-    border-color: var(--line-strong);
+    border-color: var(--blue-strong);
     background: var(--panel-strong);
 }
 @media (max-width: 640px) {
-    .services-list { gap: 8px; padding: 0 12px 16px; }
+    .services-list { gap: 8px; padding: 8px 12px 12px; }
     .service-chip { font-size: 7px; letter-spacing: 1.5px; padding: 6px 10px; }
 }
 
@@ -192,6 +236,37 @@ html, body {
     border-top: 1px solid var(--line);
     padding-top: 24px;
 }
+.sd-card:nth-child(even) {
+    border-top: none;
+    border-left: 3px solid var(--blue-strong);
+    padding-left: 20px;
+}
+.sd-card--featured {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 16px;
+    padding: 28px 24px !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    position: relative;
+}
+.sd-card--featured::before {
+    content: 'SERVICIO DESTACADO';
+    position: absolute;
+    top: 12px; right: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--blue-strong);
+    opacity: 0.7;
+}
+.sd-icon {
+    display: block;
+    width: 28px; height: 28px;
+    margin-bottom: 12px;
+    opacity: 0.6;
+    color: var(--blue-strong);
+}
 .sd-title {
     font-family: 'Cabinet Grotesk', sans-serif;
     font-size: 20px; font-weight: 900;
@@ -204,6 +279,28 @@ html, body {
     font-size: 14px; line-height: 1.7;
     color: var(--muted);
     margin: 0 0 16px;
+}
+.sd-inline-stat {
+    text-align: center;
+    padding: 20px 0;
+    margin: 8px 0 16px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+.sd-inline-stat-number {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: clamp(28px, 6vw, 40px);
+    font-weight: 900;
+    color: var(--blue-strong);
+    line-height: 1;
+}
+.sd-inline-stat-number span { color: #e84455; }
+.sd-inline-stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; font-weight: 500;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 6px;
 }
 .sd-list {
     list-style: none; padding: 0; margin: 0;
@@ -220,12 +317,13 @@ html, body {
     content: '+'; position: absolute; left: 0;
     color: var(--blue); font-weight: 700;
 }
-/* Light mode handled by paint() */
 @media (max-width: 640px) {
     .sd-inner { padding: 20px 16px 40px; gap: 30px; }
     .sd-title { font-size: 16px; }
     .sd-body { font-size: 13px; }
     .sd-list li { font-size: 10px; }
+    .sd-card--featured { padding: 20px 16px !important; }
+    .sd-card--featured::before { font-size: 6px; top: 8px; right: 10px; }
 }
 
 /* ===== THEME SWITCH ===== */
@@ -423,19 +521,31 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
   <a href="contacto.html">Contacto</a>
 </nav>
 
+<button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+<div class="mobile-overlay" id="mobileOverlay">
+  <a href="index.html">Inicio</a>
+  <a href="services.html">Servicios</a>
+  <a href="portfolio.html">Portafolio</a>
+  <a href="about.html">Nosotros</a>
+  <a href="contacto.html">Contacto</a>
+  <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true">
+</div>
+
 <div class="page-header">
     <div class="page-title">Servicios</div>
     <div class="page-subtitle">Branding / Publicidad / Producción / Digital</div>
 </div>
 
 
-<div class="services-list">
-  <div class="service-chip">Branding e Identidad</div>
-  <div class="service-chip">Publicidad y Medios</div>
-  <div class="service-chip">Fotografía y Video</div>
-  <div class="service-chip">Marketing Digital</div>
-  <div class="service-chip">Contenido Visual</div>
-  <div class="service-chip">Diseño e Impresión</div>
+<div class="services-list" id="serviceChips">
+  <a href="#branding" class="service-chip">Branding</a>
+  <a href="#publicidad" class="service-chip">Publicidad</a>
+  <a href="#foto-video" class="service-chip">Foto + Video</a>
+  <a href="#marketing" class="service-chip">Marketing</a>
+  <a href="#contenido" class="service-chip">Contenido</a>
+  <a href="#diseno" class="service-chip">Impresión</a>
 </div>
 
 <!-- Service Details -->
@@ -444,7 +554,8 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
 
     <p class="sd-intro" style="font-family:'Satoshi',sans-serif;font-size:14px;line-height:1.7;color:var(--muted);text-align:center;margin-bottom:10px;">No vendemos paquetes. Armamos lo que tu marca necesita, al nivel que tu marca merece. Da igual si el presupuesto es grande o modesto -- lo que sale de aquí es nuestro mejor trabajo.</p>
 
-    <div class="sd-card">
+    <div class="sd-card" id="branding">
+      <svg class="sd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
       <h3 class="sd-title">Branding e Identidad</h3>
       <p class="sd-body">Un logo solo no resuelve nada. Construimos identidades completas -- nombre, sistema visual, manual, aplicaciones -- para que tu marca se reconozca en cualquier superficie.</p>
       <ul class="sd-list">
@@ -456,7 +567,8 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
       </ul>
     </div>
 
-    <div class="sd-card">
+    <div class="sd-card" id="publicidad">
+      <svg class="sd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><path d="M2 8c0-2.2.7-4.3 2-6"/><path d="M22 8a10 10 0 0 0-2-6"/></svg>
       <h3 class="sd-title">Publicidad y Medios</h3>
       <p class="sd-body">Hacemos campañas que la gente ve completas. Concepto creativo, pauta inteligente y ejecución en medios digitales y tradicionales. Nada de quemar presupuesto en ads genéricos.</p>
       <ul class="sd-list">
@@ -469,12 +581,27 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
       </ul>
     </div>
 
-    <div class="sd-card">
+    <div class="sd-card sd-card--featured" id="foto-video">
+      <svg class="sd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
       <h3 class="sd-title">Fotografía y Video</h3>
-      <p class="sd-body">Aquí es donde más nos lucimos. Foto comercial, video publicitario, videos musicales, reels, behind-the-scenes, sesiones de producto, animaciones -- lo que necesites, lo producimos completo. Dirección creativa, iluminación profesional, edición cinemática. En 2025 nuestro contenido de video pasó las 100 millones de vistas. No porque tuvimos suerte, sino porque la gente quiso verlo.</p>
+      <p class="sd-body">Aquí es donde más nos lucimos. Lo que necesites, lo producimos completo. Dirección creativa, iluminación profesional, edición cinemática.</p>
+      <div class="sd-inline-stat">
+        <div class="sd-inline-stat-number"><span>+</span>100M</div>
+        <div class="sd-inline-stat-label">vistas en 2025</div>
+      </div>
+      <p class="sd-body">No porque tuvimos suerte, sino porque la gente quiso verlo.</p>
+      <ul class="sd-list">
+        <li>Foto comercial y de producto</li>
+        <li>Video publicitario y corporativo</li>
+        <li>Videos musicales</li>
+        <li>Reels y contenido para redes</li>
+        <li>Behind-the-scenes</li>
+        <li>Animaciones</li>
+      </ul>
     </div>
 
-    <div class="sd-card">
+    <div class="sd-card" id="marketing">
+      <svg class="sd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
       <h3 class="sd-title">Marketing Digital</h3>
       <p class="sd-body">Publicar por publicar no es estrategia. Esto si:</p>
       <ul class="sd-list">
@@ -486,12 +613,20 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
       </ul>
     </div>
 
-    <div class="sd-card">
+    <div class="sd-card" id="contenido">
+      <svg class="sd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
       <h3 class="sd-title">Contenido Visual</h3>
-      <p class="sd-body">Para Fundación Good Bunny produjimos contenido visual que contó la historia de la organización sin necesitar un párrafo de texto. Eso es lo que hacemos: dirección creativa, fotografía de producto y lifestyle, video promocional y contenido para web y redes que comunica la personalidad de tu marca al instante.</p>
+      <p class="sd-body">Para Fundación Good Bunny produjimos contenido visual que contó la historia de la organización sin necesitar un párrafo de texto. Eso es lo que hacemos.</p>
+      <ul class="sd-list">
+        <li>Dirección creativa</li>
+        <li>Fotografía de producto y lifestyle</li>
+        <li>Video promocional</li>
+        <li>Contenido para web y redes</li>
+      </ul>
     </div>
 
-    <div class="sd-card">
+    <div class="sd-card" id="diseno">
+      <svg class="sd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
       <h3 class="sd-title">Diseño e Impresión</h3>
       <p class="sd-body">Un flyer bien hecho todavía mueve gente. Diseñamos piezas impresas al mismo nivel que lo digital -- empaques, catálogos, señalética, material POP.</p>
       <ul class="sd-list">
@@ -561,6 +696,45 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
   applyMode();
 })();
 
+  // Mobile hamburger menu
+  var menuBtn=document.getElementById('mobileMenuBtn');
+  var overlay=document.getElementById('mobileOverlay');
+  if(menuBtn&&overlay){
+    menuBtn.addEventListener('click',function(){
+      overlay.classList.toggle('open');
+    });
+  }
+
+  // Smooth scroll for service chips
+  document.querySelectorAll('.service-chip[href^="#"]').forEach(function(chip){
+    chip.addEventListener('click', function(e){
+      e.preventDefault();
+      var target = document.querySelector(this.getAttribute('href'));
+      if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
+  // IntersectionObserver: highlight active chip on scroll
+  (function(){
+    var chips = document.querySelectorAll('.service-chip[href^="#"]');
+    var sections = [];
+    chips.forEach(function(c){
+      var s = document.querySelector(c.getAttribute('href'));
+      if(s) sections.push({el:s, chip:c});
+    });
+    if(!sections.length) return;
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        sections.forEach(function(s){
+          if(s.el === entry.target){
+            if(entry.isIntersecting) s.chip.classList.add('active');
+            else s.chip.classList.remove('active');
+          }
+        });
+      });
+    }, {rootMargin:'-20% 0px -60% 0px'});
+    sections.forEach(function(s){ obs.observe(s.el); });
+  })();
 
 </script>
 </body>

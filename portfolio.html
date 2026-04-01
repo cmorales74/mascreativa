@@ -102,9 +102,44 @@ html, body {
     transition: color 0.2s;
 }
 .page-nav a:hover { color: var(--blue-strong); }
+/* Hamburger menu - hidden on desktop */
+.mobile-menu-btn { display: none; }
+.mobile-overlay { display: none; }
 @media (max-width: 640px) {
     .page-nav { gap: 8px; font-size: 9px; }
     .page-nav a { padding: 8px 4px; }
+    .mobile-menu-btn {
+      display: flex;
+      position: fixed; top: 28px; left: 20px; z-index: 50;
+      width: 32px; height: 32px;
+      background: none; border: none; cursor: pointer;
+      flex-direction: column; justify-content: center; gap: 5px;
+    }
+    .mobile-menu-btn span {
+      display: block; width: 20px; height: 2px;
+      background: var(--text); transition: all 0.3s;
+    }
+    .mobile-overlay {
+      position: fixed; inset: 0; z-index: 45;
+      background: var(--bg);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 28px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .mobile-overlay.open { opacity: 1; pointer-events: auto; }
+    .mobile-overlay a {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 28px; font-weight: 700;
+      text-transform: uppercase; text-decoration: none;
+      color: var(--text); letter-spacing: -0.02em;
+    }
+    .mobile-overlay-mascot {
+      width: 140px;
+      margin-top: 12px;
+      opacity: 0.85;
+      pointer-events: none;
+    }
 }
 
 /* ===== PAGE TITLE ===== */
@@ -514,35 +549,33 @@ body:not([data-theme="dark"]) .carousel .carousel-item-wrapper:has(.carousel-ite
 .project-hero-img:hover img {
     transform: scale(1.03);
 }
-.project-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
+.project-carousel {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 6px 0;
+    scrollbar-width: none;
 }
-.project-grid img {
-    width: 100%; height: 100%;
+.project-carousel::-webkit-scrollbar { display: none; }
+.project-carousel img {
+    flex: 0 0 auto;
+    height: 220px;
+    width: auto;
     object-fit: cover;
-    aspect-ratio: 4/3;
-    display: block;
+    border-radius: 8px;
+    scroll-snap-align: start;
     filter: grayscale(30%);
-    transition: filter 0.3s;
+    transition: filter 0.3s, transform 0.3s;
+    cursor: grab;
 }
-.project-grid img:hover {
+.project-carousel img:hover {
     filter: grayscale(0%);
+    transform: scale(1.02);
 }
-.project-single-photo {
-    margin-top: 4px;
-}
-.project-single-photo img {
-    width: 100%; height: auto;
-    object-fit: cover;
-    aspect-ratio: 16/9;
-    display: block;
-    filter: grayscale(30%);
-    transition: filter 0.3s;
-}
-.project-single-photo img:hover {
-    filter: grayscale(0%);
+@media (max-width: 640px) {
+    .project-carousel img { height: 160px; }
 }
 .project-videos {
     display: grid;
@@ -570,7 +603,6 @@ body:not([data-theme="dark"]) .carousel .carousel-item-wrapper:has(.carousel-ite
 }
 @media (max-width: 640px) {
     .project-header { padding: 24px 20px 16px; }
-    .project-grid { grid-template-columns: 1fr; }
     .project-videos { grid-template-columns: 1fr; }
     .project-footer { flex-wrap: wrap; gap: 10px; padding: 12px 20px; }
     .project-desc { font-size: 13px; }
@@ -703,6 +735,18 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
   <a href="contacto.html">Contacto</a>
 </nav>
 
+<button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+<div class="mobile-overlay" id="mobileOverlay">
+  <a href="index.html">Inicio</a>
+  <a href="services.html">Servicios</a>
+  <a href="portfolio.html">Portafolio</a>
+  <a href="about.html">Nosotros</a>
+  <a href="contacto.html">Contacto</a>
+  <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true">
+</div>
+
 <div class="page-header">
     <div class="page-title">Portafolio</div>
     <div class="page-subtitle">Nuestro Trabajo</div>
@@ -762,7 +806,7 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
             <source src="assets/videos/chocolate-coffee-expo.mp4" type="video/mp4">
           </video>
         </div>
-        <div class="project-grid">
+        <div class="project-carousel">
           <img src="assets/images/chocolate-expo/expo-entrance.jpg" alt="Entrada del Chocolate & Coffee Expo" loading="lazy">
           <img src="assets/images/chocolate-expo/chocolatier-product.jpg" alt="Chocolatero presentando producto artesanal" loading="lazy">
         </div>
@@ -786,9 +830,12 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
             <source src="assets/videos/boatshow-pr-2025-dia2.mp4" type="video/mp4">
           </video>
         </div>
-        <div class="project-grid">
-          <img src="assets/images/boatshow-pr-2025/sunset-fleet.jpg" alt="Atardecer sobre la flota en el Boat Show" loading="lazy">
-          <img src="assets/images/boatshow-pr-2025/live-concert.jpg" alt="Concierto en vivo en el Boat Show" loading="lazy">
+        <div class="project-carousel">
+          <img src="assets/images/boatshow-pr-2025/aerial-marina.jpg" alt="Vista aérea de la marina" loading="lazy">
+          <img src="assets/images/boatshow-pr-2025/sunset-fleet.jpg" alt="Atardecer sobre la flota" loading="lazy">
+          <img src="assets/images/boatshow-pr-2025/live-concert.jpg" alt="Concierto en vivo" loading="lazy">
+          <img src="assets/images/boatshow-pr-2025/family-marina.jpg" alt="Familia en la marina" loading="lazy">
+          <img src="assets/images/boatshow-pr-2025/marine-art-detail.jpg" alt="Detalle de arte marino" loading="lazy">
         </div>
       </div>
       <div class="project-footer">
@@ -810,7 +857,8 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
             <source src="assets/videos/batalla-leyenda.mp4" type="video/mp4">
           </video>
         </div>
-        <div class="project-single-photo">
+        <div class="project-carousel">
+          <img src="assets/images/batalla-leyenda/alcaraz-closeup.jpg" alt="Alcaraz en primer plano" loading="lazy">
           <img src="assets/images/batalla-leyenda/alcaraz-tiafoe.jpg" alt="Alcaraz y Tiafoe saludando al público" loading="lazy">
         </div>
       </div>
@@ -833,8 +881,9 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
             <source src="assets/videos/pr-open.mp4" type="video/mp4">
           </video>
         </div>
-        <div class="project-single-photo">
-          <img src="assets/images/pr-open/hole18-tee-shot.jpg" alt="Golfista en el hoyo 18 del PR Open" loading="lazy">
+        <div class="project-carousel">
+          <img src="assets/images/pr-open/venue-pavilion.jpg" alt="Pabellón del PR Open" loading="lazy">
+          <img src="assets/images/pr-open/hole18-tee-shot.jpg" alt="Golfista en el hoyo 18" loading="lazy">
         </div>
       </div>
       <div class="project-footer">
@@ -896,8 +945,9 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
             <source src="assets/videos/clinica-futbol.mp4" type="video/mp4">
           </video>
         </div>
-        <div class="project-single-photo">
-          <img src="assets/images/clinica-futbol/coach-huddle.jpg" alt="Entrenador con los jóvenes en la clínica de fútbol" loading="lazy">
+        <div class="project-carousel">
+          <img src="assets/images/clinica-futbol/goal-net-action.jpg" alt="Acción en la portería" loading="lazy">
+          <img src="assets/images/clinica-futbol/coach-huddle.jpg" alt="Entrenador con los jóvenes" loading="lazy">
         </div>
       </div>
       <div class="project-footer">
@@ -1079,6 +1129,15 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
     if(e.key==='Escape') closeLB();
   });
 })();
+
+  // Mobile hamburger menu
+  var menuBtn=document.getElementById('mobileMenuBtn');
+  var overlay=document.getElementById('mobileOverlay');
+  if(menuBtn&&overlay){
+    menuBtn.addEventListener('click',function(){
+      overlay.classList.toggle('open');
+    });
+  }
 
 </script>
 </body>

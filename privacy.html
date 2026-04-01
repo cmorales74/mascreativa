@@ -81,9 +81,44 @@ body {
     transition: color 0.2s;
 }
 .page-nav a:hover { color: var(--blue-strong); }
+/* Hamburger menu - hidden on desktop */
+.mobile-menu-btn { display: none; }
+.mobile-overlay { display: none; }
 @media (max-width: 640px) {
     .page-nav { gap: 8px; font-size: 9px; }
     .page-nav a { padding: 8px 4px; }
+    .mobile-menu-btn {
+      display: flex;
+      position: fixed; top: 28px; left: 20px; z-index: 50;
+      width: 32px; height: 32px;
+      background: none; border: none; cursor: pointer;
+      flex-direction: column; justify-content: center; gap: 5px;
+    }
+    .mobile-menu-btn span {
+      display: block; width: 20px; height: 2px;
+      background: var(--text); transition: all 0.3s;
+    }
+    .mobile-overlay {
+      position: fixed; inset: 0; z-index: 45;
+      background: var(--bg);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 28px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .mobile-overlay.open { opacity: 1; pointer-events: auto; }
+    .mobile-overlay a {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 28px; font-weight: 700;
+      text-transform: uppercase; text-decoration: none;
+      color: var(--text); letter-spacing: -0.02em;
+    }
+    .mobile-overlay-mascot {
+      width: 140px;
+      margin-top: 12px;
+      opacity: 0.85;
+      pointer-events: none;
+    }
 }
 
 /* ===== PAGE TITLE ===== */
@@ -373,6 +408,18 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
   <a href="contacto.html">Contacto</a>
 </nav>
 
+<button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+<div class="mobile-overlay" id="mobileOverlay">
+  <a href="index.html">Inicio</a>
+  <a href="services.html">Servicios</a>
+  <a href="portfolio.html">Portafolio</a>
+  <a href="about.html">Nosotros</a>
+  <a href="contacto.html">Contacto</a>
+  <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true">
+</div>
+
 <div class="page-header">
     <div class="page-title">Política de Privacidad</div>
     <div class="page-subtitle">Legal</div>
@@ -486,6 +533,15 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
 
   applyMode();
 })();
+
+  // Mobile hamburger menu
+  var menuBtn=document.getElementById('mobileMenuBtn');
+  var overlay=document.getElementById('mobileOverlay');
+  if(menuBtn&&overlay){
+    menuBtn.addEventListener('click',function(){
+      overlay.classList.toggle('open');
+    });
+  }
 </script>
 </body>
 </html>
