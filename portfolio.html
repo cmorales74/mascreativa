@@ -170,6 +170,13 @@ html, body {
     padding: 20px 20px 30px;
     margin: 10px auto 20px;
     display: flex; flex-direction: column; align-items: center;
+    opacity: 0;
+    transform: translateY(30px) scale(0.92);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.stat-banner.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
 .stat-label {
     font-family: 'JetBrains Mono', monospace;
@@ -759,7 +766,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
 
 <div class="stat-banner">
   <div class="stat-label">Videos producidos para nuestros clientes en 2025</div>
-  <div class="stat-number-wrap"><div class="stat-number"><span class="stat-plus">+</span>300M</div></div>
+  <div class="stat-number-wrap"><div class="stat-number"><span class="stat-plus">+</span><span id="statCount">0</span>M</div></div>
   <div class="stat-sub">vistas combinadas en los videos que produjimos para nuestros clientes.</div>
 </div>
 
@@ -1186,6 +1193,35 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       });
     });
   }
+
+  // Stat banner: fade in + count up on scroll
+  (function(){
+    var banner = document.querySelector('.stat-banner');
+    var counter = document.getElementById('statCount');
+    if(!banner || !counter) return;
+    var fired = false;
+    var obs = new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting && !fired){
+        fired = true;
+        banner.classList.add('visible');
+        // Count from 0 to 300
+        var target = 300;
+        var duration = 1800;
+        var start = performance.now();
+        function tick(now){
+          var elapsed = now - start;
+          var progress = Math.min(elapsed / duration, 1);
+          // Ease out cubic
+          var ease = 1 - Math.pow(1 - progress, 3);
+          counter.textContent = Math.round(target * ease);
+          if(progress < 1) requestAnimationFrame(tick);
+        }
+        // Small delay so the fade-in starts first
+        setTimeout(function(){ requestAnimationFrame(tick); }, 200);
+      }
+    }, { threshold: 0.3 });
+    obs.observe(banner);
+  })();
 
 </script>
 </body>

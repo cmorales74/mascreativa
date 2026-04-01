@@ -887,6 +887,58 @@
     text-transform: uppercase;
   }
 
+  /* ===== IMPACT STATEMENT ===== */
+  .impact-statement {
+    width: var(--content);
+    margin: 0 auto;
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .impact-quote {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: clamp(28px, 5.5vw, 56px);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .impact-quote .impact-highlight {
+    color: var(--blue-strong);
+    display: inline;
+  }
+  .impact-line {
+    display: block;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .impact-line.reveal {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .impact-line:nth-child(2) { transition-delay: 0.25s; }
+  .impact-bar {
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--blue-strong), var(--purple-strong, #6358ff));
+    border-radius: 2px;
+    margin: 28px auto 0;
+    transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: 0.6s;
+  }
+  .impact-bar.reveal {
+    width: 80px;
+  }
+  @media (max-width: 640px) {
+    .impact-statement { padding: 50px 16px; }
+    .impact-quote { font-size: clamp(22px, 6vw, 32px); }
+  }
+
   /* ===== SECTION HEADERS (carousels) ===== */
   .section-header {
     padding: 0 clamp(24px, 5vw, 80px);
@@ -1259,6 +1311,50 @@
     justify-content: flex-end;
   }
 
+  @keyframes cta-glow-pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(56,186,247,0.3), 0 0 60px rgba(122,112,255,0.15), 0 8px 32px rgba(0,0,0,0.15); }
+    50% { box-shadow: 0 0 30px rgba(56,186,247,0.5), 0 0 80px rgba(122,112,255,0.25), 0 12px 40px rgba(0,0,0,0.2); }
+  }
+  @keyframes cta-shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  .cta-mega-btn {
+    display: inline-block;
+    padding: 22px 64px;
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, var(--blue-strong), var(--purple-strong, #6358ff), var(--blue-strong));
+    background-size: 200% 100%;
+    border-radius: 60px;
+    animation: cta-glow-pulse 3s ease-in-out infinite, cta-shimmer 4s linear infinite;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-mega-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background-size: 200% 100%;
+    animation: cta-shimmer 3s linear infinite;
+    pointer-events: none;
+  }
+  .cta-mega-btn:hover {
+    transform: scale(1.06);
+    filter: brightness(1.15);
+  }
+  .cta-mega-btn:active {
+    transform: scale(0.98);
+  }
+
   .site-footer {
     margin-top: 56px;
     padding: 48px 0 34px;
@@ -1492,6 +1588,7 @@
       width: 32px; height: 32px;
       background: none; border: none; cursor: pointer;
       flex-direction: column; justify-content: center; gap: 5px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
     }
     .mobile-menu-btn span {
       display: block; width: 20px; height: 2px;
@@ -1645,7 +1742,7 @@
 </nav>
 
 <!-- Theme toggle -->
-<div style="position:fixed;top:28px;right:24px;z-index:40;">
+<div id="themeToggleWrap" style="position:fixed;top:28px;right:24px;z-index:40;transition:transform 0.3s ease, opacity 0.3s ease;">
   <label class="theme-switch" for="themeCheckbox" aria-label="Cambiar tema">
     <input type="checkbox" class="theme-switch__checkbox" id="themeCheckbox">
     <div class="theme-switch__container">
@@ -1855,6 +1952,14 @@
   </div>
 
 
+  <div class="impact-statement" id="impactStatement">
+    <div class="impact-quote">
+      <span class="impact-line">No somos la agencia más grande de Puerto Rico.</span>
+      <span class="impact-line">Pero somos la <span class="impact-highlight">más exigente con la calidad.</span></span>
+    </div>
+    <div class="impact-bar"></div>
+  </div>
+
   <div class="section" id="carousel-stack">
     <div class="section-header">
       <div class="section-header-text">
@@ -1875,7 +1980,7 @@
         </div>
         <div class="stack-card" data-pos="2">
           <div class="stack-card-visual"><video muted loop playsinline preload="none" src="assets/videos/rum-of-taste.mp4?v=1"></video><div class="stack-card-badge">Gastronomía</div></div>
-          <div class="stack-card-content"><div class="stack-card-title">Taste of Rum</div><div class="stack-card-sub">Producción para Rums of Puerto Rico. La campaña Taste of Rum -- ron, sabor y tradición boricua.</div></div>
+          <div class="stack-card-content"><div class="stack-card-title">Taste of Rum</div><div class="stack-card-sub">Producción para Rums of Puerto Rico. La campaña Taste of Rum, celebrando ron, sabor y tradición boricua.</div></div>
         </div>
       </div>
 
@@ -1892,25 +1997,15 @@
   </div>
 
 
-  <section class="cta">
-    <div>
-      <div class="eyebrow">Contacto</div>
-      <h2>Tu proyecto merece verse tan bien como funciona.</h2>
-      <p>Escríbenos. Te decimos exactamente qué podemos hacer por tu marca y en cuánto tiempo.</p>
-      <div class="cta-meta">787-644-1276 / info@mascreativapublicidad.com / 1105 Ave. Franklin Delano Roosevelt, Suite 5, San Juan, PR 00920</div>
-    </div>
-
-    <div class="cta-actions">
-      <a class="button-primary" href="contacto.html">Agendar consulta</a>
-      <a class="button-secondary" href="https://wa.me/17876441276" target="_blank" rel="noopener">WhatsApp</a>
-    </div>
+  <section class="cta" style="text-align:center;padding:60px 20px;">
+    <a class="cta-mega-btn" href="portfolio.html">Ver portafolio</a>
   </section>
 </main>
 
 <footer class="site-footer">
   <div class="footer-inner">
     <div>
-      <div class="footer-brandline">+MasCreativa Publicidad -- Agencia creativa en San Juan, Puerto Rico.</div>
+      <div class="footer-brandline">+MasCreativa Publicidad. Agencia creativa en San Juan, Puerto Rico.</div>
       <div class="footer-meta">2026 / Creatividad que no pide permiso / <a href="terms.html">Términos</a> / <a href="privacy.html">Privacidad</a></div>
     </div>
     <div class="footer-socials">
@@ -1921,12 +2016,16 @@
 </footer>
 
 <script>
-  /* Nav bar collapse on scroll */
+  /* Nav bar collapse on scroll + hide hamburger/toggle on scroll up */
   (function(){
     var nav = document.getElementById('navBar');
     if (!nav) return;
     var threshold = 60;
     var collapsed = false;
+    var menuBtn = document.getElementById('mobileMenuBtn');
+    var toggleWrap = document.getElementById('themeToggleWrap');
+    var lastY = 0;
+    var hidden = false;
     window.addEventListener('scroll', function(){
       var y = window.scrollY || window.pageYOffset;
       if (y > threshold && !collapsed) {
@@ -1936,6 +2035,26 @@
         nav.classList.remove('collapsed');
         collapsed = false;
       }
+      // Hide hamburger + toggle on scroll up, show on scroll down
+      if (y > 100) {
+        if (y < lastY && !hidden) {
+          // Scrolling up — hide
+          if (menuBtn) { menuBtn.style.transform = 'translateY(-80px)'; menuBtn.style.opacity = '0'; }
+          if (toggleWrap) { toggleWrap.style.transform = 'translateY(-80px)'; toggleWrap.style.opacity = '0'; }
+          hidden = true;
+        } else if (y > lastY && hidden) {
+          // Scrolling down — show
+          if (menuBtn) { menuBtn.style.transform = ''; menuBtn.style.opacity = ''; }
+          if (toggleWrap) { toggleWrap.style.transform = ''; toggleWrap.style.opacity = ''; }
+          hidden = false;
+        }
+      } else if (hidden) {
+        // Near top — always show
+        if (menuBtn) { menuBtn.style.transform = ''; menuBtn.style.opacity = ''; }
+        if (toggleWrap) { toggleWrap.style.transform = ''; toggleWrap.style.opacity = ''; }
+        hidden = false;
+      }
+      lastY = y;
     }, { passive: true });
   })();
 </script>
@@ -2189,6 +2308,23 @@
     }
 
     updatePositions();
+  })();
+
+  // Impact statement reveal on scroll
+  (function(){
+    var el = document.getElementById('impactStatement');
+    if(!el) return;
+    var lines = el.querySelectorAll('.impact-line');
+    var bar = el.querySelector('.impact-bar');
+    var fired = false;
+    var obs = new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting && !fired){
+        fired = true;
+        lines.forEach(function(l){ l.classList.add('reveal'); });
+        if(bar) bar.classList.add('reveal');
+      }
+    }, { threshold: 0.3 });
+    obs.observe(el);
   })();
 
   // Bootup splash
