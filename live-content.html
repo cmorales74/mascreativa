@@ -210,6 +210,29 @@ html, body {
     padding: 0 24px;
 }
 
+/* ===== PAGE TITLE ===== */
+.page-header {
+    text-align: center; padding-top: 20px; padding-bottom: 10px; margin-bottom: 20px;
+    pointer-events: none;
+}
+.page-title {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: clamp(48px, 12vw, 120px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: var(--blue-strong);
+    line-height: 0.9;
+}
+.page-subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(10px, 1.5vw, 14px);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 12px;
+}
+
 /* ===== HERO ===== */
 .lc-hero {
     text-align: center;
@@ -243,7 +266,7 @@ html, body {
     color: var(--muted);
     margin-bottom: 16px;
 }
-.lc-hero h1 {
+.lc-hero-headline {
     font-family: 'Cabinet Grotesk', sans-serif;
     font-size: clamp(36px, 9vw, 72px);
     font-weight: 900;
@@ -253,7 +276,7 @@ html, body {
     color: var(--text);
     margin-bottom: 24px;
 }
-.lc-hero h1 .highlight {
+.lc-hero-headline .highlight {
     color: var(--blue-strong);
 }
 .lc-hero-body {
@@ -825,7 +848,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
 /* ===== RESPONSIVE ===== */
 @media (max-width: 640px) {
     .lc-hero { padding: 24px 16px 40px; }
-    .lc-hero h1 { font-size: clamp(28px, 10vw, 48px); }
+    .lc-hero-headline { font-size: clamp(28px, 10vw, 48px); }
     .lc-section { padding: 40px 16px; }
     .cta-final { padding: 50px 16px; }
     .dato-section { padding: 50px 16px; }
@@ -888,11 +911,14 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
 </div>
 
 
+<div class="page-header reveal-section">
+    <h1 class="page-title">Live Content</h1>
+    <p class="page-subtitle">Contenido en Tiempo Real</p>
+</div>
+
 <!-- ===== HERO ===== -->
 <section class="lc-hero reveal-section">
-  <div class="lc-hero-eyebrow">Live Content</div>
-  <p class="lc-hero-subtitle">Contenido en Tiempo Real</p>
-  <h1>El momento pasa.<br><span class="highlight">El clip se queda.</span></h1>
+  <h2 class="lc-hero-headline">El momento pasa.<br><span class="highlight">El clip se queda.</span></h2>
   <p class="lc-hero-body">Mientras tu evento sucede, nosotros estamos editando, publicando y viralizando. No al otro día. No la semana que viene. Ahora mismo, cuando la audiencia todavía tiene el celular en la mano y la emoción fresca.</p>
   <div class="lc-hero-actions">
     <a href="contacto.html" class="btn-primary">Agenda una consulta</a>
