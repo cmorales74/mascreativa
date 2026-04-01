@@ -1718,6 +1718,19 @@
     height: 100%;
     object-fit: cover;
   }
+
+  /* Scroll reveal: fade in from blur */
+  .reveal-section {
+      opacity: 0;
+      filter: blur(8px);
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, filter 0.8s ease, transform 0.8s ease;
+  }
+  .reveal-section.revealed {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0);
+  }
 </style>
 </head>
 <body data-theme="light">
@@ -1777,7 +1790,7 @@
 </div>
 
 <main>
-  <section class="hero">
+  <section class="hero reveal-section">
     <div class="hero-grid">
       <div class="hero-copy">
         <div class="eyebrow">Creatividad que no pide permiso</div>
@@ -1893,7 +1906,7 @@
   </section>
 
 
-  <div class="section" id="carousel-marquee">
+  <div class="section reveal-section" id="carousel-marquee">
     <div class="section-header">
       <div class="section-header-text">
         <h2 class="section-title">Marcas que confían en nosotros</h2>
@@ -1960,7 +1973,7 @@
     <div class="impact-bar"></div>
   </div>
 
-  <div class="section" id="carousel-stack">
+  <div class="section reveal-section" id="carousel-stack">
     <div class="section-header">
       <div class="section-header-text">
         <h2 class="section-title">Proyectos Destacados</h2>
@@ -1997,7 +2010,7 @@
   </div>
 
 
-  <section class="cta" style="text-align:center;padding:60px 20px;">
+  <section class="cta reveal-section" style="text-align:center;padding:60px 20px;">
     <a class="cta-mega-btn" href="portfolio.html">Ver portafolio</a>
   </section>
 </main>
@@ -2350,6 +2363,21 @@
       overlay.classList.toggle('open');
     });
   }
+
+  // Scroll reveal: fade in from blur
+  (function(){
+    var els = document.querySelectorAll('.reveal-section');
+    if(!els.length) return;
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('revealed');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function(el){ obs.observe(el); });
+  })();
 </script>
 </body>
 </html>

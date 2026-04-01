@@ -701,6 +701,19 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
     .footer-socials { gap: 14px; }
     .footer-socials a { font-size: 9px; }
 }
+
+/* Scroll reveal: fade in from blur */
+.reveal-section {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, filter 0.8s ease, transform 0.8s ease;
+}
+.reveal-section.revealed {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
 </style>
 </head>
 <body data-theme="light">
@@ -755,12 +768,12 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
   <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true">
 </div>
 
-<div class="page-header">
+<div class="page-header reveal-section">
     <div class="page-title">Portafolio</div>
     <div class="page-subtitle">Nuestro Trabajo</div>
 </div>
 
-<div class="portfolio-intro" style="max-width:550px;text-align:center;padding:0 20px;margin:0 auto 10px;">
+<div class="portfolio-intro reveal-section" style="max-width:550px;text-align:center;padding:0 20px;margin:0 auto 10px;">
   <p style="font-family:'Satoshi',sans-serif;font-size:13px;line-height:1.7;color:var(--muted);">Aquí no hablamos -- mostramos. Esto es lo que pasa cuando una marca se atreve a verse diferente.</p>
 </div>
 
@@ -770,7 +783,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
   <div class="stat-sub">vistas combinadas en los videos que produjimos para nuestros clientes.</div>
 </div>
 
-<div class="carousel-wrapper">
+<div class="carousel-wrapper reveal-section">
 <div class="carousel">
     <div class="carousel-control-button left"><input type="radio" name="carousel-control-input"></div>
     <div class="carousel-control-button right"><input type="radio" name="carousel-control-input" checked></div>
@@ -802,7 +815,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
 
 <div style="padding:20px 24px;">
   <div class="gallery-grid" id="galleryGrid">
-    <div class="project-box">
+    <div class="project-box reveal-section">
       <div class="project-header">
         <div class="project-tag">Producción de Video</div>
         <h3 class="project-title">Municipio de San Juan</h3>
@@ -832,7 +845,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       </div>
     </div>
 
-    <div class="project-box">
+    <div class="project-box reveal-section">
       <div class="project-header">
         <div class="project-tag">Cobertura de Evento</div>
         <h3 class="project-title">Jaylen Brown en Puerto Rico</h3>
@@ -857,7 +870,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       </div>
     </div>
 
-    <div class="project-box">
+    <div class="project-box reveal-section">
       <div class="project-header">
         <div class="project-tag">Cobertura de Evento</div>
         <h3 class="project-title">Inter Miami CF en Puerto Rico</h3>
@@ -885,7 +898,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       </div>
     </div>
 
-    <div class="project-box">
+    <div class="project-box reveal-section">
       <div class="project-header">
         <div class="project-tag">Cobertura de Evento</div>
         <h3 class="project-title">Chocolate & Coffee Expo</h3>
@@ -909,7 +922,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       </div>
     </div>
 
-    <div class="project-box">
+    <div class="project-box reveal-section">
       <div class="project-header">
         <div class="project-tag">Cobertura de Evento</div>
         <h3 class="project-title">Boat Show PR 2025</h3>
@@ -936,7 +949,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       </div>
     </div>
 
-    <div class="project-box">
+    <div class="project-box reveal-section">
       <div class="project-header">
         <div class="project-tag">Cobertura de Evento</div>
         <h3 class="project-title">Batalla de Leyenda</h3>
@@ -978,7 +991,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       </div>
     </div>
 
-    <div class="project-box">
+    <div class="project-box reveal-section">
       <div class="project-header">
         <div class="project-tag">Cobertura de Evento</div>
         <h3 class="project-title">PR Open</h3>
@@ -1002,7 +1015,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       </div>
     </div>
 
-    <div class="project-box">
+    <div class="project-box reveal-section">
       <div class="project-header">
         <div class="project-tag">Cobertura de Evento</div>
         <h3 class="project-title">Clínica de Fútbol</h3>
@@ -1026,7 +1039,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       </div>
     </div>
 
-    <div class="project-box">
+    <div class="project-box reveal-section">
       <div class="project-header">
         <div class="project-tag">Producción de Video</div>
         <h3 class="project-title">Winter Clash</h3>
@@ -1046,7 +1059,7 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       </div>
     </div>
 
-    <div class="project-box">
+    <div class="project-box reveal-section">
       <div class="project-header">
         <div class="project-tag">Producción de Video</div>
         <h3 class="project-title">Inauguración Levant La Concha</h3>
@@ -1221,6 +1234,21 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       }
     }, { threshold: 0.3 });
     obs.observe(banner);
+  })();
+
+  // Scroll reveal: fade in from blur
+  (function(){
+    var els = document.querySelectorAll('.reveal-section');
+    if(!els.length) return;
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('revealed');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function(el){ obs.observe(el); });
   })();
 
 </script>

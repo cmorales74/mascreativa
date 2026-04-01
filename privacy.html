@@ -369,6 +369,19 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
     .footer-socials { gap: 14px; }
     .footer-socials a { font-size: 9px; }
 }
+
+/* Scroll reveal: fade in from blur */
+.reveal-section {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, filter 0.8s ease, transform 0.8s ease;
+}
+.reveal-section.revealed {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
 </style>
 </head>
 <body data-theme="light">
@@ -423,12 +436,12 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
   <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true">
 </div>
 
-<div class="page-header">
+<div class="page-header reveal-section">
     <h1 class="page-title">Política de Privacidad</h1>
     <p class="page-subtitle">Legal</p>
 </div>
 
-<div class="content-wrapper">
+<div class="content-wrapper reveal-section">
   <div class="content-card">
     <div class="content-heading">Política de Privacidad de +MasCreativa Publicidad</div>
     <div class="content-updated">Última actualización: marzo 2026</div>
@@ -546,6 +559,21 @@ body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0
       overlay.classList.toggle('open');
     });
   }
+
+  // Scroll reveal: fade in from blur
+  (function(){
+    var els = document.querySelectorAll('.reveal-section');
+    if(!els.length) return;
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('revealed');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function(el){ obs.observe(el); });
+  })();
 </script>
 </body>
 </html>
