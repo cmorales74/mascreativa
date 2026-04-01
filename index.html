@@ -170,15 +170,6 @@
     mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent 88%);
   }
 
-  .site-header {
-    position: fixed;
-    top: 16px;
-    left: 0;
-    right: 0;
-    z-index: 35;
-  }
-
-  .header-inner,
   .hero-grid,
   .section,
   .footer-inner {
@@ -186,110 +177,6 @@
     margin: 0 auto;
   }
 
-  .header-inner {
-    min-height: var(--header-h);
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 24px;
-    padding: 14px 20px;
-    border: 1px solid var(--line);
-    border-radius: 28px;
-    background: rgba(244, 248, 255, 0.82);
-    box-shadow: var(--shadow-tight);
-  }
-
-  body[data-theme="dark"] .header-inner {
-    background: rgba(10, 14, 23, 0.82);
-  }
-
-  .brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .brand-mark {
-    width: 44px;
-    height: 44px;
-    padding: 8px;
-    border-radius: 16px;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.62));
-    box-shadow: var(--shadow-tight);
-  }
-
-  .brand-mark-dark { display: none; }
-  body[data-theme="dark"] .brand-mark-light { display: none; }
-  body[data-theme="dark"] .brand-mark-dark { display: block; }
-  .hero-logo-dark { display: none; }
-  body[data-theme="dark"] .hero-logo-light { display: none; }
-  body[data-theme="dark"] .hero-logo-dark { display: block; }
-  body[data-theme="dark"] .brand-mark {
-    background: linear-gradient(145deg, rgba(31, 40, 61, 0.94), rgba(18, 24, 39, 0.92));
-  }
-
-  .brand-copy {
-    display: grid;
-    gap: 2px;
-  }
-
-  .brand-name {
-    font-family: "Satoshi", sans-serif;
-    font-size: 0.98rem;
-    font-weight: 700;
-    letter-spacing: 0.01em;
-  }
-
-  .brand-sub {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.64rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .top-nav {
-    display: inline-flex;
-    justify-self: center;
-    flex-wrap: wrap;
-    gap: clamp(14px, 2vw, 30px);
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .top-nav a {
-    position: relative;
-    padding-bottom: 5px;
-  }
-
-  .top-nav a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 1px;
-    background: linear-gradient(90deg, var(--blue-strong), var(--purple-strong));
-    transform: scaleX(0);
-    transition: transform 0.2s ease;
-  }
-
-  .top-nav a:hover::after,
-  .top-nav a:focus-visible::after {
-    transform: scaleX(1);
-  }
-
-  .header-actions {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .header-cta,
   .button-primary,
   .button-secondary {
     min-height: 46px;
@@ -305,7 +192,6 @@
     text-transform: uppercase;
   }
 
-  .header-cta,
   .button-primary {
     color: #ffffff;
     background: linear-gradient(135deg, var(--blue-strong), var(--purple-strong));
@@ -585,53 +471,6 @@
     font-size: 1rem;
     line-height: 1.72;
     color: var(--muted);
-  }
-
-  .hero-proof {
-    margin-top: 28px;
-    display: grid;
-    gap: 14px;
-    width: fit-content;
-    max-width: 100%;
-    padding: 22px 24px;
-    border: 1px solid var(--line);
-    border-radius: 22px;
-    background: var(--panel-strong);
-    box-shadow: var(--shadow-tight);
-  }
-
-  .hero-proof-top {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 14px;
-  }
-
-  .hero-proof-number {
-    font-family: "Cabinet Grotesk", sans-serif;
-    font-size: clamp(2.6rem, 4vw, 3.6rem);
-    font-weight: 700;
-    letter-spacing: -0.06em;
-    line-height: 0.9;
-    text-transform: uppercase;
-  }
-
-  .hero-proof-copy {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .hero-proof-clients {
-    font-size: 0.9rem;
-    line-height: 1.7;
-    letter-spacing: 0.01em;
-    text-transform: none;
-    border-top: 1px solid var(--line);
-    padding-top: 14px;
   }
 
   .hero-video-box {
@@ -1039,14 +878,6 @@
     padding: 52px 0 0;
   }
 
-  .section-head {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 16px;
-    align-items: end;
-    margin-bottom: 20px;
-  }
-
   .section-title {
     margin-top: 12px;
     font-family: "Cabinet Grotesk", sans-serif;
@@ -1054,64 +885,6 @@
     line-height: 0.96;
     letter-spacing: -0.05em;
     text-transform: uppercase;
-  }
-
-  .section-copy {
-    max-width: 54ch;
-    margin-top: 12px;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-
-  .section-link {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .section-link::after {
-    content: " \2192";
-  }
-
-  .info-band {
-    width: var(--content);
-    margin: 22px auto 0;
-    display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(260px, 0.95fr);
-    gap: 18px;
-  }
-
-  .info-card {
-    padding: 22px 24px;
-    border: 1px solid var(--line);
-    border-radius: 24px;
-    background: var(--panel);
-    box-shadow: var(--shadow-tight);
-  }
-
-  .info-card h2 {
-    margin-top: 10px;
-    font-family: "Cabinet Grotesk", sans-serif;
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    line-height: 1;
-    letter-spacing: -0.04em;
-    text-transform: uppercase;
-  }
-
-  .info-card p,
-  .info-card li {
-    margin-top: 12px;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-
-  .info-card ul {
-    list-style: none;
-    display: grid;
-    gap: 4px;
   }
 
   /* ===== SECTION HEADERS (carousels) ===== */
@@ -1355,26 +1128,6 @@
     border: 1px solid rgba(255,255,255,0.1);
   }
 
-  .stack-card-icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(6px);
-    border: 1px solid rgba(255,255,255,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .stack-card-icon svg {
-    width: 22px;
-    height: 22px;
-    stroke: rgba(255,255,255,0.7);
-    fill: none;
-    stroke-width: 1.5;
-  }
-
   .stack-card-content {
     padding: 22px 24px;
     background: var(--glass-bg);
@@ -1454,24 +1207,6 @@
     border-radius: 3px;
   }
 
-
-  .client-row {
-    width: var(--content);
-    margin: 52px auto 0;
-    padding: 18px 0;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px 26px;
-    justify-content: center;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
 
   .cta {
     width: var(--content);
@@ -1578,6 +1313,12 @@
     color: #121726;
   }
 
+  body[data-theme="dark"] .site-footer .footer-tagline { color: rgba(18, 23, 38, 0.4); }
+  body[data-theme="dark"] .site-footer .footer-copy { color: rgba(18, 23, 38, 0.25); }
+  body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0.3); }
+  body[data-theme="dark"] .site-footer .footer-brandline { color: rgba(18, 23, 38, 0.4); }
+  body[data-theme="dark"] .site-footer .footer-meta { color: rgba(18, 23, 38, 0.25); }
+
   .footer-inner {
     padding-top: 22px;
     border-top: 1px solid var(--line);
@@ -1631,7 +1372,6 @@
 
   @media (max-width: 1100px) {
     .hero-grid,
-    .info-band,
     .cta {
       grid-template-columns: 1fr;
     }
@@ -1656,21 +1396,6 @@
   }
 
   @media (max-width: 900px) {
-    .header-inner {
-      grid-template-columns: 1fr auto;
-      gap: 14px;
-      padding: 16px 18px;
-    }
-
-    .top-nav {
-      grid-column: 1 / -1;
-      justify-self: start;
-    }
-
-    .header-cta {
-      display: none;
-    }
-
     .section-header {
       flex-direction: column;
       align-items: flex-start;
@@ -1701,24 +1426,6 @@
       --drawer-open: 42px;
     }
 
-    /* Mobile: hide nav, CTA, brand text — only logo + toggle */
-    .top-nav { display: none !important; }
-    .header-cta { display: none !important; }
-    .brand-copy { display: none !important; }
-
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 18px;
-    }
-
-    .brand-mark {
-      width: 52px;
-      height: 52px;
-      padding: 6px;
-    }
-
     .hero {
       padding-top: calc(var(--header-h) + 38px);
       padding-bottom: 42px;
@@ -1730,7 +1437,6 @@
     }
 
     .hero-copy p,
-    .section-copy,
     .cta p {
       max-width: none;
     }
@@ -1764,10 +1470,6 @@
     .cabinet-note {
       bottom: 18px;
       font-size: 0.56rem;
-    }
-
-    .client-row {
-      justify-content: flex-start;
     }
 
     .cta {
@@ -1926,7 +1628,7 @@
 <!-- Bootup Splash -->
 <div class="splash" id="splash">
   <video autoplay muted playsinline preload="auto" id="splashVideo">
-    <source src="assets/videos/bootup.mp4" type="video/mp4">
+    <source src="assets/videos/bootup.mp4?v=1" type="video/mp4">
   </video>
 </div>
 
@@ -1974,7 +1676,7 @@
   <a href="portfolio.html">Portafolio</a>
   <a href="about.html">Nosotros</a>
   <a href="contacto.html">Contacto</a>
-  <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true">
+  <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true" loading="lazy">
 </div>
 
 <main>
@@ -1988,7 +1690,7 @@
           <span>ignorar.</span>
         </h1>
         <div class="hero-video-box">
-          <video autoplay muted loop playsinline preload="auto" src="assets/videos/hero-reel.mp4?v=2"></video>
+          <video autoplay muted loop playsinline preload="metadata" src="assets/videos/hero-reel.mp4?v=2"></video>
         </div>
         <p>Somos una agencia creativa en San Juan que produce campañas, identidades y contenido visual que la gente no puede ignorar. Llevamos años haciéndolo y los números lo confirman.</p>
 
@@ -2164,16 +1866,16 @@
     <div class="stack-wrapper">
       <div class="stack-stage" id="stackStage">
         <div class="stack-card" data-pos="0">
-          <div class="stack-card-visual"><video autoplay muted loop playsinline preload="metadata" src="assets/videos/turismo-interno.mp4"></video><div class="stack-card-badge">Turismo</div></div>
+          <div class="stack-card-visual"><video muted loop playsinline preload="none" src="assets/videos/turismo-interno.mp4?v=1"></video><div class="stack-card-badge">Turismo</div></div>
           <div class="stack-card-content"><div class="stack-card-title">Turismo Interno</div><div class="stack-card-sub">Producción audiovisual para la campaña de turismo interno de Puerto Rico. Isla, cultura y experiencia en cada toma.</div></div>
         </div>
         <div class="stack-card" data-pos="1">
-          <div class="stack-card-visual"><video autoplay muted loop playsinline preload="metadata" src="assets/videos/sounds-of-puerto-rico.mp4"></video><div class="stack-card-badge">Documental</div></div>
+          <div class="stack-card-visual"><video muted loop playsinline preload="none" src="assets/videos/sounds-of-puerto-rico.mp4?v=1"></video><div class="stack-card-badge">Documental</div></div>
           <div class="stack-card-content"><div class="stack-card-title">Sounds of Puerto Rico</div><div class="stack-card-sub">La música, los sonidos y la identidad sonora de Puerto Rico capturados en video.</div></div>
         </div>
         <div class="stack-card" data-pos="2">
-          <div class="stack-card-visual"><video autoplay muted loop playsinline preload="metadata" src="assets/videos/rum-of-taste.mp4"></video><div class="stack-card-badge">Gastronomía</div></div>
-          <div class="stack-card-content"><div class="stack-card-title">Taste of Rum</div><div class="stack-card-sub">Producción para Rums of Puerto Rico. La campaña Taste of Rum — ron, sabor y tradición boricua.</div></div>
+          <div class="stack-card-visual"><video muted loop playsinline preload="none" src="assets/videos/rum-of-taste.mp4?v=1"></video><div class="stack-card-badge">Gastronomía</div></div>
+          <div class="stack-card-content"><div class="stack-card-title">Taste of Rum</div><div class="stack-card-sub">Producción para Rums of Puerto Rico. La campaña Taste of Rum -- ron, sabor y tradición boricua.</div></div>
         </div>
       </div>
 

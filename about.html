@@ -7,7 +7,7 @@
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#F5F0EB">
-<title>Nosotros — +MasCreativa Publicidad</title>
+<title>Nosotros | +MasCreativa Publicidad</title>
 <meta name="description" content="+MasCreativa Publicidad es una agencia creativa en San Juan, Puerto Rico especializada en branding, publicidad, fotografía, video, marketing digital y contenido visual. Clientes incluyen Rimas Publishing, Fundación Good Bunny, New York Mets y más. +100M vistas en video en 2025.">
 <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800,900&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -152,10 +152,6 @@ html, body {
 .about-wrapper::-webkit-scrollbar { width: 4px; }
 .about-wrapper::-webkit-scrollbar-track { background: transparent; }
 .about-wrapper::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--blue-strong) 30%, transparent); border-radius: 2px; }
-.about-text {
-    user-select: text; -webkit-user-select: text;
-    pointer-events: auto;
-}
 .about-card {
     display: flex; flex-direction: column; align-items: flex-start;
     text-align: left;
@@ -197,6 +193,8 @@ html, body {
     margin-bottom: 18px;
 }
 .about-text {
+    user-select: text; -webkit-user-select: text;
+    pointer-events: auto;
     font-family: 'Satoshi', sans-serif;
     font-size: clamp(14px, 1.8vw, 16px);
     font-weight: 400;
@@ -368,7 +366,7 @@ body[data-theme="dark"] .about-logo-text {
 .site-footer {
     text-align: center;
     padding: 48px 20px 34px;
-    border-top: 1px solid rgba(74,201,247,0.08);
+    border-top: 1px solid var(--line);
     position: relative;
     z-index: 1;
     background: #121726;
@@ -419,6 +417,9 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
     background: rgba(0, 0, 0, 0.1);
     color: #121726;
 }
+body[data-theme="dark"] .site-footer .footer-tagline { color: rgba(18, 23, 38, 0.4); }
+body[data-theme="dark"] .site-footer .footer-copy { color: rgba(18, 23, 38, 0.25); }
+body[data-theme="dark"] .site-footer .footer-contact { color: rgba(18, 23, 38, 0.3); }
 .footer-tagline {
     font-family: 'Satoshi', sans-serif;
     font-size: 11px; font-weight: 400;
@@ -504,8 +505,8 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
 </div>
 
 <div class="page-header">
-    <div class="page-title">Nosotros</div>
-    <div class="page-subtitle">Agencia Creativa</div>
+    <h1 class="page-title">Nosotros</h1>
+    <p class="page-subtitle">Agencia Creativa</p>
 </div>
 
 <div class="about-wrapper">
@@ -525,8 +526,8 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
 
     <div class="about-divider-bottom"></div>
     <div class="about-logos">
-      <img class="about-logo-icon" id="logoIcon" src="assets/images/logo-icon.png" alt="MasCreativa logo mark">
-      <img class="about-logo-text" id="logoText" src="assets/images/logo-text.png" alt="MasCreativa Publicidad">
+      <img class="about-logo-icon" id="logoIcon" src="assets/images/logo-icon.png" alt="" aria-hidden="true">
+      <img class="about-logo-text" id="logoText" src="assets/images/logo-text.png" alt="" aria-hidden="true">
     </div>
 
     <!-- Lo que nos mueve -->
@@ -561,7 +562,7 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
 
 <!-- Footer -->
 <footer class="site-footer" id="siteFooter">
-  <div class="footer-tagline">+MasCreativa Publicidad — Creatividad que no pide permiso.</div>
+  <div class="footer-tagline">+MasCreativa Publicidad -- Creatividad que no pide permiso.</div>
   <div class="footer-socials">
     <a href="https://instagram.com/mas_creativa_pr" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
@@ -596,6 +597,9 @@ body[data-theme="dark"] .site-footer .footer-socials a:hover {
     var logoD=document.getElementById('logoD');
     if(logoW) logoW.style.display = d>0.5 ? 'none' : 'block';
     if(logoD) logoD.style.display = d>0.5 ? 'block' : 'none';
+
+    var metaTC=document.querySelector('meta[name="theme-color"]');
+    if(metaTC) metaTC.setAttribute('content', d>0.5 ? '#F5F0EB' : '#070b13');
 
     try{localStorage.setItem('mcp-mode',d>0.5?'light':'dark');}catch(e){}
   }
