@@ -1856,9 +1856,9 @@
 </button>
 <div class="mobile-overlay" id="mobileOverlay">
   <a href="services.html" data-es="Servicios" data-en="Services">Servicios</a>
-  <a href="portfolio.html">Portafolio</a>
+  <a href="portfolio.html" data-es="Portafolio" data-en="Portfolio">Portafolio</a>
   <a href="about.html" data-es="Nosotros" data-en="About Us">Nosotros</a>
-  <a href="live-content.html">Live Content</a>
+  <a href="live-content.html" data-es="Live Content" data-en="Live Content">Live Content</a>
   <a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a>
   <button class="lang-toggle-mobile" id="langToggleMobile" aria-label="Switch language">EN</button>
   <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true" loading="lazy">
@@ -1964,7 +1964,7 @@
                 <div class="drawer-box">
                   <div class="drawer-front-panel"></div>
                   <div class="drawer-back-panel"></div>
-                  <span class="drawer-label">Live Content</span>
+                  <span class="drawer-label" data-es="Live Content" data-en="Live Content">Live Content</span>
                   <div class="drawer-left-panel"></div>
                   <div class="drawer-right-panel"></div>
                   <div class="drawer-bottom-panel"></div>
@@ -2063,7 +2063,7 @@
     <div class="cta-section__inner">
       <div class="cta-section__location">San Juan, Puerto Rico</div>
       <div class="cta-section__title"><span class="accent">+</span><span class="main">MÁS</span><br><span class="main">CREATIVA</span></div>
-      <div class="cta-section__subtitle">Publicidad</div>
+      <div class="cta-section__subtitle" data-es="Publicidad" data-en="Advertising">Publicidad</div>
       <div class="cta-section__divider"></div>
       <a class="cta-mega-btn" href="portfolio.html" data-es="Ver portafolio" data-en="View portfolio">Ver portafolio</a>
     </div>
@@ -2494,6 +2494,8 @@
       if (ogDesc) ogDesc.setAttribute('content', desc);
       var twDesc = document.querySelector('meta[name="twitter:description"]');
       if (twDesc) twDesc.setAttribute('content', desc);
+
+      document.documentElement.lang = lang;
     }
 
     function toggleLang() {
@@ -2502,9 +2504,6 @@
 
     if (langBtn) langBtn.addEventListener('click', toggleLang);
     if (langBtnMobile) langBtnMobile.addEventListener('click', toggleLang);
-
-    // Also hide/show lang toggle on scroll (same as theme toggle)
-    var langToggleEl = document.getElementById('langToggle');
 
     applyLang(lang);
   })();

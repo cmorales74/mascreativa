@@ -299,6 +299,9 @@ html, body {
     color: var(--blue-strong);
     opacity: 0.7;
 }
+body[data-lang="en"] .sd-card--featured::before {
+    content: 'FEATURED SERVICE';
+}
 .sd-card--live::after {
     content: '';
     position: absolute;
@@ -737,7 +740,7 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
   <a href="services.html" data-es="Servicios" data-en="Services">Servicios</a>
   <a href="portfolio.html" data-es="Portafolio" data-en="Portfolio">Portafolio</a>
   <a href="about.html" data-es="Nosotros" data-en="About Us">Nosotros</a>
-  <a href="live-content.html">Live Content</a>
+  <a href="live-content.html" data-es="Live Content" data-en="Live Content">Live Content</a>
   <a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a>
   <button class="lang-toggle-mobile" id="langToggleMobile" aria-label="Switch language">EN</button>
   <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true">
@@ -745,18 +748,18 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 
 <div class="page-header reveal-section">
     <h1 class="page-title" data-es="Servicios" data-en="Services">Servicios</h1>
-    <p class="page-subtitle">Branding / Publicidad / Producción / Digital</p>
+    <p class="page-subtitle" data-es="Branding / Publicidad / Producción / Digital" data-en="Branding / Advertising / Production / Digital">Branding / Publicidad / Producción / Digital</p>
 </div>
 
 
 <div class="services-list reveal-section" id="serviceChips">
-  <a href="#live-content" class="service-chip service-chip--spotlight">Live Content</a>
-  <a href="#branding" class="service-chip">Branding</a>
-  <a href="#publicidad" class="service-chip">Publicidad</a>
-  <a href="#foto-video" class="service-chip">Foto + Video</a>
-  <a href="#marketing" class="service-chip">Marketing</a>
-  <a href="#contenido" class="service-chip">Contenido</a>
-  <a href="#diseno" class="service-chip">Impresión</a>
+  <a href="#live-content" class="service-chip service-chip--spotlight" data-es="Live Content" data-en="Live Content">Live Content</a>
+  <a href="#branding" class="service-chip" data-es="Branding" data-en="Branding">Branding</a>
+  <a href="#publicidad" class="service-chip" data-es="Publicidad" data-en="Advertising">Publicidad</a>
+  <a href="#foto-video" class="service-chip" data-es="Foto + Video" data-en="Photo + Video">Foto + Video</a>
+  <a href="#marketing" class="service-chip" data-es="Marketing" data-en="Marketing">Marketing</a>
+  <a href="#contenido" class="service-chip" data-es="Contenido" data-en="Content">Contenido</a>
+  <a href="#diseno" class="service-chip" data-es="Impresión" data-en="Print">Impresión</a>
 </div>
 
 <!-- Service Details -->
@@ -773,25 +776,25 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
         <div class="sd-panel">
           <div class="sd-panel-title" data-es="C&#243;mo funciona" data-en="How it works">Cómo funciona</div>
           <ul class="sd-list sd-list--compact">
-            <li>Preproducción estratégica con objetivos, momentos clave y plataformas claras</li>
-            <li>Captura en vivo con cámaras, audio y operadores enfocados en lo que sí va a funcionar</li>
-            <li>Edición y publicación inmediata mientras el evento todavía está caliente</li>
+            <li data-es="Preproducción estratégica con objetivos, momentos clave y plataformas claras" data-en="Strategic pre-production with clear objectives, key moments and target platforms">Preproducción estratégica con objetivos, momentos clave y plataformas claras</li>
+            <li data-es="Captura en vivo con cámaras, audio y operadores enfocados en lo que sí va a funcionar" data-en="Live capture with cameras, audio and operators focused on what actually works">Captura en vivo con cámaras, audio y operadores enfocados en lo que sí va a funcionar</li>
+            <li data-es="Edición y publicación inmediata mientras el evento todavía está caliente" data-en="Immediate editing and publishing while the event is still hot">Edición y publicación inmediata mientras el evento todavía está caliente</li>
           </ul>
         </div>
         <div class="sd-panel">
           <div class="sd-panel-title" data-es="Ideal para" data-en="Ideal for">Ideal para</div>
           <ul class="sd-list sd-list--compact">
-            <li>Deportes, conciertos y shows donde la ventana de viralidad dura minutos</li>
-            <li>Conferencias y eventos corporativos que necesitan extender su alcance</li>
-            <li>Activaciones de marca, pop-ups, eventos municipales y comunitarios</li>
+            <li data-es="Deportes, conciertos y shows donde la ventana de viralidad dura minutos" data-en="Sports, concerts and shows where the virality window lasts minutes">Deportes, conciertos y shows donde la ventana de viralidad dura minutos</li>
+            <li data-es="Conferencias y eventos corporativos que necesitan extender su alcance" data-en="Conferences and corporate events that need to extend their reach">Conferencias y eventos corporativos que necesitan extender su alcance</li>
+            <li data-es="Activaciones de marca, pop-ups, eventos municipales y comunitarios" data-en="Brand activations, pop-ups, municipal and community events">Activaciones de marca, pop-ups, eventos municipales y comunitarios</li>
           </ul>
         </div>
         <div class="sd-panel">
           <div class="sd-panel-title" data-es="Qu&#233; recibes" data-en="What you get">Qué recibes</div>
           <ul class="sd-list sd-list--compact">
-            <li>Clips en vivo para Reels, TikTok, Stories y publicaciones</li>
-            <li>Banco de contenido listo para seguir explotando el evento después</li>
-            <li>Video resumen y entregables listos para campañas futuras</li>
+            <li data-es="Clips en vivo para Reels, TikTok, Stories y publicaciones" data-en="Live clips for Reels, TikTok, Stories and posts">Clips en vivo para Reels, TikTok, Stories y publicaciones</li>
+            <li data-es="Banco de contenido listo para seguir explotando el evento después" data-en="Content library ready to keep leveraging the event afterward">Banco de contenido listo para seguir explotando el evento después</li>
+            <li data-es="Video resumen y entregables listos para campañas futuras" data-en="Recap video and deliverables ready for future campaigns">Video resumen y entregables listos para campañas futuras</li>
           </ul>
         </div>
       </div>
@@ -804,11 +807,11 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
       <h2 class="sd-title" data-es="Branding e Identidad" data-en="Branding &amp; Identity">Branding e Identidad</h2>
       <p class="sd-body" data-es="Un logo solo no resuelve nada. Construimos identidades completas: nombre, sistema visual, manual y aplicaciones, para que donde la vean, la reconozcan." data-en="A logo alone solves nothing. We build complete identities: name, visual system, brand manual and applications, so wherever people see it, they recognize it.">Un logo solo no resuelve nada. Construimos identidades completas: nombre, sistema visual, manual y aplicaciones, para que donde la vean, la reconozcan.</p>
       <ul class="sd-list">
-        <li>Diseño de logotipo y sistema visual</li>
-        <li>Manuales de marca</li>
-        <li>Naming y estrategia de marca</li>
-        <li>Construcción de marca desde cero</li>
-        <li>Tarjetas, sobres y materiales de marca</li>
+        <li data-es="Diseño de logotipo y sistema visual" data-en="Logo design and visual system">Diseño de logotipo y sistema visual</li>
+        <li data-es="Manuales de marca" data-en="Brand manuals">Manuales de marca</li>
+        <li data-es="Naming y estrategia de marca" data-en="Naming and brand strategy">Naming y estrategia de marca</li>
+        <li data-es="Construcción de marca desde cero" data-en="Brand building from scratch">Construcción de marca desde cero</li>
+        <li data-es="Tarjetas, sobres y materiales de marca" data-en="Business cards, envelopes and brand materials">Tarjetas, sobres y materiales de marca</li>
       </ul>
     </div>
 
@@ -817,12 +820,12 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
       <h2 class="sd-title" data-es="Publicidad y Medios" data-en="Advertising &amp; Media">Publicidad y Medios</h2>
       <p class="sd-body" data-es="Hacemos campa&#241;as que la gente ve de principio a fin. Concepto creativo, pauta inteligente y ejecuci&#243;n en medios digitales y tradicionales. Nada de quemar presupuesto en anuncios gen&#233;ricos." data-en="We make campaigns people watch from start to finish. Creative concept, smart ad placement and execution across digital and traditional media. No burning budget on generic ads.">Hacemos campañas que la gente ve de principio a fin. Concepto creativo, pauta inteligente y ejecución en medios digitales y tradicionales. Nada de quemar presupuesto en anuncios genéricos.</p>
       <ul class="sd-list">
-        <li>Campañas en Meta, Google y TikTok</li>
-        <li>Publicidad en medios tradicionales</li>
-        <li>Campañas de relaciones públicas</li>
-        <li>Conceptos creativos para campañas</li>
-        <li>Estrategia de pauta y targeting</li>
-        <li>Reportes de rendimiento</li>
+        <li data-es="Campañas en Meta, Google y TikTok" data-en="Meta, Google and TikTok campaigns">Campañas en Meta, Google y TikTok</li>
+        <li data-es="Publicidad en medios tradicionales" data-en="Traditional media advertising">Publicidad en medios tradicionales</li>
+        <li data-es="Campañas de relaciones públicas" data-en="Public relations campaigns">Campañas de relaciones públicas</li>
+        <li data-es="Conceptos creativos para campañas" data-en="Creative concepts for campaigns">Conceptos creativos para campañas</li>
+        <li data-es="Estrategia de pauta y targeting" data-en="Ad placement and targeting strategy">Estrategia de pauta y targeting</li>
+        <li data-es="Reportes de rendimiento" data-en="Performance reports">Reportes de rendimiento</li>
       </ul>
     </div>
 
@@ -836,12 +839,12 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
       </div>
       <p class="sd-body" data-es="No porque tuvimos suerte, sino porque la gente quiso verlo." data-en="Not because we got lucky, but because people wanted to watch it.">No porque tuvimos suerte, sino porque la gente quiso verlo.</p>
       <ul class="sd-list">
-        <li>Foto comercial y de producto</li>
-        <li>Video publicitario y corporativo</li>
-        <li>Videos musicales</li>
-        <li>Reels y contenido para redes</li>
-        <li>Detrás de cámaras</li>
-        <li>Animaciones</li>
+        <li data-es="Foto comercial y de producto" data-en="Commercial and product photography">Foto comercial y de producto</li>
+        <li data-es="Video publicitario y corporativo" data-en="Advertising and corporate video">Video publicitario y corporativo</li>
+        <li data-es="Videos musicales" data-en="Music videos">Videos musicales</li>
+        <li data-es="Reels y contenido para redes" data-en="Reels and social media content">Reels y contenido para redes</li>
+        <li data-es="Detrás de cámaras" data-en="Behind the scenes">Detrás de cámaras</li>
+        <li data-es="Animaciones" data-en="Animations">Animaciones</li>
       </ul>
     </div>
 
@@ -850,11 +853,11 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
       <h2 class="sd-title" data-es="Marketing Digital" data-en="Digital Marketing">Marketing Digital</h2>
       <p class="sd-body" data-es="Publicar por publicar no es estrategia. Esto s&#237;:" data-en="Posting just to post is not a strategy. This is:">Publicar por publicar no es estrategia. Esto sí:</p>
       <ul class="sd-list">
-        <li>Gestión de redes sociales con calendario real</li>
-        <li>Gestión de comunidad que responde, no decora</li>
-        <li>Diseño de publicaciones e historias</li>
-        <li>Desarrollo de páginas web y aplicaciones</li>
-        <li>SEO y SEM que mueve el tráfico de verdad</li>
+        <li data-es="Gestión de redes sociales con calendario real" data-en="Social media management with an actual calendar">Gestión de redes sociales con calendario real</li>
+        <li data-es="Gestión de comunidad que responde, no decora" data-en="Community management that responds, not decorates">Gestión de comunidad que responde, no decora</li>
+        <li data-es="Diseño de publicaciones e historias" data-en="Post and story design">Diseño de publicaciones e historias</li>
+        <li data-es="Desarrollo de páginas web y aplicaciones" data-en="Website and application development">Desarrollo de páginas web y aplicaciones</li>
+        <li data-es="SEO y SEM que mueve el tráfico de verdad" data-en="SEO and SEM that actually drives traffic">SEO y SEM que mueve el tráfico de verdad</li>
       </ul>
     </div>
 
@@ -863,10 +866,10 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
       <h2 class="sd-title" data-es="Contenido Visual" data-en="Visual Content">Contenido Visual</h2>
       <p class="sd-body" data-es="Para Fundaci&#243;n Good Bunny produjimos contenido visual que cont&#243; la historia de la organizaci&#243;n sin necesitar un p&#225;rrafo de texto. Eso es lo que hacemos." data-en="For Fundaci&#243;n Good Bunny we produced visual content that told the organization's story without needing a single paragraph of text. That's what we do.">Para Fundación Good Bunny produjimos contenido visual que contó la historia de la organización sin necesitar un párrafo de texto. Eso es lo que hacemos.</p>
       <ul class="sd-list">
-        <li>Dirección creativa</li>
-        <li>Fotografía de producto y de estilo de vida</li>
-        <li>Video promocional</li>
-        <li>Contenido para web y redes</li>
+        <li data-es="Dirección creativa" data-en="Creative direction">Dirección creativa</li>
+        <li data-es="Fotografía de producto y de estilo de vida" data-en="Product and lifestyle photography">Fotografía de producto y de estilo de vida</li>
+        <li data-es="Video promocional" data-en="Promotional video">Video promocional</li>
+        <li data-es="Contenido para web y redes" data-en="Web and social media content">Contenido para web y redes</li>
       </ul>
     </div>
 
@@ -875,10 +878,10 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
       <h2 class="sd-title" data-es="Dise&#241;o e Impresi&#243;n" data-en="Design &amp; Print">Diseño e Impresión</h2>
       <p class="sd-body" data-es="Un flyer bien hecho todav&#237;a mueve gente. Dise&#241;amos piezas impresas al mismo nivel que lo digital: empaques, cat&#225;logos, se&#241;al&#233;tica y material POP." data-en="A well-made flyer still moves people. We design printed pieces at the same level as digital: packaging, catalogs, signage and POP materials.">Un flyer bien hecho todavía mueve gente. Diseñamos piezas impresas al mismo nivel que lo digital: empaques, catálogos, señalética y material POP.</p>
       <ul class="sd-list">
-        <li>Diseño gráfico para impresión</li>
-        <li>Volantes, folletos y catálogos</li>
-        <li>Empaques y etiquetas</li>
-        <li>Señalética y material POP</li>
+        <li data-es="Diseño gráfico para impresión" data-en="Graphic design for print">Diseño gráfico para impresión</li>
+        <li data-es="Volantes, folletos y catálogos" data-en="Flyers, brochures and catalogs">Volantes, folletos y catálogos</li>
+        <li data-es="Empaques y etiquetas" data-en="Packaging and labels">Empaques y etiquetas</li>
+        <li data-es="Señalética y material POP" data-en="Signage and POP materials">Señalética y material POP</li>
       </ul>
     </div>
 

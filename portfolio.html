@@ -948,7 +948,7 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
   <a href="services.html" data-es="Servicios" data-en="Services">Servicios</a>
   <a href="portfolio.html" data-es="Portafolio" data-en="Portfolio">Portafolio</a>
   <a href="about.html" data-es="Nosotros" data-en="About Us">Nosotros</a>
-  <a href="live-content.html">Live Content</a>
+  <a href="live-content.html" data-es="Live Content" data-en="Live Content">Live Content</a>
   <a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a>
   <button class="lang-toggle-mobile" id="langToggleMobile" aria-label="Switch language">EN</button>
   <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true">
@@ -1002,7 +1002,7 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
     <div class="project-box reveal-section">
       <div class="project-header">
         <div class="project-tag" data-es="Fotografia Comercial" data-en="Commercial Photography">Fotografia Comercial</div>
-        <h2 class="project-title">AB Home — Muebleria</h2>
+        <h2 class="project-title" data-es="AB Home — Mueblería" data-en="AB Home — Furniture Store">AB Home — Mueblería</h2>
         <p class="project-desc" data-es="Sesion fotografica para la muebleria AB Home. Capturamos la esencia de cada pieza en su showroom." data-en="Photo session for AB Home furniture store. We captured the essence of each piece in their showroom.">Sesion fotografica para la muebleria AB Home. Capturamos la esencia de cada pieza en su showroom.</p>
       </div>
       <div class="project-media">
@@ -1220,9 +1220,9 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
     <!-- 8. Swim Safe PR — 2 assets (2v) -->
     <div class="project-box reveal-section">
       <div class="project-header">
-        <div class="project-tag" data-es="Produccion de Video" data-en="Video Production">Produccion de Video</div>
+        <div class="project-tag" data-es="Producción de Video" data-en="Video Production">Producción de Video</div>
         <h2 class="project-title">Swim Safe PR</h2>
-        <p class="project-desc" data-es="Produccion de video para la campana Swim Safe de la Compania de Turismo de Puerto Rico." data-en="Video production for the Swim Safe campaign by the Puerto Rico Tourism Company.">Produccion de video para la campana Swim Safe de la Compania de Turismo de Puerto Rico.</p>
+        <p class="project-desc" data-es="Producción de video para la campaña Swim Safe de la Compañía de Turismo de Puerto Rico." data-en="Video production for the Swim Safe campaign by the Puerto Rico Tourism Company.">Producción de video para la campaña Swim Safe de la Compañía de Turismo de Puerto Rico.</p>
       </div>
       <div class="project-media">
         <div class="project-hero-video">
@@ -1299,8 +1299,8 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
     <div class="project-box reveal-section">
       <div class="project-header">
         <div class="project-tag" data-es="Cobertura de Evento" data-en="Event Coverage">Cobertura de Evento</div>
-        <h2 class="project-title" data-es="Inauguracion Hotel Four Seasons" data-en="Four Seasons Hotel Grand Opening">Inauguracion Hotel Four Seasons</h2>
-        <p class="project-desc" data-es="Cobertura audiovisual de la inauguracion del Hotel Four Seasons en Puerto Rico." data-en="Audiovisual coverage of the Four Seasons Hotel grand opening in Puerto Rico.">Cobertura audiovisual de la inauguracion del Hotel Four Seasons en Puerto Rico.</p>
+        <h2 class="project-title" data-es="Inauguración Hotel Four Seasons" data-en="Four Seasons Hotel Grand Opening">Inauguración Hotel Four Seasons</h2>
+        <p class="project-desc" data-es="Cobertura audiovisual de la inauguración del Hotel Four Seasons en Puerto Rico." data-en="Audiovisual coverage of the Four Seasons Hotel grand opening in Puerto Rico.">Cobertura audiovisual de la inauguración del Hotel Four Seasons en Puerto Rico.</p>
       </div>
       <div class="project-media">
         <div class="project-hero-video">
@@ -1395,7 +1395,7 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
     <span class="client-sep">·</span>
     <span class="client-name">AB Home</span>
     <span class="client-sep">·</span>
-    <span class="client-name">Compania de Turismo de PR</span>
+    <span class="client-name">Compañía de Turismo de PR</span>
     <span class="client-sep">·</span>
     <span class="client-name">Hotel Four Seasons</span>
   </div>
@@ -1682,6 +1682,9 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
     if (ogDesc) ogDesc.setAttribute('content', desc);
     var twDesc = document.querySelector('meta[name="twitter:description"]');
     if (twDesc) twDesc.setAttribute('content', desc);
+
+    document.title = lang === 'es' ? 'Portafolio | MasCreativa Publicidad' : 'Portfolio | MasCreativa Publicidad';
+    document.documentElement.lang = lang;
   }
 
   function toggleLang() { applyLang(lang === 'es' ? 'en' : 'es'); }

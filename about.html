@@ -584,7 +584,7 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
   <a href="services.html" data-es="Servicios" data-en="Services">Servicios</a>
   <a href="portfolio.html" data-es="Portafolio" data-en="Portfolio">Portafolio</a>
   <a href="about.html" data-es="Nosotros" data-en="About">Nosotros</a>
-  <a href="live-content.html">Live Content</a>
+  <a href="live-content.html" data-es="Live Content" data-en="Live Content">Live Content</a>
   <a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a>
   <button class="lang-toggle-btn" id="langToggleMobile" aria-label="Switch language">EN</button>
   <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true">
@@ -719,6 +719,18 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
     var label = lang === 'es' ? 'EN' : 'ES';
     var btns = document.querySelectorAll('.lang-toggle-btn');
     btns.forEach(function(b) { b.textContent = label; });
+    // Update meta tags
+    var descEs = 'Conoce a MasCreativa Publicidad, agencia creativa en San Juan, Puerto Rico.';
+    var descEn = 'Meet MasCreativa Publicidad, a creative agency in San Juan, Puerto Rico.';
+    var desc = lang === 'es' ? descEs : descEn;
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', desc);
+    var ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', desc);
+    var twDesc = document.querySelector('meta[name="twitter:description"]');
+    if (twDesc) twDesc.setAttribute('content', desc);
+
+    document.documentElement.lang = lang;
     try { localStorage.setItem('mcp-lang', lang); } catch(e) {}
   }
 
