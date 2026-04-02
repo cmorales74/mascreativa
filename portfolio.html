@@ -1183,7 +1183,7 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
   try{var sv=localStorage.getItem('mcp-mode');if(sv==='dark')isDark=true;}catch(e){}
 
   function paint(isDarkMode){
-    // Set data-theme attribute — CSS variables do all the heavy lifting
+    // Set data-theme attribute -- CSS variables do all the heavy lifting
     document.body.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
 
     // Logo swap (light logo for dark bg, dark logo for light bg)
