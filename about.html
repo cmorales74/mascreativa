@@ -283,6 +283,37 @@ body[data-theme="dark"] .about-logo-text {
     }
 }
 
+/* ===== LANGUAGE TOGGLE ===== */
+.lang-toggle-wrap {
+    position: fixed; right: 20px; top: 64px; z-index: 200;
+}
+.lang-toggle-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--muted);
+    background: var(--glass-bg);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: color 0.3s, border-color 0.3s, background 0.3s;
+    user-select: none; -webkit-user-select: none;
+}
+.lang-toggle-btn:hover {
+    color: var(--blue-strong);
+    border-color: var(--blue-strong);
+    background: var(--glass-bg);
+}
+.mobile-overlay .lang-toggle-btn {
+    font-size: 14px;
+    padding: 10px 24px;
+    margin-top: 8px;
+}
+@media (max-width: 640px) {
+    .lang-toggle-wrap { right: 12px; top: 56px; }
+}
+
 /* ===== THEME SWITCH ===== */
 .theme-switch-wrap { position: fixed; right: 20px; top: 20px; z-index: 200; }
 .theme-switch {
@@ -508,7 +539,7 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
 </head>
-<body data-theme="light">
+<body data-theme="light" data-lang="es">
 
 <!-- Logo -->
 <div style="text-align:center;padding:24px 0 0;">
@@ -540,31 +571,37 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
   </label>
 </div>
 
+<!-- Language Toggle -->
+<div class="lang-toggle-wrap">
+  <button class="lang-toggle-btn" id="langToggleBtn" aria-label="Switch language">EN</button>
+</div>
+
 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú">
   <span></span><span></span><span></span>
 </button>
 <div class="mobile-overlay" id="mobileOverlay">
-  <a href="index.html">Inicio</a>
-  <a href="services.html">Servicios</a>
-  <a href="portfolio.html">Portafolio</a>
-  <a href="about.html">Nosotros</a>
+  <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
+  <a href="services.html" data-es="Servicios" data-en="Services">Servicios</a>
+  <a href="portfolio.html" data-es="Portafolio" data-en="Portfolio">Portafolio</a>
+  <a href="about.html" data-es="Nosotros" data-en="About">Nosotros</a>
   <a href="live-content.html">Live Content</a>
-  <a href="contacto.html">Contacto</a>
+  <a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a>
+  <button class="lang-toggle-btn" id="langToggleMobile" aria-label="Switch language">EN</button>
   <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true">
 </div>
 
 <div class="page-header reveal-section">
-    <h1 class="page-title">Nosotros</h1>
-    <p class="page-subtitle">Agencia Creativa</p>
+    <h1 class="page-title" data-es="Nosotros" data-en="About Us">Nosotros</h1>
+    <p class="page-subtitle" data-es="Agencia Creativa" data-en="Creative Agency">Agencia Creativa</p>
 </div>
 
 <div class="about-wrapper">
   <div class="about-card">
     <div class="about-divider"></div>
-    <p class="about-hero-quote reveal-section">"Necesito que esto sea más creativo." Con esa frase llegaban a nosotros. Ya tenían el video, la marca, la campaña. Lo que faltaba era alguien que lo llevara al siguiente nivel.</p>
-    <p class="about-text reveal-section">Así nació +MasCreativa Publicidad en San Juan. De gente que ya tenía algo bueno pero sabía que podía ser mejor. Nos buscaban para eso. Y nosotros no parábamos hasta entregarlo.</p>
-    <p class="about-text reveal-section">Identidades visuales que no se confunden con nadie. Campañas que provocan reacción. Contenido que la gente ve completo y comparte. <span class="about-emphasis">No somos la agencia más grande de Puerto Rico. Pero somos la más exigente con la calidad.</span></p>
-    <p class="about-text reveal-section">El nivel no se negocia. Lo que sale de aquí lleva nuestro nombre y nuestro mejor esfuerzo. No hay trabajos de segunda.</p>
+    <p class="about-hero-quote reveal-section" data-es="&quot;Necesito que esto sea más creativo.&quot; Con esa frase llegaban a nosotros. Ya tenían el video, la marca, la campaña. Lo que faltaba era alguien que lo llevara al siguiente nivel." data-en="&quot;I need this to be more creative.&quot; That was the line people came to us with. They already had the video, the brand, the campaign. What they needed was someone to take it to the next level.">"Necesito que esto sea más creativo." Con esa frase llegaban a nosotros. Ya tenían el video, la marca, la campaña. Lo que faltaba era alguien que lo llevara al siguiente nivel.</p>
+    <p class="about-text reveal-section" data-es="Así nació +MasCreativa Publicidad en San Juan. De gente que ya tenía algo bueno pero sabía que podía ser mejor. Nos buscaban para eso. Y nosotros no parábamos hasta entregarlo." data-en="That is how +MasCreativa Publicidad was born in San Juan. From people who already had something good but knew it could be better. They came to us for that. And we did not stop until we delivered.">Así nació +MasCreativa Publicidad en San Juan. De gente que ya tenía algo bueno pero sabía que podía ser mejor. Nos buscaban para eso. Y nosotros no parábamos hasta entregarlo.</p>
+    <p class="about-text reveal-section"><span data-es="Identidades visuales que no se confunden con nadie. Campañas que provocan reacción. Contenido que la gente ve completo y comparte." data-en="Visual identities that stand out from the crowd. Campaigns that provoke a reaction. Content people watch to the end and share.">Identidades visuales que no se confunden con nadie. Campañas que provocan reacción. Contenido que la gente ve completo y comparte.</span> <span class="about-emphasis" data-es="No somos la agencia más grande de Puerto Rico. Pero somos la más exigente con la calidad." data-en="We are not the biggest agency in Puerto Rico. But we are the most demanding when it comes to quality.">No somos la agencia más grande de Puerto Rico. Pero somos la más exigente con la calidad.</span></p>
+    <p class="about-text reveal-section" data-es="El nivel no se negocia. Lo que sale de aquí lleva nuestro nombre y nuestro mejor esfuerzo. No hay trabajos de segunda." data-en="The standard is non-negotiable. Everything that leaves here carries our name and our best effort. There are no second-rate jobs.">El nivel no se negocia. Lo que sale de aquí lleva nuestro nombre y nuestro mejor esfuerzo. No hay trabajos de segunda.</p>
 
 
     <div class="about-divider-bottom reveal-section"></div>
@@ -575,14 +612,14 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 
     <!-- Lo que nos mueve -->
     <div class="about-mission-card reveal-section">
-      <div class="about-label">Lo que nos mueve</div>
-      <p class="about-text">Lo genérico nos da más miedo que el riesgo creativo. No bajamos el nivel porque el presupuesto es modesto ni inflamos el ego porque el cheque es alto. Cada marca tiene una historia. Nosotros la encontramos y la contamos de manera que la gente la recuerde.</p>
+      <div class="about-label" data-es="Lo que nos mueve" data-en="What drives us">Lo que nos mueve</div>
+      <p class="about-text" data-es="Lo genérico nos da más miedo que el riesgo creativo. No bajamos el nivel porque el presupuesto es modesto ni inflamos el ego porque el cheque es alto. Cada marca tiene una historia. Nosotros la encontramos y la contamos de manera que la gente la recuerde." data-en="Generic work scares us more than creative risk. We do not lower the bar because the budget is modest, and we do not inflate our ego because the check is big. Every brand has a story. We find it and tell it in a way people remember.">Lo genérico nos da más miedo que el riesgo creativo. No bajamos el nivel porque el presupuesto es modesto ni inflamos el ego porque el cheque es alto. Cada marca tiene una historia. Nosotros la encontramos y la contamos de manera que la gente la recuerde.</p>
     </div>
 
     <!-- Credentials -->
     <div class="about-divider"></div>
-    <div class="about-label reveal-section">Quiénes han confiado en nosotros</div>
-    <p class="about-text reveal-section">Hemos trabajado con marcas que no se conforman con lo típico. Campañas, producción de video y contenido para redes: cuando el resultado tiene que ser serio, nos llaman.</p>
+    <div class="about-label reveal-section" data-es="Quiénes han confiado en nosotros" data-en="Who has trusted us">Quiénes han confiado en nosotros</div>
+    <p class="about-text reveal-section" data-es="Hemos trabajado con marcas que no se conforman con lo típico. Campañas, producción de video y contenido para redes: cuando el resultado tiene que ser serio, nos llaman." data-en="We have worked with brands that refuse to settle for the typical. Campaigns, video production, and social content: when the result has to be serious, they call us.">Hemos trabajado con marcas que no se conforman con lo típico. Campañas, producción de video y contenido para redes: cuando el resultado tiene que ser serio, nos llaman.</p>
     <div class="about-client-chips reveal-section">
       <span class="about-client-chip">Rimas Publishing</span>
       <span class="about-client-chip">Fundación Good Bunny</span>
@@ -593,13 +630,13 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 
     <!-- Agency Info -->
     <div class="about-divider"></div>
-    <div class="about-label reveal-section">La agencia</div>
+    <div class="about-label reveal-section" data-es="La agencia" data-en="The agency">La agencia</div>
     <div class="about-agency-info reveal-section" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.5px;color:var(--muted);line-height:2.2;text-align:left;width:100%;margin-bottom:28px;">
-      <div>Ubicación: San Juan, Puerto Rico</div>
-      <div>Dirección: 1105 Ave. Franklin Delano Roosevelt, Suite 5, San Juan, PR 00920</div>
-      <div>Horario: lunes a viernes, 8:00 a. m. - 6:00 p. m.</div>
-      <div>Teléfono: 787-644-1276</div>
-      <div>Correo electrónico: info@mascreativapublicidad.com</div>
+      <div data-es="Ubicación: San Juan, Puerto Rico" data-en="Location: San Juan, Puerto Rico">Ubicación: San Juan, Puerto Rico</div>
+      <div data-es="Dirección: 1105 Ave. Franklin Delano Roosevelt, Suite 5, San Juan, PR 00920" data-en="Address: 1105 Ave. Franklin Delano Roosevelt, Suite 5, San Juan, PR 00920">Dirección: 1105 Ave. Franklin Delano Roosevelt, Suite 5, San Juan, PR 00920</div>
+      <div data-es="Horario: lunes a viernes, 8:00 a. m. - 6:00 p. m." data-en="Hours: Monday to Friday, 8:00 AM - 6:00 PM">Horario: lunes a viernes, 8:00 a. m. - 6:00 p. m.</div>
+      <div data-es="Teléfono: 787-644-1276" data-en="Phone: 787-644-1276">Teléfono: 787-644-1276</div>
+      <div data-es="Correo electrónico: info@mascreativapublicidad.com" data-en="Email: info@mascreativapublicidad.com">Correo electrónico: info@mascreativapublicidad.com</div>
     </div>
   </div>
 
@@ -607,9 +644,9 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 <footer class="site-footer" id="siteFooter">
   <div class="footer-inner">
     <div>
-      <div class="footer-brandline">+MasCreativa Publicidad. Creatividad que no pide permiso.</div>
+      <div class="footer-brandline" data-es="+MasCreativa Publicidad. Creatividad que no pide permiso." data-en="+MasCreativa Publicidad. Creativity that does not ask for permission.">+MasCreativa Publicidad. Creatividad que no pide permiso.</div>
       <div class="footer-contact"><a href="tel:+17876441276">787-644-1276</a> · <a href="mailto:info@mascreativapublicidad.com">info@mascreativapublicidad.com</a></div>
-      <div class="footer-meta">San Juan, Puerto Rico / 2026 / <a href="terms.html">Términos</a> / <a href="privacy.html">Privacidad</a></div>
+      <div class="footer-meta" data-es="San Juan, Puerto Rico / 2026 / <a href='terms.html'>Términos</a> / <a href='privacy.html'>Privacidad</a>" data-en="San Juan, Puerto Rico / 2026 / <a href='terms.html'>Terms</a> / <a href='privacy.html'>Privacy</a>">San Juan, Puerto Rico / 2026 / <a href="terms.html">Términos</a> / <a href="privacy.html">Privacidad</a></div>
     </div>
     <div class="footer-socials">
       <a href="https://instagram.com/mas_creativa_pr" target="_blank" rel="noopener">Instagram</a>
@@ -656,6 +693,42 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
   });
 
   applyMode();
+})();
+
+// ===== LANGUAGE TOGGLE =====
+(function(){
+  var lang = 'es';
+  var titles = { es: 'Nosotros | MasCreativa Publicidad', en: 'About Us | MasCreativa Publicidad' };
+  try { var sv = localStorage.getItem('mcp-lang'); if (sv === 'en') lang = 'en'; } catch(e) {}
+
+  function applyLang(l) {
+    lang = l;
+    document.body.setAttribute('data-lang', lang);
+    document.title = titles[lang];
+    document.querySelectorAll('[data-es][data-en]').forEach(function(el) {
+      var val = el.getAttribute('data-' + lang);
+      if (val !== null) {
+        if (el.querySelector('a') || val.indexOf('<a ') !== -1) {
+          el.innerHTML = val;
+        } else {
+          el.textContent = val;
+        }
+      }
+    });
+    // Update toggle buttons
+    var label = lang === 'es' ? 'EN' : 'ES';
+    var btns = document.querySelectorAll('.lang-toggle-btn');
+    btns.forEach(function(b) { b.textContent = label; });
+    try { localStorage.setItem('mcp-lang', lang); } catch(e) {}
+  }
+
+  document.querySelectorAll('.lang-toggle-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      applyLang(lang === 'es' ? 'en' : 'es');
+    });
+  });
+
+  applyLang(lang);
 })();
 
   // Mobile hamburger menu

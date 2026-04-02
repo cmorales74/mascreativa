@@ -86,6 +86,57 @@ html, body {
     user-select: none; -webkit-user-select: none;
 }
 
+/* ===== LANGUAGE TOGGLE ===== */
+.lang-toggle {
+    position: fixed;
+    top: 28px;
+    right: 120px;
+    z-index: 200;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: var(--panel);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    transition: background 0.2s, border-color 0.2s;
+    user-select: none;
+    -webkit-user-select: none;
+}
+.lang-toggle:hover {
+    border-color: var(--blue-strong);
+    color: var(--blue-strong);
+}
+@media (max-width: 640px) {
+    .lang-toggle { right: 80px; top: 16px; width: 34px; height: 34px; font-size: 10px; }
+}
+.mobile-overlay .lang-toggle-mobile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: var(--panel);
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    text-decoration: none;
+}
+
 /* Hamburger menu - hidden on desktop */
 .mobile-menu-btn { display: none; }
 .mobile-overlay { display: none; }
@@ -925,7 +976,7 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
 </head>
-<body data-theme="light">
+<body data-theme="light" data-lang="es">
 
 <!-- Logo -->
 <div style="text-align:center;padding:24px 0 0;">
@@ -957,61 +1008,65 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
   </label>
 </div>
 
+<!-- Language toggle -->
+<button class="lang-toggle" id="langToggle" aria-label="Switch language">EN</button>
+
 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú">
   <span></span><span></span><span></span>
 </button>
 <div class="mobile-overlay" id="mobileOverlay">
-  <a href="index.html">Inicio</a>
-  <a href="services.html">Servicios</a>
-  <a href="portfolio.html">Portafolio</a>
-  <a href="about.html">Nosotros</a>
+  <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
+  <a href="services.html" data-es="Servicios" data-en="Services">Servicios</a>
+  <a href="portfolio.html" data-es="Portafolio" data-en="Portfolio">Portafolio</a>
+  <a href="about.html" data-es="Nosotros" data-en="About Us">Nosotros</a>
   <a href="live-content.html">Live Content</a>
-  <a href="contacto.html">Contacto</a>
+  <a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a>
+  <button class="lang-toggle-mobile" id="langToggleMobile" aria-label="Switch language">EN</button>
   <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true" loading="lazy">
 </div>
 
 
 <div class="page-header reveal-section">
     <h1 class="page-title">Live Content</h1>
-    <p class="page-subtitle">Contenido en Tiempo Real</p>
+    <p class="page-subtitle" data-es="Contenido en Tiempo Real" data-en="Real-Time Content">Contenido en Tiempo Real</p>
 </div>
 
 <!-- ===== HERO ===== -->
 <section class="lc-hero reveal-section">
-  <h2 class="lc-hero-headline">El Evento pasa.<br><span class="highlight">El contenido se queda.</span></h2>
-  <p class="lc-hero-body">Mientras tu evento sucede, nosotros estamos editando, publicando y viralizando. No al otro día. No la semana que viene. Ahora mismo, cuando la audiencia todavía tiene el celular en la mano y lo que sintieron está fresco.</p>
+  <h2 class="lc-hero-headline" data-es-inner="El Evento pasa.<br><span class='highlight'>El contenido se queda.</span>" data-en-inner="The Event ends.<br><span class='highlight'>The content stays.</span>">El Evento pasa.<br><span class="highlight">El contenido se queda.</span></h2>
+  <p class="lc-hero-body" data-es="Mientras tu evento sucede, nosotros estamos editando, publicando y viralizando. No al otro d&#237;a. No la semana que viene. Ahora mismo, cuando la audiencia todav&#237;a tiene el celular en la mano y lo que sintieron est&#225; fresco." data-en="While your event is happening, we're editing, publishing and making it go viral. Not the next day. Not next week. Right now, when the audience still has their phone in hand and what they felt is still fresh.">Mientras tu evento sucede, nosotros estamos editando, publicando y viralizando. No al otro día. No la semana que viene. Ahora mismo, cuando la audiencia todavía tiene el celular en la mano y lo que sintieron está fresco.</p>
   <div class="lc-hero-actions">
-    <a href="contacto.html" class="btn-primary">Agenda una consulta</a>
-    <a href="#como-funciona" class="btn-secondary">Ver cómo funciona</a>
+    <a href="contacto.html" class="btn-primary" data-es="Agenda una consulta" data-en="Book a consultation">Agenda una consulta</a>
+    <a href="#como-funciona" class="btn-secondary" data-es="Ver c&#243;mo funciona" data-en="See how it works">Ver cómo funciona</a>
   </div>
 </section>
 
 
 <!-- ===== EL PROBLEMA ===== -->
 <section class="lc-section reveal-section" id="el-problema">
-  <div class="lc-section-label">La realidad</div>
-  <h2>Tu evento dura horas. La atención de tu audiencia dura segundos.</h2>
-  <p>Organizas un evento brutal. La gente la pasa bien, las fotos se ven increíbles, todo fluyó perfecto. Pero el contenido se publica tres días después, cuando nadie se acuerda de lo que sintió. El algoritmo ya se movió. La conversación ya cambió.</p>
-  <p>La mayoría de las marcas tratan el contenido de eventos como una tarea de post-producción. Graban todo, lo guardan, y semanas después publican un recap que ya nadie quiere ver. Eso no es estrategia. Eso es archivo.</p>
-  <p>El problema no es la calidad del evento. El problema es que el contenido llega tarde. Y en redes sociales, llegar tarde es lo mismo que no llegar.</p>
+  <div class="lc-section-label" data-es="La realidad" data-en="The reality">La realidad</div>
+  <h2 data-es="Tu evento dura horas. La atenci&#243;n de tu audiencia dura segundos." data-en="Your event lasts hours. Your audience's attention lasts seconds.">Tu evento dura horas. La atención de tu audiencia dura segundos.</h2>
+  <p data-es="Organizas un evento brutal. La gente la pasa bien, las fotos se ven incre&#237;bles, todo fluy&#243; perfecto. Pero el contenido se publica tres d&#237;as despu&#233;s, cuando nadie se acuerda de lo que sinti&#243;. El algoritmo ya se movi&#243;. La conversaci&#243;n ya cambi&#243;." data-en="You organize an amazing event. People have a great time, the photos look incredible, everything flows perfectly. But the content gets published three days later, when nobody remembers what they felt. The algorithm has moved on. The conversation has changed.">Organizas un evento brutal. La gente la pasa bien, las fotos se ven increíbles, todo fluyó perfecto. Pero el contenido se publica tres días después, cuando nadie se acuerda de lo que sintió. El algoritmo ya se movió. La conversación ya cambió.</p>
+  <p data-es="La mayor&#237;a de las marcas tratan el contenido de eventos como una tarea de post-producci&#243;n. Graban todo, lo guardan, y semanas despu&#233;s publican un recap que ya nadie quiere ver. Eso no es estrategia. Eso es archivo." data-en="Most brands treat event content as a post-production task. They record everything, store it, and weeks later publish a recap nobody wants to watch anymore. That's not strategy. That's archiving.">La mayoría de las marcas tratan el contenido de eventos como una tarea de post-producción. Graban todo, lo guardan, y semanas después publican un recap que ya nadie quiere ver. Eso no es estrategia. Eso es archivo.</p>
+  <p data-es="El problema no es la calidad del evento. El problema es que el contenido llega tarde. Y en redes sociales, llegar tarde es lo mismo que no llegar." data-en="The problem isn't the quality of the event. The problem is the content arrives late. And on social media, arriving late is the same as not arriving at all.">El problema no es la calidad del evento. El problema es que el contenido llega tarde. Y en redes sociales, llegar tarde es lo mismo que no llegar.</p>
 </section>
 
 
 <!-- ===== LA SOLUCIÓN ===== -->
 <section class="lc-section reveal-section" id="la-solucion">
   <div class="lc-section-label">Live Content by +MasCreativa</div>
-  <h2>Contenido viral, producido en vivo.</h2>
-  <p>Live Content no es grabar y después editar. Es tener un equipo de producción en tu evento que está capturando, editando y publicando clips optimizados para redes mientras el evento sigue ocurriendo.</p>
-  <p>Cada pieza sale con dirección creativa, cortes precisos, texto superpuesto, música licenciada y formato nativo para cada plataforma. No es contenido de celular con un filtro. Es producción profesional a velocidad de redes sociales.</p>
-  <p>Mientras tu audiencia comparte lo que está viviendo, tu marca ya tiene contenido profesional compitiendo por la misma atención. El resultado: alcance orgánico masivo, engagement real y un banco de contenido que sigue trabajando semanas después.</p>
-  <p><strong>Eso es Live Content. Es la diferencia entre documentar un evento y detonarlo.</strong></p>
+  <h2 data-es="Contenido viral, producido en vivo." data-en="Viral content, produced live.">Contenido viral, producido en vivo.</h2>
+  <p data-es="Live Content no es grabar y despu&#233;s editar. Es tener un equipo de producci&#243;n en tu evento que est&#225; capturando, editando y publicando clips optimizados para redes mientras el evento sigue ocurriendo." data-en="Live Content is not recording now and editing later. It's having a production team at your event capturing, editing and publishing social-optimized clips while the event is still happening.">Live Content no es grabar y después editar. Es tener un equipo de producción en tu evento que está capturando, editando y publicando clips optimizados para redes mientras el evento sigue ocurriendo.</p>
+  <p data-es="Cada pieza sale con direcci&#243;n creativa, cortes precisos, texto superpuesto, m&#250;sica licenciada y formato nativo para cada plataforma. No es contenido de celular con un filtro. Es producci&#243;n profesional a velocidad de redes sociales." data-en="Every piece goes out with creative direction, precise cuts, text overlays, licensed music and native format for each platform. It's not phone content with a filter. It's professional production at social media speed.">Cada pieza sale con dirección creativa, cortes precisos, texto superpuesto, música licenciada y formato nativo para cada plataforma. No es contenido de celular con un filtro. Es producción profesional a velocidad de redes sociales.</p>
+  <p data-es="Mientras tu audiencia comparte lo que est&#225; viviendo, tu marca ya tiene contenido profesional compitiendo por la misma atenci&#243;n. El resultado: alcance org&#225;nico masivo, engagement real y un banco de contenido que sigue trabajando semanas despu&#233;s." data-en="While your audience shares what they're experiencing, your brand already has professional content competing for the same attention. The result: massive organic reach, real engagement and a content bank that keeps working weeks later.">Mientras tu audiencia comparte lo que está viviendo, tu marca ya tiene contenido profesional compitiendo por la misma atención. El resultado: alcance orgánico masivo, engagement real y un banco de contenido que sigue trabajando semanas después.</p>
+  <p data-es-inner="<strong>Eso es Live Content. Es la diferencia entre documentar un evento y detonarlo.</strong>" data-en-inner="<strong>That's Live Content. It's the difference between documenting an event and detonating it.</strong>"><strong>Eso es Live Content. Es la diferencia entre documentar un evento y detonarlo.</strong></p>
 </section>
 
 
 <!-- ===== VERTICAL VIDEO SHOWCASE ===== -->
 <div class="lc-showcase reveal-section">
-  <div class="lc-section-label" style="text-align:center;">Producido en vivo</div>
-  <h2 class="lc-showcase-heading">Clips reales. Editados en minutos. Publicados al instante.</h2>
+  <div class="lc-section-label" style="text-align:center;" data-es="Producido en vivo" data-en="Produced live">Producido en vivo</div>
+  <h2 class="lc-showcase-heading" data-es="Clips reales. Editados en minutos. Publicados al instante." data-en="Real clips. Edited in minutes. Published instantly.">Clips reales. Editados en minutos. Publicados al instante.</h2>
   <div class="lc-showcase-scatter">
     <div class="lc-showcase-item reveal-section">
       <div class="lc-showcase-badge">WBC 2026</div>
@@ -1042,47 +1097,47 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 
 <!-- ===== CÓMO FUNCIONA ===== -->
 <section class="lc-section reveal-section" id="como-funciona">
-  <div class="lc-section-label reveal-section">El proceso</div>
-  <h2 class="reveal-section">De momento a viral en minutos. No en días.</h2>
+  <div class="lc-section-label reveal-section" data-es="El proceso" data-en="The process">El proceso</div>
+  <h2 class="reveal-section" data-es="De momento a viral en minutos. No en d&#237;as." data-en="From moment to viral in minutes. Not days.">De momento a viral en minutos. No en días.</h2>
   <div class="step-cards">
 
     <div class="step-card reveal-section">
       <div class="step-number">01</div>
       <div class="step-content">
-        <h3>Pre-producción estratégica</h3>
-        <p>Antes del evento hablamos contigo para saber qué quieres lograr, qué momentos importan y dónde va a vivir el contenido. Definimos un plan de contenido con formatos, plataformas y el tono de tu marca bien claro.</p>
+        <h3 data-es="Pre-producci&#243;n estrat&#233;gica" data-en="Strategic pre-production">Pre-producción estratégica</h3>
+        <p data-es="Antes del evento hablamos contigo para saber qu&#233; quieres lograr, qu&#233; momentos importan y d&#243;nde va a vivir el contenido. Definimos un plan de contenido con formatos, plataformas y el tono de tu marca bien claro." data-en="Before the event we talk with you to understand what you want to achieve, which moments matter and where the content will live. We define a content plan with formats, platforms and your brand's tone crystal clear.">Antes del evento hablamos contigo para saber qué quieres lograr, qué momentos importan y dónde va a vivir el contenido. Definimos un plan de contenido con formatos, plataformas y el tono de tu marca bien claro.</p>
       </div>
     </div>
 
     <div class="step-card reveal-section">
       <div class="step-number">02</div>
       <div class="step-content">
-        <h3>Captura multi-ángulo en vivo</h3>
-        <p>Nuestro equipo llega con cámaras profesionales, audio dedicado y operadores entrenados para capturar los momentos que importan. No grabamos todo. Grabamos lo que va a funcionar.</p>
+        <h3 data-es="Captura multi-&#225;ngulo en vivo" data-en="Multi-angle live capture">Captura multi-ángulo en vivo</h3>
+        <p data-es="Nuestro equipo llega con c&#225;maras profesionales, audio dedicado y operadores entrenados para capturar los momentos que importan. No grabamos todo. Grabamos lo que va a funcionar." data-en="Our team arrives with professional cameras, dedicated audio and trained operators to capture the moments that matter. We don't record everything. We record what's going to work.">Nuestro equipo llega con cámaras profesionales, audio dedicado y operadores entrenados para capturar los momentos que importan. No grabamos todo. Grabamos lo que va a funcionar.</p>
       </div>
     </div>
 
     <div class="step-card reveal-section">
       <div class="step-number">03</div>
       <div class="step-content">
-        <h3>Edición en tiempo real</h3>
-        <p>Un editor en sitio recibe el material en vivo y empieza a cortar clips mientras el evento sigue. Textos, transiciones, música, color. Todo listo para publicar en minutos, no en días.</p>
+        <h3 data-es="Edici&#243;n en tiempo real" data-en="Real-time editing">Edición en tiempo real</h3>
+        <p data-es="Un editor en sitio recibe el material en vivo y empieza a cortar clips mientras el evento sigue. Textos, transiciones, m&#250;sica, color. Todo listo para publicar en minutos, no en d&#237;as." data-en="An on-site editor receives live footage and starts cutting clips while the event continues. Text, transitions, music, color. Everything ready to publish in minutes, not days.">Un editor en sitio recibe el material en vivo y empieza a cortar clips mientras el evento sigue. Textos, transiciones, música, color. Todo listo para publicar en minutos, no en días.</p>
       </div>
     </div>
 
     <div class="step-card reveal-section">
       <div class="step-number">04</div>
       <div class="step-content">
-        <h3>Publicación inmediata</h3>
-        <p>Los clips salen directo a las plataformas de tu marca mientras la audiencia todavía está en el evento. Stories, Reels, TikToks, posts. Todo optimizado para cada formato nativo.</p>
+        <h3 data-es="Publicaci&#243;n inmediata" data-en="Immediate publishing">Publicación inmediata</h3>
+        <p data-es="Los clips salen directo a las plataformas de tu marca mientras la audiencia todav&#237;a est&#225; en el evento. Stories, Reels, TikToks, posts. Todo optimizado para cada formato nativo." data-en="Clips go straight to your brand's platforms while the audience is still at the event. Stories, Reels, TikToks, posts. Everything optimized for each native format.">Los clips salen directo a las plataformas de tu marca mientras la audiencia todavía está en el evento. Stories, Reels, TikToks, posts. Todo optimizado para cada formato nativo.</p>
       </div>
     </div>
 
     <div class="step-card reveal-section">
       <div class="step-number">05</div>
       <div class="step-content">
-        <h3>Post-evento y banco de contenido</h3>
-        <p>Después del evento entregamos un paquete completo: recap editado, clips individuales, fotos procesadas y un banco de contenido listo para reutilizar en campañas futuras.</p>
+        <h3 data-es="Post-evento y banco de contenido" data-en="Post-event and content bank">Post-evento y banco de contenido</h3>
+        <p data-es="Despu&#233;s del evento entregamos un paquete completo: recap editado, clips individuales, fotos procesadas y un banco de contenido listo para reutilizar en campa&#241;as futuras." data-en="After the event we deliver a complete package: edited recap, individual clips, processed photos and a content bank ready to reuse in future campaigns.">Después del evento entregamos un paquete completo: recap editado, clips individuales, fotos procesadas y un banco de contenido listo para reutilizar en campañas futuras.</p>
       </div>
     </div>
 
@@ -1092,33 +1147,33 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 
 <!-- ===== PARA QUIÉN ES ===== -->
 <section class="lc-section reveal-section" id="para-quien">
-  <div class="lc-section-label reveal-section">Casos de uso</div>
-  <h2 class="reveal-section">Si tu evento tiene audiencia, necesita Live Content.</h2>
+  <div class="lc-section-label reveal-section" data-es="Casos de uso" data-en="Use cases">Casos de uso</div>
+  <h2 class="reveal-section" data-es="Si tu evento tiene audiencia, necesita Live Content." data-en="If your event has an audience, it needs Live Content.">Si tu evento tiene audiencia, necesita Live Content.</h2>
   <div class="case-cards">
 
     <div class="case-card reveal-section">
-      <h3>Deportes</h3>
-      <p>Ligas, torneos, carreras, peleas. Los momentos deportivos tienen una ventana de viralidad de minutos. Si el highlight no sale antes de que el fanático salga del lugar, perdiste la oportunidad. Producimos clips de jugadas, reacciones y ambiente mientras el juego sigue.</p>
+      <h3 data-es="Deportes" data-en="Sports">Deportes</h3>
+      <p data-es="Ligas, torneos, carreras, peleas. Los momentos deportivos tienen una ventana de viralidad de minutos. Si el highlight no sale antes de que el fan&#225;tico salga del lugar, perdiste la oportunidad. Producimos clips de jugadas, reacciones y ambiente mientras el juego sigue." data-en="Leagues, tournaments, races, fights. Sports moments have a virality window of minutes. If the highlight doesn't go out before the fan leaves the venue, you lost the opportunity. We produce clips of plays, reactions and atmosphere while the game continues.">Ligas, torneos, carreras, peleas. Los momentos deportivos tienen una ventana de viralidad de minutos. Si el highlight no sale antes de que el fanático salga del lugar, perdiste la oportunidad. Producimos clips de jugadas, reacciones y ambiente mientras el juego sigue.</p>
     </div>
 
     <div class="case-card reveal-section">
-      <h3>Música y Conciertos</h3>
-      <p>El público ya está grabando con su celular. Tu marca debería estar publicando contenido profesional al mismo tiempo. Capturamos performances, tomas del público, detrás de cámaras y momentos espontáneos que definen la experiencia del show.</p>
+      <h3 data-es="M&#250;sica y Conciertos" data-en="Music &amp; Concerts">Música y Conciertos</h3>
+      <p data-es="El p&#250;blico ya est&#225; grabando con su celular. Tu marca deber&#237;a estar publicando contenido profesional al mismo tiempo. Capturamos performances, tomas del p&#250;blico, detr&#225;s de c&#225;maras y momentos espont&#225;neos que definen la experiencia del show." data-en="The audience is already recording with their phones. Your brand should be publishing professional content at the same time. We capture performances, crowd shots, behind-the-scenes and spontaneous moments that define the show experience.">El público ya está grabando con su celular. Tu marca debería estar publicando contenido profesional al mismo tiempo. Capturamos performances, tomas del público, detrás de cámaras y momentos espontáneos que definen la experiencia del show.</p>
     </div>
 
     <div class="case-card reveal-section">
-      <h3>Corporativos y Conferencias</h3>
-      <p>Keynotes, paneles, networking. El contenido de conferencias tiene alcance más allá de los asistentes. Producimos clips de audio, citas visuales y resúmenes cortos para que siga rodando en LinkedIn, X y donde haga falta.</p>
+      <h3 data-es="Corporativos y Conferencias" data-en="Corporate &amp; Conferences">Corporativos y Conferencias</h3>
+      <p data-es="Keynotes, paneles, networking. El contenido de conferencias tiene alcance m&#225;s all&#225; de los asistentes. Producimos clips de audio, citas visuales y res&#250;menes cortos para que siga rodando en LinkedIn, X y donde haga falta." data-en="Keynotes, panels, networking. Conference content reaches beyond attendees. We produce audio clips, visual quotes and short summaries to keep rolling on LinkedIn, X and wherever needed.">Keynotes, paneles, networking. El contenido de conferencias tiene alcance más allá de los asistentes. Producimos clips de audio, citas visuales y resúmenes cortos para que siga rodando en LinkedIn, X y donde haga falta.</p>
     </div>
 
     <div class="case-card reveal-section">
-      <h3>Eventos Municipales y Comunitarios</h3>
-      <p>Fiestas patronales, ferias, actividades culturales. Estos eventos mueven comunidades enteras. Documentamos la energía en tiempo real para que el municipio, los auspiciadores y el público amplifiquen el momento mientras está pasando.</p>
+      <h3 data-es="Eventos Municipales y Comunitarios" data-en="Municipal &amp; Community Events">Eventos Municipales y Comunitarios</h3>
+      <p data-es="Fiestas patronales, ferias, actividades culturales. Estos eventos mueven comunidades enteras. Documentamos la energ&#237;a en tiempo real para que el municipio, los auspiciadores y el p&#250;blico amplifiquen el momento mientras est&#225; pasando." data-en="Patron saint festivals, fairs, cultural events. These events move entire communities. We document the energy in real time so the municipality, sponsors and the public amplify the moment while it's happening.">Fiestas patronales, ferias, actividades culturales. Estos eventos mueven comunidades enteras. Documentamos la energía en tiempo real para que el municipio, los auspiciadores y el público amplifiquen el momento mientras está pasando.</p>
     </div>
 
     <div class="case-card reveal-section">
-      <h3>Activaciones de Marca</h3>
-      <p>Pop-ups, lanzamientos, experiencias. Si tu marca invirtió en crear un momento, ese momento necesita alcance digital inmediato. Producimos contenido que hace que tu activación llegue a miles más allá de los que estaban ahí.</p>
+      <h3 data-es="Activaciones de Marca" data-en="Brand Activations">Activaciones de Marca</h3>
+      <p data-es="Pop-ups, lanzamientos, experiencias. Si tu marca invirti&#243; en crear un momento, ese momento necesita alcance digital inmediato. Producimos contenido que hace que tu activaci&#243;n llegue a miles m&#225;s all&#225; de los que estaban ah&#237;." data-en="Pop-ups, launches, experiences. If your brand invested in creating a moment, that moment needs immediate digital reach. We produce content that makes your activation reach thousands beyond those who were there.">Pop-ups, lanzamientos, experiencias. Si tu marca invirtió en crear un momento, ese momento necesita alcance digital inmediato. Producimos contenido que hace que tu activación llegue a miles más allá de los que estaban ahí.</p>
     </div>
 
   </div>
@@ -1128,18 +1183,18 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 <!-- ===== EL DATO ===== -->
 <section class="dato-section reveal-section" id="el-dato">
   <div class="dato-number"><span class="plus">+</span><span id="datoCount">0</span></div>
-  <div class="dato-label">Esto no es teoría</div>
-  <p class="dato-body">Vistas combinadas en video producidas por +MasCreativa en 2025. Contenido que la gente eligió ver, compartir y comentar. No alcance pagado. Alcance ganado.</p>
+  <div class="dato-label" data-es="Esto no es teor&#237;a" data-en="This is not theory">Esto no es teoría</div>
+  <p class="dato-body" data-es="Vistas combinadas en video producidas por +MasCreativa en 2025. Contenido que la gente eligi&#243; ver, compartir y comentar. No alcance pagado. Alcance ganado." data-en="Combined video views produced by +MasCreativa in 2025. Content people chose to watch, share and comment on. Not paid reach. Earned reach.">Vistas combinadas en video producidas por +MasCreativa en 2025. Contenido que la gente eligió ver, compartir y comentar. No alcance pagado. Alcance ganado.</p>
 </section>
 
 
 <!-- ===== QUÉ INCLUYE ===== -->
 <section class="lc-section reveal-section" id="que-incluye">
-  <div class="lc-section-label">El paquete</div>
-  <h2>Todo lo que necesitas. Nada que no.</h2>
+  <div class="lc-section-label" data-es="El paquete" data-en="The package">El paquete</div>
+  <h2 data-es="Todo lo que necesitas. Nada que no." data-en="Everything you need. Nothing you don't.">Todo lo que necesitas. Nada que no.</h2>
   <div class="includes-grid">
     <div class="includes-col">
-      <h3>Incluido</h3>
+      <h3 data-es="Incluido" data-en="Included">Incluido</h3>
       <ul class="includes-list">
         <li>Pre-producción y plan de contenido</li>
         <li>Equipo de captura en sitio (cámara + audio)</li>
@@ -1152,7 +1207,7 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
       </ul>
     </div>
     <div class="includes-col">
-      <h3>Opcional / Extras</h3>
+      <h3 data-es="Opcional / Extras" data-en="Optional / Extras">Opcional / Extras</h3>
       <ul class="includes-list">
         <li>Drone aéreo para tomas cinematográficas</li>
         <li>Segundo editor para mayor volumen</li>
@@ -1168,7 +1223,7 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 <!-- ===== POR QUÉ NOSOTROS ===== -->
 <section class="lc-section reveal-section" id="por-que-nosotros">
   <div class="lc-section-label">La diferencia +MasCreativa</div>
-  <h2>Cualquiera puede grabar. Nosotros creamos.</h2>
+  <h2 data-es="Cualquiera puede grabar. Nosotros creamos." data-en="Anyone can record. We create.">Cualquiera puede grabar. Nosotros creamos.</h2>
   <p>La diferencia entre un videógrafo con cámara y un equipo de Live Content es la misma que entre tomar una foto y hacer una campaña. No estamos ahí para documentar. Estamos ahí para producir contenido con dirección creativa, estrategia de distribución y calidad de producción profesional.</p>
   <p>Nuestro equipo ha producido contenido para marcas como Rimas Publishing, Fundación Good Bunny, New York Mets y decenas de eventos en Puerto Rico. Sabemos lo que funciona en redes porque lo hacemos todos los días, no porque leímos un artículo sobre tendencias.</p>
   <p>Cuando trabajas con +MasCreativa, no estás contratando un videógrafo. Te llevas un equipo que conoce tu marca, sabe lo que pega en redes y lo ejecuta mientras el evento está pasando.</p>
@@ -1177,7 +1232,7 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 
 <!-- ===== FAQ ===== -->
 <section class="lc-section reveal-section" id="faq">
-  <div class="lc-section-label reveal-section">Preguntas frecuentes</div>
+  <div class="lc-section-label reveal-section" data-es="Preguntas frecuentes" data-en="Frequently asked questions">Preguntas frecuentes</div>
   <div class="faq-list">
 
     <div class="faq-item reveal-section">
@@ -1256,11 +1311,11 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 
 <!-- ===== CTA FINAL ===== -->
 <section class="cta-final reveal-section">
-  <h2>Tu próximo evento merece más que un recap.</h2>
-  <p class="cta-subtitle">Merece contenido que la gente vea, comparta y recuerde.</p>
-  <a class="cta-mega-btn" href="contacto.html">Hablemos de tu evento</a>
-  <a class="cta-phone" href="tel:+17876441276">Llámanos 787-644-1276</a>
-  <p class="cta-small">Respondemos en menos de 24 horas. Si tu evento es pronto, escríbenos directo por <a href="https://wa.me/17876441276" target="_blank" rel="noopener" style="color:var(--blue-strong);text-decoration:underline;">WhatsApp</a>.</p>
+  <h2 data-es="Tu pr&#243;ximo evento merece m&#225;s que un recap." data-en="Your next event deserves more than a recap.">Tu próximo evento merece más que un recap.</h2>
+  <p class="cta-subtitle" data-es="Merece contenido que la gente vea, comparta y recuerde." data-en="It deserves content people watch, share and remember.">Merece contenido que la gente vea, comparta y recuerde.</p>
+  <a class="cta-mega-btn" href="contacto.html" data-es="Hablemos de tu evento" data-en="Let's talk about your event">Hablemos de tu evento</a>
+  <a class="cta-phone" href="tel:+17876441276" data-es="Ll&#225;manos 787-644-1276" data-en="Call us 787-644-1276">Llámanos 787-644-1276</a>
+  <p class="cta-small" data-es-inner="Respondemos en menos de 24 horas. Si tu evento es pronto, escr&#237;benos directo por <a href='https://wa.me/17876441276' target='_blank' rel='noopener' style='color:var(--blue-strong);text-decoration:underline;'>WhatsApp</a>." data-en-inner="We respond within 24 hours. If your event is coming up soon, reach out directly via <a href='https://wa.me/17876441276' target='_blank' rel='noopener' style='color:var(--blue-strong);text-decoration:underline;'>WhatsApp</a>.">Respondemos en menos de 24 horas. Si tu evento es pronto, escríbenos directo por <a href="https://wa.me/17876441276" target="_blank" rel="noopener" style="color:var(--blue-strong);text-decoration:underline;">WhatsApp</a>.</p>
 </section>
 
 
@@ -1268,9 +1323,9 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 <footer class="site-footer" id="siteFooter">
   <div class="footer-inner">
     <div>
-      <div class="footer-brandline">+MasCreativa Publicidad. Creatividad que no pide permiso.</div>
+      <div class="footer-brandline" data-es="+MasCreativa Publicidad. Creatividad que no pide permiso." data-en="+MasCreativa Publicidad. Creativity that asks no permission.">+MasCreativa Publicidad. Creatividad que no pide permiso.</div>
       <div class="footer-contact"><a href="tel:+17876441276">787-644-1276</a> · <a href="mailto:info@mascreativapublicidad.com">info@mascreativapublicidad.com</a></div>
-      <div class="footer-meta">San Juan, Puerto Rico / 2026 / <a href="terms.html">Términos</a> / <a href="privacy.html">Privacidad</a></div>
+      <div class="footer-meta" data-es-inner="San Juan, Puerto Rico / 2026 / <a href='terms.html'>T&#233;rminos</a> / <a href='privacy.html'>Privacidad</a>" data-en-inner="San Juan, Puerto Rico / 2026 / <a href='terms.html'>Terms</a> / <a href='privacy.html'>Privacy</a>">San Juan, Puerto Rico / 2026 / <a href="terms.html">Términos</a> / <a href="privacy.html">Privacidad</a></div>
     </div>
     <div class="footer-socials">
       <a href="https://instagram.com/mas_creativa_pr" target="_blank" rel="noopener">Instagram</a>
@@ -1430,6 +1485,48 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
       }
     });
   });
+})();
+
+// ===== LANGUAGE TOGGLE =====
+(function(){
+  var lang = 'es';
+  try { var stored = localStorage.getItem('mcp-lang'); if (stored === 'en') lang = 'en'; } catch(e){}
+
+  var langBtn = document.getElementById('langToggle');
+  var langBtnMobile = document.getElementById('langToggleMobile');
+
+  function applyLang(newLang) {
+    lang = newLang;
+    document.body.setAttribute('data-lang', lang);
+    try { localStorage.setItem('mcp-lang', lang); } catch(e){}
+
+    var label = lang === 'es' ? 'EN' : 'ES';
+    if (langBtn) langBtn.textContent = label;
+    if (langBtnMobile) langBtnMobile.textContent = label;
+
+    document.querySelectorAll('[data-es][data-en]').forEach(function(el) {
+      if (el.hasAttribute('data-' + lang + '-inner')) return;
+      el.textContent = el.getAttribute('data-' + lang);
+    });
+    document.querySelectorAll('[data-es-inner][data-en-inner]').forEach(function(el) {
+      el.innerHTML = el.getAttribute('data-' + lang + '-inner');
+    });
+
+    var descEs = 'Producción de contenido en vivo para eventos, deportes y marcas en Puerto Rico.';
+    var descEn = 'Live content production for events, sports and brands in Puerto Rico.';
+    var desc = lang === 'es' ? descEs : descEn;
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', desc);
+    var ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', desc);
+    var twDesc = document.querySelector('meta[name="twitter:description"]');
+    if (twDesc) twDesc.setAttribute('content', desc);
+  }
+
+  function toggleLang() { applyLang(lang === 'es' ? 'en' : 'es'); }
+  if (langBtn) langBtn.addEventListener('click', toggleLang);
+  if (langBtnMobile) langBtnMobile.addEventListener('click', toggleLang);
+  applyLang(lang);
 })();
 </script>
 </body>

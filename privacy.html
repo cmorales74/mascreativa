@@ -217,6 +217,37 @@ body {
     color: var(--muted);
 }
 
+/* ===== LANGUAGE TOGGLE ===== */
+.lang-toggle-wrap {
+    position: fixed; right: 20px; top: 64px; z-index: 200;
+}
+.lang-toggle-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--muted);
+    background: var(--glass-bg);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: color 0.3s, border-color 0.3s, background 0.3s;
+    user-select: none; -webkit-user-select: none;
+}
+.lang-toggle-btn:hover {
+    color: var(--blue-strong);
+    border-color: var(--blue-strong);
+    background: var(--glass-bg);
+}
+.mobile-overlay .lang-toggle-btn {
+    font-size: 14px;
+    padding: 10px 24px;
+    margin-top: 8px;
+}
+@media (max-width: 640px) {
+    .lang-toggle-wrap { right: 12px; top: 56px; }
+}
+
 /* ===== THEME SWITCH ===== */
 .theme-switch-wrap { position: fixed; right: 20px; top: 20px; z-index: 200; }
 .theme-switch {
@@ -461,7 +492,7 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
 </head>
-<body data-theme="light">
+<body data-theme="light" data-lang="es">
 
 <!-- Logo -->
 <div style="text-align:center;padding:24px 0 0;">
@@ -493,75 +524,81 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
   </label>
 </div>
 
+<!-- Language Toggle -->
+<div class="lang-toggle-wrap">
+  <button class="lang-toggle-btn" id="langToggleBtn" aria-label="Switch language">EN</button>
+</div>
+
 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú">
   <span></span><span></span><span></span>
 </button>
 <div class="mobile-overlay" id="mobileOverlay">
-  <a href="index.html">Inicio</a>
-  <a href="services.html">Servicios</a>
-  <a href="portfolio.html">Portafolio</a>
-  <a href="about.html">Nosotros</a>
+  <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
+  <a href="services.html" data-es="Servicios" data-en="Services">Servicios</a>
+  <a href="portfolio.html" data-es="Portafolio" data-en="Portfolio">Portafolio</a>
+  <a href="about.html" data-es="Nosotros" data-en="About">Nosotros</a>
   <a href="live-content.html">Live Content</a>
-  <a href="contacto.html">Contacto</a>
+  <a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a>
+  <button class="lang-toggle-btn" id="langToggleMobile" aria-label="Switch language">EN</button>
   <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true">
 </div>
 
 <div class="page-header reveal-section">
-    <h1 class="page-title">Política de Privacidad</h1>
+    <h1 class="page-title" data-es="Política de Privacidad" data-en="Privacy Policy">Política de Privacidad</h1>
     <p class="page-subtitle">Legal</p>
 </div>
 
 <div class="content-wrapper reveal-section">
   <div class="content-card">
-    <h2 class="content-heading">Política de Privacidad de +MasCreativa Publicidad</h2>
-    <div class="content-updated">Última actualización: marzo 2026</div>
+    <h2 class="content-heading" data-es="Política de Privacidad de +MasCreativa Publicidad" data-en="Privacy Policy of +MasCreativa Publicidad">Política de Privacidad de +MasCreativa Publicidad</h2>
+    <div class="content-updated" data-es="Última actualización: marzo 2026" data-en="Last updated: March 2026">Última actualización: marzo 2026</div>
     <div class="content-divider"></div>
 
-    <h3 class="section-number">1. Información que Recopilamos</h3>
-    <p class="section-text">Cuando utilizas nuestro formulario de contacto, recopilamos la siguiente información:</p>
+    <h3 class="section-number" data-es="1. Información que Recopilamos" data-en="1. Information We Collect">1. Información que Recopilamos</h3>
+    <p class="section-text" data-es="Cuando utilizas nuestro formulario de contacto, recopilamos la siguiente información:" data-en="When you use our contact form, we collect the following information:">Cuando utilizas nuestro formulario de contacto, recopilamos la siguiente información:</p>
     <ul class="section-list">
-      <li>Nombre</li>
-      <li>Correo electrónico</li>
-      <li>Teléfono (opcional)</li>
-      <li>Mensaje</li>
+      <li data-es="Nombre" data-en="Name">Nombre</li>
+      <li data-es="Correo electrónico" data-en="Email address">Correo electrónico</li>
+      <li data-es="Teléfono (opcional)" data-en="Phone (optional)">Teléfono (opcional)</li>
+      <li data-es="Mensaje" data-en="Message">Mensaje</li>
     </ul>
-    <p class="section-text">Esta información se recopila únicamente cuando tú decides enviarla voluntariamente.</p>
+    <p class="section-text" data-es="Esta información se recopila únicamente cuando tú decides enviarla voluntariamente." data-en="This information is collected only when you choose to submit it voluntarily.">Esta información se recopila únicamente cuando tú decides enviarla voluntariamente.</p>
 
-    <h3 class="section-number">2. Uso de la Información</h3>
-    <p class="section-text">Utilizamos la información proporcionada exclusivamente para:</p>
+    <h3 class="section-number" data-es="2. Uso de la Información" data-en="2. Use of Information">2. Uso de la Información</h3>
+    <p class="section-text" data-es="Utilizamos la información proporcionada exclusivamente para:" data-en="We use the information provided exclusively to:">Utilizamos la información proporcionada exclusivamente para:</p>
     <ul class="section-list">
-      <li>Responder a tu consulta o solicitud</li>
-      <li>Comunicarnos contigo sobre servicios solicitados</li>
-      <li>Mejorar nuestra atención al cliente</li>
+      <li data-es="Responder a tu consulta o solicitud" data-en="Respond to your inquiry or request">Responder a tu consulta o solicitud</li>
+      <li data-es="Comunicarnos contigo sobre servicios solicitados" data-en="Communicate with you about requested services">Comunicarnos contigo sobre servicios solicitados</li>
+      <li data-es="Mejorar nuestra atención al cliente" data-en="Improve our customer service">Mejorar nuestra atención al cliente</li>
     </ul>
-    <p class="section-text">No utilizamos tu información para enviar correos no solicitados ni para fines de marketing sin tu consentimiento.</p>
+    <p class="section-text" data-es="No utilizamos tu información para enviar correos no solicitados ni para fines de marketing sin tu consentimiento." data-en="We do not use your information to send unsolicited emails or for marketing purposes without your consent.">No utilizamos tu información para enviar correos no solicitados ni para fines de marketing sin tu consentimiento.</p>
 
-    <h3 class="section-number">3. Compartir Información</h3>
-    <p class="section-text">No vendemos, intercambiamos ni transferimos tu información personal a terceros. Tu información se mantiene confidencial dentro de +MasCreativa Publicidad.</p>
+    <h3 class="section-number" data-es="3. Compartir Información" data-en="3. Sharing Information">3. Compartir Información</h3>
+    <p class="section-text" data-es="No vendemos, intercambiamos ni transferimos tu información personal a terceros. Tu información se mantiene confidencial dentro de +MasCreativa Publicidad." data-en="We do not sell, trade, or transfer your personal information to third parties. Your information remains confidential within +MasCreativa Publicidad.">No vendemos, intercambiamos ni transferimos tu información personal a terceros. Tu información se mantiene confidencial dentro de +MasCreativa Publicidad.</p>
 
-    <h3 class="section-number">4. Cookies y Tecnologías de Rastreo</h3>
-    <p class="section-text">Actualmente, este sitio no utiliza cookies de rastreo ni herramientas de analítica. Si en el futuro implementamos alguna tecnología de seguimiento, actualizaremos esta política.</p>
+    <h3 class="section-number" data-es="4. Cookies y Tecnologías de Rastreo" data-en="4. Cookies and Tracking Technologies">4. Cookies y Tecnologías de Rastreo</h3>
+    <p class="section-text" data-es="Actualmente, este sitio no utiliza cookies de rastreo ni herramientas de analítica. Si en el futuro implementamos alguna tecnología de seguimiento, actualizaremos esta política." data-en="Currently, this site does not use tracking cookies or analytics tools. If we implement any tracking technology in the future, we will update this policy.">Actualmente, este sitio no utiliza cookies de rastreo ni herramientas de analítica. Si en el futuro implementamos alguna tecnología de seguimiento, actualizaremos esta política.</p>
 
-    <h3 class="section-number">5. Seguridad</h3>
-    <p class="section-text">Tomamos medidas razonables para proteger la información que nos proporcionas. Sin embargo, ninguna transmisión de datos por internet es 100% segura, por lo que no podemos garantizar la seguridad absoluta de la información transmitida.</p>
+    <h3 class="section-number" data-es="5. Seguridad" data-en="5. Security">5. Seguridad</h3>
+    <p class="section-text" data-es="Tomamos medidas razonables para proteger la información que nos proporcionas. Sin embargo, ninguna transmisión de datos por internet es 100% segura, por lo que no podemos garantizar la seguridad absoluta de la información transmitida." data-en="We take reasonable measures to protect the information you provide. However, no data transmission over the internet is 100% secure, so we cannot guarantee the absolute security of transmitted information.">Tomamos medidas razonables para proteger la información que nos proporcionas. Sin embargo, ninguna transmisión de datos por internet es 100% segura, por lo que no podemos garantizar la seguridad absoluta de la información transmitida.</p>
 
-    <h3 class="section-number">6. Enlaces a Terceros</h3>
-    <p class="section-text">Nuestro sitio contiene enlaces a plataformas externas como Instagram y WhatsApp. Estas plataformas tienen sus propias políticas de privacidad que te recomendamos revisar.</p>
+    <h3 class="section-number" data-es="6. Enlaces a Terceros" data-en="6. Third-Party Links">6. Enlaces a Terceros</h3>
+    <p class="section-text" data-es="Nuestro sitio contiene enlaces a plataformas externas como Instagram y WhatsApp. Estas plataformas tienen sus propias políticas de privacidad que te recomendamos revisar." data-en="Our site contains links to external platforms such as Instagram and WhatsApp. These platforms have their own privacy policies that we recommend you review.">Nuestro sitio contiene enlaces a plataformas externas como Instagram y WhatsApp. Estas plataformas tienen sus propias políticas de privacidad que te recomendamos revisar.</p>
 
-    <h3 class="section-number">7. Derechos del Usuario</h3>
-    <p class="section-text">Tienes derecho a:</p>
+    <h3 class="section-number" data-es="7. Derechos del Usuario" data-en="7. User Rights">7. Derechos del Usuario</h3>
+    <p class="section-text" data-es="Tienes derecho a:" data-en="You have the right to:">Tienes derecho a:</p>
     <ul class="section-list">
-      <li>Solicitar acceso a la información que tenemos sobre ti</li>
-      <li>Solicitar la eliminación de tu información</li>
-      <li>Retirar tu consentimiento en cualquier momento</li>
+      <li data-es="Solicitar acceso a la información que tenemos sobre ti" data-en="Request access to the information we have about you">Solicitar acceso a la información que tenemos sobre ti</li>
+      <li data-es="Solicitar la eliminación de tu información" data-en="Request the deletion of your information">Solicitar la eliminación de tu información</li>
+      <li data-es="Retirar tu consentimiento en cualquier momento" data-en="Withdraw your consent at any time">Retirar tu consentimiento en cualquier momento</li>
     </ul>
-    <p class="section-text">Para ejercer estos derechos, contáctanos por WhatsApp al 787-644-1276 o a través del formulario de contacto.</p>
+    <p class="section-text" data-es="Para ejercer estos derechos, contáctanos por WhatsApp al 787-644-1276 o a través del formulario de contacto." data-en="To exercise these rights, contact us via WhatsApp at 787-644-1276 or through our contact form.">Para ejercer estos derechos, contáctanos por WhatsApp al 787-644-1276 o a través del formulario de contacto.</p>
 
-    <h3 class="section-number">8. Cambios a esta Política</h3>
-    <p class="section-text">Nos reservamos el derecho de actualizar esta política de privacidad. Cualquier cambio será publicado en esta página con la fecha de última revisión.</p>
+    <h3 class="section-number" data-es="8. Cambios a esta Política" data-en="8. Changes to this Policy">8. Cambios a esta Política</h3>
+    <p class="section-text" data-es="Nos reservamos el derecho de actualizar esta política de privacidad. Cualquier cambio será publicado en esta página con la fecha de última revisión." data-en="We reserve the right to update this privacy policy. Any changes will be posted on this page with the date of the last revision.">Nos reservamos el derecho de actualizar esta política de privacidad. Cualquier cambio será publicado en esta página con la fecha de última revisión.</p>
 
-    <h3 class="section-number">9. Contacto</h3>
-    <p class="section-text">Si tienes preguntas sobre esta política de privacidad, puedes contactarnos a través de nuestro formulario de contacto o por WhatsApp al 787-644-1276.</p>
+    <h3 class="section-number" data-es="9. Contacto" data-en="9. Contact">9. Contacto</h3>
+    <p class="section-text" data-es="Si tienes preguntas sobre esta política de privacidad, puedes contactarnos a través de nuestro formulario de contacto o por WhatsApp al 787-644-1276." data-en="If you have questions about this privacy policy, you can contact us through our contact form or via WhatsApp at 787-644-1276.">Si tienes preguntas sobre esta política de privacidad, puedes contactarnos a través de nuestro formulario de contacto o por WhatsApp al 787-644-1276.</p>
   </div>
 </div>
 
@@ -569,9 +606,9 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 <footer class="site-footer" id="siteFooter">
   <div class="footer-inner">
     <div>
-      <div class="footer-brandline">+MasCreativa Publicidad. Creatividad que no pide permiso.</div>
+      <div class="footer-brandline" data-es="+MasCreativa Publicidad. Creatividad que no pide permiso." data-en="+MasCreativa Publicidad. Creativity that does not ask for permission.">+MasCreativa Publicidad. Creatividad que no pide permiso.</div>
       <div class="footer-contact"><a href="tel:+17876441276">787-644-1276</a> · <a href="mailto:info@mascreativapublicidad.com">info@mascreativapublicidad.com</a></div>
-      <div class="footer-meta">San Juan, Puerto Rico / 2026 / <a href="terms.html">Términos</a> / <a href="privacy.html">Privacidad</a></div>
+      <div class="footer-meta" data-es="San Juan, Puerto Rico / 2026 / <a href='terms.html'>Términos</a> / <a href='privacy.html'>Privacidad</a>" data-en="San Juan, Puerto Rico / 2026 / <a href='terms.html'>Terms</a> / <a href='privacy.html'>Privacy</a>">San Juan, Puerto Rico / 2026 / <a href="terms.html">Términos</a> / <a href="privacy.html">Privacidad</a></div>
     </div>
     <div class="footer-socials">
       <a href="https://instagram.com/mas_creativa_pr" target="_blank" rel="noopener">Instagram</a>
@@ -617,6 +654,41 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
   });
 
   applyMode();
+})();
+
+// ===== LANGUAGE TOGGLE =====
+(function(){
+  var lang = 'es';
+  var titles = { es: 'Política de Privacidad | MasCreativa Publicidad', en: 'Privacy Policy | MasCreativa Publicidad' };
+  try { var sv = localStorage.getItem('mcp-lang'); if (sv === 'en') lang = 'en'; } catch(e) {}
+
+  function applyLang(l) {
+    lang = l;
+    document.body.setAttribute('data-lang', lang);
+    document.title = titles[lang];
+    document.querySelectorAll('[data-es][data-en]').forEach(function(el) {
+      var val = el.getAttribute('data-' + lang);
+      if (val !== null) {
+        if (el.querySelector('a') || val.indexOf('<a ') !== -1) {
+          el.innerHTML = val;
+        } else {
+          el.textContent = val;
+        }
+      }
+    });
+    var label = lang === 'es' ? 'EN' : 'ES';
+    var btns = document.querySelectorAll('.lang-toggle-btn');
+    btns.forEach(function(b) { b.textContent = label; });
+    try { localStorage.setItem('mcp-lang', lang); } catch(e) {}
+  }
+
+  document.querySelectorAll('.lang-toggle-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      applyLang(lang === 'es' ? 'en' : 'es');
+    });
+  });
+
+  applyLang(lang);
 })();
 
   // Mobile hamburger menu

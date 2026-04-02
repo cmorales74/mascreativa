@@ -193,6 +193,37 @@ body {
     margin-bottom: 28px;
 }
 
+/* ===== LANGUAGE TOGGLE ===== */
+.lang-toggle-wrap {
+    position: fixed; right: 20px; top: 64px; z-index: 200;
+}
+.lang-toggle-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--muted);
+    background: var(--glass-bg);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: color 0.3s, border-color 0.3s, background 0.3s;
+    user-select: none; -webkit-user-select: none;
+}
+.lang-toggle-btn:hover {
+    color: var(--blue-strong);
+    border-color: var(--blue-strong);
+    background: var(--glass-bg);
+}
+.mobile-overlay .lang-toggle-btn {
+    font-size: 14px;
+    padding: 10px 24px;
+    margin-top: 8px;
+}
+@media (max-width: 640px) {
+    .lang-toggle-wrap { right: 12px; top: 56px; }
+}
+
 /* ===== THEME SWITCH ===== */
 .theme-switch-wrap { position: fixed; right: 20px; top: 20px; z-index: 200; }
 .theme-switch {
@@ -437,7 +468,7 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
 </head>
-<body data-theme="light">
+<body data-theme="light" data-lang="es">
 
 <!-- Logo -->
 <div style="text-align:center;padding:24px 0 0;">
@@ -469,56 +500,62 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
   </label>
 </div>
 
+<!-- Language Toggle -->
+<div class="lang-toggle-wrap">
+  <button class="lang-toggle-btn" id="langToggleBtn" aria-label="Switch language">EN</button>
+</div>
+
 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú">
   <span></span><span></span><span></span>
 </button>
 <div class="mobile-overlay" id="mobileOverlay">
-  <a href="index.html">Inicio</a>
-  <a href="services.html">Servicios</a>
-  <a href="portfolio.html">Portafolio</a>
-  <a href="about.html">Nosotros</a>
+  <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
+  <a href="services.html" data-es="Servicios" data-en="Services">Servicios</a>
+  <a href="portfolio.html" data-es="Portafolio" data-en="Portfolio">Portafolio</a>
+  <a href="about.html" data-es="Nosotros" data-en="About">Nosotros</a>
   <a href="live-content.html">Live Content</a>
-  <a href="contacto.html">Contacto</a>
+  <a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a>
+  <button class="lang-toggle-btn" id="langToggleMobile" aria-label="Switch language">EN</button>
   <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true">
 </div>
 
 <div class="page-header reveal-section">
-    <h1 class="page-title">Términos de Uso</h1>
+    <h1 class="page-title" data-es="Términos de Uso" data-en="Terms of Use">Términos de Uso</h1>
     <p class="page-subtitle">Legal</p>
 </div>
 
 <div class="content-wrapper reveal-section">
   <div class="content-card">
-    <h2 class="content-heading">Términos de Uso de +MasCreativa Publicidad</h2>
-    <div class="content-updated">Última actualización: marzo 2026</div>
+    <h2 class="content-heading" data-es="Términos de Uso de +MasCreativa Publicidad" data-en="Terms of Use for +MasCreativa Publicidad">Términos de Uso de +MasCreativa Publicidad</h2>
+    <div class="content-updated" data-es="Última actualización: marzo 2026" data-en="Last updated: March 2026">Última actualización: marzo 2026</div>
     <div class="content-divider"></div>
 
-    <h3 class="section-number">1. Aceptación de Términos</h3>
-    <p class="section-text">Al acceder y utilizar este sitio web (mascreativapublicidad.com), aceptas cumplir con estos términos de uso. Si no estás de acuerdo con alguno de estos términos, te pedimos que no utilices el sitio.</p>
+    <h3 class="section-number" data-es="1. Aceptación de Términos" data-en="1. Acceptance of Terms">1. Aceptación de Términos</h3>
+    <p class="section-text" data-es="Al acceder y utilizar este sitio web (mascreativapublicidad.com), aceptas cumplir con estos términos de uso. Si no estás de acuerdo con alguno de estos términos, te pedimos que no utilices el sitio." data-en="By accessing and using this website (mascreativapublicidad.com), you agree to comply with these terms of use. If you do not agree with any of these terms, we ask that you do not use the site.">Al acceder y utilizar este sitio web (mascreativapublicidad.com), aceptas cumplir con estos términos de uso. Si no estás de acuerdo con alguno de estos términos, te pedimos que no utilices el sitio.</p>
 
-    <h3 class="section-number">2. Uso del Sitio</h3>
-    <p class="section-text">Este sitio web es propiedad de +MasCreativa Publicidad. El contenido publicado, incluidos textos, imágenes, videos, diseños y logotipos, está protegido por derechos de autor y no puede ser reproducido, distribuido o utilizado sin autorización previa por escrito.</p>
+    <h3 class="section-number" data-es="2. Uso del Sitio" data-en="2. Use of the Site">2. Uso del Sitio</h3>
+    <p class="section-text" data-es="Este sitio web es propiedad de +MasCreativa Publicidad. El contenido publicado, incluidos textos, imágenes, videos, diseños y logotipos, está protegido por derechos de autor y no puede ser reproducido, distribuido o utilizado sin autorización previa por escrito." data-en="This website is owned by +MasCreativa Publicidad. All published content, including text, images, videos, designs, and logos, is protected by copyright and may not be reproduced, distributed, or used without prior written authorization.">Este sitio web es propiedad de +MasCreativa Publicidad. El contenido publicado, incluidos textos, imágenes, videos, diseños y logotipos, está protegido por derechos de autor y no puede ser reproducido, distribuido o utilizado sin autorización previa por escrito.</p>
 
-    <h3 class="section-number">3. Propiedad Intelectual</h3>
-    <p class="section-text">Todo el contenido visual, audiovisual y gráfico presentado en este sitio es propiedad de +MasCreativa Publicidad o de sus respectivos clientes, y se muestra con fines de portafolio. Queda prohibida su reproducción total o parcial sin consentimiento.</p>
+    <h3 class="section-number" data-es="3. Propiedad Intelectual" data-en="3. Intellectual Property">3. Propiedad Intelectual</h3>
+    <p class="section-text" data-es="Todo el contenido visual, audiovisual y gráfico presentado en este sitio es propiedad de +MasCreativa Publicidad o de sus respectivos clientes, y se muestra con fines de portafolio. Queda prohibida su reproducción total o parcial sin consentimiento." data-en="All visual, audiovisual, and graphic content presented on this site is the property of +MasCreativa Publicidad or its respective clients and is displayed for portfolio purposes. Reproduction in whole or in part without consent is prohibited.">Todo el contenido visual, audiovisual y gráfico presentado en este sitio es propiedad de +MasCreativa Publicidad o de sus respectivos clientes, y se muestra con fines de portafolio. Queda prohibida su reproducción total o parcial sin consentimiento.</p>
 
-    <h3 class="section-number">4. Servicios</h3>
-    <p class="section-text">Los servicios descritos en este sitio son de carácter informativo. Las cotizaciones, alcances y entregables finales se definen mediante acuerdo directo entre +MasCreativa Publicidad y el cliente.</p>
+    <h3 class="section-number" data-es="4. Servicios" data-en="4. Services">4. Servicios</h3>
+    <p class="section-text" data-es="Los servicios descritos en este sitio son de carácter informativo. Las cotizaciones, alcances y entregables finales se definen mediante acuerdo directo entre +MasCreativa Publicidad y el cliente." data-en="The services described on this site are for informational purposes. Quotes, scope, and final deliverables are defined through direct agreement between +MasCreativa Publicidad and the client.">Los servicios descritos en este sitio son de carácter informativo. Las cotizaciones, alcances y entregables finales se definen mediante acuerdo directo entre +MasCreativa Publicidad y el cliente.</p>
 
-    <h3 class="section-number">5. Formulario de Contacto</h3>
-    <p class="section-text">La información enviada a través del formulario de contacto se utiliza exclusivamente para responder a tu solicitud. No compartimos, vendemos ni distribuimos tus datos a terceros.</p>
+    <h3 class="section-number" data-es="5. Formulario de Contacto" data-en="5. Contact Form">5. Formulario de Contacto</h3>
+    <p class="section-text" data-es="La información enviada a través del formulario de contacto se utiliza exclusivamente para responder a tu solicitud. No compartimos, vendemos ni distribuimos tus datos a terceros." data-en="Information submitted through the contact form is used exclusively to respond to your request. We do not share, sell, or distribute your data to third parties.">La información enviada a través del formulario de contacto se utiliza exclusivamente para responder a tu solicitud. No compartimos, vendemos ni distribuimos tus datos a terceros.</p>
 
-    <h3 class="section-number">6. Enlaces Externos</h3>
-    <p class="section-text">Este sitio puede contener enlaces a plataformas externas (Instagram, WhatsApp, YouTube). +MasCreativa Publicidad no se hace responsable del contenido o las políticas de privacidad de dichos sitios.</p>
+    <h3 class="section-number" data-es="6. Enlaces Externos" data-en="6. External Links">6. Enlaces Externos</h3>
+    <p class="section-text" data-es="Este sitio puede contener enlaces a plataformas externas (Instagram, WhatsApp, YouTube). +MasCreativa Publicidad no se hace responsable del contenido o las políticas de privacidad de dichos sitios." data-en="This site may contain links to external platforms (Instagram, WhatsApp, YouTube). +MasCreativa Publicidad is not responsible for the content or privacy policies of those sites.">Este sitio puede contener enlaces a plataformas externas (Instagram, WhatsApp, YouTube). +MasCreativa Publicidad no se hace responsable del contenido o las políticas de privacidad de dichos sitios.</p>
 
-    <h3 class="section-number">7. Limitación de Responsabilidad</h3>
-    <p class="section-text">+MasCreativa Publicidad no garantiza que el sitio web esté disponible de manera ininterrumpida o libre de errores. No nos hacemos responsables por daños derivados del uso o la imposibilidad de uso del sitio.</p>
+    <h3 class="section-number" data-es="7. Limitación de Responsabilidad" data-en="7. Limitation of Liability">7. Limitación de Responsabilidad</h3>
+    <p class="section-text" data-es="+MasCreativa Publicidad no garantiza que el sitio web esté disponible de manera ininterrumpida o libre de errores. No nos hacemos responsables por daños derivados del uso o la imposibilidad de uso del sitio." data-en="+MasCreativa Publicidad does not guarantee that the website will be available without interruption or free of errors. We are not liable for damages arising from the use or inability to use the site.">+MasCreativa Publicidad no garantiza que el sitio web esté disponible de manera ininterrumpida o libre de errores. No nos hacemos responsables por daños derivados del uso o la imposibilidad de uso del sitio.</p>
 
-    <h3 class="section-number">8. Modificaciones</h3>
-    <p class="section-text">Nos reservamos el derecho de modificar estos términos en cualquier momento. Las actualizaciones serán publicadas en esta página con la fecha de última revisión.</p>
+    <h3 class="section-number" data-es="8. Modificaciones" data-en="8. Modifications">8. Modificaciones</h3>
+    <p class="section-text" data-es="Nos reservamos el derecho de modificar estos términos en cualquier momento. Las actualizaciones serán publicadas en esta página con la fecha de última revisión." data-en="We reserve the right to modify these terms at any time. Updates will be posted on this page with the date of the last revision.">Nos reservamos el derecho de modificar estos términos en cualquier momento. Las actualizaciones serán publicadas en esta página con la fecha de última revisión.</p>
 
-    <h3 class="section-number">9. Contacto</h3>
-    <p class="section-text">Para cualquier consulta sobre estos términos, puedes contactarnos a través de nuestro formulario de contacto o por WhatsApp al 787-644-1276.</p>
+    <h3 class="section-number" data-es="9. Contacto" data-en="9. Contact">9. Contacto</h3>
+    <p class="section-text" data-es="Para cualquier consulta sobre estos términos, puedes contactarnos a través de nuestro formulario de contacto o por WhatsApp al 787-644-1276." data-en="For any questions about these terms, you can contact us through our contact form or via WhatsApp at 787-644-1276.">Para cualquier consulta sobre estos términos, puedes contactarnos a través de nuestro formulario de contacto o por WhatsApp al 787-644-1276.</p>
   </div>
 </div>
 
@@ -526,9 +563,9 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 <footer class="site-footer" id="siteFooter">
   <div class="footer-inner">
     <div>
-      <div class="footer-brandline">+MasCreativa Publicidad. Creatividad que no pide permiso.</div>
+      <div class="footer-brandline" data-es="+MasCreativa Publicidad. Creatividad que no pide permiso." data-en="+MasCreativa Publicidad. Creativity that does not ask for permission.">+MasCreativa Publicidad. Creatividad que no pide permiso.</div>
       <div class="footer-contact"><a href="tel:+17876441276">787-644-1276</a> · <a href="mailto:info@mascreativapublicidad.com">info@mascreativapublicidad.com</a></div>
-      <div class="footer-meta">San Juan, Puerto Rico / 2026 / <a href="terms.html">Términos</a> / <a href="privacy.html">Privacidad</a></div>
+      <div class="footer-meta" data-es="San Juan, Puerto Rico / 2026 / <a href='terms.html'>Términos</a> / <a href='privacy.html'>Privacidad</a>" data-en="San Juan, Puerto Rico / 2026 / <a href='terms.html'>Terms</a> / <a href='privacy.html'>Privacy</a>">San Juan, Puerto Rico / 2026 / <a href="terms.html">Términos</a> / <a href="privacy.html">Privacidad</a></div>
     </div>
     <div class="footer-socials">
       <a href="https://instagram.com/mas_creativa_pr" target="_blank" rel="noopener">Instagram</a>
@@ -574,6 +611,41 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
   });
 
   applyMode();
+})();
+
+// ===== LANGUAGE TOGGLE =====
+(function(){
+  var lang = 'es';
+  var titles = { es: 'Términos de Uso | MasCreativa Publicidad', en: 'Terms of Use | MasCreativa Publicidad' };
+  try { var sv = localStorage.getItem('mcp-lang'); if (sv === 'en') lang = 'en'; } catch(e) {}
+
+  function applyLang(l) {
+    lang = l;
+    document.body.setAttribute('data-lang', lang);
+    document.title = titles[lang];
+    document.querySelectorAll('[data-es][data-en]').forEach(function(el) {
+      var val = el.getAttribute('data-' + lang);
+      if (val !== null) {
+        if (el.querySelector('a') || val.indexOf('<a ') !== -1) {
+          el.innerHTML = val;
+        } else {
+          el.textContent = val;
+        }
+      }
+    });
+    var label = lang === 'es' ? 'EN' : 'ES';
+    var btns = document.querySelectorAll('.lang-toggle-btn');
+    btns.forEach(function(b) { b.textContent = label; });
+    try { localStorage.setItem('mcp-lang', lang); } catch(e) {}
+  }
+
+  document.querySelectorAll('.lang-toggle-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      applyLang(lang === 'es' ? 'en' : 'es');
+    });
+  });
+
+  applyLang(lang);
 })();
 
   // Mobile hamburger menu

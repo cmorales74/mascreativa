@@ -102,6 +102,57 @@ html, body {
     user-select: none; -webkit-user-select: none;
 }
 
+/* ===== LANGUAGE TOGGLE ===== */
+.lang-toggle {
+    position: fixed;
+    top: 28px;
+    right: 120px;
+    z-index: 200;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: var(--panel);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    transition: background 0.2s, border-color 0.2s;
+    user-select: none;
+    -webkit-user-select: none;
+}
+.lang-toggle:hover {
+    border-color: var(--blue-strong);
+    color: var(--blue-strong);
+}
+@media (max-width: 640px) {
+    .lang-toggle { right: 80px; top: 16px; width: 34px; height: 34px; font-size: 10px; }
+}
+.mobile-overlay .lang-toggle-mobile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: var(--panel);
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    text-decoration: none;
+}
+
 /* Hamburger menu - hidden on desktop */
 .mobile-menu-btn { display: none; }
 .mobile-overlay { display: none; }
@@ -854,7 +905,7 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
 </head>
-<body data-theme="light">
+<body data-theme="light" data-lang="es">
 
 <!-- Logo -->
 <div style="text-align:center;padding:24px 0 0;">
@@ -886,32 +937,36 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
   </label>
 </div>
 
+<!-- Language toggle -->
+<button class="lang-toggle" id="langToggle" aria-label="Switch language">EN</button>
+
 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú">
   <span></span><span></span><span></span>
 </button>
 <div class="mobile-overlay" id="mobileOverlay">
-  <a href="index.html">Inicio</a>
-  <a href="services.html">Servicios</a>
-  <a href="portfolio.html">Portafolio</a>
-  <a href="about.html">Nosotros</a>
+  <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
+  <a href="services.html" data-es="Servicios" data-en="Services">Servicios</a>
+  <a href="portfolio.html" data-es="Portafolio" data-en="Portfolio">Portafolio</a>
+  <a href="about.html" data-es="Nosotros" data-en="About Us">Nosotros</a>
   <a href="live-content.html">Live Content</a>
-  <a href="contacto.html">Contacto</a>
+  <a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a>
+  <button class="lang-toggle-mobile" id="langToggleMobile" aria-label="Switch language">EN</button>
   <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true">
 </div>
 
 <div class="page-header reveal-section">
-    <h1 class="page-title">Portafolio</h1>
-    <div class="page-subtitle">Nuestro Trabajo</div>
+    <h1 class="page-title" data-es="Portafolio" data-en="Portfolio">Portafolio</h1>
+    <div class="page-subtitle" data-es="Nuestro Trabajo" data-en="Our Work">Nuestro Trabajo</div>
 </div>
 
 <div class="portfolio-intro reveal-section" style="max-width:550px;text-align:center;padding:0 20px;margin:0 auto 10px;">
-  <p style="font-family:'Satoshi',sans-serif;font-size:13px;line-height:1.7;color:var(--muted);">Menos palabras, más trabajo. Esto pasa cuando una marca se deja llevar por la creatividad.</p>
+  <p style="font-family:'Satoshi',sans-serif;font-size:13px;line-height:1.7;color:var(--muted);" data-es="Menos palabras, m&#225;s trabajo. Esto pasa cuando una marca se deja llevar por la creatividad." data-en="Less talk, more work. This is what happens when a brand lets creativity take the lead.">Menos palabras, más trabajo. Esto pasa cuando una marca se deja llevar por la creatividad.</p>
 </div>
 
 <div class="stat-banner">
-  <div class="stat-label">Vistas combinadas en videos de nuestros clientes en 2025</div>
+  <div class="stat-label" data-es="Vistas combinadas en videos de nuestros clientes en 2025" data-en="Combined views on our clients' videos in 2025">Vistas combinadas en videos de nuestros clientes en 2025</div>
   <div class="stat-number-wrap"><div class="stat-number"><span class="stat-plus">+</span><span id="statCount">0</span>M</div></div>
-  <div class="stat-sub">entre YouTube, Instagram, TikTok y más.</div>
+  <div class="stat-sub" data-es="entre YouTube, Instagram, TikTok y m&#225;s." data-en="across YouTube, Instagram, TikTok and more.">entre YouTube, Instagram, TikTok y más.</div>
 </div>
 
 <div class="carousel-wrapper reveal-section">
@@ -936,8 +991,8 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 
 <!-- Video Lightbox -->
 <div class="video-lightbox" id="videoLightbox">
-  <div class="lb-close">Cerrar</div>
-  <a class="lb-download" id="lbDownload" download>Descargar</a>
+  <div class="lb-close" data-es="Cerrar" data-en="Close">Cerrar</div>
+  <a class="lb-download" id="lbDownload" download data-es="Descargar" data-en="Download">Descargar</a>
   <video id="lbVideo" controls loop playsinline></video>
 </div>
 
@@ -946,9 +1001,9 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
     <!-- 1. AB Home — 18 assets -->
     <div class="project-box reveal-section">
       <div class="project-header">
-        <div class="project-tag">Fotografia Comercial</div>
+        <div class="project-tag" data-es="Fotografia Comercial" data-en="Commercial Photography">Fotografia Comercial</div>
         <h2 class="project-title">AB Home — Muebleria</h2>
-        <p class="project-desc">Sesion fotografica para la muebleria AB Home. Capturamos la esencia de cada pieza en su showroom.</p>
+        <p class="project-desc" data-es="Sesion fotografica para la muebleria AB Home. Capturamos la esencia de cada pieza en su showroom." data-en="Photo session for AB Home furniture store. We captured the essence of each piece in their showroom.">Sesion fotografica para la muebleria AB Home. Capturamos la esencia de cada pieza en su showroom.</p>
       </div>
       <div class="project-media">
         <div class="photo-carousel-wrap" id="carouselAE">
@@ -979,18 +1034,18 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
         </div>
       </div>
       <div class="project-footer">
-        <span class="project-meta">Agosto 2024</span>
-        <span class="project-meta">Fotografia</span>
-        <span class="project-meta">Comercial</span>
+        <span class="project-meta" data-es="Agosto 2024" data-en="August 2024">Agosto 2024</span>
+        <span class="project-meta" data-es="Fotografia" data-en="Photography">Fotografia</span>
+        <span class="project-meta" data-es="Comercial" data-en="Commercial">Comercial</span>
       </div>
     </div>
 
     <!-- 2. Batalla de Leyenda — 13 assets (3v + 10i) -->
     <div class="project-box reveal-section">
       <div class="project-header">
-        <div class="project-tag">Cobertura de Evento</div>
+        <div class="project-tag" data-es="Cobertura de Evento" data-en="Event Coverage">Cobertura de Evento</div>
         <h2 class="project-title">Batalla de Leyenda</h2>
-        <p class="project-desc">Conferencia de prensa, clínica y evento con Carlos Alcaraz y Frances Tiafoe en la Riviera. Cobertura completa del evento de tenis más grande de Puerto Rico.</p>
+        <p class="project-desc" data-es="Conferencia de prensa, cl&#237;nica y evento con Carlos Alcaraz y Frances Tiafoe en la Riviera. Cobertura completa del evento de tenis m&#225;s grande de Puerto Rico." data-en="Press conference, clinic and event with Carlos Alcaraz and Frances Tiafoe at la Riviera. Full coverage of the biggest tennis event in Puerto Rico.">Conferencia de prensa, clínica y evento con Carlos Alcaraz y Frances Tiafoe en la Riviera. Cobertura completa del evento de tenis más grande de Puerto Rico.</p>
       </div>
       <div class="project-media">
         <div class="project-hero-video">
@@ -1022,18 +1077,18 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
         </div>
       </div>
       <div class="project-footer">
-        <span class="project-meta">Marzo 2025</span>
-        <span class="project-meta">Fotografía + Video</span>
-        <span class="project-meta">Tenis</span>
+        <span class="project-meta" data-es="Marzo 2025" data-en="March 2025">Marzo 2025</span>
+        <span class="project-meta" data-es="Fotograf&#237;a + Video" data-en="Photography + Video">Fotografía + Video</span>
+        <span class="project-meta" data-es="Tenis" data-en="Tennis">Tenis</span>
       </div>
     </div>
 
     <!-- 3. Boat Show PR — 6 assets (1v + 5i) -->
     <div class="project-box reveal-section">
       <div class="project-header">
-        <div class="project-tag">Cobertura de Evento</div>
+        <div class="project-tag" data-es="Cobertura de Evento" data-en="Event Coverage">Cobertura de Evento</div>
         <h2 class="project-title">Boat Show PR 2025</h2>
-        <p class="project-desc">Cobertura fotográfica y de video del Puerto Rico Boat Show 2025. Tres días de producción capturando la energía, el ambiente y los mejores momentos del evento náutico más grande de la isla.</p>
+        <p class="project-desc" data-es="Cobertura fotogr&#225;fica y de video del Puerto Rico Boat Show 2025. Tres d&#237;as de producci&#243;n capturando la energ&#237;a, el ambiente y los mejores momentos del evento n&#225;utico m&#225;s grande de la isla." data-en="Photo and video coverage of the Puerto Rico Boat Show 2025. Three days of production capturing the energy, atmosphere and best moments of the island's biggest nautical event.">Cobertura fotográfica y de video del Puerto Rico Boat Show 2025. Tres días de producción capturando la energía, el ambiente y los mejores momentos del evento náutico más grande de la isla.</p>
       </div>
       <div class="project-media">
         <div class="project-hero-video">
@@ -1050,18 +1105,18 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
         </div>
       </div>
       <div class="project-footer">
-        <span class="project-meta">Marzo 2025</span>
-        <span class="project-meta">Fotografía + Video</span>
-        <span class="project-meta">3 días de producción</span>
+        <span class="project-meta" data-es="Marzo 2025" data-en="March 2025">Marzo 2025</span>
+        <span class="project-meta" data-es="Fotograf&#237;a + Video" data-en="Photography + Video">Fotografía + Video</span>
+        <span class="project-meta" data-es="3 d&#237;as de producci&#243;n" data-en="3 days of production">3 días de producción</span>
       </div>
     </div>
 
     <!-- 4. Municipio de San Juan — 3 assets (3v) -->
     <div class="project-box reveal-section">
       <div class="project-header">
-        <div class="project-tag">Producción de Video</div>
+        <div class="project-tag" data-es="Producci&#243;n de Video" data-en="Video Production">Producción de Video</div>
         <h2 class="project-title">Municipio de San Juan</h2>
-        <p class="project-desc">La Ciudad Capital. Producción de video para el Municipio de San Juan: remodelación del estadio Hiram Bithorn, programa de entrega de casas y la escuela UNITES.</p>
+        <p class="project-desc" data-es="La Ciudad Capital. Producci&#243;n de video para el Municipio de San Juan: remodelaci&#243;n del estadio Hiram Bithorn, programa de entrega de casas y la escuela UNITES." data-en="The Capital City. Video production for the Municipality of San Juan: Hiram Bithorn stadium renovation, home delivery program and UNITES school.">La Ciudad Capital. Producción de video para el Municipio de San Juan: remodelación del estadio Hiram Bithorn, programa de entrega de casas y la escuela UNITES.</p>
       </div>
       <div class="project-media">
         <div class="project-hero-video">
@@ -1083,16 +1138,16 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
       <div class="project-footer">
         <span class="project-meta">2025</span>
         <span class="project-meta">Video</span>
-        <span class="project-meta">Gobierno</span>
+        <span class="project-meta" data-es="Gobierno" data-en="Government">Gobierno</span>
       </div>
     </div>
 
     <!-- 5. Chocolate & Coffee Expo — 3 assets (1v + 2i) -->
     <div class="project-box reveal-section">
       <div class="project-header">
-        <div class="project-tag">Cobertura de Evento</div>
+        <div class="project-tag" data-es="Cobertura de Evento" data-en="Event Coverage">Cobertura de Evento</div>
         <h2 class="project-title">Chocolate & Coffee Expo</h2>
-        <p class="project-desc">Cobertura audiovisual de la 15.ª edición del Chocolate & Coffee Expo en Puerto Rico. Artesanos, productos y la cultura del cacao y café boricua capturados en video y fotografía.</p>
+        <p class="project-desc" data-es="Cobertura audiovisual de la 15.&#170; edici&#243;n del Chocolate &amp; Coffee Expo en Puerto Rico. Artesanos, productos y la cultura del cacao y caf&#233; boricua capturados en video y fotograf&#237;a." data-en="Audiovisual coverage of the 15th edition of the Chocolate &amp; Coffee Expo in Puerto Rico. Artisans, products and local cacao and coffee culture captured on video and photography.">Cobertura audiovisual de la 15.ª edición del Chocolate & Coffee Expo en Puerto Rico. Artesanos, productos y la cultura del cacao y café boricua capturados en video y fotografía.</p>
       </div>
       <div class="project-media">
         <div class="project-hero-video">
@@ -1107,17 +1162,17 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
       </div>
       <div class="project-footer">
         <span class="project-meta">2025</span>
-        <span class="project-meta">Fotografía + Video</span>
-        <span class="project-meta">Gastronomía</span>
+        <span class="project-meta" data-es="Fotograf&#237;a + Video" data-en="Photography + Video">Fotografía + Video</span>
+        <span class="project-meta" data-es="Gastronom&#237;a" data-en="Gastronomy">Gastronomía</span>
       </div>
     </div>
 
     <!-- 6. PR Open — 3 assets (1v + 2i) -->
     <div class="project-box reveal-section">
       <div class="project-header">
-        <div class="project-tag">Cobertura de Evento</div>
+        <div class="project-tag" data-es="Cobertura de Evento" data-en="Event Coverage">Cobertura de Evento</div>
         <h2 class="project-title">PR Open</h2>
-        <p class="project-desc">Cobertura del Puerto Rico Open 2025. Fotografía y video del torneo de golf más importante de la isla.</p>
+        <p class="project-desc" data-es="Cobertura del Puerto Rico Open 2025. Fotograf&#237;a y video del torneo de golf m&#225;s importante de la isla." data-en="Coverage of the Puerto Rico Open 2025. Photography and video of the island's most important golf tournament.">Cobertura del Puerto Rico Open 2025. Fotografía y video del torneo de golf más importante de la isla.</p>
       </div>
       <div class="project-media">
         <div class="project-hero-video">
@@ -1131,8 +1186,8 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
         </div>
       </div>
       <div class="project-footer">
-        <span class="project-meta">Marzo 2025</span>
-        <span class="project-meta">Fotografía + Video</span>
+        <span class="project-meta" data-es="Marzo 2025" data-en="March 2025">Marzo 2025</span>
+        <span class="project-meta" data-es="Fotograf&#237;a + Video" data-en="Photography + Video">Fotografía + Video</span>
         <span class="project-meta">Golf</span>
       </div>
     </div>
@@ -1140,9 +1195,9 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
     <!-- 7. Clinica de Futbol — 3 assets (1v + 2i) -->
     <div class="project-box reveal-section">
       <div class="project-header">
-        <div class="project-tag">Cobertura de Evento</div>
-        <h2 class="project-title">Clínica de Fútbol</h2>
-        <p class="project-desc">Fotografía y video de la clínica de fútbol para jóvenes. Capturando el entrenamiento, la energía y el talento local.</p>
+        <div class="project-tag" data-es="Cobertura de Evento" data-en="Event Coverage">Cobertura de Evento</div>
+        <h2 class="project-title" data-es="Cl&#237;nica de F&#250;tbol" data-en="Soccer Clinic">Clínica de Fútbol</h2>
+        <p class="project-desc" data-es="Fotograf&#237;a y video de la cl&#237;nica de f&#250;tbol para j&#243;venes. Capturando el entrenamiento, la energ&#237;a y el talento local." data-en="Photography and video of the youth soccer clinic. Capturing the training, energy and local talent.">Fotografía y video de la clínica de fútbol para jóvenes. Capturando el entrenamiento, la energía y el talento local.</p>
       </div>
       <div class="project-media">
         <div class="project-hero-video">
@@ -1156,18 +1211,18 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
         </div>
       </div>
       <div class="project-footer">
-        <span class="project-meta">Marzo 2025</span>
-        <span class="project-meta">Fotografía + Video</span>
-        <span class="project-meta">Deportes</span>
+        <span class="project-meta" data-es="Marzo 2025" data-en="March 2025">Marzo 2025</span>
+        <span class="project-meta" data-es="Fotograf&#237;a + Video" data-en="Photography + Video">Fotografía + Video</span>
+        <span class="project-meta" data-es="Deportes" data-en="Sports">Deportes</span>
       </div>
     </div>
 
     <!-- 8. Swim Safe PR — 2 assets (2v) -->
     <div class="project-box reveal-section">
       <div class="project-header">
-        <div class="project-tag">Produccion de Video</div>
+        <div class="project-tag" data-es="Produccion de Video" data-en="Video Production">Produccion de Video</div>
         <h2 class="project-title">Swim Safe PR</h2>
-        <p class="project-desc">Produccion de video para la campana Swim Safe de la Compania de Turismo de Puerto Rico.</p>
+        <p class="project-desc" data-es="Produccion de video para la campana Swim Safe de la Compania de Turismo de Puerto Rico." data-en="Video production for the Swim Safe campaign by the Puerto Rico Tourism Company.">Produccion de video para la campana Swim Safe de la Compania de Turismo de Puerto Rico.</p>
       </div>
       <div class="project-media">
         <div class="project-hero-video">
@@ -1184,16 +1239,16 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
       <div class="project-footer">
         <span class="project-meta">2024</span>
         <span class="project-meta">Video</span>
-        <span class="project-meta">Turismo</span>
+        <span class="project-meta" data-es="Turismo" data-en="Tourism">Turismo</span>
       </div>
     </div>
 
     <!-- 9. Jaylen Brown — 2 assets (2v) -->
     <div class="project-box reveal-section">
       <div class="project-header">
-        <div class="project-tag">Cobertura de Evento</div>
-        <h2 class="project-title">Jaylen Brown en Puerto Rico</h2>
-        <p class="project-desc">Cobertura de la visita de Jaylen Brown (Boston Celtics) a Puerto Rico. El jugador estrella de la NBA visitó la isla para conectar con comunidades locales, ofrecer clínicas de baloncesto y explorar iniciativas educativas a través de su programa "Black and Brown".</p>
+        <div class="project-tag" data-es="Cobertura de Evento" data-en="Event Coverage">Cobertura de Evento</div>
+        <h2 class="project-title" data-es="Jaylen Brown en Puerto Rico" data-en="Jaylen Brown in Puerto Rico">Jaylen Brown en Puerto Rico</h2>
+        <p class="project-desc" data-es="Cobertura de la visita de Jaylen Brown (Boston Celtics) a Puerto Rico. El jugador estrella de la NBA visit&#243; la isla para conectar con comunidades locales, ofrecer cl&#237;nicas de baloncesto y explorar iniciativas educativas a trav&#233;s de su programa &quot;Black and Brown&quot;." data-en="Coverage of Jaylen Brown's (Boston Celtics) visit to Puerto Rico. The NBA star visited the island to connect with local communities, host basketball clinics and explore educational initiatives through his &quot;Black and Brown&quot; program.">Cobertura de la visita de Jaylen Brown (Boston Celtics) a Puerto Rico. El jugador estrella de la NBA visitó la isla para conectar con comunidades locales, ofrecer clínicas de baloncesto y explorar iniciativas educativas a través de su programa "Black and Brown".</p>
       </div>
       <div class="project-media">
         <div class="project-hero-video">
@@ -1210,16 +1265,16 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
       <div class="project-footer">
         <span class="project-meta">2025</span>
         <span class="project-meta">Video</span>
-        <span class="project-meta">Deportes</span>
+        <span class="project-meta" data-es="Deportes" data-en="Sports">Deportes</span>
       </div>
     </div>
 
     <!-- 10. Inter Miami — 2 assets (2v) -->
     <div class="project-box reveal-section">
       <div class="project-header">
-        <div class="project-tag">Cobertura de Evento</div>
-        <h2 class="project-title">Inter Miami CF en Puerto Rico</h2>
-        <p class="project-desc">Cobertura audiovisual del partido de Inter Miami CF en Puerto Rico. Messi, el equipo y la energía del evento capturados en video.</p>
+        <div class="project-tag" data-es="Cobertura de Evento" data-en="Event Coverage">Cobertura de Evento</div>
+        <h2 class="project-title" data-es="Inter Miami CF en Puerto Rico" data-en="Inter Miami CF in Puerto Rico">Inter Miami CF en Puerto Rico</h2>
+        <p class="project-desc" data-es="Cobertura audiovisual del partido de Inter Miami CF en Puerto Rico. Messi, el equipo y la energ&#237;a del evento capturados en video." data-en="Audiovisual coverage of the Inter Miami CF match in Puerto Rico. Messi, the team and the event's energy captured on video.">Cobertura audiovisual del partido de Inter Miami CF en Puerto Rico. Messi, el equipo y la energía del evento capturados en video.</p>
       </div>
       <div class="project-media">
         <div class="project-hero-video">
@@ -1235,17 +1290,17 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
       </div>
       <div class="project-footer">
         <span class="project-meta">2025</span>
-        <span class="project-meta">Fotografía + Video</span>
-        <span class="project-meta">Deportes</span>
+        <span class="project-meta" data-es="Fotograf&#237;a + Video" data-en="Photography + Video">Fotografía + Video</span>
+        <span class="project-meta" data-es="Deportes" data-en="Sports">Deportes</span>
       </div>
     </div>
 
     <!-- 11. Four Seasons — 1 asset -->
     <div class="project-box reveal-section">
       <div class="project-header">
-        <div class="project-tag">Cobertura de Evento</div>
-        <h2 class="project-title">Inauguracion Hotel Four Seasons</h2>
-        <p class="project-desc">Cobertura audiovisual de la inauguracion del Hotel Four Seasons en Puerto Rico.</p>
+        <div class="project-tag" data-es="Cobertura de Evento" data-en="Event Coverage">Cobertura de Evento</div>
+        <h2 class="project-title" data-es="Inauguracion Hotel Four Seasons" data-en="Four Seasons Hotel Grand Opening">Inauguracion Hotel Four Seasons</h2>
+        <p class="project-desc" data-es="Cobertura audiovisual de la inauguracion del Hotel Four Seasons en Puerto Rico." data-en="Audiovisual coverage of the Four Seasons Hotel grand opening in Puerto Rico.">Cobertura audiovisual de la inauguracion del Hotel Four Seasons en Puerto Rico.</p>
       </div>
       <div class="project-media">
         <div class="project-hero-video">
@@ -1257,16 +1312,16 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
       <div class="project-footer">
         <span class="project-meta">2025</span>
         <span class="project-meta">Video</span>
-        <span class="project-meta">Hospitalidad</span>
+        <span class="project-meta" data-es="Hospitalidad" data-en="Hospitality">Hospitalidad</span>
       </div>
     </div>
 
     <!-- 12. Anuncio 365 Madrid — 1 asset -->
     <div class="project-box reveal-section">
       <div class="project-header">
-        <div class="project-tag">Producción de Video</div>
+        <div class="project-tag" data-es="Producci&#243;n de Video" data-en="Video Production">Producción de Video</div>
         <h2 class="project-title">Anuncio 365 Madrid</h2>
-        <p class="project-desc">Producción de anuncio publicitario para 365 Madrid.</p>
+        <p class="project-desc" data-es="Producci&#243;n de anuncio publicitario para 365 Madrid." data-en="Commercial ad production for 365 Madrid.">Producción de anuncio publicitario para 365 Madrid.</p>
       </div>
       <div class="project-media">
         <div class="project-hero-video">
@@ -1278,16 +1333,16 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
       <div class="project-footer">
         <span class="project-meta">2025</span>
         <span class="project-meta">Video</span>
-        <span class="project-meta">Publicidad</span>
+        <span class="project-meta" data-es="Publicidad" data-en="Advertising">Publicidad</span>
       </div>
     </div>
 
     <!-- 13. Winter Clash — 1 asset -->
     <div class="project-box reveal-section">
       <div class="project-header">
-        <div class="project-tag">Producción de Video</div>
+        <div class="project-tag" data-es="Producci&#243;n de Video" data-en="Video Production">Producción de Video</div>
         <h2 class="project-title">Winter Clash</h2>
-        <p class="project-desc">Cobertura de video del Winter Clash. Energía, competencia y ambiente en un solo evento.</p>
+        <p class="project-desc" data-es="Cobertura de video del Winter Clash. Energ&#237;a, competencia y ambiente en un solo evento." data-en="Video coverage of Winter Clash. Energy, competition and atmosphere in a single event.">Cobertura de video del Winter Clash. Energía, competencia y ambiente en un solo evento.</p>
       </div>
       <div class="project-media">
         <div class="project-hero-video">
@@ -1297,18 +1352,18 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
         </div>
       </div>
       <div class="project-footer">
-        <span class="project-meta">Marzo 2025</span>
+        <span class="project-meta" data-es="Marzo 2025" data-en="March 2025">Marzo 2025</span>
         <span class="project-meta">Video</span>
-        <span class="project-meta">Deportes</span>
+        <span class="project-meta" data-es="Deportes" data-en="Sports">Deportes</span>
       </div>
     </div>
 
     <!-- 14. Levant La Concha — 1 asset -->
     <div class="project-box reveal-section">
       <div class="project-header">
-        <div class="project-tag">Producción de Video</div>
-        <h2 class="project-title">Inauguración Levant La Concha</h2>
-        <p class="project-desc">Cobertura de la inauguración del restaurante Levant en el hotel La Concha, San Juan. Gastronomía, ambiente y producción de primer nivel.</p>
+        <div class="project-tag" data-es="Producci&#243;n de Video" data-en="Video Production">Producción de Video</div>
+        <h2 class="project-title" data-es="Inauguraci&#243;n Levant La Concha" data-en="Levant La Concha Grand Opening">Inauguración Levant La Concha</h2>
+        <p class="project-desc" data-es="Cobertura de la inauguraci&#243;n del restaurante Levant en el hotel La Concha, San Juan. Gastronom&#237;a, ambiente y producci&#243;n de primer nivel." data-en="Coverage of the Levant restaurant opening at La Concha hotel, San Juan. Gastronomy, atmosphere and top-tier production.">Cobertura de la inauguración del restaurante Levant en el hotel La Concha, San Juan. Gastronomía, ambiente y producción de primer nivel.</p>
       </div>
       <div class="project-media">
         <div class="project-hero-video">
@@ -1318,9 +1373,9 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
         </div>
       </div>
       <div class="project-footer">
-        <span class="project-meta">Marzo 2025</span>
+        <span class="project-meta" data-es="Marzo 2025" data-en="March 2025">Marzo 2025</span>
         <span class="project-meta">Video</span>
-        <span class="project-meta">Gastronomía</span>
+        <span class="project-meta" data-es="Gastronom&#237;a" data-en="Gastronomy">Gastronomía</span>
       </div>
     </div>
 
@@ -1351,9 +1406,9 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 <footer class="site-footer" id="siteFooter">
   <div class="footer-inner">
     <div>
-      <div class="footer-brandline">+MasCreativa Publicidad. Creatividad que no pide permiso.</div>
+      <div class="footer-brandline" data-es="+MasCreativa Publicidad. Creatividad que no pide permiso." data-en="+MasCreativa Publicidad. Creativity that asks no permission.">+MasCreativa Publicidad. Creatividad que no pide permiso.</div>
       <div class="footer-contact"><a href="tel:+17876441276">787-644-1276</a> · <a href="mailto:info@mascreativapublicidad.com">info@mascreativapublicidad.com</a></div>
-      <div class="footer-meta">San Juan, Puerto Rico / 2026 / <a href="terms.html">Términos</a> / <a href="privacy.html">Privacidad</a></div>
+      <div class="footer-meta" data-es-inner="San Juan, Puerto Rico / 2026 / <a href='terms.html'>T&#233;rminos</a> / <a href='privacy.html'>Privacidad</a>" data-en-inner="San Juan, Puerto Rico / 2026 / <a href='terms.html'>Terms</a> / <a href='privacy.html'>Privacy</a>">San Juan, Puerto Rico / 2026 / <a href="terms.html">Términos</a> / <a href="privacy.html">Privacidad</a></div>
     </div>
     <div class="footer-socials">
       <a href="https://instagram.com/mas_creativa_pr" target="_blank" rel="noopener">Instagram</a>
@@ -1592,6 +1647,48 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
       });
     });
   });
+
+// ===== LANGUAGE TOGGLE =====
+(function(){
+  var lang = 'es';
+  try { var stored = localStorage.getItem('mcp-lang'); if (stored === 'en') lang = 'en'; } catch(e){}
+
+  var langBtn = document.getElementById('langToggle');
+  var langBtnMobile = document.getElementById('langToggleMobile');
+
+  function applyLang(newLang) {
+    lang = newLang;
+    document.body.setAttribute('data-lang', lang);
+    try { localStorage.setItem('mcp-lang', lang); } catch(e){}
+
+    var label = lang === 'es' ? 'EN' : 'ES';
+    if (langBtn) langBtn.textContent = label;
+    if (langBtnMobile) langBtnMobile.textContent = label;
+
+    document.querySelectorAll('[data-es][data-en]').forEach(function(el) {
+      if (el.hasAttribute('data-' + lang + '-inner')) return;
+      el.textContent = el.getAttribute('data-' + lang);
+    });
+    document.querySelectorAll('[data-es-inner][data-en-inner]').forEach(function(el) {
+      el.innerHTML = el.getAttribute('data-' + lang + '-inner');
+    });
+
+    var descEs = 'Proyectos de video, branding y contenido visual para clientes en Puerto Rico y el Caribe.';
+    var descEn = 'Video, branding and visual content projects for clients in Puerto Rico and the Caribbean.';
+    var desc = lang === 'es' ? descEs : descEn;
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', desc);
+    var ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', desc);
+    var twDesc = document.querySelector('meta[name="twitter:description"]');
+    if (twDesc) twDesc.setAttribute('content', desc);
+  }
+
+  function toggleLang() { applyLang(lang === 'es' ? 'en' : 'es'); }
+  if (langBtn) langBtn.addEventListener('click', toggleLang);
+  if (langBtnMobile) langBtnMobile.addEventListener('click', toggleLang);
+  applyLang(lang);
+})();
 
 </script>
 </body>

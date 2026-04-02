@@ -80,6 +80,57 @@ html, body {
     user-select: none; -webkit-user-select: none;
 }
 
+/* ===== LANGUAGE TOGGLE ===== */
+.lang-toggle {
+    position: fixed;
+    top: 28px;
+    right: 120px;
+    z-index: 200;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: var(--panel);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    transition: background 0.2s, border-color 0.2s;
+    user-select: none;
+    -webkit-user-select: none;
+}
+.lang-toggle:hover {
+    border-color: var(--blue-strong);
+    color: var(--blue-strong);
+}
+@media (max-width: 640px) {
+    .lang-toggle { right: 80px; top: 16px; width: 34px; height: 34px; font-size: 10px; }
+}
+.mobile-overlay .lang-toggle-mobile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: var(--panel);
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    text-decoration: none;
+}
+
 /* Hamburger menu - hidden on desktop */
 .mobile-menu-btn { display: none; }
 .mobile-overlay { display: none; }
@@ -643,7 +694,7 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
 </head>
-<body data-theme="light">
+<body data-theme="light" data-lang="es">
 
 <!-- Logo -->
 <div style="text-align:center;padding:24px 0 0;">
@@ -675,21 +726,25 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
   </label>
 </div>
 
+<!-- Language toggle -->
+<button class="lang-toggle" id="langToggle" aria-label="Switch language">EN</button>
+
 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú">
   <span></span><span></span><span></span>
 </button>
 <div class="mobile-overlay" id="mobileOverlay">
-  <a href="index.html">Inicio</a>
-  <a href="services.html">Servicios</a>
-  <a href="portfolio.html">Portafolio</a>
-  <a href="about.html">Nosotros</a>
+  <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
+  <a href="services.html" data-es="Servicios" data-en="Services">Servicios</a>
+  <a href="portfolio.html" data-es="Portafolio" data-en="Portfolio">Portafolio</a>
+  <a href="about.html" data-es="Nosotros" data-en="About Us">Nosotros</a>
   <a href="live-content.html">Live Content</a>
-  <a href="contacto.html">Contacto</a>
+  <a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a>
+  <button class="lang-toggle-mobile" id="langToggleMobile" aria-label="Switch language">EN</button>
   <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true">
 </div>
 
 <div class="page-header reveal-section">
-    <h1 class="page-title">Servicios</h1>
+    <h1 class="page-title" data-es="Servicios" data-en="Services">Servicios</h1>
     <p class="page-subtitle">Branding / Publicidad / Producción / Digital</p>
 </div>
 
@@ -710,13 +765,13 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 
     <div class="sd-card sd-card--featured sd-card--live reveal-section" id="live-content">
       <svg class="sd-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 10l4.553-2.276A1 1 0 0 1 21 8.618v6.764a1 1 0 0 1-1.447.894L15 14"/><rect x="3" y="6" width="12" height="12" rx="2" ry="2"/></svg>
-      <div class="sd-kicker">Contenido en tiempo real</div>
+      <div class="sd-kicker" data-es="Contenido en tiempo real" data-en="Real-time content">Contenido en tiempo real</div>
       <h2 class="sd-title">Live Content</h2>
-      <p class="sd-body sd-body--lead">Mientras tu evento sucede, tu contenido ya está en redes. Editado, publicado y compitiendo por atención en tiempo real.</p>
-      <p class="sd-body">Un equipo completo en tu evento capturando, editando y publicando en el momento.</p>
+      <p class="sd-body sd-body--lead" data-es="Mientras tu evento sucede, tu contenido ya est&#225; en redes. Editado, publicado y compitiendo por atenci&#243;n en tiempo real." data-en="While your event is happening, your content is already on social media. Edited, published and competing for attention in real time.">Mientras tu evento sucede, tu contenido ya está en redes. Editado, publicado y compitiendo por atención en tiempo real.</p>
+      <p class="sd-body" data-es="Un equipo completo en tu evento capturando, editando y publicando en el momento." data-en="A full team at your event capturing, editing and publishing on the spot.">Un equipo completo en tu evento capturando, editando y publicando en el momento.</p>
       <div class="sd-grid">
         <div class="sd-panel">
-          <div class="sd-panel-title">Cómo funciona</div>
+          <div class="sd-panel-title" data-es="C&#243;mo funciona" data-en="How it works">Cómo funciona</div>
           <ul class="sd-list sd-list--compact">
             <li>Preproducción estratégica con objetivos, momentos clave y plataformas claras</li>
             <li>Captura en vivo con cámaras, audio y operadores enfocados en lo que sí va a funcionar</li>
@@ -724,7 +779,7 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
           </ul>
         </div>
         <div class="sd-panel">
-          <div class="sd-panel-title">Ideal para</div>
+          <div class="sd-panel-title" data-es="Ideal para" data-en="Ideal for">Ideal para</div>
           <ul class="sd-list sd-list--compact">
             <li>Deportes, conciertos y shows donde la ventana de viralidad dura minutos</li>
             <li>Conferencias y eventos corporativos que necesitan extender su alcance</li>
@@ -732,7 +787,7 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
           </ul>
         </div>
         <div class="sd-panel">
-          <div class="sd-panel-title">Qué recibes</div>
+          <div class="sd-panel-title" data-es="Qu&#233; recibes" data-en="What you get">Qué recibes</div>
           <ul class="sd-list sd-list--compact">
             <li>Clips en vivo para Reels, TikTok, Stories y publicaciones</li>
             <li>Banco de contenido listo para seguir explotando el evento después</li>
@@ -740,14 +795,14 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
           </ul>
         </div>
       </div>
-      <p class="sd-body">Es la diferencia entre documentar un evento y hacerlo explotar en redes. Si tu evento tiene audiencia, necesita contenido saliendo mientras está pasando.</p>
-      <a href="contacto.html" class="sd-link">Agenda Live Content</a>
+      <p class="sd-body" data-es="Es la diferencia entre documentar un evento y hacerlo explotar en redes. Si tu evento tiene audiencia, necesita contenido saliendo mientras est&#225; pasando." data-en="It's the difference between documenting an event and making it blow up on social media. If your event has an audience, it needs content going out while it's happening.">Es la diferencia entre documentar un evento y hacerlo explotar en redes. Si tu evento tiene audiencia, necesita contenido saliendo mientras está pasando.</p>
+      <a href="contacto.html" class="sd-link" data-es="Agenda Live Content" data-en="Book Live Content">Agenda Live Content</a>
     </div>
 
     <div class="sd-card reveal-section" id="branding">
       <svg class="sd-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-      <h2 class="sd-title">Branding e Identidad</h2>
-      <p class="sd-body">Un logo solo no resuelve nada. Construimos identidades completas: nombre, sistema visual, manual y aplicaciones, para que donde la vean, la reconozcan.</p>
+      <h2 class="sd-title" data-es="Branding e Identidad" data-en="Branding &amp; Identity">Branding e Identidad</h2>
+      <p class="sd-body" data-es="Un logo solo no resuelve nada. Construimos identidades completas: nombre, sistema visual, manual y aplicaciones, para que donde la vean, la reconozcan." data-en="A logo alone solves nothing. We build complete identities: name, visual system, brand manual and applications, so wherever people see it, they recognize it.">Un logo solo no resuelve nada. Construimos identidades completas: nombre, sistema visual, manual y aplicaciones, para que donde la vean, la reconozcan.</p>
       <ul class="sd-list">
         <li>Diseño de logotipo y sistema visual</li>
         <li>Manuales de marca</li>
@@ -759,8 +814,8 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 
     <div class="sd-card reveal-section" id="publicidad">
       <svg class="sd-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><path d="M2 8c0-2.2.7-4.3 2-6"/><path d="M22 8a10 10 0 0 0-2-6"/></svg>
-      <h2 class="sd-title">Publicidad y Medios</h2>
-      <p class="sd-body">Hacemos campañas que la gente ve de principio a fin. Concepto creativo, pauta inteligente y ejecución en medios digitales y tradicionales. Nada de quemar presupuesto en anuncios genéricos.</p>
+      <h2 class="sd-title" data-es="Publicidad y Medios" data-en="Advertising &amp; Media">Publicidad y Medios</h2>
+      <p class="sd-body" data-es="Hacemos campa&#241;as que la gente ve de principio a fin. Concepto creativo, pauta inteligente y ejecuci&#243;n en medios digitales y tradicionales. Nada de quemar presupuesto en anuncios gen&#233;ricos." data-en="We make campaigns people watch from start to finish. Creative concept, smart ad placement and execution across digital and traditional media. No burning budget on generic ads.">Hacemos campañas que la gente ve de principio a fin. Concepto creativo, pauta inteligente y ejecución en medios digitales y tradicionales. Nada de quemar presupuesto en anuncios genéricos.</p>
       <ul class="sd-list">
         <li>Campañas en Meta, Google y TikTok</li>
         <li>Publicidad en medios tradicionales</li>
@@ -773,13 +828,13 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 
     <div class="sd-card reveal-section" id="foto-video">
       <svg class="sd-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-      <h2 class="sd-title">Fotografía y Video</h2>
-      <p class="sd-body">Aquí es donde más nos lucimos. Lo que necesites, lo producimos completo. Dirección creativa, iluminación profesional, edición cinemática.</p>
+      <h2 class="sd-title" data-es="Fotograf&#237;a y Video" data-en="Photography &amp; Video">Fotografía y Video</h2>
+      <p class="sd-body" data-es="Aqu&#237; es donde m&#225;s nos lucimos. Lo que necesites, lo producimos completo. Direcci&#243;n creativa, iluminaci&#243;n profesional, edici&#243;n cinem&#225;tica." data-en="This is where we shine the most. Whatever you need, we produce it from start to finish. Creative direction, professional lighting, cinematic editing.">Aquí es donde más nos lucimos. Lo que necesites, lo producimos completo. Dirección creativa, iluminación profesional, edición cinemática.</p>
       <div class="sd-inline-stat" id="sdStat">
         <div class="sd-inline-stat-number"><span>+</span><span id="sdStatCount">0</span>M</div>
-        <div class="sd-inline-stat-label">vistas combinadas en 2025</div>
+        <div class="sd-inline-stat-label" data-es="vistas combinadas en 2025" data-en="combined views in 2025">vistas combinadas en 2025</div>
       </div>
-      <p class="sd-body">No porque tuvimos suerte, sino porque la gente quiso verlo.</p>
+      <p class="sd-body" data-es="No porque tuvimos suerte, sino porque la gente quiso verlo." data-en="Not because we got lucky, but because people wanted to watch it.">No porque tuvimos suerte, sino porque la gente quiso verlo.</p>
       <ul class="sd-list">
         <li>Foto comercial y de producto</li>
         <li>Video publicitario y corporativo</li>
@@ -792,8 +847,8 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 
     <div class="sd-card reveal-section" id="marketing">
       <svg class="sd-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-      <h2 class="sd-title">Marketing Digital</h2>
-      <p class="sd-body">Publicar por publicar no es estrategia. Esto sí:</p>
+      <h2 class="sd-title" data-es="Marketing Digital" data-en="Digital Marketing">Marketing Digital</h2>
+      <p class="sd-body" data-es="Publicar por publicar no es estrategia. Esto s&#237;:" data-en="Posting just to post is not a strategy. This is:">Publicar por publicar no es estrategia. Esto sí:</p>
       <ul class="sd-list">
         <li>Gestión de redes sociales con calendario real</li>
         <li>Gestión de comunidad que responde, no decora</li>
@@ -805,8 +860,8 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 
     <div class="sd-card reveal-section" id="contenido">
       <svg class="sd-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-      <h2 class="sd-title">Contenido Visual</h2>
-      <p class="sd-body">Para Fundación Good Bunny produjimos contenido visual que contó la historia de la organización sin necesitar un párrafo de texto. Eso es lo que hacemos.</p>
+      <h2 class="sd-title" data-es="Contenido Visual" data-en="Visual Content">Contenido Visual</h2>
+      <p class="sd-body" data-es="Para Fundaci&#243;n Good Bunny produjimos contenido visual que cont&#243; la historia de la organizaci&#243;n sin necesitar un p&#225;rrafo de texto. Eso es lo que hacemos." data-en="For Fundaci&#243;n Good Bunny we produced visual content that told the organization's story without needing a single paragraph of text. That's what we do.">Para Fundación Good Bunny produjimos contenido visual que contó la historia de la organización sin necesitar un párrafo de texto. Eso es lo que hacemos.</p>
       <ul class="sd-list">
         <li>Dirección creativa</li>
         <li>Fotografía de producto y de estilo de vida</li>
@@ -817,8 +872,8 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 
     <div class="sd-card reveal-section" id="diseno">
       <svg class="sd-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-      <h2 class="sd-title">Diseño e Impresión</h2>
-      <p class="sd-body">Un flyer bien hecho todavía mueve gente. Diseñamos piezas impresas al mismo nivel que lo digital: empaques, catálogos, señalética y material POP.</p>
+      <h2 class="sd-title" data-es="Dise&#241;o e Impresi&#243;n" data-en="Design &amp; Print">Diseño e Impresión</h2>
+      <p class="sd-body" data-es="Un flyer bien hecho todav&#237;a mueve gente. Dise&#241;amos piezas impresas al mismo nivel que lo digital: empaques, cat&#225;logos, se&#241;al&#233;tica y material POP." data-en="A well-made flyer still moves people. We design printed pieces at the same level as digital: packaging, catalogs, signage and POP materials.">Un flyer bien hecho todavía mueve gente. Diseñamos piezas impresas al mismo nivel que lo digital: empaques, catálogos, señalética y material POP.</p>
       <ul class="sd-list">
         <li>Diseño gráfico para impresión</li>
         <li>Volantes, folletos y catálogos</li>
@@ -831,16 +886,16 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 </div>
 
 <div style="text-align:center;padding:40px 20px 60px;" class="reveal-section">
-  <a href="contacto.html" class="cta-hablemos">Hablemos</a>
+  <a href="contacto.html" class="cta-hablemos" data-es="Hablemos" data-en="Let's talk">Hablemos</a>
 </div>
 
 <!-- Footer -->
 <footer class="site-footer" id="siteFooter">
   <div class="footer-inner">
     <div>
-      <div class="footer-brandline">+MasCreativa Publicidad. Creatividad que no pide permiso.</div>
+      <div class="footer-brandline" data-es="+MasCreativa Publicidad. Creatividad que no pide permiso." data-en="+MasCreativa Publicidad. Creativity that asks no permission.">+MasCreativa Publicidad. Creatividad que no pide permiso.</div>
       <div class="footer-contact"><a href="tel:+17876441276">787-644-1276</a> · <a href="mailto:info@mascreativapublicidad.com">info@mascreativapublicidad.com</a></div>
-      <div class="footer-meta">San Juan, Puerto Rico / 2026 / <a href="terms.html">Términos</a> / <a href="privacy.html">Privacidad</a></div>
+      <div class="footer-meta" data-es-inner="San Juan, Puerto Rico / 2026 / <a href='terms.html'>T&#233;rminos</a> / <a href='privacy.html'>Privacidad</a>" data-en-inner="San Juan, Puerto Rico / 2026 / <a href='terms.html'>Terms</a> / <a href='privacy.html'>Privacy</a>">San Juan, Puerto Rico / 2026 / <a href="terms.html">Términos</a> / <a href="privacy.html">Privacidad</a></div>
     </div>
     <div class="footer-socials">
       <a href="https://instagram.com/mas_creativa_pr" target="_blank" rel="noopener">Instagram</a>
@@ -973,6 +1028,48 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
       });
     });
   });
+
+// ===== LANGUAGE TOGGLE =====
+(function(){
+  var lang = 'es';
+  try { var stored = localStorage.getItem('mcp-lang'); if (stored === 'en') lang = 'en'; } catch(e){}
+
+  var langBtn = document.getElementById('langToggle');
+  var langBtnMobile = document.getElementById('langToggleMobile');
+
+  function applyLang(newLang) {
+    lang = newLang;
+    document.body.setAttribute('data-lang', lang);
+    try { localStorage.setItem('mcp-lang', lang); } catch(e){}
+
+    var label = lang === 'es' ? 'EN' : 'ES';
+    if (langBtn) langBtn.textContent = label;
+    if (langBtnMobile) langBtnMobile.textContent = label;
+
+    document.querySelectorAll('[data-es][data-en]').forEach(function(el) {
+      if (el.hasAttribute('data-' + lang + '-inner')) return;
+      el.textContent = el.getAttribute('data-' + lang);
+    });
+    document.querySelectorAll('[data-es-inner][data-en-inner]').forEach(function(el) {
+      el.innerHTML = el.getAttribute('data-' + lang + '-inner');
+    });
+
+    var descEs = 'Branding, producción audiovisual, marketing digital y diseño gráfico en Puerto Rico.';
+    var descEn = 'Branding, audiovisual production, digital marketing and graphic design in Puerto Rico.';
+    var desc = lang === 'es' ? descEs : descEn;
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', desc);
+    var ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', desc);
+    var twDesc = document.querySelector('meta[name="twitter:description"]');
+    if (twDesc) twDesc.setAttribute('content', desc);
+  }
+
+  function toggleLang() { applyLang(lang === 'es' ? 'en' : 'es'); }
+  if (langBtn) langBtn.addEventListener('click', toggleLang);
+  if (langBtnMobile) langBtnMobile.addEventListener('click', toggleLang);
+  applyLang(lang);
+})();
 
 </script>
 </body>

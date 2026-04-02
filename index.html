@@ -1651,6 +1651,57 @@
     }
   }
 
+  /* ===== LANGUAGE TOGGLE ===== */
+  .lang-toggle {
+    position: fixed;
+    top: 28px;
+    right: 120px;
+    z-index: 40;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: var(--panel);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    transition: transform 0.3s ease, opacity 0.3s ease, background 0.2s, border-color 0.2s;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .lang-toggle:hover {
+    border-color: var(--blue-strong);
+    color: var(--blue-strong);
+  }
+  @media (max-width: 640px) {
+    .lang-toggle { right: 80px; top: 16px; width: 34px; height: 34px; font-size: 10px; }
+  }
+  .mobile-overlay .lang-toggle-mobile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: var(--panel);
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    text-decoration: none;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
@@ -1752,7 +1803,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
 </head>
-<body data-theme="light">
+<body data-theme="light" data-lang="es">
 
 <!-- Bootup Splash -->
 <div class="splash" id="splash">
@@ -1772,6 +1823,9 @@
     </div>
   </div>
 </nav>
+
+<!-- Language toggle -->
+<button class="lang-toggle" id="langToggle" aria-label="Switch language">EN</button>
 
 <!-- Theme toggle -->
 <div id="themeToggleWrap" style="position:fixed;top:28px;right:24px;z-index:40;transition:transform 0.3s ease, opacity 0.3s ease;">
@@ -1801,11 +1855,12 @@
   <span></span><span></span><span></span>
 </button>
 <div class="mobile-overlay" id="mobileOverlay">
-  <a href="services.html">Servicios</a>
+  <a href="services.html" data-es="Servicios" data-en="Services">Servicios</a>
   <a href="portfolio.html">Portafolio</a>
-  <a href="about.html">Nosotros</a>
+  <a href="about.html" data-es="Nosotros" data-en="About Us">Nosotros</a>
   <a href="live-content.html">Live Content</a>
-  <a href="contacto.html">Contacto</a>
+  <a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a>
+  <button class="lang-toggle-mobile" id="langToggleMobile" aria-label="Switch language">EN</button>
   <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true" loading="lazy">
 </div>
 
@@ -1813,22 +1868,22 @@
   <section class="hero reveal-section">
     <div class="hero-grid">
       <div class="hero-copy">
-        <div class="eyebrow">Creatividad que no pide permiso</div>
+        <div class="eyebrow" data-es="Creatividad que no pide permiso" data-en="Creativity that asks no permission">Creatividad que no pide permiso</div>
         <h1>
-          <span>Vuelve tu marca</span>
-          <span>imposible de</span>
-          <span>ignorar.</span>
+          <span data-es="Vuelve tu marca" data-en="Make your brand">Vuelve tu marca</span>
+          <span data-es="imposible de" data-en="impossible to">imposible de</span>
+          <span data-es="ignorar." data-en="ignore.">ignorar.</span>
         </h1>
         <div class="hero-video-box">
           <video autoplay muted loop playsinline preload="metadata" src="assets/videos/hero-reel.mp4?v=2"></video>
-          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1px;color:var(--muted);opacity:0.6;text-align:center;margin-top:6px;">Compilación de eventos y clientes recientes</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1px;color:var(--muted);opacity:0.6;text-align:center;margin-top:6px;" data-es="Compilaci&#243;n de eventos y clientes recientes" data-en="Compilation of recent events and clients">Compilación de eventos y clientes recientes</div>
         </div>
-        <p>Somos una agencia creativa en San Juan que produce campañas, identidades y contenido visual que la gente no puede ignorar. Llevamos años haciéndolo y los números lo confirman.</p>
+        <p data-es="Somos una agencia creativa en San Juan que produce campañas, identidades y contenido visual que la gente no puede ignorar. Llevamos años haciéndolo y los números lo confirman." data-en="We are a creative agency in San Juan that produces campaigns, identities, and visual content people can't ignore. We've been doing it for years and the numbers back it up.">Somos una agencia creativa en San Juan que produce campañas, identidades y contenido visual que la gente no puede ignorar. Llevamos años haciéndolo y los números lo confirman.</p>
 
 
         <div class="hero-actions">
-          <a class="button-primary" href="portfolio.html">Ver portafolio</a>
-          <a class="button-secondary" href="contacto.html">Hablemos</a>
+          <a class="button-primary" href="portfolio.html" data-es="Ver portafolio" data-en="View portfolio">Ver portafolio</a>
+          <a class="button-secondary" href="contacto.html" data-es="Hablemos" data-en="Let's talk">Hablemos</a>
         </div>
       </div>
 
@@ -1870,7 +1925,7 @@
                 <div class="drawer-box">
                   <div class="drawer-front-panel"></div>
                   <div class="drawer-back-panel"></div>
-                  <span class="drawer-label">Servicios</span>
+                  <span class="drawer-label" data-es="Servicios" data-en="Services">Servicios</span>
                   <div class="drawer-left-panel"></div>
                   <div class="drawer-right-panel"></div>
                   <div class="drawer-bottom-panel"></div>
@@ -1883,7 +1938,7 @@
                 <div class="drawer-box">
                   <div class="drawer-front-panel"></div>
                   <div class="drawer-back-panel"></div>
-                  <span class="drawer-label">Portafolio</span>
+                  <span class="drawer-label" data-es="Portafolio" data-en="Portfolio">Portafolio</span>
                   <div class="drawer-left-panel"></div>
                   <div class="drawer-right-panel"></div>
                   <div class="drawer-bottom-panel"></div>
@@ -1896,7 +1951,7 @@
                 <div class="drawer-box">
                   <div class="drawer-front-panel"></div>
                   <div class="drawer-back-panel"></div>
-                  <span class="drawer-label">Nosotros</span>
+                  <span class="drawer-label" data-es="Nosotros" data-en="About Us">Nosotros</span>
                   <div class="drawer-left-panel"></div>
                   <div class="drawer-right-panel"></div>
                   <div class="drawer-bottom-panel"></div>
@@ -1917,7 +1972,7 @@
               </a>
             </div>
           </div>
-          <div class="cabinet-note">Arrastra 360° / abre los cajones</div>
+          <div class="cabinet-note" data-es="Arrastra 360&#176; / abre los cajones" data-en="Drag 360&#176; / open the drawers">Arrastra 360° / abre los cajones</div>
         </div>
 
       </div>
@@ -1928,8 +1983,8 @@
   <div class="section reveal-section" id="carousel-marquee">
     <div class="section-header">
       <div class="section-header-text">
-        <h2 class="section-title">Marcas que confían en nosotros</h2>
-        <p class="section-desc">De sellos discográficos a franquicias deportivas.</p>
+        <h2 class="section-title" data-es="Marcas que conf&#237;an en nosotros" data-en="Brands that trust us">Marcas que confían en nosotros</h2>
+        <p class="section-desc" data-es="De sellos discogr&#225;ficos a franquicias deportivas." data-en="From record labels to sports franchises.">De sellos discográficos a franquicias deportivas.</p>
       </div>
     </div>
 
@@ -1977,8 +2032,8 @@
         </div>
       </div>
       <div class="marquee-label">
-        <span class="marquee-label-text">Pasa el cursor para pausar</span>
-        <span class="marquee-label-text">8 clientes destacados</span>
+        <span class="marquee-label-text" data-es="Pasa el cursor para pausar" data-en="Hover to pause">Pasa el cursor para pausar</span>
+        <span class="marquee-label-text" data-es="8 clientes destacados" data-en="8 featured clients">8 clientes destacados</span>
       </div>
     </div>
   </div>
@@ -1986,8 +2041,8 @@
 
   <div class="impact-statement" id="impactStatement">
     <div class="impact-quote">
-      <span class="impact-line">No somos la agencia más grande de Puerto Rico.</span>
-      <span class="impact-line">Pero somos la <span class="impact-highlight">más exigente con la calidad.</span></span>
+      <span class="impact-line" data-es="No somos la agencia m&#225;s grande de Puerto Rico." data-en="We're not the biggest agency in Puerto Rico.">No somos la agencia más grande de Puerto Rico.</span>
+      <span class="impact-line" data-es="Pero somos la" data-en="But we are the" data-es-inner="Pero somos la <span class='impact-highlight'>m&#225;s exigente con la calidad.</span>" data-en-inner="But we are the <span class='impact-highlight'>most demanding when it comes to quality.</span>">Pero somos la <span class="impact-highlight">más exigente con la calidad.</span></span>
     </div>
     <div class="impact-bar"></div>
   </div>
@@ -1995,10 +2050,10 @@
   <section class="section home-about" id="home-about">
     <div class="home-about-grid">
       <div class="home-about-intro reveal-section">
-        <div class="home-about-label">Nosotros</div>
-        <h2 class="home-about-title">Creatividad que no sale en automático.</h2>
-        <p class="home-about-text" style="font-family:'Satoshi',sans-serif;font-size:clamp(15px,1.6vw,18px);line-height:1.7;color:var(--muted);max-width:560px;">Somos una agencia creativa en San Juan que no se conforma con lo típico. Desde 2015, producimos contenido que conecta marcas con su audiencia de verdad.</p>
-        <a href="about.html" class="home-about-link" style="display:inline-block;margin-top:16px;color:var(--blue-strong);font-family:'Satoshi',sans-serif;font-weight:700;font-size:clamp(14px,1.5vw,16px);text-decoration:none;border-bottom:2px solid var(--blue-strong);">Conoce al equipo</a>
+        <div class="home-about-label" data-es="Nosotros" data-en="About Us">Nosotros</div>
+        <h2 class="home-about-title" data-es="Creatividad que no sale en autom&#225;tico." data-en="Creativity that doesn't run on autopilot.">Creatividad que no sale en automático.</h2>
+        <p class="home-about-text" style="font-family:'Satoshi',sans-serif;font-size:clamp(15px,1.6vw,18px);line-height:1.7;color:var(--muted);max-width:560px;" data-es="Somos una agencia creativa en San Juan que no se conforma con lo t&#237;pico. Desde 2015, producimos contenido que conecta marcas con su audiencia de verdad." data-en="We are a creative agency in San Juan that doesn't settle for the typical. Since 2015, we produce content that genuinely connects brands with their audience.">Somos una agencia creativa en San Juan que no se conforma con lo típico. Desde 2015, producimos contenido que conecta marcas con su audiencia de verdad.</p>
+        <a href="about.html" class="home-about-link" style="display:inline-block;margin-top:16px;color:var(--blue-strong);font-family:'Satoshi',sans-serif;font-weight:700;font-size:clamp(14px,1.5vw,16px);text-decoration:none;border-bottom:2px solid var(--blue-strong);" data-es="Conoce al equipo" data-en="Meet the team">Conoce al equipo</a>
       </div>
     </div>
   </section>
@@ -2010,7 +2065,7 @@
       <div class="cta-section__title"><span class="accent">+</span><span class="main">MÁS</span><br><span class="main">CREATIVA</span></div>
       <div class="cta-section__subtitle">Publicidad</div>
       <div class="cta-section__divider"></div>
-      <a class="cta-mega-btn" href="portfolio.html">Ver portafolio</a>
+      <a class="cta-mega-btn" href="portfolio.html" data-es="Ver portafolio" data-en="View portfolio">Ver portafolio</a>
     </div>
   </section>
 </main>
@@ -2018,9 +2073,9 @@
 <footer class="site-footer" id="siteFooter">
   <div class="footer-inner">
     <div>
-      <div class="footer-brandline">+MasCreativa Publicidad. Creatividad que no pide permiso.</div>
+      <div class="footer-brandline" data-es="+MasCreativa Publicidad. Creatividad que no pide permiso." data-en="+MasCreativa Publicidad. Creativity that asks no permission.">+MasCreativa Publicidad. Creatividad que no pide permiso.</div>
       <div class="footer-contact"><a href="tel:+17876441276">787-644-1276</a> · <a href="mailto:info@mascreativapublicidad.com">info@mascreativapublicidad.com</a></div>
-      <div class="footer-meta">San Juan, Puerto Rico / 2026 / <a href="terms.html">Términos</a> / <a href="privacy.html">Privacidad</a></div>
+      <div class="footer-meta" data-es-inner="San Juan, Puerto Rico / 2026 / <a href='terms.html'>T&#233;rminos</a> / <a href='privacy.html'>Privacidad</a>" data-en-inner="San Juan, Puerto Rico / 2026 / <a href='terms.html'>Terms</a> / <a href='privacy.html'>Privacy</a>">San Juan, Puerto Rico / 2026 / <a href="terms.html">Términos</a> / <a href="privacy.html">Privacidad</a></div>
     </div>
     <div class="footer-socials">
       <a href="https://instagram.com/mas_creativa_pr" target="_blank" rel="noopener">Instagram</a>
@@ -2330,6 +2385,7 @@
     var navBar = document.getElementById('navBar');
     var menuBtn2 = document.getElementById('mobileMenuBtn');
     var themeWrap = document.getElementById('themeToggleWrap');
+    var langToggleEl = document.getElementById('langToggle');
     if (navBar) {
       var navHidden = false;
       ScrollTrigger.create({
@@ -2350,17 +2406,20 @@
               // Scrolling down - hide (user is reading)
               if (menuBtn2) { menuBtn2.style.transform = 'translateY(-80px)'; menuBtn2.style.opacity = '0'; }
               if (themeWrap) { themeWrap.style.transform = 'translateY(-80px)'; themeWrap.style.opacity = '0'; }
+              if (langToggleEl) { langToggleEl.style.transform = 'translateY(-80px)'; langToggleEl.style.opacity = '0'; }
               navHidden = true;
             } else if (direction < 0 && navHidden) {
               // Scrolling up - show (user wants to navigate)
               if (menuBtn2) { menuBtn2.style.transform = ''; menuBtn2.style.opacity = ''; }
               if (themeWrap) { themeWrap.style.transform = ''; themeWrap.style.opacity = ''; }
+              if (langToggleEl) { langToggleEl.style.transform = ''; langToggleEl.style.opacity = ''; }
               navHidden = false;
             }
           } else if (navHidden) {
             // Near top - always show
             if (menuBtn2) { menuBtn2.style.transform = ''; menuBtn2.style.opacity = ''; }
             if (themeWrap) { themeWrap.style.transform = ''; themeWrap.style.opacity = ''; }
+            if (langToggleEl) { langToggleEl.style.transform = ''; langToggleEl.style.opacity = ''; }
             navHidden = false;
           }
         }
@@ -2393,6 +2452,61 @@
         onLeaveBack: function() { v.pause(); }
       });
     });
+  })();
+
+  // ===== LANGUAGE TOGGLE =====
+  (function(){
+    var lang = 'es';
+    try { var stored = localStorage.getItem('mcp-lang'); if (stored === 'en') lang = 'en'; } catch(e){}
+
+    var langBtn = document.getElementById('langToggle');
+    var langBtnMobile = document.getElementById('langToggleMobile');
+
+    function applyLang(newLang) {
+      lang = newLang;
+      document.body.setAttribute('data-lang', lang);
+      try { localStorage.setItem('mcp-lang', lang); } catch(e){}
+
+      // Update toggle button text (show opposite language)
+      var label = lang === 'es' ? 'EN' : 'ES';
+      if (langBtn) langBtn.textContent = label;
+      if (langBtnMobile) langBtnMobile.textContent = label;
+
+      // Swap text on all elements with data-es / data-en
+      document.querySelectorAll('[data-es][data-en]').forEach(function(el) {
+        // Skip elements that have inner HTML variants
+        if (el.hasAttribute('data-' + lang + '-inner')) return;
+        el.textContent = el.getAttribute('data-' + lang);
+      });
+
+      // Swap innerHTML on elements with data-es-inner / data-en-inner
+      document.querySelectorAll('[data-es-inner][data-en-inner]').forEach(function(el) {
+        el.innerHTML = el.getAttribute('data-' + lang + '-inner');
+      });
+
+      // Update meta tags
+      var descEs = 'Agencia creativa en Puerto Rico. Branding, video, marketing digital y contenido visual con +500M vistas combinadas.';
+      var descEn = 'Creative agency in Puerto Rico. Branding, video, digital marketing and visual content with 500M+ combined views.';
+      var desc = lang === 'es' ? descEs : descEn;
+      var metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) metaDesc.setAttribute('content', desc);
+      var ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogDesc) ogDesc.setAttribute('content', desc);
+      var twDesc = document.querySelector('meta[name="twitter:description"]');
+      if (twDesc) twDesc.setAttribute('content', desc);
+    }
+
+    function toggleLang() {
+      applyLang(lang === 'es' ? 'en' : 'es');
+    }
+
+    if (langBtn) langBtn.addEventListener('click', toggleLang);
+    if (langBtnMobile) langBtnMobile.addEventListener('click', toggleLang);
+
+    // Also hide/show lang toggle on scroll (same as theme toggle)
+    var langToggleEl = document.getElementById('langToggle');
+
+    applyLang(lang);
   })();
 
 </script>

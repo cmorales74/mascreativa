@@ -258,6 +258,37 @@ html, body {
     color: var(--blue-strong);
 }
 
+/* ===== LANGUAGE TOGGLE ===== */
+.lang-toggle-wrap {
+    position: fixed; right: 20px; top: 64px; z-index: 200;
+}
+.lang-toggle-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--muted);
+    background: var(--glass-bg);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: color 0.3s, border-color 0.3s, background 0.3s;
+    user-select: none; -webkit-user-select: none;
+}
+.lang-toggle-btn:hover {
+    color: var(--blue-strong);
+    border-color: var(--blue-strong);
+    background: var(--glass-bg);
+}
+.mobile-overlay .lang-toggle-btn {
+    font-size: 14px;
+    padding: 10px 24px;
+    margin-top: 8px;
+}
+@media (max-width: 640px) {
+    .lang-toggle-wrap { right: 12px; top: 56px; }
+}
+
 /* ===== THEME SWITCH ===== */
 .theme-switch-wrap { position: fixed; right: 20px; top: 20px; z-index: 200; }
 .theme-switch {
@@ -486,7 +517,7 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
 </head>
-<body data-theme="light">
+<body data-theme="light" data-lang="es">
 
 <!-- Logo -->
 <div style="text-align:center;padding:24px 0 0;">
@@ -518,50 +549,56 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
   </label>
 </div>
 
+<!-- Language Toggle -->
+<div class="lang-toggle-wrap">
+  <button class="lang-toggle-btn" id="langToggleBtn" aria-label="Switch language">EN</button>
+</div>
+
 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú">
   <span></span><span></span><span></span>
 </button>
 <div class="mobile-overlay" id="mobileOverlay">
-  <a href="index.html">Inicio</a>
-  <a href="services.html">Servicios</a>
-  <a href="portfolio.html">Portafolio</a>
-  <a href="about.html">Nosotros</a>
+  <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
+  <a href="services.html" data-es="Servicios" data-en="Services">Servicios</a>
+  <a href="portfolio.html" data-es="Portafolio" data-en="Portfolio">Portafolio</a>
+  <a href="about.html" data-es="Nosotros" data-en="About">Nosotros</a>
   <a href="live-content.html">Live Content</a>
-  <a href="contacto.html">Contacto</a>
+  <a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a>
+  <button class="lang-toggle-btn" id="langToggleMobile" aria-label="Switch language">EN</button>
   <img class="mobile-overlay-mascot" src="assets/images/raphy-computer.png" alt="" aria-hidden="true">
 </div>
 
 <div class="page-header reveal-section">
-    <h1 class="page-title">Contacto</h1>
-    <p class="page-subtitle">Hablemos</p>
+    <h1 class="page-title" data-es="Contacto" data-en="Contact">Contacto</h1>
+    <p class="page-subtitle" data-es="Hablemos" data-en="Let's Talk">Hablemos</p>
 </div>
 
 <div class="contact-wrapper reveal-section">
   <div class="contact-block">
 
-    <p class="contact-intro" style="font-family:'Satoshi',sans-serif;font-size:13px;line-height:1.7;color:var(--muted);text-align:center;max-width:450px;margin:0 auto 20px;">Si tienes un proyecto que necesita verse bien de verdad, escríbenos. Te decimos qué podemos hacer y cómo lo hacemos.</p>
+    <p class="contact-intro" style="font-family:'Satoshi',sans-serif;font-size:13px;line-height:1.7;color:var(--muted);text-align:center;max-width:450px;margin:0 auto 20px;" data-es="Si tienes un proyecto que necesita verse bien de verdad, escríbenos. Te decimos qué podemos hacer y cómo lo hacemos." data-en="If you have a project that needs to look truly great, write to us. We will tell you what we can do and how we do it.">Si tienes un proyecto que necesita verse bien de verdad, escríbenos. Te decimos qué podemos hacer y cómo lo hacemos.</p>
 
-    <div class="form-label">Escríbenos</div>
+    <div class="form-label" data-es="Escríbenos" data-en="Write to us">Escríbenos</div>
 
     <form class="contact-form" action="https://formsubmit.co/info@mascreativapublicidad.com" method="POST">
-      <input type="text" placeholder="Nombre" name="nombre" required autocomplete="off" spellcheck="false" aria-label="Tu nombre">
-      <input type="email" placeholder="Correo electrónico" name="email" required autocomplete="off" spellcheck="false" aria-label="Tu correo electrónico">
-      <input type="tel" name="telefono" placeholder="Teléfono (opcional)" aria-label="Tu teléfono">
-      <textarea placeholder="Mensaje" name="mensaje" required aria-label="Tu mensaje"></textarea>
+      <input type="text" data-placeholder-es="Nombre" data-placeholder-en="Name" placeholder="Nombre" name="nombre" required autocomplete="off" spellcheck="false" aria-label="Tu nombre">
+      <input type="email" data-placeholder-es="Correo electrónico" data-placeholder-en="Email address" placeholder="Correo electrónico" name="email" required autocomplete="off" spellcheck="false" aria-label="Tu correo electrónico">
+      <input type="tel" name="telefono" data-placeholder-es="Teléfono (opcional)" data-placeholder-en="Phone (optional)" placeholder="Teléfono (opcional)" aria-label="Tu teléfono">
+      <textarea data-placeholder-es="Mensaje" data-placeholder-en="Message" placeholder="Mensaje" name="mensaje" required aria-label="Tu mensaje"></textarea>
       <input type="hidden" name="_subject" value="Nuevo mensaje desde mascreativapublicidad.com">
       <input type="hidden" name="_captcha" value="true">
       <input type="text" name="_honey" style="display:none">
       <input type="hidden" name="_next" value="https://cmorales74.github.io/mascreativa/contacto.html">
-      <button type="submit" class="submit-btn">Enviar</button>
+      <button type="submit" class="submit-btn" data-es="Enviar" data-en="Send">Enviar</button>
     </form>
 
-    <p class="contact-note" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-align:center;margin-top:16px;">Te contestamos en menos de 24 horas. Si no puedes esperar, dale al WhatsApp.</p>
+    <p class="contact-note" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-align:center;margin-top:16px;" data-es="Te contestamos en menos de 24 horas. Si no puedes esperar, dale al WhatsApp." data-en="We reply within 24 hours. If you can't wait, hit us up on WhatsApp.">Te contestamos en menos de 24 horas. Si no puedes esperar, dale al WhatsApp.</p>
 
     <div class="contact-info" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--muted);text-align:center;margin-top:24px;line-height:2;">
       <a href="tel:+17876441276" style="color:var(--blue-strong);text-decoration:none;">787-644-1276</a><br>
       <a href="mailto:info@mascreativapublicidad.com" style="color:var(--blue-strong);text-decoration:none;">info@mascreativapublicidad.com</a><br>
       1105 Ave. FDR, Suite 5, San Juan, PR 00920<br>
-      Lunes a viernes, 8:00 a. m. - 6:00 p. m.
+      <span data-es="Lunes a viernes, 8:00 a. m. - 6:00 p. m." data-en="Monday to Friday, 8:00 AM - 6:00 PM">Lunes a viernes, 8:00 a. m. - 6:00 p. m.</span>
     </div>
 
     <div class="social-row">
@@ -585,9 +622,9 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 <footer class="site-footer" id="siteFooter">
   <div class="footer-inner">
     <div>
-      <div class="footer-brandline">+MasCreativa Publicidad. Creatividad que no pide permiso.</div>
+      <div class="footer-brandline" data-es="+MasCreativa Publicidad. Creatividad que no pide permiso." data-en="+MasCreativa Publicidad. Creativity that does not ask for permission.">+MasCreativa Publicidad. Creatividad que no pide permiso.</div>
       <div class="footer-contact"><a href="tel:+17876441276">787-644-1276</a> · <a href="mailto:info@mascreativapublicidad.com">info@mascreativapublicidad.com</a></div>
-      <div class="footer-meta">San Juan, Puerto Rico / 2026 / <a href="terms.html">Términos</a> / <a href="privacy.html">Privacidad</a></div>
+      <div class="footer-meta" data-es="San Juan, Puerto Rico / 2026 / <a href='terms.html'>Términos</a> / <a href='privacy.html'>Privacidad</a>" data-en="San Juan, Puerto Rico / 2026 / <a href='terms.html'>Terms</a> / <a href='privacy.html'>Privacy</a>">San Juan, Puerto Rico / 2026 / <a href="terms.html">Términos</a> / <a href="privacy.html">Privacidad</a></div>
     </div>
     <div class="footer-socials">
       <a href="https://instagram.com/mas_creativa_pr" target="_blank" rel="noopener">Instagram</a>
@@ -634,6 +671,46 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
   });
 
   applyMode();
+})();
+
+// ===== LANGUAGE TOGGLE =====
+(function(){
+  var lang = 'es';
+  var titles = { es: 'Contacto | MasCreativa Publicidad', en: 'Contact | MasCreativa Publicidad' };
+  try { var sv = localStorage.getItem('mcp-lang'); if (sv === 'en') lang = 'en'; } catch(e) {}
+
+  function applyLang(l) {
+    lang = l;
+    document.body.setAttribute('data-lang', lang);
+    document.title = titles[lang];
+    document.querySelectorAll('[data-es][data-en]').forEach(function(el) {
+      var val = el.getAttribute('data-' + lang);
+      if (val !== null) {
+        if (el.querySelector('a') || val.indexOf('<a ') !== -1) {
+          el.innerHTML = val;
+        } else {
+          el.textContent = val;
+        }
+      }
+    });
+    // Swap placeholders on form inputs
+    document.querySelectorAll('[data-placeholder-es][data-placeholder-en]').forEach(function(el) {
+      el.placeholder = el.getAttribute('data-placeholder-' + lang);
+    });
+    // Update toggle buttons
+    var label = lang === 'es' ? 'EN' : 'ES';
+    var btns = document.querySelectorAll('.lang-toggle-btn');
+    btns.forEach(function(b) { b.textContent = label; });
+    try { localStorage.setItem('mcp-lang', lang); } catch(e) {}
+  }
+
+  document.querySelectorAll('.lang-toggle-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      applyLang(lang === 'es' ? 'en' : 'es');
+    });
+  });
+
+  applyLang(lang);
 })();
 
   // Mobile hamburger menu
