@@ -224,30 +224,18 @@ html, body {
     cursor: pointer;
     transition: color 0.3s, border-color 0.3s, background 0.3s, box-shadow 0.3s;
 }
-.service-chip--spotlight {
-    color: var(--text);
-    border-color: color-mix(in srgb, var(--blue-strong) 34%, var(--line));
-    background: linear-gradient(135deg, rgba(56, 186, 247, 0.16), rgba(99, 88, 255, 0.08)), var(--panel-strong);
-    box-shadow: 0 10px 28px rgba(56, 186, 247, 0.14);
-}
 .service-chip:hover,
 .service-chip.active {
     color: var(--blue-strong);
     border-color: var(--blue-strong);
     background: var(--panel-strong);
 }
-.service-chip--spotlight:hover,
-.service-chip--spotlight.active {
-    background: linear-gradient(135deg, rgba(56, 186, 247, 0.22), rgba(99, 88, 255, 0.12)), var(--panel-strong);
-    box-shadow: 0 16px 32px rgba(56, 186, 247, 0.18);
-}
 @media (max-width: 640px) {
     .services-list { gap: 8px; padding: 8px 12px 12px; }
     .service-chip { font-size: 8.5px; letter-spacing: 1.5px; padding: 7px 11px; }
 
     /* Performance: disable GPU-heavy backdrop-filter on mobile */
-    .service-chip,
-    .sd-card--featured {
+    .service-chip {
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
     }
@@ -267,50 +255,10 @@ html, body {
     border-top: 1px solid var(--line);
     padding-top: 24px;
 }
-.sd-card:nth-child(even):not(.sd-card--featured) {
+.sd-card:nth-child(even) {
     border-top: none;
     border-left: 3px solid var(--blue-strong);
     padding-left: 20px;
-}
-.sd-card--featured {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border) !important;
-    border-radius: 16px;
-    padding: 28px 24px !important;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    position: relative;
-}
-.sd-card--live {
-    padding-top: 44px !important;
-    background:
-        radial-gradient(circle at top right, rgba(56, 186, 247, 0.16), transparent 34%),
-        linear-gradient(180deg, rgba(56, 186, 247, 0.08), transparent 52%),
-        var(--glass-bg);
-    box-shadow: 0 24px 60px rgba(56, 186, 247, 0.14);
-}
-.sd-card--featured::before {
-    content: 'SERVICIO DESTACADO';
-    position: absolute;
-    top: 12px; right: 16px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 7px; font-weight: 700;
-    letter-spacing: 2px; text-transform: uppercase;
-    color: var(--blue-strong);
-    opacity: 0.7;
-}
-body[data-lang="en"] .sd-card--featured::before {
-    content: 'FEATURED SERVICE';
-}
-.sd-card--live::after {
-    content: '';
-    position: absolute;
-    right: -46px;
-    bottom: -82px;
-    width: 220px;
-    height: 220px;
-    background: radial-gradient(circle, rgba(56, 186, 247, 0.18), transparent 70%);
-    pointer-events: none;
 }
 .sd-icon {
     display: block;
@@ -337,48 +285,6 @@ body[data-lang="en"] .sd-card--featured::before {
     margin: 0 0 16px;
     position: relative;
     z-index: 1;
-}
-.sd-body--lead {
-    font-size: 18px;
-    line-height: 1.72;
-    color: var(--text);
-    max-width: 48ch;
-}
-.sd-kicker {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--blue-strong);
-    margin: 0 0 14px;
-    position: relative;
-    z-index: 1;
-}
-.sd-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-    margin: 6px 0 18px;
-    position: relative;
-    z-index: 1;
-}
-.sd-panel {
-    padding-top: 16px;
-    border-top: 1px solid var(--line);
-}
-.sd-panel-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text);
-    margin-bottom: 12px;
-}
-.sd-list--compact li {
-    font-size: 12px;
-    line-height: 1.8;
 }
 .sd-link {
     display: inline-flex;
@@ -438,15 +344,8 @@ body[data-lang="en"] .sd-card--featured::before {
     .sd-inner { padding: 20px 16px 40px; gap: 30px; }
     .sd-title { font-size: 20px; }
     .sd-body { font-size: 15px; line-height: 1.8; }
-    .sd-body--lead { font-size: 16px; line-height: 1.8; }
-    .sd-kicker { font-size: 9.5px; }
-    .sd-panel-title { font-size: 10px; }
-    .sd-list--compact li { font-size: 11.5px; }
     .sd-list li { font-size: 11.5px; }
     .sd-link { font-size: 10.5px; }
-    .sd-card--featured { padding: 20px 16px !important; }
-    .sd-card--featured::before { font-size: 6px; top: 8px; right: 10px; }
-    .sd-grid { grid-template-columns: 1fr; gap: 14px; }
 }
 
 /* ===== THEME SWITCH ===== */
@@ -753,7 +652,6 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 
 
 <div class="services-list reveal-section" id="serviceChips">
-  <a href="#live-content" class="service-chip service-chip--spotlight" data-es="Live Content" data-en="Live Content">Live Content</a>
   <a href="#branding" class="service-chip" data-es="Branding" data-en="Branding">Branding</a>
   <a href="#publicidad" class="service-chip" data-es="Publicidad" data-en="Advertising">Publicidad</a>
   <a href="#foto-video" class="service-chip" data-es="Foto + Video" data-en="Photo + Video">Foto + Video</a>
@@ -765,42 +663,6 @@ body[data-theme="dark"] .site-footer .footer-socials a[href*="wa.me"] { color: #
 <!-- Service Details -->
 <div class="services-details" id="servicesDetails">
   <div class="sd-inner">
-
-    <div class="sd-card sd-card--featured sd-card--live reveal-section" id="live-content">
-      <svg class="sd-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 10l4.553-2.276A1 1 0 0 1 21 8.618v6.764a1 1 0 0 1-1.447.894L15 14"/><rect x="3" y="6" width="12" height="12" rx="2" ry="2"/></svg>
-      <div class="sd-kicker" data-es="Contenido en tiempo real" data-en="Real-time content">Contenido en tiempo real</div>
-      <h2 class="sd-title">Live Content</h2>
-      <p class="sd-body sd-body--lead" data-es="Mientras tu evento sucede, tu contenido ya est&#225; en redes. Editado, publicado y compitiendo por atenci&#243;n en tiempo real." data-en="While your event is happening, your content is already on social media. Edited, published and competing for attention in real time.">Mientras tu evento sucede, tu contenido ya está en redes. Editado, publicado y compitiendo por atención en tiempo real.</p>
-      <p class="sd-body" data-es="Un equipo completo en tu evento capturando, editando y publicando en el momento." data-en="A full team at your event capturing, editing and publishing on the spot.">Un equipo completo en tu evento capturando, editando y publicando en el momento.</p>
-      <div class="sd-grid">
-        <div class="sd-panel">
-          <div class="sd-panel-title" data-es="C&#243;mo funciona" data-en="How it works">Cómo funciona</div>
-          <ul class="sd-list sd-list--compact">
-            <li data-es="Preproducción estratégica con objetivos, momentos clave y plataformas claras" data-en="Strategic pre-production with clear objectives, key moments and target platforms">Preproducción estratégica con objetivos, momentos clave y plataformas claras</li>
-            <li data-es="Captura en vivo con cámaras, audio y operadores enfocados en lo que sí va a funcionar" data-en="Live capture with cameras, audio and operators focused on what actually works">Captura en vivo con cámaras, audio y operadores enfocados en lo que sí va a funcionar</li>
-            <li data-es="Edición y publicación inmediata mientras el evento todavía está caliente" data-en="Immediate editing and publishing while the event is still hot">Edición y publicación inmediata mientras el evento todavía está caliente</li>
-          </ul>
-        </div>
-        <div class="sd-panel">
-          <div class="sd-panel-title" data-es="Ideal para" data-en="Ideal for">Ideal para</div>
-          <ul class="sd-list sd-list--compact">
-            <li data-es="Deportes, conciertos y shows donde la ventana de viralidad dura minutos" data-en="Sports, concerts and shows where the virality window lasts minutes">Deportes, conciertos y shows donde la ventana de viralidad dura minutos</li>
-            <li data-es="Conferencias y eventos corporativos que necesitan extender su alcance" data-en="Conferences and corporate events that need to extend their reach">Conferencias y eventos corporativos que necesitan extender su alcance</li>
-            <li data-es="Activaciones de marca, pop-ups, eventos municipales y comunitarios" data-en="Brand activations, pop-ups, municipal and community events">Activaciones de marca, pop-ups, eventos municipales y comunitarios</li>
-          </ul>
-        </div>
-        <div class="sd-panel">
-          <div class="sd-panel-title" data-es="Qu&#233; recibes" data-en="What you get">Qué recibes</div>
-          <ul class="sd-list sd-list--compact">
-            <li data-es="Clips en vivo para Reels, TikTok, Stories y publicaciones" data-en="Live clips for Reels, TikTok, Stories and posts">Clips en vivo para Reels, TikTok, Stories y publicaciones</li>
-            <li data-es="Banco de contenido listo para seguir explotando el evento después" data-en="Content library ready to keep leveraging the event afterward">Banco de contenido listo para seguir explotando el evento después</li>
-            <li data-es="Video resumen y entregables listos para campañas futuras" data-en="Recap video and deliverables ready for future campaigns">Video resumen y entregables listos para campañas futuras</li>
-          </ul>
-        </div>
-      </div>
-      <p class="sd-body" data-es="Es la diferencia entre documentar un evento y hacerlo explotar en redes. Si tu evento tiene audiencia, necesita contenido saliendo mientras est&#225; pasando." data-en="It's the difference between documenting an event and making it blow up on social media. If your event has an audience, it needs content going out while it's happening.">Es la diferencia entre documentar un evento y hacerlo explotar en redes. Si tu evento tiene audiencia, necesita contenido saliendo mientras está pasando.</p>
-      <a href="contacto.html" class="sd-link" data-es="Agenda Live Content" data-en="Book Live Content">Agenda Live Content</a>
-    </div>
 
     <div class="sd-card reveal-section" id="branding">
       <svg class="sd-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
