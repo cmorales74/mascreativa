@@ -1023,26 +1023,29 @@
   }
 
   .marquee-logo {
-    font-family: "Satoshi", sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-    white-space: nowrap;
-    transition: color 0.3s ease;
+    flex-shrink: 0;
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+    opacity: 0.5;
+    filter: grayscale(100%);
+    transition: opacity 0.3s ease, filter 0.3s ease;
     cursor: default;
   }
 
-  .marquee-logo:hover { color: var(--text); }
+  body[data-theme="dark"] .marquee-logo {
+    filter: grayscale(100%) brightness(2);
+    opacity: 0.45;
+  }
 
-  .marquee-dot {
-    width: 3px;
-    height: 3px;
-    border-radius: 50%;
-    background: var(--ink-muted);
-    opacity: 0.3;
-    flex-shrink: 0;
+  .marquee-logo:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+  }
+
+  body[data-theme="dark"] .marquee-logo:hover {
+    opacity: 1;
+    filter: grayscale(0%) brightness(1.2);
   }
 
   .marquee-label {
@@ -1993,47 +1996,29 @@
         <div class="marquee-inner">
           <div class="marquee-track">
             <div class="marquee-item">
-              <span class="marquee-logo">Rimas Publishing</span>
-              <span class="marquee-dot"></span>
-              <span class="marquee-logo">Fundación Good Bunny</span>
-              <span class="marquee-dot"></span>
-              <span class="marquee-logo">New York Mets</span>
-              <span class="marquee-dot"></span>
-              <span class="marquee-logo">Cangrejeros de Santurce</span>
-              <span class="marquee-dot"></span>
-              <span class="marquee-logo">CST</span>
-              <span class="marquee-dot"></span>
-              <span class="marquee-logo">La Enoteca</span>
-              <span class="marquee-dot"></span>
-              <span class="marquee-logo">Redes Responde</span>
-              <span class="marquee-dot"></span>
-              <span class="marquee-logo">Sony Music</span>
-              <span class="marquee-dot"></span>
+              <img class="marquee-logo" src="assets/images/logos/rimas.svg" alt="Rimas Entertainment" loading="lazy">
+              <img class="marquee-logo" src="assets/images/logos/good-bunny.png" alt="Fundación Good Bunny" loading="lazy">
+              <img class="marquee-logo" src="assets/images/logos/ny-mets.png" alt="New York Mets" loading="lazy">
+              <img class="marquee-logo" src="assets/images/logos/cangrejeros.png" alt="Cangrejeros de Santurce" loading="lazy">
+              <img class="marquee-logo" src="assets/images/logos/ctpr.png" alt="Compañía de Turismo de Puerto Rico" loading="lazy">
+              <img class="marquee-logo" src="assets/images/logos/enoteca.png" alt="La Enoteca" loading="lazy">
+              <img class="marquee-logo" src="assets/images/logos/sony-music.png" alt="Sony Music" loading="lazy">
             </div>
             <div class="marquee-item">
-              <span class="marquee-logo">Rimas Publishing</span>
-              <span class="marquee-dot"></span>
-              <span class="marquee-logo">Fundación Good Bunny</span>
-              <span class="marquee-dot"></span>
-              <span class="marquee-logo">New York Mets</span>
-              <span class="marquee-dot"></span>
-              <span class="marquee-logo">Cangrejeros de Santurce</span>
-              <span class="marquee-dot"></span>
-              <span class="marquee-logo">CST</span>
-              <span class="marquee-dot"></span>
-              <span class="marquee-logo">La Enoteca</span>
-              <span class="marquee-dot"></span>
-              <span class="marquee-logo">Redes Responde</span>
-              <span class="marquee-dot"></span>
-              <span class="marquee-logo">Sony Music</span>
-              <span class="marquee-dot"></span>
+              <img class="marquee-logo" src="assets/images/logos/rimas.svg" alt="Rimas Entertainment" loading="lazy">
+              <img class="marquee-logo" src="assets/images/logos/good-bunny.png" alt="Fundación Good Bunny" loading="lazy">
+              <img class="marquee-logo" src="assets/images/logos/ny-mets.png" alt="New York Mets" loading="lazy">
+              <img class="marquee-logo" src="assets/images/logos/cangrejeros.png" alt="Cangrejeros de Santurce" loading="lazy">
+              <img class="marquee-logo" src="assets/images/logos/ctpr.png" alt="Compañía de Turismo de Puerto Rico" loading="lazy">
+              <img class="marquee-logo" src="assets/images/logos/enoteca.png" alt="La Enoteca" loading="lazy">
+              <img class="marquee-logo" src="assets/images/logos/sony-music.png" alt="Sony Music" loading="lazy">
             </div>
           </div>
         </div>
       </div>
       <div class="marquee-label">
         <span class="marquee-label-text" data-es="Pasa el cursor para pausar" data-en="Hover to pause">Pasa el cursor para pausar</span>
-        <span class="marquee-label-text" data-es="8 clientes destacados" data-en="8 featured clients">8 clientes destacados</span>
+        <span class="marquee-label-text" data-es="7 clientes destacados" data-en="7 featured clients">7 clientes destacados</span>
       </div>
     </div>
   </div>
